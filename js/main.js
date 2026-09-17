@@ -39,11 +39,38 @@ const services=[
  ['Branding Solutions','Brand communication, campaign creation and place-based experiences.']
 ];
 let serviceIndex=0;
-const serviceTitle=$('#serviceTitle'),serviceText=$('#serviceText'),serviceCount=$('#serviceCount'),serviceMeter=$('#serviceMeter');
-function setService(i){serviceIndex=(i+services.length)%services.length;const [title,text]=services[serviceIndex];serviceTitle.textContent=title;serviceText.textContent=text;serviceCount.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;serviceMeter.style.width=`${(serviceIndex+1)/6*100}%`;$$('.orbit-card').forEach((c,n)=>c.classList.toggle('active',n===serviceIndex))}
+const serviceTitle=$('#serviceTitle'),serviceText=$('#serviceText'),serviceCount=$('#serviceCount'),serviceMeter=$('#serviceMeter'),orbitServiceNo=$('#orbitServiceNo');
+function setService(i){serviceIndex=(i+services.length)%services.length;const [title,text]=services[serviceIndex];serviceTitle.textContent=title;serviceText.textContent=text;serviceCount.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;serviceMeter.style.width=`${(serviceIndex+1)/6*100}%`;if(orbitServiceNo) orbitServiceNo.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;$$('.orbit-card').forEach((c,n)=>c.classList.toggle('active',n===serviceIndex))}
 $$('.orbit-card').forEach((card,i)=>card.addEventListener('click',()=>setService(i)));
 $('#serviceNext').addEventListener('click',()=>setService(serviceIndex+1));
 setInterval(()=>setService(serviceIndex+1),5000);
+
+
+// Continuous planet-style orbit for the 360° Advertising Solutions cards.
+const orbitRingEl=document.querySelector('.solutions-360 .orbit-ring');
+const orbitCards=[...document.querySelectorAll('.solutions-360 .orbit-card')];
+let orbitAngle=0, orbitFrame;
+function animateServiceOrbit(ts){
+  if(!orbitRingEl || !orbitCards.length) return;
+  const w=orbitRingEl.clientWidth, h=orbitRingEl.clientHeight;
+  const rx=Math.max(110,w*.39), ry=Math.max(90,h*.39);
+  const cx=w/2, cy=h/2;
+  const step=(Math.PI*2)/orbitCards.length;
+  orbitCards.forEach((card,i)=>{
+    const a=orbitAngle + i*step - Math.PI/2;
+    const x=cx + Math.cos(a)*rx;
+    const y=cy + Math.sin(a)*ry;
+    const depth=(Math.sin(a)+1)/2;
+    const scale=.76 + depth*.30;
+    const z=Math.round(depth*160);
+    card.style.left='0'; card.style.top='0'; card.style.margin='0';
+    card.style.transform=`translate3d(${x-52.5}px,${y-52.5}px,${z}px) scale(${scale})`;
+    card.style.zIndex=30+Math.round(depth*20);
+  });
+  orbitAngle += 0.00055 * (ts ? 16.67 : 16.67);
+  orbitFrame=requestAnimationFrame(animateServiceOrbit);
+}
+if(orbitRingEl && orbitCards.length){orbitFrame=requestAnimationFrame(animateServiceOrbit);window.addEventListener('resize',()=>{orbitCards.forEach(c=>{c.style.transform=''});});}
 
 // Client 360 carousel — robust, all supplied logos, 1-second rotation
 const clientLogos=[
@@ -62,6 +89,7 @@ const clientPositions=[
 ];
 function renderCarousel(){
  if(!carouselEl) return;
+ carouselEl.classList.add('is-flipping');
  carouselEl.innerHTML='';
  const len=clientLogos.length;
  clientLogos.forEach(([name,ext],i)=>{
@@ -96,12 +124,19 @@ clientStageEl?.addEventListener('mouseenter',()=>clearInterval(clientTimer));
 clientStageEl?.addEventListener('mouseleave',restartClientTimer);
 
 // Outdoor solutions showcase — image-backed and fully interactive
-const panels={digital:{title:'Digital Billboards'},static:{title:'Static Billboards'},transit:{title:'Transit Media'}};
-const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex');
+const panels={
+ digital:{title:'Digital Billboards', kicker:'DIGITAL', image:'assets/images/work/work-03.png', color:'#ff2832'},
+ static:{title:'Static Billboards', kicker:'STATIC', image:'assets/images/work/work-04.png', color:'#ffffff'},
+ transit:{title:'Transit Media', kicker:'TRANSIT', image:'assets/images/work/work-06.jpg', color:'#53bffb'}
+};
+const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
  if(!showSection) return;
  showSection.classList.remove('theme-digital','theme-static','theme-transit'); showSection.classList.add('theme-'+name);
  if(showTitle) showTitle.textContent=panels[name].title;
+ if(showImage){showImage.classList.remove('is-changing'); requestAnimationFrame(()=>{showImage.src=panels[name].image; showImage.classList.add('is-changing');});}
+ if(showVisualKicker) showVisualKicker.textContent=panels[name].kicker;
+ if(showVisualTitle){showVisualTitle.textContent=panels[name].title.toUpperCase(); showVisualTitle.style.color=panels[name].color;}
  const names=Object.keys(panels), n=names.indexOf(name)+1;
  if(showIndex) showIndex.textContent=`0${n} — 03`;
  $$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===name));
@@ -112,11 +147,41 @@ let panelIndex=0; const panelNames=['digital','static','transit']; let panelTime
 function restartPanelTimer(){clearInterval(panelTimer);panelTimer=setInterval(()=>{panelIndex=(panelIndex+1)%panelNames.length;setPanel(panelNames[panelIndex])},3500)}
 setPanel('digital'); restartPanelTimer();
 
+// Our Work: top-row video + bottom-row auto-scrolling image rail
+const workViewport=$('#workViewport'), workTrack=$('#workTrack'), workPrev=$('#workPrev'), workNext=$('#workNext');
+let workAutoTimer, workStep=0;
+function sizeWorkCards(){if(!workViewport||!workTrack) return; const cards=$$('.work-card',workTrack); const gap=parseFloat(getComputedStyle(workTrack).gap)||0; const visible=window.innerWidth<=760?1:3; const width=Math.max(220,(workViewport.clientWidth-gap*(visible-1))/visible); cards.forEach(card=>{card.style.flexBasis=`${width}px`;card.style.width=`${width}px`});}
+function getWorkStep(){const card=workTrack?.querySelector('.work-card'); if(!card) return 0; const gap=parseFloat(getComputedStyle(workTrack).gap)||0; return card.getBoundingClientRect().width+gap;}
+function scrollWork(dir=1){if(!workViewport) return; const step=getWorkStep(); if(!step) return; workStep += dir; const max=workViewport.scrollWidth-workViewport.clientWidth; if(workStep*step>max+4) workStep=0; if(workStep<0) workStep=Math.max(0,Math.ceil(max/step)-1); workViewport.scrollTo({left:Math.min(workStep*step,max),behavior:'smooth'});}
+function restartWorkAuto(){clearInterval(workAutoTimer); workAutoTimer=setInterval(()=>scrollWork(1),3200)}
+workPrev?.addEventListener('click',()=>{scrollWork(-1);restartWorkAuto()});
+workNext?.addEventListener('click',()=>{scrollWork(1);restartWorkAuto()});
+workViewport?.addEventListener('mouseenter',()=>clearInterval(workAutoTimer));
+workViewport?.addEventListener('mouseleave',restartWorkAuto);
+workViewport?.addEventListener('touchstart',()=>clearInterval(workAutoTimer),{passive:true});
+workViewport?.addEventListener('touchend',restartWorkAuto,{passive:true});
+sizeWorkCards(); window.addEventListener('resize',()=>{sizeWorkCards();workStep=0;workViewport?.scrollTo({left:0,behavior:'auto'})}); restartWorkAuto();
+
 // Chatbot
 const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatReply=$('#chatReply');
 chatbot.addEventListener('click',()=>{chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',chatPanel.classList.contains('open')?'false':'true')});
 chatClose.addEventListener('click',()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')});
 $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{const m=b.dataset.chat;chatReply.innerHTML=m==='media'?'<b>Media solutions:</b> outdoor, transit, print, electronic and digital formats.':m==='campaign'?'<b>Plan a campaign:</b> tell us your city, audience and campaign goal.': '<b>Talk to our team:</b> email info.team@krishnaoutdoor.in or call +91-9920011574.';}));
+
+// Work image lightbox — click any campaign card to view it larger
+const workLightbox=$('#workLightbox'), workLightboxImage=$('#workLightboxImage'), workLightboxCaption=$('#workLightboxCaption'), workLightboxClose=$('#workLightboxClose');
+$$('.work-card img').forEach(img=>img.addEventListener('click',e=>{
+ e.stopPropagation();
+ if(!workLightbox) return;
+ workLightboxImage.src=img.currentSrc||img.src;
+ workLightboxImage.alt=img.alt||'Krishna Outdoor campaign';
+ workLightboxCaption.textContent=img.alt||'Krishna Outdoor campaign';
+ workLightbox.classList.add('open'); workLightbox.setAttribute('aria-hidden','false');
+}));
+function closeWorkLightbox(){workLightbox?.classList.remove('open');workLightbox?.setAttribute('aria-hidden','true');if(workLightboxImage) workLightboxImage.src=''}
+workLightboxClose?.addEventListener('click',closeWorkLightbox);
+workLightbox?.addEventListener('click',e=>{if(e.target===workLightbox) closeWorkLightbox()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()});
 
 // Cursor
 const cursor=$('#cursor'), ring=$('#cursorRing');

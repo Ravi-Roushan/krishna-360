@@ -148,3 +148,149 @@
  .showcase-visual{height:300px!important}.showcase-media{inset:4% 0!important}.showcase-media span{font-size:32px!important;left:18px;bottom:18px}
  .work-grid-cards{grid-template-columns:1fr 1fr!important}.work-card{min-height:170px!important}.work-card img{min-height:170px!important}
 }
+
+/* Final client-requested layout: Solutions section is text-only; its three showcase images live in More Than Media. */
+.solution-showcase .showcase-grid{grid-template-columns:minmax(0,1fr) !important;position:relative;min-height:560px !important;}
+.solution-showcase .showcase-copy{max-width:720px;position:relative;z-index:4;padding:70px 0;}
+.solution-showcase .showcase-text-stage{position:absolute;inset:0;pointer-events:none;overflow:hidden;display:block;}
+.solution-showcase .showcase-text-stage .word-ring{position:absolute;right:9%;top:50%;transform:translateY(-50%);}
+.solution-showcase .showcase-text-stage .word-ring.small{right:18%;}
+.solution-showcase .showcase-text-stage .showcase-index{position:absolute;right:12%;bottom:70px;z-index:2;}
+@media(max-width:1050px){.solution-showcase .showcase-copy{max-width:680px}.solution-showcase .showcase-text-stage .word-ring{right:0}.solution-showcase .showcase-text-stage .word-ring.small{right:10%;}}
+@media(max-width:760px){.solution-showcase .showcase-grid{min-height:620px !important}.solution-showcase .showcase-copy{padding:50px 0}.solution-showcase .showcase-text-stage .word-ring{right:-70px;top:62%;}.solution-showcase .showcase-text-stage .word-ring.small{right:20px;top:62%;}.solution-showcase .showcase-text-stage .showcase-index{right:20px;bottom:35px;}}
+
+/* ===== USER UPDATE: WORK VIDEO + AUTO-SCROLL GALLERY + RESPONSIVE CHATBOT ===== */
+.work-gallery{min-width:0;display:grid;gap:14px;position:relative}
+.work-video-card{grid-column:1/-1;height:250px;position:relative;overflow:hidden;border-radius:10px;background:#090a0c;border:1px solid #00000012;box-shadow:0 22px 55px #0002}
+.work-video-card video{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95) contrast(1.04) brightness(.78)}
+.work-video-shade{position:absolute;inset:0;background:linear-gradient(90deg,#000b,transparent 55%,#0002),linear-gradient(0deg,#000b,transparent 55%);pointer-events:none}
+.work-video-label{position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:center;color:#fff;z-index:2;font-size:9px;letter-spacing:1.1px;font-weight:800}
+.work-video-label span{display:flex;align-items:center;gap:7px;font-size:8px;color:#eee}.work-video-label i{width:6px;height:6px;background:#e51b23;border-radius:50%;display:inline-block;box-shadow:0 0 0 5px #e51b2322}
+.work-bottom-wrap{position:relative;min-width:0}.work-bottom-viewport{overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;scroll-snap-type:x mandatory;padding:1px}.work-bottom-viewport::-webkit-scrollbar{display:none}.work-bottom-track{display:flex;gap:14px;width:max-content}.work-bottom-track .work-card{width:calc((100% - 28px)/3);flex:0 0 calc((100vw - max(32px, (100vw - var(--max))/2)*2 - 28px)/3);max-width:360px;min-height:205px!important;scroll-snap-align:start}
+.work-bottom-track .work-card img{min-height:205px!important;height:205px!important}.work-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid #ffffffcc;background:#0b0d10e8;color:#fff;display:grid;place-items:center;cursor:pointer;font-size:25px;line-height:1;box-shadow:0 10px 25px #0003;opacity:0;transition:.25s}.work-bottom-wrap:hover .work-scroll-arrow{opacity:1}.work-scroll-arrow.prev{left:8px}.work-scroll-arrow.next{right:8px}
+.chatbot{position:fixed;right:24px;bottom:24px;z-index:180;border:1px solid #ffffff22;background:linear-gradient(135deg,#17191c,#0a0c0f);color:#fff;border-radius:18px;padding:10px 15px 10px 10px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 18px 45px #0005,0 0 0 1px #e51b2312;transition:transform .25s,box-shadow .25s}.chatbot:hover{transform:translateY(-4px);box-shadow:0 22px 50px #0006,0 0 28px #e51b2328}.chatbot-orb{width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#e51b23,#8f0e14);display:grid;place-items:center;box-shadow:0 8px 20px #e51b2344}.chatbot-orb span{font-size:17px}.chatbot-text{display:flex;flex-direction:column;align-items:flex-start;gap:2px}.chatbot-text b{font-size:11px;letter-spacing:.3px}.chatbot-text small{font-size:8px;color:#bfc3c8;display:flex;align-items:center;gap:4px}.chatbot-text small i,.chat-brand small i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#31d46c;box-shadow:0 0 0 4px #31d46c18}.chatbot-ping{position:absolute;left:43px;top:8px;width:7px;height:7px;border-radius:50%;background:#31d46c;animation:chatPing 1.8s infinite}.chat-panel{position:fixed;right:24px;bottom:92px;width:min(365px,calc(100vw - 32px));z-index:179;background:#0c0f12;color:#fff;border:1px solid #ffffff18;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px #0008,0 0 40px #e51b2314;opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:.28s ease}.chat-panel.open{opacity:1;transform:none;pointer-events:auto}.chat-head{padding:15px 16px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#181b1f,#0b0d10);border-bottom:1px solid #ffffff12}.chat-brand{display:flex;align-items:center;gap:10px}.chat-brand-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--red);font-size:14px}.chat-brand div{display:flex;flex-direction:column;gap:3px}.chat-head b{font-size:12px}.chat-head small{font-size:8px;color:#aeb4ba;display:flex;align-items:center;gap:5px}.chat-head button{border:0;background:#ffffff0b;color:#fff;width:30px;height:30px;border-radius:9px;cursor:pointer;font-size:19px}.chat-body{padding:16px}.chat-welcome{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #ffffff10;border-radius:14px;background:#ffffff05}.chat-avatar{width:32px;height:32px;flex:0 0 32px;border-radius:10px;background:#fff;color:#111;display:grid;place-items:center;font-weight:900;font-size:12px}.chat-welcome b{font-size:11px}.chat-welcome p{margin:4px 0 0;font-size:10px;line-height:1.5;color:#bfc3c8}.chat-options{display:grid;gap:8px;margin-top:12px}.chat-options button{display:flex;align-items:center;gap:9px;text-align:left;width:100%;border:1px solid #ffffff12;background:#11151a;color:#fff;border-radius:11px;padding:11px 12px;font-size:10px;cursor:pointer;transition:.2s}.chat-options button:hover{border-color:#e51b2355;background:#e51b2312;transform:translateX(3px)}.chat-options button span{color:#e51b23;font:700 9px Oswald}.chat-options button b{margin-left:auto;color:#999}.chat-reply{display:none;margin-top:10px;padding:11px 12px;border-left:2px solid var(--red);background:#ffffff06;color:#dce0e4;font-size:10px;line-height:1.55;border-radius:0 9px 9px 0}.chat-reply:not(:empty){display:block}.chat-direct{display:flex;gap:8px;margin-top:12px}.chat-direct a{flex:1;text-align:center;padding:9px;border:1px solid #ffffff12;border-radius:9px;color:#ddd;font-size:9px;font-weight:800}.chat-direct a:hover{color:#fff;border-color:#e51b2355;background:#e51b2310}@keyframes chatPing{0%,100%{box-shadow:0 0 0 0 #31d46c33}50%{box-shadow:0 0 0 6px #31d46c00}}
+@media(max-width:1050px){.work-grid{grid-template-columns:1fr!important}.work-video-card{height:330px}.work-bottom-track .work-card{flex-basis:calc((100vw - 64px - 28px)/3);max-width:none}}
+@media(max-width:760px){.container{width:min(calc(100% - 32px),var(--max))}.header{height:68px}.site-logo img{width:145px;max-height:44px}.nav{position:absolute;top:68px;left:16px;right:16px;background:#fff;border:1px solid #eee;box-shadow:0 18px 40px #0002;display:none;flex-direction:column;align-items:stretch;gap:0;padding:8px;border-radius:10px}.nav.open{display:flex}.nav>a{padding:13px 12px}.nav-cta{text-align:center;margin-top:4px}.nav-toggle{display:flex;flex-direction:column;gap:4px}.nav-toggle span{width:24px;height:2px;background:#111}.hero{height:520px!important}.hero-inner{padding:0 4px}.hero-inner h1{font-size:38px!important;max-width:320px}.stats-grid{grid-template-columns:repeat(2,1fr)}.stats-grid>div{min-height:74px;padding:12px 14px}.stats-grid strong{font-size:24px}.section{padding:62px 0}.work-video-card{height:205px;border-radius:9px}.work-video-label{left:12px;right:12px;bottom:12px}.work-bottom-track{gap:10px}.work-bottom-track .work-card{flex-basis:calc(100vw - 58px);min-height:185px!important}.work-bottom-track .work-card img{height:185px!important;min-height:185px!important}.work-scroll-arrow{opacity:1;width:34px;height:34px}.work-scroll-arrow.prev{left:5px}.work-scroll-arrow.next{right:5px}.chatbot{right:14px;bottom:14px;padding:8px 10px 8px 8px;border-radius:15px}.chatbot-orb{width:35px;height:35px}.chatbot-text b{font-size:10px}.chat-panel{right:16px;bottom:76px;width:calc(100vw - 32px);border-radius:17px}.chat-body{padding:13px}.chat-direct a{padding:8px}.solution-showcase .showcase-grid{min-height:580px!important}.solution-showcase .showcase-copy{padding:48px 0}.solution-showcase .showcase-text-stage .word-ring{right:-100px;top:64%;transform:translateY(-50%) scale(.82)}.solution-showcase .showcase-text-stage .word-ring.small{right:-20px;top:64%;transform:translateY(-50%) scale(.72)}}
+
+/* Work rail sizing is calculated by JS so exactly 3 cards fit on desktop. */
+.work-bottom-track .work-card{flex:0 0 auto!important;width:auto;max-width:none!important}
+.work-bottom-viewport{width:100%;}
+@media(max-width:760px){.work-gallery{gap:12px}.work-video-card{height:205px}.work-bottom-track .work-card{max-width:none!important}.work-copy h2{font-size:45px!important}}
+/* Solutions showcase — visual media panel in the open right stage */
+.solution-showcase .showcase-text-stage{isolation:isolate}
+.solution-showcase .showcase-visual{position:absolute;right:6%;top:50%;width:min(54vw,700px);height:min(390px,32vw);transform:translateY(-50%);overflow:hidden;border:1px solid #ffffff24;background:#111;box-shadow:0 28px 80px #0008;z-index:3;opacity:1}
+.solution-showcase .showcase-visual img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.92) contrast(1.04);transition:opacity .35s ease,transform .7s cubic-bezier(.16,.7,0,1)}
+.solution-showcase .showcase-visual img.is-changing{animation:showcaseImageIn .65s ease both}
+.solution-showcase .showcase-visual-shade{position:absolute;inset:0;background:linear-gradient(90deg,#080a0ccc 0%,#080a0c33 55%,#080a0c10 100%),linear-gradient(0deg,#000b,transparent 48%)}
+.solution-showcase .showcase-visual-copy{position:absolute;left:38px;bottom:32px;z-index:4;display:flex;flex-direction:column;gap:7px;max-width:70%}
+.solution-showcase .showcase-visual-copy small{font-size:10px;font-weight:900;letter-spacing:3px;color:#fff}
+.solution-showcase .showcase-visual-copy strong{font:700 clamp(34px,4.2vw,70px)/.88 Oswald,Impact,sans-serif;letter-spacing:-1px;text-shadow:0 5px 22px #0009;transition:color .4s ease}
+.solution-showcase .showcase-text-stage .word-ring{z-index:1}
+.solution-showcase .showcase-text-stage .word-ring.small{z-index:1}
+.solution-showcase .showcase-index{z-index:5}
+@keyframes showcaseImageIn{from{opacity:.25;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+@media(max-width:1050px){.solution-showcase .showcase-visual{right:0;width:55vw;height:36vw}.solution-showcase .showcase-visual-copy{left:25px;bottom:24px}}
+@media(max-width:760px){.solution-showcase .showcase-text-stage{min-height:330px}.solution-showcase .showcase-visual{right:16px;left:16px;top:62%;width:auto;height:230px;transform:translateY(-50%)}.solution-showcase .showcase-visual-copy{left:20px;bottom:20px;max-width:85%}.solution-showcase .showcase-visual-copy strong{font-size:34px}.solution-showcase .showcase-text-stage .word-ring{right:-90px!important;top:62%}.solution-showcase .showcase-text-stage .word-ring.small{right:-10px!important;top:62%}.solution-showcase .showcase-index{right:20px;bottom:8px}}
+
+/* ===== FINAL USER FIXES ===== */
+.hero-media{background:#08090b;object-position:center center}
+.hero-inner h1{font-size:clamp(38px,4.35vw,62px)!important;line-height:.94!important;max-width:620px!important}
+
+/* 360 Solutions: keep the counter above the rotating rings and continuously animate the orbit */
+.solutions-360 .orbit-ring{overflow:visible!important;isolation:isolate}
+.solutions-360 .orbit-ring:before{animation:spin 18s linear infinite}
+.solutions-360 .orbit-ring:after{animation:spinReverse 11s linear infinite}
+.solutions-360 .orbit-glow{z-index:0}
+.solutions-360 .orbit-center{z-index:10!important;position:absolute!important;overflow:visible!important}
+.solutions-360 .orbit-center span,.solutions-360 .orbit-center small,.solutions-360 .orbit-center b{position:relative;z-index:12;display:block}
+.solutions-360 .orbit-center b{font:800 9px Inter,sans-serif;letter-spacing:1px;color:#e51b23;margin-top:8px}
+.solutions-360 .orbit-card{z-index:8}
+
+/* Solutions showcase: text on left, a clean visual on the right */
+.solution-showcase{min-height:620px!important}
+.solution-showcase .showcase-grid{grid-template-columns:minmax(300px,42%) minmax(0,58%)!important;min-height:620px!important;align-items:center!important}
+.solution-showcase .showcase-copy{position:relative!important;z-index:8!important;padding:50px 20px 50px 0!important}
+.solution-showcase .showcase-copy h2{font-size:clamp(44px,4.8vw,64px)!important}
+.solution-showcase .showcase-text-stage{position:relative!important;inset:auto!important;height:480px!important;overflow:visible!important;pointer-events:none!important}
+.solution-showcase .showcase-visual{position:absolute!important;inset:6% 2% 8% 2%!important;height:auto!important;display:block!important;border-radius:16px!important;overflow:hidden!important;box-shadow:0 30px 80px #0008!important;border:1px solid #ffffff20!important;background:#0d1013!important;z-index:4!important}
+.solution-showcase .showcase-visual img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;transition:opacity .45s ease,transform .7s ease,filter .45s ease!important;filter:saturate(.98) contrast(1.06) brightness(.72)!important}
+.solution-showcase .showcase-visual img.is-changing{animation:showcaseImageIn .65s ease both}
+.solution-showcase .showcase-visual-shade{position:absolute!important;inset:0!important;background:linear-gradient(90deg,#000a 0%,#0004 45%,#0001 100%),linear-gradient(0deg,#000a,transparent 55%)!important;z-index:2!important}
+.solution-showcase .showcase-visual-copy{position:absolute!important;left:30px!important;bottom:28px!important;z-index:5!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+.solution-showcase .showcase-visual-copy small{font:800 10px Inter,sans-serif;letter-spacing:3px;color:#fff;opacity:.9}
+.solution-showcase .showcase-visual-copy strong{font:700 clamp(38px,4vw,66px)/.9 Oswald,Impact,sans-serif;letter-spacing:-1px;text-shadow:0 8px 30px #0008}
+.solution-showcase .word-ring{z-index:1!important;opacity:.65}
+.solution-showcase .showcase-index{z-index:8!important;color:#fff!important;background:#0d1013cc;padding:7px 10px;border:1px solid #ffffff22;border-radius:999px;right:18px!important;bottom:18px!important}
+@keyframes showcaseImageIn{from{opacity:.2;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+
+/* Work image lightbox */
+.work-card{cursor:pointer!important}
+.work-lightbox{position:fixed;inset:0;z-index:500;background:#000d;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:.25s}
+.work-lightbox.open{opacity:1;visibility:visible}
+.work-lightbox-inner{position:relative;width:min(1050px,94vw);max-height:90vh;background:#0b0d10;border:1px solid #ffffff22;border-radius:14px;overflow:hidden;box-shadow:0 40px 120px #000b}
+.work-lightbox-inner img{display:block;width:100%;max-height:78vh;object-fit:contain;background:#050607}
+#workLightboxCaption{padding:12px 16px;color:#fff;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+#workLightboxClose{position:absolute;right:10px;top:10px;z-index:4;width:38px;height:38px;border-radius:50%;border:1px solid #ffffff55;background:#08090bcc;color:#fff;font-size:24px;cursor:pointer}
+
+/* Cute compact chatbot */
+.chatbot{right:16px!important;bottom:16px!important;gap:0!important}
+.chatbot-orb{width:42px!important;height:42px!important;border-width:1px!important;font-size:16px!important;box-shadow:0 0 0 4px #e51b2320!important}
+.chatbot-ping{width:7px!important;height:7px!important}
+.chat-panel{right:16px!important;bottom:68px!important;width:min(290px,calc(100% - 32px))!important;border-radius:12px!important}
+.chat-head{padding:11px 12px!important}.chat-body{padding:12px!important}.chat-options button{padding:9px 10px!important;font-size:9px!important}
+
+@media(max-width:1050px){
+ .solution-showcase .showcase-grid{grid-template-columns:1fr!important;min-height:auto!important}
+ .solution-showcase .showcase-copy{padding:60px 0 25px!important}
+ .solution-showcase .showcase-text-stage{height:430px!important;margin-bottom:50px}
+}
+@media(max-width:760px){
+ .hero{height:540px!important}.hero-inner h1{font-size:32px!important;max-width:360px!important}
+ .solutions-360 .orbit-layout{grid-template-columns:1fr!important}.solutions-360 .orbit-ring{width:min(390px,92vw)!important}.solutions-360 .service-panel{padding:35px 0 0!important;text-align:center;margin:auto}
+ .solution-showcase{min-height:auto!important}.solution-showcase .showcase-copy{padding:48px 0 20px!important}.solution-showcase .showcase-copy h2{font-size:42px!important}
+ .solution-showcase .showcase-text-stage{height:320px!important;margin-bottom:42px}.solution-showcase .showcase-visual{inset:2% 0 8%!important}.solution-showcase .showcase-visual-copy{left:18px!important;bottom:18px!important}.solution-showcase .showcase-visual-copy strong{font-size:38px!important}.solution-showcase .showcase-index{right:12px!important;bottom:10px!important}
+ .work-lightbox{padding:12px}.work-lightbox-inner{width:100%;border-radius:10px}.work-lightbox-inner img{max-height:72vh}
+}
+
+/* Smooth front-facing flip as each client reaches the center */
+.client-carousel.is-flipping .client-card3d.center{animation:clientFlipIn .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes clientFlipIn{0%{opacity:.35;transform:translate(-50%,-50%) translateX(0) translateZ(20px) rotateY(90deg) scale(.82)}100%{opacity:1}}
+.client-card3d{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+
+
+/* ===== LATEST USER FIXES ===== */
+/* 360 Advertising Solutions: planet-like continuous orbit; keep center counter above every ring/card. */
+.solutions-360 .orbit-layout{align-items:center}
+.solutions-360 .orbit-ring{overflow:visible!important;perspective:900px;isolation:isolate}
+.solutions-360 .orbit-ring:before{animation:spin 22s linear infinite}
+.solutions-360 .orbit-ring:after{animation:spinReverse 14s linear infinite}
+.solutions-360 .orbit-center{z-index:50!important;transform:none!important;pointer-events:none}
+.solutions-360 .orbit-center span,.solutions-360 .orbit-center small,.solutions-360 .orbit-center b{z-index:55!important;opacity:1!important;visibility:visible!important}
+.solutions-360 .orbit-card{z-index:30!important;will-change:transform;transition:background .3s,color .3s,box-shadow .3s!important}
+.solutions-360 .orbit-card.active{z-index:35!important}
+
+/* Showcase visual: perfectly centered in the right half, never stuck to the top. */
+.solution-showcase .showcase-text-stage{display:flex!important;align-items:center!important;justify-content:center!important;height:560px!important;position:relative!important}
+.solution-showcase .showcase-visual{position:absolute!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;width:min(90%,700px)!important;height:min(78%,440px)!important;inset:auto!important;transform:translate(-50%,-50%)!important}
+.solution-showcase .showcase-visual img{object-position:center center!important}
+.solution-showcase .showcase-visual-copy{left:28px!important;bottom:24px!important}
+
+/* CTA: guarantee BOTH lines of the heading remain visible. */
+.cta-inner.reveal{opacity:1!important;transform:none!important;visibility:visible!important}
+.cta-inner h2{overflow:visible!important;position:relative!important;z-index:3!important}
+.cta-inner h2 em{display:inline!important;visibility:visible!important;opacity:1!important;color:#fff!important}
+.cta-inner>div{position:relative;z-index:4}
+
+/* Chatbot temporarily removed from the page, as requested. */
+.chatbot,.chat-panel{display:none!important}
+
+@media(max-width:1050px){
+ .solution-showcase .showcase-text-stage{height:470px!important}
+ .solution-showcase .showcase-visual{width:min(92%,680px)!important;height:min(78%,360px)!important}
+}
+@media(max-width:760px){
+ .solution-showcase .showcase-text-stage{height:360px!important;margin-bottom:30px!important}
+ .solution-showcase .showcase-visual{width:calc(100% - 24px)!important;height:250px!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important}
+ .solution-showcase .showcase-visual-copy strong{font-size:34px!important}
+ .solutions-360 .orbit-ring{width:min(390px,92vw)!important}
+}

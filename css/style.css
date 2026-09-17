@@ -1197,3 +1197,79 @@ h1,h2,h3,h4,h5,h6,
   .stats-strip .stats-item strong{font-size:27px}
   .stats-strip .stats-item span{font-size:9px}
 }
+
+/* ===== MOBILE FOOTER LEGACY LOGO FIX ===== */
+@media (max-width:1050px){
+  .footer-top .legacy{display:block!important;}
+}
+@media (max-width:760px){
+  .footer-top .legacy{display:block!important;justify-self:center!important;text-align:center!important;width:100%!important;max-width:230px!important;}
+  .footer-top .legacy small{display:block!important;font-size:8px!important;line-height:1.4!important;margin-bottom:7px!important;}
+  .footer-top .legacy img{display:block!important;width:145px!important;max-width:100%!important;height:auto!important;max-height:48px!important;margin:0 auto!important;object-fit:contain!important;visibility:visible!important;opacity:1!important;filter:none!important;}
+}
+
+/* ===== FINAL USER FIX: WORK ARROWS + FOOTER ORDER ===== */
+/* Keep the campaign slider arrows vertically centered and always visible on desktop + mobile. */
+.work-bottom-wrap{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  min-height:205px!important;
+  overflow:visible!important;
+}
+.work-bottom-viewport{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  min-height:205px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+.work-scroll-arrow{
+  position:absolute!important;
+  top:50%!important;
+  bottom:auto!important;
+  z-index:20!important;
+  opacity:1!important;
+  visibility:visible!important;
+  display:grid!important;
+  place-items:center!important;
+  transform:translateY(-50%)!important;
+  pointer-events:auto!important;
+}
+.work-scroll-arrow.prev{left:10px!important;right:auto!important;}
+.work-scroll-arrow.next{right:10px!important;left:auto!important;}
+
+/* Footer top order: Krishna logo → navigation → Rakesh legacy logo. */
+.footer-top{
+  grid-template-columns:minmax(180px,220px) minmax(0,1fr) minmax(180px,230px)!important;
+  align-items:center!important;
+}
+.footer-top>.site-logo{grid-column:1!important;grid-row:1!important;}
+.footer-top>nav{grid-column:2!important;grid-row:1!important;}
+.footer-top>.legacy{grid-column:3!important;grid-row:1!important;display:block!important;visibility:visible!important;}
+
+@media(max-width:900px){
+  .footer-top{
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto auto!important;
+    gap:18px!important;
+    text-align:center!important;
+  }
+  .footer-top>.site-logo{grid-column:1!important;grid-row:1!important;justify-self:center!important;}
+  .footer-top>nav{grid-column:1!important;grid-row:2!important;justify-content:center!important;}
+  .footer-top>.legacy{grid-column:1!important;grid-row:3!important;justify-self:center!important;text-align:center!important;display:block!important;}
+}
+
+@media(max-width:760px){
+  .work-bottom-wrap{min-height:185px!important;}
+  .work-bottom-viewport{min-height:185px!important;}
+  .work-scroll-arrow{
+    width:34px!important;
+    height:34px!important;
+    top:50%!important;
+  }
+  .work-scroll-arrow.prev{left:6px!important;}
+  .work-scroll-arrow.next{right:6px!important;}
+  .footer-top>.legacy{display:block!important;visibility:visible!important;}
+}

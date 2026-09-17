@@ -1059,3 +1059,141 @@ img, video, iframe, svg { max-width:100%; }
   .footer-bottom .social-text{gap:7px!important;}
   .social-text b{width:34px!important;height:34px!important;}
 }
+
+/* ===== FINAL TYPOGRAPHY + HEADER LOGO + NETWORK STAT UPDATE ===== */
+@font-face{
+  font-family:'Aileron';
+  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Regular.woff2') format('woff2'),
+      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Regular.woff') format('woff');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Aileron';
+  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-SemiBold.woff2') format('woff2'),
+      url('https://reinhart1010.github.io/aileron/fonts/Aileron-SemiBold.woff') format('woff');
+  font-weight:500;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Aileron';
+  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Bold.woff2') format('woff2'),
+      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Bold.woff') format('woff');
+  font-weight:700;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Aileron';
+  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Heavy.woff2') format('woff2'),
+      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Heavy.woff') format('woff');
+  font-weight:800;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Aileron';
+  src:url('https://reinhart1010.github.io/aileron/fonts/Aileron-Black.woff2') format('woff2'),
+      url('https://reinhart1010.github.io/aileron/fonts/Aileron-Black.woff') format('woff');
+  font-weight:900;font-style:normal;font-display:swap;
+}
+
+/* Aileron is used for every visual heading/display title; body copy stays readable. */
+h1,h2,h3,h4,h5,h6,
+.hero h1,
+.about-copy h2,
+.work-copy h2,
+.impact-copy h2,
+.section-head h2,
+.service-panel h3,
+.network-inner h2,
+.clients-copy h2,
+.experience-copy h2,
+.cta h2,
+.story-dialog h3,
+.stats-grid strong,
+.year-badge strong,
+.year-badge span,
+.slide-type span,
+.service-count,
+.orbit-center span{
+  font-family:'Aileron',Arial,sans-serif!important;
+}
+
+.hero h1{font-weight:800!important;letter-spacing:-1.5px!important;line-height:.9!important;}
+.about-copy h2,.work-copy h2,.impact-copy h2,.section-head h2,
+.network-inner h2,.clients-copy h2,.experience-copy h2,.cta h2,
+.story-dialog h3,.service-panel h3{font-weight:800!important;}
+
+/* Top logo: same clean treatment, just slightly larger and more prominent. */
+.header .site-logo img{width:215px!important;max-height:60px!important;object-fit:contain!important;}
+
+/* The four network highlight cards: 35+ Years -> 45+ Years. */
+
+@media(max-width:900px){
+  .header .site-logo img{width:195px!important;max-height:56px!important;}
+}
+@media(max-width:760px){
+  .header .site-logo img{width:185px!important;max-height:54px!important;}
+  h1,h2,h3,h4,h5,h6{letter-spacing:-.5px!important;}
+}
+@media(max-width:420px){
+  .header .site-logo img{width:172px!important;max-height:50px!important;}
+}
+
+/* ===== UNDER-HERO STAT STRIP ===== */
+.stats-strip{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:7px 0;
+  background:#d32634;
+  border-top:2px solid #fff;
+  border-bottom:2px solid #fff;
+  color:#fff;
+  overflow:hidden;
+}
+.stats-strip-track{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  align-items:stretch;
+}
+.stats-strip .stats-item{
+  min-width:0;
+  min-height:92px;
+  padding:15px 12px 13px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-right:1px solid rgba(255,255,255,.82);
+}
+.stats-strip .stats-item:last-child{border-right:0}
+.stats-strip .stats-item strong{
+  display:block;
+  margin:0 0 2px;
+  color:#fff;
+  font-family:'Aileron',Inter,Arial,sans-serif;
+  font-size:31px;
+  line-height:.95;
+  font-weight:800;
+  letter-spacing:-.6px;
+}
+.stats-strip .stats-item span{
+  display:block;
+  color:#fff;
+  font-family:'Aileron',Inter,Arial,sans-serif;
+  font-size:10px;
+  line-height:1.3;
+  font-weight:600;
+  letter-spacing:0;
+}
+@media(max-width:900px){
+  .stats-strip{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .stats-strip::-webkit-scrollbar{display:none}
+  .stats-strip-track{
+    width:max-content;
+    min-width:100%;
+    grid-template-columns:repeat(6,220px);
+  }
+  .stats-strip .stats-item{min-height:88px;padding:14px 16px}
+}
+@media(max-width:760px){
+  .stats-strip-track{grid-template-columns:repeat(6,205px)}
+  .stats-strip .stats-item strong{font-size:27px}
+  .stats-strip .stats-item span{font-size:9px}
+}

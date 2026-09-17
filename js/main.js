@@ -72,56 +72,89 @@ function animateServiceOrbit(ts){
 }
 if(orbitRingEl && orbitCards.length){orbitFrame=requestAnimationFrame(animateServiceOrbit);window.addEventListener('resize',()=>{orbitCards.forEach(c=>{c.style.transform=''});});}
 
-// Client 360 carousel — robust, all supplied logos, 1-second rotation
+// Bottom media-format rail: smooth continuous six-item marquee.
+const slideType = document.querySelector('.solutions-360 .slide-type');
+const slideTrack = document.querySelector('.solutions-360 .slide-type-track');
+if (slideType && slideTrack && !slideTrack.dataset.loopReady) {
+  slideTrack.dataset.loopReady = 'true';
+  [...slideTrack.children].forEach(el => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    slideTrack.appendChild(clone);
+  });
+}
+
+// Client 360 carousel — click, drag and touch swipe
 const clientLogos=[
  ['airtel','png'],['apple','png'],['audi','png'],['giva','png'],['gshock','png'],['gulab-oil','png'],['havells','png'],['hyundai','png'],['jio-hotstar','jpg'],['kitkat','png'],['loreal','png'],['mercedes','png'],['porsche','png'],['prime','png'],['spotify','webp'],['times-fashion-week','png'],['tresemme','png'],['vadilal','png'],['zoho','png']
 ];
-const carouselEl=$('#clientCarousel'), clientDotsEl=$('#clientDots');
-let clientCenter=0, clientTimer;
+const carouselEl=$('#clientCarousel');
+let clientCenter=0, clientTimer, clientPointerStart=0, clientPointerLast=0, clientDragging=false, clientDragged=false;
 const clientPositions=[
- {x:-390,z:-180,rot:42,scale:.54,op:.38},
- {x:-275,z:-105,rot:30,scale:.68,op:.55},
- {x:-145,z:-38,rot:16,scale:.84,op:.78},
- {x:0,z:55,rot:0,scale:1.08,op:1},
- {x:145,z:-38,rot:-16,scale:.84,op:.78},
- {x:275,z:-105,rot:-30,scale:.68,op:.55},
- {x:390,z:-180,rot:-42,scale:.54,op:.38}
+ {x:-390,z:-180,rot:42,scale:.54,op:.38},{x:-275,z:-105,rot:30,scale:.68,op:.55},{x:-145,z:-38,rot:16,scale:.84,op:.78},{x:0,z:55,rot:0,scale:1.08,op:1},{x:145,z:-38,rot:-16,scale:.84,op:.78},{x:275,z:-105,rot:-30,scale:.68,op:.55},{x:390,z:-180,rot:-42,scale:.54,op:.38}
 ];
 function renderCarousel(){
  if(!carouselEl) return;
- carouselEl.classList.add('is-flipping');
- carouselEl.innerHTML='';
- const len=clientLogos.length;
+ carouselEl.classList.remove('is-flipping'); void carouselEl.offsetWidth; carouselEl.classList.add('is-flipping');
+ carouselEl.innerHTML=''; const len=clientLogos.length;
  clientLogos.forEach(([name,ext],i)=>{
-  let offset=i-clientCenter;
-  if(offset>len/2) offset-=len;
-  if(offset<-len/2) offset+=len;
-  if(Math.abs(offset)>3) return;
-  const p=clientPositions[offset+3];
-  const card=document.createElement('button');
-  card.type='button'; card.className='client-card3d'+(offset===0?' center':'');
+  let offset=i-clientCenter; if(offset>len/2) offset-=len; if(offset<-len/2) offset+=len; if(Math.abs(offset)>3) return;
+  const p=clientPositions[offset+3]; const card=document.createElement('button'); card.type='button'; card.className='client-card3d'+(offset===0?' center':'');
   card.setAttribute('aria-label',name.replaceAll('-',' ')+' client');
-  card.style.transform=`translate(-50%,-50%) translateX(${p.x}px) translateZ(${p.z}px) rotateY(${p.rot}deg) scale(${p.scale})`;
-  card.style.opacity=p.op; card.style.zIndex=100-Math.abs(offset);
-  const img=document.createElement('img'); img.src=`assets/clients/${name}.${ext}`; img.alt=name.replaceAll('-',' ');
-  img.onerror=()=>{card.remove()}; card.appendChild(img);
-  card.addEventListener('click',()=>{clientCenter=i;renderCarousel();restartClientTimer()});
-  carouselEl.appendChild(card);
+  card.addEventListener('click',e=>{ if(clientDragged){e.preventDefault();e.stopPropagation();return;} clientCenter=i; renderCarousel(); restartClientTimer(); });
+  card.style.transform=`translate(-50%,-50%) translateX(${p.x}px) translateZ(${p.z}px) rotateY(${p.rot}deg) scale(${p.scale})`; card.style.opacity=p.op; card.style.zIndex=100-Math.abs(offset);
+  const img=document.createElement('img'); img.src=`assets/clients/${name}.${ext}`; img.alt=name.replaceAll('-',' '); card.appendChild(img); carouselEl.appendChild(card);
  });
- if(clientDotsEl){
-  clientDotsEl.innerHTML='';
-  const dotCount=Math.min(6,len);
-  for(let d=0;d<dotCount;d++){const dot=document.createElement('button');dot.type='button';dot.className='dot'+(d===Math.floor(clientCenter/len*dotCount)?' active':'');dot.setAttribute('aria-label',`Client group ${d+1}`);dot.addEventListener('click',()=>{clientCenter=Math.round(d*len/dotCount)%len;renderCarousel();restartClientTimer()});clientDotsEl.appendChild(dot);}
- }
 }
 function stepClient(dir){clientCenter=(clientCenter+dir+clientLogos.length)%clientLogos.length;renderCarousel();}
-function restartClientTimer(){clearInterval(clientTimer);clientTimer=setInterval(()=>stepClient(1),1000);}
-$('#clientPrev')?.addEventListener('click',()=>{stepClient(-1);restartClientTimer()});
-$('#clientNext')?.addEventListener('click',()=>{stepClient(1);restartClientTimer()});
+function restartClientTimer(){clearInterval(clientTimer);clientTimer=setInterval(()=>stepClient(1),2200);}
 renderCarousel(); restartClientTimer();
+
+// Client carousel: click a logo to bring it to the front; drag/swipe to rotate.
 const clientStageEl=document.querySelector('.client-stage');
-clientStageEl?.addEventListener('mouseenter',()=>clearInterval(clientTimer));
-clientStageEl?.addEventListener('mouseleave',restartClientTimer);
+if(clientStageEl){
+  let down=false,startX=0,lastX=0,dragMoved=false,suppressClick=false;
+  const threshold=38;
+  const begin=e=>{
+    if(e.pointerType==='mouse' && e.button!==0) return;
+    down=true; dragMoved=false; startX=lastX=e.clientX;
+    clearInterval(clientTimer);
+    clientStageEl.classList.add('is-dragging');
+    if(e.pointerId!=null) clientStageEl.setPointerCapture?.(e.pointerId);
+  };
+  const move=e=>{
+    if(!down) return;
+    const dx=e.clientX-startX;
+    lastX=e.clientX;
+    if(Math.abs(dx)>8) dragMoved=true;
+    // Lock the carousel to horizontal interaction so touch swipe is reliable.
+    if(dragMoved) e.preventDefault();
+  };
+  const end=e=>{
+    if(!down) return;
+    const dx=lastX-startX;
+    down=false;
+    clientStageEl.classList.remove('is-dragging');
+    if(Math.abs(dx)>=threshold){
+      suppressClick=true;
+      stepClient(dx<0?1:-1);
+      window.setTimeout(()=>{suppressClick=false;},140);
+    }
+    restartClientTimer();
+    if(e?.pointerId!=null){ try{clientStageEl.releasePointerCapture?.(e.pointerId);}catch(_){} }
+  };
+  clientStageEl.addEventListener('pointerdown',begin);
+  clientStageEl.addEventListener('pointermove',move,{passive:false});
+  clientStageEl.addEventListener('pointerup',end);
+  clientStageEl.addEventListener('pointercancel',end);
+  clientStageEl.addEventListener('dragstart',e=>e.preventDefault());
+  clientStageEl.addEventListener('click',e=>{
+    if(suppressClick || dragMoved){
+      e.preventDefault(); e.stopPropagation();
+      dragMoved=false;
+    }
+  }, true);
+}
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
@@ -186,3 +219,4 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()
 // Cursor
 const cursor=$('#cursor'), ring=$('#cursorRing');
 if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemove',e=>{cursor.style.opacity=1;ring.style.opacity=.65;cursor.style.left=`${e.clientX}px`;cursor.style.top=`${e.clientY}px`;ring.style.left=`${e.clientX}px`;ring.style.top=`${e.clientY}px`});$$('a,button').forEach(el=>el.addEventListener('mouseenter',()=>ring.style.transform='translate(-50%,-50%) scale(1.6)'));$$('a,button').forEach(el=>el.addEventListener('mouseleave',()=>ring.style.transform='translate(-50%,-50%) scale(1)'))}
+

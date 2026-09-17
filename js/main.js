@@ -25,9 +25,9 @@ sections.forEach(s=>activeIo.observe(s));
 
 // Story modal
 const storyModal=$('#storyModal'), storyVideo=$('#storyModal video');
-$('#storyOpen').addEventListener('click',()=>{storyModal.classList.add('open');storyModal.setAttribute('aria-hidden','false')});
-$('#storyClose').addEventListener('click',()=>{storyModal.classList.remove('open');storyModal.setAttribute('aria-hidden','true');storyVideo.pause()});
-storyModal.addEventListener('click',e=>{if(e.target===storyModal){storyModal.classList.remove('open');storyVideo.pause()}});
+$('#storyOpen')?.addEventListener('click',()=>{storyModal?.classList.add('open');storyModal?.setAttribute('aria-hidden','false')});
+$('#storyClose')?.addEventListener('click',()=>{storyModal?.classList.remove('open');storyModal?.setAttribute('aria-hidden','true');storyVideo?.pause()});
+storyModal?.addEventListener('click',e=>{if(e.target===storyModal){storyModal.classList.remove('open');storyVideo?.pause()}});
 
 // 360 orbit services
 const services=[
@@ -45,58 +45,72 @@ $$('.orbit-card').forEach((card,i)=>card.addEventListener('click',()=>setService
 $('#serviceNext').addEventListener('click',()=>setService(serviceIndex+1));
 setInterval(()=>setService(serviceIndex+1),5000);
 
-// Client 360 carousel (round cards, compact arc, continuously auto-rotating)
-const clientLogos=['vadilal','gshock','apple','mercedes','audi','hyundai','loreal','airtel'];
-const clientPositions=[
- {x:-320,z:-140,rot:38,scale:.62,op:.4},
- {x:-215,z:-75,rot:29,scale:.76,op:.62},
- {x:-110,z:-22,rot:16,scale:.9,op:.86},
- {x:0,z:45,rot:0,scale:1.15,op:1},
- {x:110,z:-22,rot:-16,scale:.9,op:.86},
- {x:215,z:-75,rot:-29,scale:.76,op:.62},
- {x:320,z:-140,rot:-38,scale:.62,op:.4}
+// Client 360 carousel — robust, all supplied logos, 1-second rotation
+const clientLogos=[
+ ['airtel','png'],['apple','png'],['audi','png'],['giva','png'],['gshock','png'],['gulab-oil','png'],['havells','png'],['hyundai','png'],['jio-hotstar','jpg'],['kitkat','png'],['loreal','png'],['mercedes','png'],['porsche','png'],['prime','png'],['spotify','webp'],['times-fashion-week','png'],['tresemme','png'],['vadilal','png'],['zoho','png']
 ];
 const carouselEl=$('#clientCarousel'), clientDotsEl=$('#clientDots');
-let clientCenter=3;
+let clientCenter=0, clientTimer;
+const clientPositions=[
+ {x:-390,z:-180,rot:42,scale:.54,op:.38},
+ {x:-275,z:-105,rot:30,scale:.68,op:.55},
+ {x:-145,z:-38,rot:16,scale:.84,op:.78},
+ {x:0,z:55,rot:0,scale:1.08,op:1},
+ {x:145,z:-38,rot:-16,scale:.84,op:.78},
+ {x:275,z:-105,rot:-30,scale:.68,op:.55},
+ {x:390,z:-180,rot:-42,scale:.54,op:.38}
+];
 function renderCarousel(){
  if(!carouselEl) return;
  carouselEl.innerHTML='';
  const len=clientLogos.length;
- clientLogos.forEach((name,i)=>{
+ clientLogos.forEach(([name,ext],i)=>{
   let offset=i-clientCenter;
   if(offset>len/2) offset-=len;
   if(offset<-len/2) offset+=len;
   if(Math.abs(offset)>3) return;
   const p=clientPositions[offset+3];
-  const card=document.createElement('div');
-  card.className='client-card3d'+(offset===0?' center':'');
+  const card=document.createElement('button');
+  card.type='button'; card.className='client-card3d'+(offset===0?' center':'');
+  card.setAttribute('aria-label',name.replaceAll('-',' ')+' client');
   card.style.transform=`translate(-50%,-50%) translateX(${p.x}px) translateZ(${p.z}px) rotateY(${p.rot}deg) scale(${p.scale})`;
-  card.style.opacity=p.op;
-  card.style.filter=`brightness(${1-Math.abs(offset)*0.06})`;
-  card.style.zIndex=100-Math.abs(offset);
-  const img=document.createElement('img'); img.src=`assets/clients/${name}.png`; img.alt=name;
-  card.appendChild(img); carouselEl.appendChild(card);
+  card.style.opacity=p.op; card.style.zIndex=100-Math.abs(offset);
+  const img=document.createElement('img'); img.src=`assets/clients/${name}.${ext}`; img.alt=name.replaceAll('-',' ');
+  img.onerror=()=>{card.remove()}; card.appendChild(img);
+  card.addEventListener('click',()=>{clientCenter=i;renderCarousel();restartClientTimer()});
+  carouselEl.appendChild(card);
  });
  if(clientDotsEl){
   clientDotsEl.innerHTML='';
-  clientLogos.forEach((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===clientCenter?' active':'');clientDotsEl.appendChild(d);});
+  const dotCount=Math.min(6,len);
+  for(let d=0;d<dotCount;d++){const dot=document.createElement('button');dot.type='button';dot.className='dot'+(d===Math.floor(clientCenter/len*dotCount)?' active':'');dot.setAttribute('aria-label',`Client group ${d+1}`);dot.addEventListener('click',()=>{clientCenter=Math.round(d*len/dotCount)%len;renderCarousel();restartClientTimer()});clientDotsEl.appendChild(dot);}
  }
 }
-function stepClient(dir){clientCenter=(clientCenter+dir+clientLogos.length)%clientLogos.length; renderCarousel();}
-$('#clientPrev')?.addEventListener('click',()=>stepClient(-1));
-$('#clientNext')?.addEventListener('click',()=>stepClient(1));
-renderCarousel();
-let clientAutoTimer=setInterval(()=>stepClient(1),2200);
+function stepClient(dir){clientCenter=(clientCenter+dir+clientLogos.length)%clientLogos.length;renderCarousel();}
+function restartClientTimer(){clearInterval(clientTimer);clientTimer=setInterval(()=>stepClient(1),1000);}
+$('#clientPrev')?.addEventListener('click',()=>{stepClient(-1);restartClientTimer()});
+$('#clientNext')?.addEventListener('click',()=>{stepClient(1);restartClientTimer()});
+renderCarousel(); restartClientTimer();
 const clientStageEl=document.querySelector('.client-stage');
-clientStageEl?.addEventListener('mouseenter',()=>clearInterval(clientAutoTimer));
-clientStageEl?.addEventListener('mouseleave',()=>{clientAutoTimer=setInterval(()=>stepClient(1),2200);});
+clientStageEl?.addEventListener('mouseenter',()=>clearInterval(clientTimer));
+clientStageEl?.addEventListener('mouseleave',restartClientTimer);
 
-// Outdoor solutions showcase
+// Outdoor solutions showcase — image-backed and fully interactive
 const panels={digital:{title:'Digital Billboards'},static:{title:'Static Billboards'},transit:{title:'Transit Media'}};
-const showSection=$('.solution-showcase'), showBg=$('#showcaseBg'), showTitle=$('#showcaseTitle');
-function setPanel(name){showSection.classList.remove('theme-digital','theme-static','theme-transit');showSection.classList.add('theme-'+name);showTitle.textContent=panels[name].title;$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===name));$$('.big-word').forEach(w=>w.classList.toggle('active',w.dataset.panelWord===name));}
-$$('.tab').forEach(t=>t.addEventListener('click',()=>setPanel(t.dataset.panel)));
-let panelIndex=0;const panelNames=['digital','static','transit'];setPanel('digital');setInterval(()=>{panelIndex=(panelIndex+1)%3;setPanel(panelNames[panelIndex])},5200);
+const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex');
+function setPanel(name){
+ if(!showSection) return;
+ showSection.classList.remove('theme-digital','theme-static','theme-transit'); showSection.classList.add('theme-'+name);
+ if(showTitle) showTitle.textContent=panels[name].title;
+ const names=Object.keys(panels), n=names.indexOf(name)+1;
+ if(showIndex) showIndex.textContent=`0${n} — 03`;
+ $$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===name));
+ $$('.showcase-media').forEach(w=>w.classList.toggle('active',w.dataset.panelMedia===name));
+}
+$$('.tab').forEach(t=>t.addEventListener('click',()=>{setPanel(t.dataset.panel);panelIndex=panelNames.indexOf(t.dataset.panel);restartPanelTimer()}));
+let panelIndex=0; const panelNames=['digital','static','transit']; let panelTimer;
+function restartPanelTimer(){clearInterval(panelTimer);panelTimer=setInterval(()=>{panelIndex=(panelIndex+1)%panelNames.length;setPanel(panelNames[panelIndex])},3500)}
+setPanel('digital'); restartPanelTimer();
 
 // Chatbot
 const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatReply=$('#chatReply');

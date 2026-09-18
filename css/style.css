@@ -1354,3 +1354,30 @@ h1,h2,h3,h4,h5,h6,
   .footer-top > nav{gap:6px 11px!important;}
   .footer-top > nav a{font-size:9px!important;}
 }
+
+/* ===== 360 ORBIT: KEEP NUMBER VISIBLE ON HOVER/ACTIVE ===== */
+.solutions-360 .orbit-card b{
+  position:relative!important;
+  z-index:60!important;
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  color:var(--red)!important;
+  transform:none!important;
+  mix-blend-mode:normal!important;
+  text-shadow:none!important;
+}
+.solutions-360 .orbit-card:hover b,
+.solutions-360 .orbit-card:focus b,
+.solutions-360 .orbit-card.active b{
+  visibility:visible!important;
+  opacity:1!important;
+  color:#fff!important;
+  z-index:61!important;
+}
+.solutions-360 .orbit-card span{
+  position:relative!important;
+  z-index:60!important;
+  visibility:visible!important;
+  opacity:1!important;
+}

@@ -1381,3 +1381,184 @@ h1,h2,h3,h4,h5,h6,
   visibility:visible!important;
   opacity:1!important;
 }
+
+
+/* ===== FINAL USER POLISH ===== */
+@media(max-width:760px){
+  /* Mobile menu is solid and readable, never transparent. */
+  .nav{
+    z-index:1005!important;
+    display:none;
+    background:#fff!important;
+    opacity:1!important;
+    visibility:visible!important;
+    border:1px solid rgba(17,19,24,.12)!important;
+    box-shadow:0 20px 45px rgba(0,0,0,.16)!important;
+  }
+  .nav.open{display:flex!important;opacity:1!important;visibility:visible!important;}
+  .nav>a,.nav>a:not(.nav-cta){
+    color:#111318!important;
+    opacity:1!important;
+    background:#fff!important;
+  }
+  .nav>a:hover,.nav>a:focus,.nav>a.active{color:var(--red)!important;opacity:1!important;}
+}
+
+/* Make existing button hover/shine effects a little slower and smoother. */
+.btn,.small-btn,.outline-btn,.footer-campaign,.service-next,.work-scroll-arrow,.client-arrow,.tab,.story-button,.nav-cta{
+  transition:transform .45s cubic-bezier(.2,.75,.2,1),box-shadow .45s ease,
+             border-color .45s ease,background-color .45s ease,color .45s ease!important;
+}
+.btn::before,.small-btn::before,.outline-btn::before,.story-button::after,
+.service-next::before,.work-scroll-arrow::before,.client-arrow::before,.nav-cta::before{
+  transition:left 1s cubic-bezier(.2,.7,0,1)!important;
+}
+.btn::after,.small-btn::after,.outline-btn::after,.footer-campaign::after,
+.service-next::after,.work-scroll-arrow::after,.client-arrow::after{
+  transition:left .95s cubic-bezier(.2,.75,0,1),opacity .3s ease!important;
+}
+
+/* White buttons get the same moving shine, using red instead of white. */
+.btn.white::before,.outline-btn::before{
+  background:linear-gradient(105deg,transparent 10%,rgba(229,27,35,.06) 36%,
+             rgba(229,27,35,.58) 50%,rgba(229,27,35,.06) 64%,transparent 90%)!important;
+}
+.btn.white::after,.outline-btn::after{
+  background:linear-gradient(90deg,transparent,rgba(229,27,35,.32),transparent)!important;
+}
+
+/* Three solution cards: red / blue / purple. */
+.solution-showcase.theme-ooh .showcase-tabs .tab.active{
+  background:linear-gradient(135deg,#ff2832,#b80f16)!important;
+  color:#fff!important;border-color:#ff2832!important;
+}
+.solution-showcase.theme-transit .showcase-tabs .tab.active{
+  background:linear-gradient(135deg,#55c7ff,#176f9c)!important;
+  color:#fff!important;border-color:#55c7ff!important;
+}
+.solution-showcase.theme-print .showcase-tabs .tab.active{
+  background:linear-gradient(135deg,#a78bfa,#6d4bc2)!important;
+  color:#fff!important;border-color:#a78bfa!important;
+}
+.solution-showcase.theme-print .showcase-tabs .tab.active span{color:#fff!important;}
+
+
+/* ===== MOBILE MENU FINAL — screenshot-matched size ===== */
+@media(max-width:760px){
+  .header{
+    z-index:1200!important;
+    overflow:visible!important;
+  }
+  .header .nav-wrap{
+    position:relative!important;
+    z-index:1201!important;
+  }
+
+  .nav-toggle{
+    position:relative!important;
+    z-index:1205!important;
+  }
+
+  /* Large, comfortable menu like the supplied mobile screenshot. */
+  .header .nav{
+    position:absolute!important;
+    top:62px!important;
+    left:8px!important;
+    right:8px!important;
+    width:auto!important;
+    max-height:calc(100vh - 76px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    display:none!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:0!important;
+    padding:8px 8px 10px!important;
+    border:1px solid #e7e7e7!important;
+    border-radius:12px!important;
+    background:#fff!important;
+    opacity:1!important;
+    visibility:visible!important;
+    z-index:1203!important;
+    box-shadow:0 20px 42px rgba(0,0,0,.17)!important;
+    transform:none!important;
+  }
+  .header .nav.open{
+    display:flex!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+  }
+
+  .header .nav>a,
+  .header .nav>a:not(.nav-cta){
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:52px!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:14px 12px!important;
+    border-bottom:1px solid #f0f0f0!important;
+    border-radius:0!important;
+    color:#444!important;
+    background:#fff!important;
+    font-size:12px!important;
+    font-weight:600!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .header .nav>a:hover,
+  .header .nav>a:focus-visible{
+    color:var(--red)!important;
+    background:#fafafa!important;
+    transform:none!important;
+  }
+  .header .nav>a.active:not(.nav-cta){
+    color:#444!important;
+    background:#fff!important;
+  }
+  .header .nav .nav-cta{
+    justify-content:center!important;
+    margin:10px auto 4px!important;
+    width:106px!important;
+    min-height:42px!important;
+    padding:11px 8px!important;
+    border-radius:7px!important;
+    background:var(--red)!important;
+    color:#fff!important;
+    box-shadow:0 8px 18px rgba(229,27,35,.20)!important;
+  }
+}
+
+@media(max-width:420px){
+  .header .nav{
+    left:8px!important;
+    right:8px!important;
+    width:auto!important;
+    padding:8px 8px 10px!important;
+  }
+  .header .nav>a,
+  .header .nav>a:not(.nav-cta){
+    min-height:50px!important;
+  }
+}
+
+/* ===== MOBILE MENU PROPER ALIGNMENT ===== */
+@media(max-width:760px){
+  .header .nav{
+    left:8px!important;
+    right:8px!important;
+    width:auto!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+  }
+}
+@media(max-width:420px){
+  .header .nav{
+    left:8px!important;
+    right:8px!important;
+    width:auto!important;
+    max-width:none!important;
+  }
+}

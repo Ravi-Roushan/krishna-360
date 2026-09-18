@@ -11,8 +11,16 @@ window.addEventListener('scroll',()=>{
 
 // Mobile navigation
 const nav=$('#nav'), navToggle=$('#navToggle');
-navToggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');navToggle.setAttribute('aria-expanded',open)});
-$$('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+navToggle.addEventListener('click',()=>{
+ const open=nav.classList.toggle('open');
+ navToggle.setAttribute('aria-expanded',open);
+ navToggle.classList.toggle('menu-open',open);
+});
+$$('.nav a').forEach(a=>a.addEventListener('click',()=>{
+ nav.classList.remove('open');
+ navToggle.classList.remove('menu-open');
+ navToggle.setAttribute('aria-expanded','false');
+}));
 
 // Scroll reveal
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -157,7 +165,7 @@ if(clientStageEl){
 const panels={
  ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
  transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'},
- print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#ffffff'}
+ print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
@@ -173,9 +181,9 @@ function setPanel(name){
  $$('.showcase-media').forEach(w=>w.classList.toggle('active',w.dataset.panelMedia===name));
 }
 $$('.tab').forEach(t=>t.addEventListener('click',()=>{setPanel(t.dataset.panel);panelIndex=panelNames.indexOf(t.dataset.panel);restartPanelTimer()}));
-let panelIndex=0; const panelNames=['digital','static','transit']; let panelTimer;
+let panelIndex=0; const panelNames=['ooh','transit','print']; let panelTimer;
 function restartPanelTimer(){clearInterval(panelTimer);panelTimer=setInterval(()=>{panelIndex=(panelIndex+1)%panelNames.length;setPanel(panelNames[panelIndex])},3500)}
-setPanel('digital'); restartPanelTimer();
+setPanel('ooh'); restartPanelTimer();
 
 // Our Work: top-row video + bottom-row auto-scrolling image rail
 const workViewport=$('#workViewport'), workTrack=$('#workTrack'), workPrev=$('#workPrev'), workNext=$('#workNext');

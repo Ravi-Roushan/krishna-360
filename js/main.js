@@ -163,9 +163,9 @@ if(clientStageEl){
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
- ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
- transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'},
- print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
+ ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/digital-billboard-advertising-campaign.webp', color:'#ff2832'},
+ transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertising-campaign.webp', color:'#53bffb'},
+ print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/porsche-outdoor-billboard-campaign.webp', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){

@@ -18,10 +18,7 @@ $$('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('ope
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 $$('.reveal').forEach(el=>io.observe(el));
 
-// Active nav by section
-const sections=['home','about','solutions','network','work','contact'].map(id=>document.getElementById(id)).filter(Boolean);
-const activeIo=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){$$('.nav>a').forEach(a=>a.classList.remove('active'));const a=$(`.nav>a[href="#${e.target.id}"]`);a?.classList.add('active')}}),{rootMargin:'-35% 0px -55% 0px',threshold:0});
-sections.forEach(s=>activeIo.observe(s));
+// Active nav is set per page via the .active class already present on the matching link.
 
 // Story modal
 const storyModal=$('#storyModal'), storyVideo=$('#storyModal video');
@@ -31,19 +28,19 @@ storyModal?.addEventListener('click',e=>{if(e.target===storyModal){storyModal.cl
 
 // 360 orbit services
 const services=[
- ['Outdoor Advertising','Hoardings, unipoles, gantries and premium locations engineered for high-impact visibility.'],
- ['Transit Advertising','Buses, shelters, trains and transit networks that take brands where people move.'],
- ['Print Advertising','Newspaper and print campaigns built for reach, clarity and recall.'],
- ['Electronic Media','Radio, television and OTT opportunities for broad, memorable storytelling.'],
- ['Digital & Social','Online campaigns, social media and digital marketing for connected audiences.'],
- ['Branding Solutions','Brand communication, campaign creation and place-based experiences.']
+ ['Outdoor Advertising That Puts You Everywhere','From hoardings to backlit boards, our outdoor advertising in Ahmedabad and across India puts your brand in front of the right audience, at the right place, every single day.'],
+ ['Transit Media Advertising','Reach commuters where they spend their time. With exclusive rights on bus branding, bus shelters, and Western Railway Train , our transit media network keeps your brand moving with your customers — across Ahmedabad, Mumbai, and beyond.'],
+ ['Print & Electronic Media','One agency, every channel. We plan and place print and electronic media advertising alongside your outdoor campaign, so your brand story stays consistent across every touchpoint.'],
+ ['Print & Electronic Media','One agency, every channel. We plan and place print and electronic media advertising alongside your outdoor campaign, so your brand story stays consistent across every touchpoint.'],
+ ['Digital Marketing','Complete the 360° loop. We extend your outdoor presence online with digital and social media marketing that drives measurable engagement and leads.'],
+ ['Branding & Creative Production','From concept to installation — our in-house creative and production team designs branding solutions that are built to perform on billboards, buses, and everywhere in between.']
 ];
 let serviceIndex=0;
 const serviceTitle=$('#serviceTitle'),serviceText=$('#serviceText'),serviceCount=$('#serviceCount'),serviceMeter=$('#serviceMeter'),orbitServiceNo=$('#orbitServiceNo');
-function setService(i){serviceIndex=(i+services.length)%services.length;const [title,text]=services[serviceIndex];serviceTitle.textContent=title;serviceText.textContent=text;serviceCount.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;serviceMeter.style.width=`${(serviceIndex+1)/6*100}%`;if(orbitServiceNo) orbitServiceNo.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;$$('.orbit-card').forEach((c,n)=>c.classList.toggle('active',n===serviceIndex))}
+function setService(i){if(!serviceTitle) return;serviceIndex=(i+services.length)%services.length;const [title,text]=services[serviceIndex];serviceTitle.textContent=title;serviceText.innerHTML=text;serviceCount.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;serviceMeter.style.width=`${(serviceIndex+1)/6*100}%`;if(orbitServiceNo) orbitServiceNo.textContent=`${String(serviceIndex+1).padStart(2,'0')} / 06`;$$('.orbit-card').forEach((c,n)=>c.classList.toggle('active',n===serviceIndex))}
 $$('.orbit-card').forEach((card,i)=>card.addEventListener('click',()=>setService(i)));
-$('#serviceNext').addEventListener('click',()=>setService(serviceIndex+1));
-setInterval(()=>setService(serviceIndex+1),5000);
+$('#serviceNext')?.addEventListener('click',()=>setService(serviceIndex+1));
+if(serviceTitle){ setInterval(()=>setService(serviceIndex+1),5000); }
 
 
 // Continuous planet-style orbit for the 360° Advertising Solutions cards.
@@ -158,14 +155,14 @@ if(clientStageEl){
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
- digital:{title:'Digital Billboards', kicker:'DIGITAL', image:'assets/images/work/work-03.png', color:'#ff2832'},
- static:{title:'Static Billboards', kicker:'STATIC', image:'assets/images/work/work-04.png', color:'#ffffff'},
- transit:{title:'Transit Media', kicker:'TRANSIT', image:'assets/images/work/work-06.jpg', color:'#53bffb'}
+ digital:{title:'Digital Marketing', kicker:'DIGITAL MARKETING', image:'assets/images/work/work-03.png', color:'#ff2832'},
+ print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#ffffff'},
+ transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
  if(!showSection) return;
- showSection.classList.remove('theme-digital','theme-static','theme-transit'); showSection.classList.add('theme-'+name);
+ showSection.classList.remove('theme-digital','theme-print','theme-transit'); showSection.classList.add('theme-'+name);
  if(showTitle) showTitle.textContent=panels[name].title;
  if(showImage){showImage.classList.remove('is-changing'); requestAnimationFrame(()=>{showImage.src=panels[name].image; showImage.classList.add('is-changing');});}
  if(showVisualKicker) showVisualKicker.textContent=panels[name].kicker;

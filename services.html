@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home-style-sync.css">
 </head>
 <body>
 <div class="page-progress" id="pageProgress"></div>
@@ -16,71 +17,93 @@
     <a class="site-logo" href="index.html"><img src="assets/images/logo-header.png" alt="Krishna Outdoor"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
-      <a href="index.html">Home</a><a href="about.html">About Us</a><a class="active" href="services.html">Media</a><a href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a>
+      <a href="index.html">Home</a><a href="about.html">About Us</a>
+      <div class="nav-dropdown"><a href="services.html">Media Solutions</a><button class="nav-arrow" type="button" aria-label="Open Media Solutions menu" aria-expanded="false">▼</button><div class="nav-menu"><a href="ooh-media.html">OOH Media</a><a href="transit-media.html">Transit Media</a><a href="digital-media.html">Digital Media</a></div></div>
+      <a href="network.html">Our Network</a><a href="projects.html">Our Work</a><a href="careers.html">Careers</a>
       <a class="nav-cta" href="contact.html">Enquire Now <span>→</span></a>
     </nav>
   </div>
 </header>
 
-<main>
-<section class="hero" id="home">
-  <video class="hero-media" autoplay muted loop playsinline preload="auto"><source src="assets/videos/ad-intro.mp4" type="video/mp4"></video>
-  <div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-noise"></div>
-  <div class="container hero-inner reveal">
-    <h1>OUR MEDIA<br><em>SOLUTIONS.</em></h1>
+<main class="media-page">
+<section class="media-hero" id="home">
+  <div class="media-hero-bg"><img src="assets/images/work/work-04.png" alt="Outdoor advertising billboard campaign"></div>
+  <div class="media-hero-overlay"></div>
+  <div class="media-hero-grid"></div>
+  <div class="container media-hero-inner reveal">
+    <div class="media-hero-copy">
+      <div class="tag light">360° ADVERTISING &amp; MEDIA SOLUTIONS</div>
+      <h1>ONE PARTNER.<br>MULTIPLE MEDIA.<br><em>ONE CLEAR OBJECTIVE.</em></h1>
+      <p>Your audience is everywhere — on the road, in transit, in print, on screens and across digital platforms.</p>
+      <p>Krishna Outdoor brings together a complete range of advertising and media solutions to help brands build visibility across the touchpoints that matter.</p>
+      <p>From high-impact outdoor and transit media to print, electronic, digital, social and branding solutions, we help brands explore the right mix of media for the right objective.</p>
+      <div class="media-quote">“ WHEREVER YOUR AUDIENCE IS,<br><span>YOUR BRAND SHOULD HAVE A PRESENCE.</span> ”</div>
+    </div>
+    <div class="media-hero-markers" aria-hidden="true"><span>01</span><span>MEDIA</span><span>360°</span></div>
   </div>
 </section>
 
-<section class="solutions-360 section" id="solutions"><div class="container">
-  <div class="section-head reveal"><div class="tag">OUR MEDIA SOLUTIONS</div><h2><em>360°</em> ADVERTISING SOLUTIONS</h2><p>One partner. Multiple media. One clear objective.</p></div>
-  <div class="orbit-layout">
-    <div class="orbit-ring"><div class="orbit-glow"></div><div class="orbit-center"><span>360°</span><small>MEDIA</small><b id="orbitServiceNo">01 / 06</b></div>
-      <button class="orbit-card oc1 active" data-service="Outdoor Advertising"><b>01</b><span>Outdoor</span></button>
-      <button class="orbit-card oc2" data-service="Transit Advertising"><b>02</b><span>Transit</span></button>
-      <button class="orbit-card oc3" data-service="Print Advertising"><b>03</b><span>Print</span></button>
-      <button class="orbit-card oc4" data-service="Electronic Media"><b>04</b><span>Electronic</span></button>
-      <button class="orbit-card oc5" data-service="Digital Marketing"><b>05</b><span>Digital</span></button>
-      <button class="orbit-card oc6" data-service="Branding Solutions"><b>06</b><span>Branding</span></button>
-    </div>
-    <div class="service-panel reveal"><div class="service-count" id="serviceCount">01 / 06</div><div class="tag">SELECTED FORMAT</div><h3 id="serviceTitle">Outdoor Advertising</h3><p id="serviceText">Hoardings, unipoles, gantries and premium locations engineered for high-impact visibility.</p><div class="service-meter"><span id="serviceMeter"></span></div><button class="service-next" id="serviceNext">NEXT FORMAT <span>→</span></button></div>
-  </div>
-  <div class="slide-type" aria-hidden="true"><div class="slide-type-track"><span>OUTDOOR</span><span>TRANSIT</span><span>PRINT</span><span>ELECTRONIC</span><span>DIGITAL</span><span>BRANDING</span><span>OUTDOOR</span><span>TRANSIT</span><span>PRINT</span><span>ELECTRONIC</span><span>DIGITAL</span><span>BRANDING</span></div></div>
-</div></section>
-
-<section class="solution-showcase section" id="showcase">
-  <div class="showcase-orbit-bg" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="container showcase-grid showcase-v2">
-    <div class="showcase-copy reveal">
-      <div class="tag light">OUR SOLUTIONS</div>
-      <div class="showcase-kicker">KRISHNA OUTDOOR</div>
-      <h2>Our Outdoor<br><em id="showcaseTitle">Digital Billboards</em></h2>
-      <p>Explore the formats that turn public spaces into powerful brand moments.</p>
-      <div class="showcase-tabs" role="tablist" aria-label="Media solutions">
-        <button class="tab active" data-panel="ooh" role="tab"><span>01</span><b>OOH Media</b><i>→</i></button>
-        <button class="tab" data-panel="transit" role="tab"><span>02</span><b>Transit Media</b><i>→</i></button>
-        <button class="tab" data-panel="print" role="tab"><span>03</span><b>Print &amp; Electronic Media</b><i>→</i></button>
-      </div>
-      <div class="showcase-meta"><span>SELECTED FORMAT</span><strong id="showcaseIndex">01 — 03</div>
-    </div>
-    <div class="showcase-visual-wrap reveal">
-      <div class="showcase-visual-v2" id="showcaseVisual">
-        <div class="visual-topline"><span>360° MEDIA</span><span class="visual-live"><i></i> LIVE FORMAT</span></div>
-        <img id="showcaseImage" src="assets/images/work/work-03.png" alt="Digital billboard campaign">
-        <div class="showcase-visual-shade"></div>
-        <div class="visual-caption"><small id="showcaseVisualKicker">DIGITAL</small><strong id="showcaseVisualTitle">DIGITAL BILLBOARDS</div>
-        <div class="visual-corner">KRISHNA<br>OUTDOOR</div>
-      </div>
-      <div class="showcase-orbit-line"></div>
-      <div class="showcase-next-card"><span>NEXT</span><b>FORMAT</b><i>↗</i></div>
-    </div>
-  </div>
+<section class="media-format-rail">
+ <div class="container"><div class="media-format-track">
+  <a href="#ooh"><span>▣</span><b>Outdoor Media</b></a><a href="#transit"><span>▤</span><b>Transit Media</b></a><a href="#print"><span>▧</span><b>Print Media</b></a><a href="#electronic"><span>▥</span><b>Electronic Media</b></a><a href="#digital"><span>◉</span><b>Digital &amp; Social Media</b></a><a href="#branding"><span>◇</span><b>Branding Solutions</b></a><div class="media-360-badge"><strong>360°</strong><small>MEDIA SOLUTIONS</small></div>
+ </div></div>
 </section>
 
-<section class="cta" id="contact"><div class="container cta-inner reveal"><div><div class="tag light">LET’S CREATE</div><h2>NOT SURE WHICH<br><em>FORMAT FITS?</em></h2><p>Tell us your brand, city and audience — we’ll recommend the right mix of media for you.</p></div><a class="btn white" href="contact.html">Get A Recommendation <b>→</b></a></div></section>
+<section class="media-section media-ooh" id="ooh">
+ <div class="container media-two-col">
+  <div class="media-copy reveal"><div class="media-number">01 <i></i></div><div class="tag">OUTDOOR MEDIA</div><h2>Make a Strong<br>Impression in the<br><em>Real World.</em></h2><p>Outdoor advertising gives brands a physical presence in the places people see every day.</p><p>Through our network of hoardings, unipoles and gantries, Krishna Outdoor helps brands create high-impact visibility across Ahmedabad, Gujarat and other key markets.</p><a class="btn red media-btn" href="ooh-media.html">Enquire About Outdoor Media <b>→</b></a></div>
+  <div class="media-ooh-grid reveal">
+   <article class="media-card"><img src="assets/images/work/work-04.png" alt="Outdoor hoarding advertising"><b>Hoardings</b><small>Across Gujarat</small></article>
+   <article class="media-card"><img src="assets/images/work/work-02.png" alt="Outdoor billboard advertising"><b>Own Hoardings</b><small>In Ahmedabad</small></article>
+   <article class="media-card"><img src="assets/images/work/work-01.png" alt="City outdoor advertising"><b>Ahmedabad</b><small>Bus Shelters</small></article>
+   <article class="media-card"><img src="assets/images/work/work-03.png" alt="Unipole outdoor advertising"><b>Unipoles &amp; Gantries</b><small>Long-term structures</small></article>
+  </div>
+ </div>
+</section>
 
+<section class="media-section media-transit" id="transit">
+ <div class="container transit-layout">
+  <div class="transit-image reveal"><img src="assets/images/bus.webp" alt="Transit bus advertising"><span>BRANDS<br><em>MOVE WITH<br>PEOPLE</em></span></div>
+  <div class="media-copy reveal"><div class="media-number">02 <i></i></div><div class="tag">TRANSIT MEDIA</div><h2>Visibility That Moves<br>with Your Audience.</h2><p>Transit advertising takes a brand into every movement environment. From Ahmedabad city buses and bus shelters to Surat EV buses, Mumbai local trains, BEST buses and TMT buses, we help brands create repeated visibility across urban routes and commuter environments.</p><a class="btn red media-btn" href="transit-media.html">Enquire About Transit Media <b>→</b></a>
+   <div class="transit-strip"><article><img src="assets/images/bus.webp"><b>Ahmedabad<br>City Buses</b></article><article><img src="assets/images/home-img-1.jpeg"><b>Surat<br>EV Buses</b></article><article><img src="assets/images/train-advertisement.jpg"><b>Mumbai Local<br>Train Advertising</b></article><article><img src="assets/images/category-img.png"><b>BEST Buses</b></article><article><img src="assets/images/category-img-3.png"><b>TMT Buses</b></article></div>
+  </div>
+ </div>
+</section>
+
+<section class="media-section media-print" id="print">
+ <div class="container print-layout">
+  <div class="media-copy reveal"><div class="media-number">03 <i></i></div><div class="tag">PRINT MEDIA</div><h2>Put Your Message<br>in a <em>Medium People Trust.</em></h2><p>Newspaper advertising remains an important communication platform for brands looking for market reach, credibility and strong regional communication.</p><p>Our print capabilities are strengthened by the legacy and experience of Rakesh Advertising and its agency support, helping brands explore the right newspaper opportunities.</p><a class="btn red media-btn" href="contact.html">Plan Your Print Campaign <b>→</b></a></div>
+  <div class="print-visual reveal"><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising legacy"><div class="print-paper"><span>IDEAS</span><strong>REACH<br>FURTHER</strong><small>KRISHNA OUTDOOR</small></div></div>
+  <div class="media-side-list reveal"><b>Wide Reach</b><span>Across Key Markets</span><b>Credible Platform</b><span>Trusted Communication</span><b>Regional Expertise</b><span>Local Market Understanding</span><b>Strategic Media Planning</b><span>Right Message. Right Medium.</span></div>
+ </div>
+</section>
+
+<section class="media-section media-electronic" id="electronic">
+ <div class="container electronic-layout">
+  <div class="electronic-visual reveal"><img src="assets/images/work/work-06.jpg" alt="Electronic media advertising"></div>
+  <div class="media-copy reveal"><div class="media-number">04 <i></i></div><div class="tag">ELECTRONIC MEDIA</div><h2>Sound. Sight.<br><em>Storytelling.</em></h2><p>Electronic media gives brands the opportunity to communicate through powerful combinations of audio, visual storytelling and audience reach.</p><div class="electronic-cards"><article><span>◉</span><b>Radio Advertising</b><small>Connect through sound, frequency and local relevance.</small></article><article><span>▣</span><b>Television Advertising</b><small>Build awareness through sight, sound and storytelling.</small></article><article><span>◌</span><b>OTT Advertising</b><small>Reach audiences through digital entertainment environments.</small></article></div><a class="btn red media-btn" href="contact.html">Explore Electronic Media <b>→</b></a></div>
+ </div>
+</section>
+
+<section class="media-section media-digital" id="digital">
+ <div class="container digital-layout">
+  <div class="media-copy reveal"><div class="media-number">05 <i></i></div><div class="tag">DIGITAL &amp; SOCIAL MEDIA</div><h2>Keep the <em>Conversation</em> Going.</h2><p>Today's audience moves between the physical and digital worlds throughout the day.</p><p>Our digital and social media services help brands expand wider campaign objectives through relevant online communication, targeted promotion and audience engagement.</p><a class="btn red media-btn" href="contact.html">Build a Connected Campaign <b>→</b></a></div>
+  <div class="digital-visual reveal"><img src="assets/images/work/work-05.png" alt="Digital outdoor campaign"><div class="digital-floating"><span>Digital<br>Marketing</span><span>Social<br>Media</span><span>Outdoor +<br>Digital</span></div></div>
+ </div>
+</section>
+
+<section class="media-section media-branding" id="branding">
+ <div class="container branding-layout">
+  <div class="branding-visual reveal"><img src="assets/images/work/work-06.jpg" alt="Branding solutions campaign"><div class="branding-overlay"><strong>Krishna</strong><span>OUTDOOR</span></div></div>
+  <div class="media-copy reveal"><div class="media-number">06 <i></i></div><div class="tag">BRANDING SOLUTIONS</div><h2>Build a Brand<br><em>People Recognise.</em></h2><p>Advertising can create attention, but a clear and consistent brand identity helps turn attention into recognition.</p><p>Our branding solutions help businesses shape the way they communicate through their identity, campaign communication, creative direction and marketing support.</p><div class="branding-items"><span>Brand Communication</span><span>Campaign Creative</span><span>Marketing Support</span></div><a class="btn red media-btn" href="contact.html">Build a Stronger Brand <b>→</b></a></div>
+ </div>
+</section>
+
+<section class="media-final-cta"><div class="container media-final-inner reveal"><div><div class="tag light">ONE CAMPAIGN.</div><h2>MANY <em>POSSIBILITIES.</em></h2><p>Every campaign is different. The right solution may be one powerful media format or a combination of several. Our job is to help you understand the possibilities and build a media approach around your objective, audience and market.</p></div><a class="btn white media-btn" href="contact.html">Talk to Our Media Team <b>→</b></a></div></section>
 </main>
 
-<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media</a><a href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
+
+<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media Solutions</a><a href="network.html">Our Network</a><a href="projects.html">Our Work</a><a href="contact.html">Contact Us</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
 
 <button class="chatbot" id="chatbot" aria-label="Open Krishna Outdoor assistant">
   <span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span>

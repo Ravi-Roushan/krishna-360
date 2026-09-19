@@ -17,10 +17,22 @@ navToggle.addEventListener('click',()=>{
  navToggle.classList.toggle('menu-open',open);
 });
 $$('.nav a').forEach(a=>a.addEventListener('click',()=>{
+ if(a.closest('.nav-dropdown') && a.closest('.nav-dropdown').classList.contains('open') && a.parentElement?.classList.contains('nav-menu')){}
  nav.classList.remove('open');
  navToggle.classList.remove('menu-open');
  navToggle.setAttribute('aria-expanded','false');
 }));
+
+// Navbar dropdowns — text links navigate; only the arrow toggles the menu.
+$$('.nav-dropdown').forEach(drop=>{
+ const arrow=drop.querySelector('.nav-arrow');
+ arrow?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();
+   const open=drop.classList.toggle('open');
+   arrow.setAttribute('aria-expanded',open?'true':'false');
+   $$('.nav-dropdown').forEach(other=>{if(other!==drop){other.classList.remove('open');other.querySelector('.nav-arrow')?.setAttribute('aria-expanded','false')}});
+ });
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')) $$('.nav-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('.nav-arrow')?.setAttribute('aria-expanded','false')})});
 
 // Scroll reveal
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -226,5 +238,26 @@ const cursor=$('#cursor'), ring=$('#cursorRing');
 if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemove',e=>{cursor.style.opacity=1;ring.style.opacity=.65;cursor.style.left=`${e.clientX}px`;cursor.style.top=`${e.clientY}px`;ring.style.left=`${e.clientX}px`;ring.style.top=`${e.clientY}px`});$$('a,button').forEach(el=>el.addEventListener('mouseenter',()=>ring.style.transform='translate(-50%,-50%) scale(1.6)'));$$('a,button').forEach(el=>el.addEventListener('mouseleave',()=>ring.style.transform='translate(-50%,-50%) scale(1)'))}
 
 
-/* Small premium interactions — no changes to existing site logic */
-(()=>{const els=document.querySelectorAll('.ko-role,.ko-value,.ko-people-card,.ko-enquiry-card,.ko-location-panel');els.forEach(el=>{el.addEventListener('pointermove',e=>{if(matchMedia('(hover:hover)').matches){const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translateY(-7px) perspective(800px) rotateX(${-y*1.5}deg) rotateY(${x*1.5}deg)`}});el.addEventListener('pointerleave',()=>el.style.transform='')})})();
+// Media Solutions — subtle 3D pointer motion for premium cards.
+(()=>{
+ const els=[...document.querySelectorAll('.media-page .media-card,.media-page .electronic-cards article,.media-page .digital-floating span,.media-page .branding-items span')];
+ els.forEach(el=>{
+   el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(700px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-5px)`});
+   el.addEventListener('pointerleave',()=>{el.style.transform=''});
+ });
+ const hero=document.querySelector('.media-hero');
+ hero?.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;hero.style.setProperty('--mx',`${x*10}px`);hero.style.setProperty('--my',`${y*6}px`)});
+})();
+
+
+/* Careers + Enquiry page interactions */
+(function(){
+  const items=document.querySelectorAll('.kr-reveal');
+  if(items.length){
+    const io=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.12});
+    items.forEach(el=>io.observe(el));
+  }
+  ['careerPhone','enquiryPhone'].forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('input',()=>{el.value=el.value.replace(/\\D/g,'').slice(0,10)})}});
+  const forms=[['careerForm','careerStatus','Application ready — please send your resume/link to info.team@krishnaoutdoor.in.'],['enquiryForm','enquiryStatus','Thanks — your enquiry is ready. Our team will get back to you shortly.']];
+  forms.forEach(([fid,sid,msg])=>{const f=document.getElementById(fid),status=document.getElementById(sid);if(f){f.addEventListener('submit',e=>{e.preventDefault(); if(!f.checkValidity()){f.reportValidity();return;} status.textContent=msg;status.style.color='#ef2027'; f.reset();})}});
+})();

@@ -2,82 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0c0e11">
-<title>Our Outdoor Advertising Projects | Krishna Outdoor</title>
-<meta name="description" content="See our completed outdoor advertising projects: hoardings, video walls, bus shelters & train branding across Ahmedabad and Mumbai.">
+<meta name="theme-color" content="#0b0d10">
+<title>Our Work & Outdoor Advertising Campaigns | Krishna Outdoor</title>
+<meta name="description" content="Explore Krishna Outdoor campaigns across outdoor, transit, integrated and digital media in Ahmedabad, Mumbai and other markets.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* OUR WORK — reference-led page, built from original Krishna assets */
+.ow-page{background:#f6f7f8;color:#101216;overflow:hidden}
+.ow-hero{position:relative;min-height:520px;background:#0b0e12;color:#fff;display:grid;align-items:end;isolation:isolate}
+.ow-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:saturate(.9) contrast(1.06)}
+.ow-hero-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(6,9,12,.98) 0%,rgba(6,9,12,.9) 31%,rgba(6,9,12,.25) 62%,rgba(6,9,12,.18) 100%),linear-gradient(0deg,rgba(0,0,0,.58),transparent 48%)}
+.ow-hero-grid{position:absolute;inset:0;z-index:-1;opacity:.15;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(90deg,#000,transparent 78%)}
+.ow-hero-inner{width:min(1440px,92%);margin:0 auto;padding:92px 0 54px;display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:50px;align-items:end}
+.ow-kicker,.ow-tag{font:700 13px/1 Inter,sans-serif;letter-spacing:.12em;color:#ed2028;text-transform:uppercase;display:flex;align-items:center;gap:13px}.ow-kicker:after,.ow-tag:after{content:"";width:44px;height:2px;background:#ed2028;display:block}
+.ow-hero h1{font:700 clamp(56px,7.4vw,104px)/.92 Oswald,sans-serif;letter-spacing:-.035em;text-transform:uppercase;margin:15px 0 20px;max-width:780px}.ow-hero h1 em,.ow-title em{font-style:normal;color:#ed2028}.ow-hero-copy{max-width:560px;font-size:16px;line-height:1.62;color:rgba(255,255,255,.82);margin:0 0 26px}.ow-btn{display:inline-flex;align-items:center;gap:22px;border:1px solid #ed2028;background:#ed2028;color:#fff;padding:14px 19px;font:700 13px Inter,sans-serif;text-decoration:none;transition:.35s ease;box-shadow:0 12px 30px rgba(237,32,40,.22)}.ow-btn span{font-size:20px;transition:.35s}.ow-btn:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(237,32,40,.34)}.ow-btn:hover span{transform:translateX(5px)}
+.ow-hero-side{align-self:center;justify-self:end;text-align:left;border-left:1px solid rgba(255,255,255,.25);padding-left:25px;display:grid;gap:12px}.ow-hero-side span{font:600 13px/1.15 Oswald,sans-serif;letter-spacing:.12em;color:#fff;text-transform:uppercase;opacity:.7}.ow-hero-side strong{font:700 15px/1.25 Oswald,sans-serif;color:#fff;text-transform:uppercase}.ow-hero-side strong b{color:#ed2028}
+.ow-filter{position:relative;background:#fff;border-bottom:1px solid #e2e5e8;box-shadow:0 5px 24px rgba(16,18,22,.05);z-index:4}.ow-filter-inner{width:min(1440px,94%);margin:auto;display:flex;align-items:stretch;overflow:auto;scrollbar-width:none}.ow-filter-inner::-webkit-scrollbar{display:none}.ow-filter button{flex:0 0 auto;border:0;border-right:1px solid #e5e7ea;background:#fff;min-height:74px;padding:0 25px;display:flex;align-items:center;gap:10px;color:#20242a;font:600 12px Inter,sans-serif;cursor:pointer;transition:.3s}.ow-filter button:first-child{border-left:1px solid #e5e7ea}.ow-filter button .ico{width:31px;height:31px;border:1px solid #cfd4da;border-radius:9px;display:grid;place-items:center;font-size:14px}.ow-filter button:hover,.ow-filter button.active{background:#ed2028;color:#fff;border-color:#ed2028}.ow-filter button:hover .ico,.ow-filter button.active .ico{border-color:rgba(255,255,255,.5)}.ow-search{margin-left:auto;flex:0 0 210px;display:flex;align-items:center;padding:0 10px}.ow-search input{width:100%;height:40px;border:1px solid #d9dde2;border-radius:2px;padding:0 12px;font:500 12px Inter,sans-serif;outline:none}.ow-search input:focus{border-color:#ed2028;box-shadow:0 0 0 3px rgba(237,32,40,.1)}
+.ow-work{padding:58px 0 74px}.ow-work-inner{width:min(1380px,92%);margin:auto}.ow-section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:28px}.ow-title{font:700 clamp(38px,5vw,64px)/.94 Oswald,sans-serif;text-transform:uppercase;margin:7px 0 0;letter-spacing:-.02em}.ow-section-head p{max-width:440px;margin:0;color:#68717b;font-size:14px;line-height:1.65}
+.ow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.ow-card{background:#fff;border:1px solid #e2e5e9;box-shadow:0 10px 25px rgba(20,24,30,.05);transition:.45s cubic-bezier(.2,.8,.2,1);overflow:hidden;position:relative}.ow-card:hover{transform:translateY(-8px);box-shadow:0 22px 45px rgba(20,24,30,.13);border-color:#d4d9de}.ow-card-media{height:250px;overflow:hidden;position:relative;background:#ddd}.ow-card-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .45s}.ow-card:hover .ow-card-media img{transform:scale(1.08);filter:saturate(1.08)}.ow-card-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.48));pointer-events:none}.ow-loc{position:absolute;left:14px;bottom:13px;color:#fff;font:700 11px Inter,sans-serif;letter-spacing:.04em;z-index:2}.ow-loc:before{content:"●";font-size:9px;color:#ed2028;margin-right:6px}.ow-card-body{padding:17px 17px 18px}.ow-brand{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #e7e9ec;padding-bottom:13px;margin-bottom:12px}.ow-brand-info{display:flex;align-items:center;gap:12px}.ow-brand-info img{width:58px;height:28px;object-fit:contain;object-position:left center}.ow-brand-info b{font:800 16px Inter,sans-serif}.ow-brand-info small{display:block;color:#777f89;font-size:11px;margin-top:3px}.ow-meta{display:flex;gap:15px;color:#505862;font:600 10px Inter,sans-serif;text-transform:uppercase;margin-bottom:12px}.ow-meta span:before{color:#ed2028;margin-right:5px}.ow-meta .media:before{content:"▣"}.ow-meta .place:before{content:"⌖"}.ow-desc{font:400 12px/1.55 Inter,sans-serif;color:#69717b;margin:0;min-height:38px}.ow-arrow{width:38px;height:38px;border:1px solid #ed2028;border-radius:50%;display:grid;place-items:center;color:#ed2028;background:#fff;font-size:19px;transition:.35s}.ow-card:hover .ow-arrow{background:#ed2028;color:#fff;transform:translateX(3px)}
+.ow-video{margin-top:22px;background:#0a0d10;color:#fff;position:relative;min-height:320px;overflow:hidden}.ow-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}.ow-video:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,8,10,.9),rgba(6,8,10,.25) 65%,rgba(6,8,10,.55))}.ow-video-content{position:relative;z-index:2;padding:46px;max-width:600px}.ow-video h3{font:700 54px/.95 Oswald,sans-serif;text-transform:uppercase;margin:10px 0 15px}.ow-video p{color:#d5d8dc;line-height:1.6;max-width:470px;font-size:13px}.ow-video-badge{position:absolute;right:35px;bottom:30px;z-index:3;border:1px solid rgba(255,255,255,.35);padding:12px 15px;font:700 11px Inter,sans-serif;letter-spacing:.1em}.ow-video-badge i{display:inline-block;width:7px;height:7px;background:#ed2028;border-radius:50%;margin-right:7px;animation:owPulse 1.2s infinite}
+.ow-cta{background:#0a0d11;color:#fff;position:relative;overflow:hidden}.ow-cta-bg{position:absolute;inset:0;background:url('assets/images/lights-night-city.png') center/cover;opacity:.52;transform:scale(1.04);animation:owDrift 12s ease-in-out infinite alternate}.ow-cta:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,10,.94),rgba(5,7,10,.5),rgba(5,7,10,.68))}.ow-cta-inner{position:relative;z-index:2;width:min(1380px,92%);margin:auto;min-height:300px;display:flex;align-items:center;justify-content:space-between;gap:30px}.ow-cta h2{font:700 clamp(40px,5vw,68px)/.94 Oswald,sans-serif;text-transform:uppercase;margin:10px 0}.ow-cta p{color:#d1d4d8;margin:0;max-width:500px;font-size:13px}
+.ow-reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1)}.ow-reveal.in{opacity:1;transform:none}.ow-card.ow-reveal:nth-child(2){transition-delay:.06s}.ow-card.ow-reveal:nth-child(3){transition-delay:.12s}.ow-card.ow-reveal:nth-child(4){transition-delay:.18s}.ow-card.ow-reveal:nth-child(5){transition-delay:.24s}.ow-card.ow-reveal:nth-child(6){transition-delay:.3s}
+@keyframes owPulse{50%{box-shadow:0 0 0 6px rgba(237,32,40,.05)}}@keyframes owDrift{to{transform:scale(1.1) translate3d(1.5%,0,0)}}
+@media(max-width:980px){.ow-hero{min-height:590px}.ow-hero-inner{grid-template-columns:1fr}.ow-hero-side{display:none}.ow-grid{grid-template-columns:repeat(2,1fr)}.ow-search{display:none}.ow-filter button{min-height:66px;padding:0 18px}.ow-card-media{height:220px}.ow-video h3{font-size:44px}}
+@media(max-width:640px){.ow-hero{min-height:590px}.ow-hero-inner{width:90%;padding:100px 0 40px}.ow-hero h1{font-size:52px}.ow-hero-copy{font-size:13px}.ow-work{padding:42px 0 55px}.ow-section-head{display:block}.ow-section-head p{margin-top:15px}.ow-grid{grid-template-columns:1fr;gap:15px}.ow-card-media{height:230px}.ow-video-content{padding:35px 24px}.ow-video h3{font-size:38px}.ow-video-badge{right:20px;bottom:20px}.ow-cta-inner{min-height:330px;display:block;padding:55px 0}.ow-cta .ow-btn{margin-top:25px}.ow-filter-inner{width:100%}.ow-filter button{padding:0 15px}.ow-filter button .ico{width:27px;height:27px}.ow-title{font-size:43px}}
+@media(prefers-reduced-motion:reduce){.ow-reveal,.ow-card,.ow-card-media img,.ow-btn,.ow-btn span,.ow-arrow,.ow-cta-bg{transition:none!important;animation:none!important}}
+</style>
+<link rel="stylesheet" href="css/home-style-sync.css">
 </head>
 <body>
 <div class="page-progress" id="pageProgress"></div>
-<header class="header" id="header">
-  <div class="container nav-wrap">
-    <a class="site-logo" href="index.html"><img src="assets/images/logo-header.png" alt="Krishna Outdoor"></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="nav" id="nav">
-      <a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media</a><a class="active" href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a>
+<header class="header" id="header"><div class="container nav-wrap">
+<a class="site-logo" href="index.html"><img src="assets/images/logo-header.png" alt="Krishna Outdoor"></a>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+<a href="index.html">Home</a><a href="about.html">About Us</a>
+<div class="nav-dropdown"><a href="services.html">Media Solutions</a><button class="nav-arrow" type="button" aria-label="Open Media Solutions menu" aria-expanded="false">▼</button><div class="nav-menu"><a href="ooh-media.html">OOH Media</a><a href="transit-media.html">Transit Media</a><a href="digital-media.html">Digital Media</a></div></div>
+<a href="network.html">Our Network</a><a class="active" href="projects.html">Our Work</a><a href="careers.html">Careers</a>
       <a class="nav-cta" href="contact.html">Enquire Now <span>→</span></a>
-    </nav>
-  </div>
-</header>
+</nav></div></header>
 
-<main>
-<section class="hero" id="home">
-  <video class="hero-media" autoplay muted loop playsinline preload="auto"><source src="assets/videos/ad-intro.mp4" type="video/mp4"></video>
-  <div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-noise"></div>
-  <div class="container hero-inner reveal">
-    <h1>OUR<br><em>PROJECTS.</em></h1>
-  </div>
+<main class="ow-page">
+<section class="ow-hero">
+<video class="ow-hero-media" autoplay muted loop playsinline preload="auto"><source src="assets/videos/work-showcase.mp4" type="video/mp4"></video><div class="ow-hero-shade"></div><div class="ow-hero-grid"></div>
+<div class="ow-hero-inner ow-reveal"><div><div class="ow-kicker">OUR WORK / CAMPAIGNS</div><h1>VISIBILITY<br>IN <em>ACTION.</em></h1><p class="ow-hero-copy">Every campaign begins with a different objective. Some brands want scale. Some want market visibility. Some want repeated commuter exposure. Others want an integrated campaign across multiple media.</p><p class="ow-hero-copy">Explore selected campaigns and see how brands have used outdoor, transit and integrated media to connect with audiences in the places that matter.</p><a class="ow-btn" href="#campaigns">Explore Our Campaigns <span>→</span></a></div><div class="ow-hero-side"><span>REAL CITIES</span><span>REAL PEOPLE</span><strong>REAL <b>IMPACT.</b></strong><span>01 / 03</span></div></div>
 </section>
 
-<section class="section work" id="work"><div class="container work-grid"><div class="work-copy reveal"><div class="tag">OUR WORK</div><h2>IDEAS IN<br><em>REAL PLACES.</em></h2><p>Brands in prime locations. Real people. Real visibility.</p><a class="small-btn" href="projects.html">View Campaigns <span>→</span></a></div><div class="work-gallery reveal">
-  <article class="work-video-card"><video autoplay muted loop playsinline preload="metadata"><source src="assets/videos/work-showcase.mp4" type="video/mp4"></video><div class="work-video-shade"></div><div class="work-video-label"><small>KRISHNA OUTDOOR / REAL IMPACT</small><span>PLAYING <i></i></span></div></article>
-  <div class="work-bottom-wrap"><button class="work-scroll-arrow prev" id="workPrev" aria-label="Previous work">‹</button><div class="work-bottom-viewport" id="workViewport"><div class="work-bottom-track" id="workTrack">
-    <article class="work-card"><img src="assets/images/work/work-01.png" alt="Godrej outdoor campaign"><div><small>OUTDOOR / IMPACT</small><b>↗</b></div></article>
-    <article class="work-card"><img src="assets/images/work/work-02.png" alt="Outdoor billboard campaign"><div><small>OUTDOOR / REACH</small><b>↗</b></div></article>
-    <article class="work-card"><img src="assets/images/work/work-03.png" alt="Digital billboard campaign"><div><small>DIGITAL / VISIBILITY</small><b>↗</b></div></article>
-    <article class="work-card"><img src="assets/images/work/work-04.png" alt="Porsche billboard campaign"><div><small>OOH / BRANDING</small><b>↗</b></div></article>
-    <article class="work-card"><img src="assets/images/work/work-05.png" alt="Outdoor billboard campaign"><div><small>OUTDOOR / PREMIUM</small><b>↗</b></div></article>
-    <article class="work-card"><img src="assets/images/work/work-06.jpg" alt="Transit bus advertising"><div><small>TRANSIT / IMPACT</small><b>↗</b></div></article>
-  </div></div><button class="work-scroll-arrow next" id="workNext" aria-label="Next work">›</button></div>
-</div></div></section>
-
-<section class="clients" id="clients"><div class="clients-bg"></div><div class="container clients-wrap">
-  <div class="clients-copy reveal">
-    <div class="tag light">WHO WE WORK WITH</div>
-    <h2>Our Esteemed<br><em>Clients</em></h2>
-    <p>We partner with brands driven by vision and excellence — whether bold startups, established enterprises, or those shaping the space in between.</p>
-    <div class="client-drag-hint"><span>DRAG / SWIPE</span><i>↔</i></div>
-  </div>
-  <div class="client-stage">
-    <div class="client-arc"></div>
-    <div class="client-carousel" id="clientCarousel"></div>
-    <div class="client-reflection"></div>
-    <div class="client-360"><span class="ring"></span><svg viewBox="0 0 40 16" fill="none"><path d="M4 12 A16 12 0 0 1 34 8" stroke="#fff" stroke-width="2"/><path d="M29 3 L35 8 L28 10Z" fill="#fff"/></svg><b>360°</b></div>
-  </div>
+<section class="ow-filter" id="campaigns"><div class="ow-filter-inner">
+<button class="active" data-filter="all"><span class="ico">⌘</span>All Campaigns</button><button data-filter="outdoor"><span class="ico">▣</span>Outdoor Media</button><button data-filter="transit"><span class="ico">▤</span>Transit Media</button><button data-filter="integrated"><span class="ico">◫</span>Integrated Media</button><button data-filter="ahmedabad"><span class="ico">⌖</span>Ahmedabad</button><button data-filter="mumbai"><span class="ico">⌖</span>Mumbai</button><button data-filter="other"><span class="ico">⌖</span>Other Markets</button><div class="ow-search"><input id="owSearch" type="search" placeholder="Search campaigns..." aria-label="Search campaigns"></div>
 </div></section>
 
-<section class="cta" id="contact"><div class="container cta-inner reveal"><div><div class="tag light">LET’S CREATE</div><h2>LIKE WHAT<br><em>YOU SEE?</em></h2><p>Let’s create your brand’s next high-impact outdoor campaign.</p></div><a class="btn white" href="contact.html">Start A Project <b>→</b></a></div></section>
-
-</main>
-
-<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media</a><a href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
-
-<button class="chatbot" id="chatbot" aria-label="Open Krishna Outdoor assistant">
-  <span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span>
-</button>
-<div class="chat-panel" id="chatPanel" aria-hidden="true">
-  <div class="chat-head"><div class="chat-brand"><span class="chat-brand-icon">✦</span><div><b>Krishna AI</b><small><i></i> Online • replies instantly</small></div></div><button id="chatClose" aria-label="Close">×</button></div>
-  <div class="chat-body"><div class="chat-welcome"><span class="chat-avatar">K</span><div><b>Hi there 👋</b><p>How can we help with your next outdoor campaign?</p></div></div>
-    <div class="chat-options"><button data-chat="media"><span>01</span>Explore media solutions <b>→</b></button><button data-chat="campaign"><span>02</span>Plan a campaign <b>→</b></button><button data-chat="contact"><span>03</span>Talk to our team <b>→</b></button></div>
-    <div class="chat-reply" id="chatReply"></div>
-    <div class="chat-direct"><a href="tel:+919920011574">Call team</a><a href="mailto:info.team@krishnaoutdoor.in">Email us</a></div>
-  </div>
+<section class="ow-work"><div class="ow-work-inner"><div class="ow-section-head ow-reveal"><div><div class="ow-tag">SELECTED CAMPAIGNS</div><h2 class="ow-title">BRANDS <em>IN ACTION.</em></h2></div><p>Original campaign photography from Krishna Outdoor’s media portfolio, arranged across outdoor, transit and integrated formats.</p></div>
+<div class="ow-grid" id="owGrid">
+<article class="ow-card ow-reveal" data-type="outdoor" data-market="ahmedabad" data-search="godrej properties outdoor ahmedabad billboard"><div class="ow-card-media"><img src="assets/images/work/work-01.png" alt="Outdoor advertising campaign in Ahmedabad"><span class="ow-loc">AHMEDABAD</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/images/logo-header.png" alt="Godrej Properties logo"><div><b>Outdoor Campaign</b><small>Launching a New Campaign</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Outdoor Media</span><span class="place">Ahmedabad</span></div><p class="ow-desc">A premium outdoor campaign designed to build awareness and visibility across a high-traffic city corridor.</p></div></article>
+<article class="ow-card ow-reveal" data-type="transit" data-market="mumbai" data-search="jio transit mumbai train"><div class="ow-card-media"><img src="assets/images/work/work-03.png" alt="Transit advertising campaign in Mumbai"><span class="ow-loc">MUMBAI</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/clients/jio-hotstar.jpg" alt="Jio logo"><div><b>Jio</b><small>Expanding Market Presence</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Transit Media</span><span class="place">Mumbai</span></div><p class="ow-desc">Transit visibility designed to reach commuters repeatedly across high-frequency urban movement corridors.</p></div></article>
+<article class="ow-card ow-reveal" data-type="outdoor" data-market="ahmedabad" data-search="outdoor campaign billboard ahmedabad brands"><div class="ow-card-media"><img src="assets/images/work/work-02.png" alt="Outdoor billboard campaign"><span class="ow-loc">AHMEDABAD</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/clients/havells.png" alt="Havells logo"><div><b>Havells</b><small>Building Brand Recall</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Outdoor Media</span><span class="place">Ahmedabad</span></div><p class="ow-desc">High-visibility outdoor placement built to reinforce brand recall where audiences travel every day.</p></div></article>
+<article class="ow-card ow-reveal" data-type="transit" data-market="ahmedabad" data-search="bus transit campaign ahmedabad outdoor"><div class="ow-card-media"><img src="assets/images/work/work-06.jpg" alt="Outdoor advertising campaign in a busy market"><span class="ow-loc">AHMEDABAD</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/clients/apple.png" alt="Apple logo"><div><b>Brand Campaign</b><small>Driving Footfall</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Transit Media</span><span class="place">Ahmedabad</span></div><p class="ow-desc">A high-frequency city environment used to create repeated exposure and stronger everyday visibility.</p></div></article>
+<article class="ow-card ow-reveal" data-type="outdoor" data-market="mumbai" data-search="premium outdoor mumbai billboard campaign"><div class="ow-card-media"><img src="assets/images/work/work-05.png" alt="Premium digital outdoor campaign in Mumbai"><span class="ow-loc">MUMBAI</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/clients/zoho.png" alt="Zoho logo"><div><b>Premium OOH</b><small>Launching a New Project</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Outdoor Media</span><span class="place">Mumbai</span></div><p class="ow-desc">A premium digital outdoor placement combining strong creative presence with an urban night audience.</p></div></article>
+<article class="ow-card ow-reveal" data-type="integrated" data-market="other" data-search="integrated digital campaign other markets outdoor"><div class="ow-card-media"><img src="assets/images/work/work-04.png" alt="Integrated outdoor campaign"><span class="ow-loc">OTHER MARKETS</span></div><div class="ow-card-body"><div class="ow-brand"><div class="ow-brand-info"><img src="assets/clients/hyundai.png" alt="Hyundai logo"><div><b>Hyundai</b><small>Showcasing a New Possibility</small></div></div><span class="ow-arrow">→</span></div><div class="ow-meta"><span class="media">Integrated Media</span><span class="place">Other Markets</span></div><p class="ow-desc">An integrated visibility approach connecting outdoor impact with broader campaign touchpoints.</p></div></article>
 </div>
 
-<div class="work-lightbox" id="workLightbox" aria-hidden="true"><div class="work-lightbox-inner"><button id="workLightboxClose" aria-label="Close image">×</button><img id="workLightboxImage" src="" alt="Selected campaign"><div id="workLightboxCaption"></div></div></div>
-<div class="story-modal" id="storyModal" aria-hidden="true"><div class="story-dialog"><button id="storyClose">×</button><video controls playsinline preload="metadata"><source src="assets/videos/story-video.mp4" type="video/mp4"></video><div><div class="tag">KRISHNA OUTDOOR</div><h3>YOUR BRAND.<br><em>OUR MEDIA.</em></h3></div></div></div>
+<div class="ow-video ow-reveal"><video autoplay muted loop playsinline preload="metadata"><source src="assets/videos/work-showcase.mp4" type="video/mp4"></video><div class="ow-video-content"><div class="ow-tag">THE WORK IN MOTION</div><h3>REAL MEDIA.<br><em>REAL MOMENTUM.</em></h3><p>From roadside impact to transit movement, our work is built around the places where audiences actually live, travel and make decisions.</p><a class="ow-btn" href="contact.html">Talk To Our Team <span>→</span></a></div><div class="ow-video-badge"><i></i> CAMPAIGN SHOWCASE</div></div>
+</div></section>
+
+<section class="ow-cta"><div class="ow-cta-bg"></div><div class="ow-cta-inner ow-reveal"><div><div class="ow-tag">LET’S CREATE WHAT’S NEXT</div><h2>YOUR BRAND.<br>OUR <em>MEDIA POSSIBILITIES.</em></h2><p>Every market has an opportunity. Let’s discover how we can bring your next campaign to life.</p></div><a class="ow-btn" href="contact.html">Talk to Our Media Team <span>→</span></a></div></section>
+</main>
+
+<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media Solutions</a><a href="network.html">Our Network</a><a class="active" href="projects.html">Our Work</a><a href="contact.html">Contact Us</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
+
+<button class="chatbot" id="chatbot" aria-label="Open Krishna Outdoor assistant"><span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span></button>
+<div class="chat-panel" id="chatPanel" aria-hidden="true"><div class="chat-head"><div class="chat-brand"><span class="chat-brand-icon">✦</span><div><b>Krishna AI</b><small><i></i> Online • replies instantly</small></div></div><button id="chatClose" aria-label="Close">×</button></div><div class="chat-body"><div class="chat-welcome"><span class="chat-avatar">K</span><div><b>Hi there 👋</b><p>How can we help with your next outdoor campaign?</p></div></div><div class="chat-options"><button data-chat="media"><span>01</span>Explore media solutions <b>→</b></button><button data-chat="campaign"><span>02</span>Plan a campaign <b>→</b></button><button data-chat="contact"><span>03</span>Talk to our team <b>→</b></button></div><div class="chat-reply" id="chatReply"></div><div class="chat-direct"><a href="tel:+919920011574">Call team</a><a href="mailto:info.team@krishnaoutdoor.in">Email us</a></div></div></div>
 <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
 <script src="js/main.js"></script>
+<script>
+(()=>{
+ const buttons=[...document.querySelectorAll('.ow-filter button[data-filter]')], cards=[...document.querySelectorAll('.ow-card')], search=document.getElementById('owSearch');
+ let active='all';
+ function apply(){const q=(search?.value||'').trim().toLowerCase();cards.forEach(c=>{const ok=(active==='all'||c.dataset.type===active||c.dataset.market===active)&&(q===''||c.dataset.search.includes(q));c.style.display=ok?'':'none';c.classList.toggle('filtered-out',!ok)});}
+ buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');active=b.dataset.filter;apply()}));
+ search?.addEventListener('input',apply);
+ const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.ow-reveal').forEach(x=>obs.observe(x));
+ document.querySelectorAll('.ow-card-media img').forEach(img=>img.addEventListener('click',()=>{img.closest('.ow-card')?.scrollIntoView({behavior:'smooth',block:'center'})}));
+})();
+</script>
 </body></html>

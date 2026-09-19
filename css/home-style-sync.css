@@ -1,0 +1,67 @@
+/* ===== HOME-STYLE CENTER / MOTION SYNC ===== */
+:root{--content-max:1240px}
+
+/* Keep large sections centered like the Home composition instead of stretching edge-to-edge. */
+.about-statbar,
+.about-block,
+.about-strength{width:min(100%,var(--content-max));margin-inline:auto}
+.about-block{padding-left:0;padding-right:0}
+.about-strength{padding-left:0;padding-right:0}
+
+/* Our Work: same centered content rhythm as Home. */
+.ow-hero-inner,.ow-filter-inner,.ow-work-inner,.ow-cta-inner{width:min(calc(100% - 64px),var(--content-max))!important;margin-inline:auto!important}
+
+/* Enquire hero: full-bleed background, centered content stage. */
+.kr-enquiry-hero .inner{width:min(calc(100% - 64px),var(--content-max))!important;max-width:var(--content-max)!important;margin-inline:auto!important}
+.kr-enquiry-copy{padding-left:0!important;padding-right:36px!important}
+
+/* Consistent centered section rhythm. */
+.media-section{padding-left:max(0px,calc((100vw - var(--content-max))/2));padding-right:max(0px,calc((100vw - var(--content-max))/2))}
+.kr-section{padding-left:max(0px,calc((100vw - var(--content-max))/2));padding-right:max(0px,calc((100vw - var(--content-max))/2))}
+.network-map-section,.network-market-showcase,.network-capabilities{padding-left:max(0px,calc((100vw - var(--content-max))/2));padding-right:max(0px,calc((100vw - var(--content-max))/2))}
+
+/* Keep the actual inner containers at the same Home width. */
+.media-section>.container,.kr-section>.container,.network-map-section>.container,.network-market-showcase>.container,.network-capabilities>.container{width:100%!important;max-width:var(--content-max)!important}
+
+/* Home-style heading scale: strong, compact and never oversized inside the centered stage. */
+.about-copybox h2,.about-copybox h3,.about-strength-copy h2,.about-lead-head h2,
+.media-copy h2,.network-presence-head h2,.network-section-head h2,
+.ow-title,.kr-head h2{letter-spacing:-.025em}
+.about-copybox h2,.about-copybox h3,.about-strength-copy h2,.media-copy h2,.network-presence-head h2,.network-section-head h2,.ow-title,.kr-head h2{ text-wrap:balance }
+
+/* Shared Home-style reveal: slightly longer, smoother, with a tiny scale-in. */
+.about-reveal,.reveal,.ow-reveal,.kr-reveal{will-change:transform,opacity}
+.about-reveal.in,.reveal.in,.ow-reveal.in,.kr-reveal.is-visible{animation:homeSectionSettle .78s cubic-bezier(.16,.7,0,1) both}
+@keyframes homeSectionSettle{0%{opacity:0;transform:translate3d(0,26px,0) scale(.985)}100%{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+
+/* Home-style image motion and interactive depth. */
+.about-image,.about-collage .tile,.media-card,.network-card,.ow-card,.kr-office,.leader-card{transform-style:preserve-3d;backface-visibility:hidden}
+.about-image:hover,.about-collage .tile:hover,.media-card:hover,.network-card:hover,.ow-card:hover,.kr-office:hover,.leader-card:hover{transform:translateY(-6px) perspective(900px) rotateX(.7deg) rotateY(-.5deg)!important}
+
+/* Shared button language: same red, sweep, lift and arrow movement used by Home. */
+.about-btn,.media-btn,.ow-btn,.kr-btn,.network-btn,.network-card-link,.kr-office-btn{position:relative;overflow:hidden;isolation:isolate}
+.about-btn:before,.media-btn:before,.ow-btn:before,.kr-btn:before,.network-btn:before,.kr-office-btn:before{content:"";position:absolute;z-index:-1;top:-45%;left:-85%;width:48%;height:190%;background:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.05) 38%,rgba(255,255,255,.65) 50%,rgba(255,255,255,.05) 62%,transparent 90%);transform:skewX(-18deg);transition:left .65s cubic-bezier(.2,.7,0,1);pointer-events:none}
+.about-btn:hover:before,.media-btn:hover:before,.ow-btn:hover:before,.kr-btn:hover:before,.network-btn:hover:before,.kr-office-btn:hover:before{left:145%}
+.about-btn span,.media-btn b,.ow-btn span,.kr-btn span,.network-btn b,.kr-office-btn{transition:transform .3s ease}
+.about-btn:hover span,.media-btn:hover b,.ow-btn:hover span,.kr-btn:hover span,.network-btn:hover b{transform:translateX(5px)}
+
+/* Center the stats strip rather than allowing it to feel detached on wide screens. */
+.about-statbar{border-left:1px solid #e5e7eb;border-right:1px solid #e5e7eb}
+
+/* Wide desktop: preserve breathing room while keeping the visual center strong. */
+@media(min-width:1400px){
+  .about-block,.about-strength{min-height:500px}
+  .media-section{padding-top:96px;padding-bottom:96px}
+  .kr-section{padding-top:96px;padding-bottom:96px}
+}
+
+@media(max-width:760px){
+  .ow-hero-inner,.ow-filter-inner,.ow-work-inner,.ow-cta-inner,.kr-enquiry-hero .inner{width:calc(100% - 32px)!important}
+  .media-section,.kr-section,.network-map-section,.network-market-showcase,.network-capabilities{padding-left:0;padding-right:0}
+  .media-section>.container,.kr-section>.container,.network-map-section>.container,.network-market-showcase>.container,.network-capabilities>.container{width:calc(100% - 32px)!important}
+  .kr-enquiry-copy{padding-right:0!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .about-reveal.in,.reveal.in,.ow-reveal.in,.kr-reveal.is-visible{animation:none!important}
+}

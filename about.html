@@ -4,10 +4,76 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0c0e11">
 <title>Outdoor Advertising Company Since 1985 | About Krishna Outdoor</title>
-<meta name="description" content="43+ years of outdoor advertising experience in Ahmedabad & Mumbai. Discover our journey, expertise, and commitment to impactful OOH campaigns.">
+<meta name="description" content="43+ years of outdoor advertising experience in Ahmedabad & Mumbai. Discover Krishna Outdoor's journey, media expertise, network and people.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ABOUT PAGE — fresh rebuild. Uses only original assets from this project. */
+.about-refresh{background:#fff;color:#0d1117;overflow:hidden}
+.about-hero{min-height:650px;position:relative;background:#0b0d10;color:#fff;display:grid;align-items:stretch}
+.about-hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.about-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,7,10,.94) 0%,rgba(4,7,10,.78) 39%,rgba(4,7,10,.16) 68%,rgba(4,7,10,.08) 100%),linear-gradient(0deg,rgba(4,7,10,.35),transparent 40%)}
+.about-hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:110px 110px;mask-image:linear-gradient(90deg,#000,transparent 78%);opacity:.4}
+.about-hero-inner{position:relative;z-index:2;display:flex;align-items:center;min-height:650px;padding-top:70px}
+.about-hero-copy{width:min(620px,70%);animation:aboutIn .9s cubic-bezier(.2,.8,.2,1) both}
+.about-kicker,.about-tag{font:700 12px/1.2 Inter,sans-serif;letter-spacing:.14em;color:#ed1c24;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.about-kicker:after,.about-tag:after{content:"";width:48px;height:2px;background:#ed1c24}
+.about-hero h1{font:700 clamp(48px,6vw,86px)/.96 Oswald,sans-serif;letter-spacing:-.025em;margin:16px 0 24px;text-transform:uppercase}
+.about-hero h1 em,.about-red{color:#ed1c24;font-style:normal}
+.about-hero-copy p{max-width:540px;font-size:15px;line-height:1.7;color:#e5e7eb;margin:0 0 25px}
+.about-hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.about-btn{display:inline-flex;align-items:center;gap:14px;text-decoration:none;border:1px solid rgba(255,255,255,.25);padding:16px 20px;color:#fff;font:900 11px Inter,sans-serif;text-transform:uppercase;letter-spacing:.5px;transition:.35s}
+.about-btn.primary{background:#ed1c24;border-color:#ed1c24}.about-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(237,28,36,.25)}
+.about-side-nav{position:absolute;right:24px;top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:11px;text-align:right}
+.about-side-nav span{font:600 9px Inter,sans-serif;color:rgba(255,255,255,.55);letter-spacing:.08em}
+.about-side-nav span.active{color:#fff}.about-side-nav i{display:inline-block;width:18px;height:1px;background:#ed1c24;vertical-align:middle;margin-left:7px}
+.about-statbar{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #e5e7eb;background:#fff}
+.about-stat{min-height:94px;display:flex;align-items:center;justify-content:center;gap:13px;padding:16px 12px;border-right:1px solid #e5e7eb;transition:.3s}
+.about-stat:last-child{border-right:0}.about-stat:hover{background:#fafafa;transform:translateY(-2px)}
+.about-stat-icon{width:35px;height:35px;border:1px solid #ed1c24;color:#ed1c24;display:grid;place-items:center;border-radius:50%;font-size:17px}
+.about-stat strong{font:800 25px Oswald,sans-serif;display:block}.about-stat small{font:700 8px/1.35 Inter,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#555;display:block}
+.about-block{display:grid;grid-template-columns:1fr 1fr;min-height:480px}
+.about-copybox{padding:70px clamp(24px,5vw,80px);display:flex;flex-direction:column;justify-content:center}
+.about-copybox.dark{background:#0c1015;color:#fff}.about-copybox.redline{border-top:3px solid #ed1c24}
+.about-copybox h2{font:700 clamp(34px,4vw,55px)/.98 Oswald,sans-serif;text-transform:uppercase;margin:13px 0 18px;letter-spacing:-.02em}
+.about-copybox h3{font:700 30px/1.02 Oswald,sans-serif;text-transform:uppercase;margin:10px 0 15px}
+.about-copybox p{font:14px/1.7 Inter,sans-serif;color:#4b5563;max-width:590px;margin:0 0 12px}
+.about-copybox.dark p{color:#d1d5db}
+.about-image{position:relative;min-height:430px;overflow:hidden;background:#111}
+.about-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.about-image:hover img{transform:scale(1.045)}
+.about-image .image-label{position:absolute;left:30px;bottom:26px;color:#fff;font:700 clamp(30px,4vw,54px)/.95 Oswald,sans-serif;text-transform:uppercase;text-shadow:0 5px 20px #000;max-width:70%}
+.about-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.65))}
+.about-image .image-label{z-index:1}
+.about-story{grid-template-columns:42% 58%}
+.about-collage{padding:26px;display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:1fr 1fr;gap:12px;background:#f3f4f6}
+.about-collage .tile{overflow:hidden;position:relative;min-height:180px}
+.about-collage .tile:first-child{grid-row:1/3}.about-collage img{width:100%;height:100%;object-fit:cover;transition:.7s}.about-collage .tile:hover img{transform:scale(1.06)}
+.about-collage .tile:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.55))}
+.about-collage b{position:absolute;z-index:1;left:15px;bottom:13px;color:#fff;font:700 17px Oswald,sans-serif;text-transform:uppercase}
+.about-full-image{min-height:300px;position:relative;overflow:hidden}
+.about-full-image img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+.about-full-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,14,.82),rgba(7,10,14,.2) 70%)}
+.about-full-copy{position:relative;z-index:1;min-height:300px;display:flex;align-items:center;color:#fff;padding:50px 0}
+.about-full-copy h2{font:700 clamp(38px,5vw,62px)/.95 Oswald;margin:10px 0;text-transform:uppercase;max-width:620px}
+.about-full-copy p{max-width:520px;color:#e5e7eb;line-height:1.6}
+.about-strength{display:grid;grid-template-columns:1fr 1fr;background:#0b0f14;color:#fff}
+.about-strength-visual{min-height:330px;position:relative;overflow:hidden}.about-strength-visual img{width:100%;height:100%;object-fit:cover}.about-strength-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#0b0f14)}
+.about-strength-copy{padding:60px clamp(25px,5vw,80px);display:flex;justify-content:center;flex-direction:column}
+.about-strength-copy h2{font:700 clamp(35px,4vw,54px)/1 Oswald;text-transform:uppercase;margin:12px 0 16px}.about-strength-copy p{color:#cbd5e1;line-height:1.7;max-width:560px}
+.about-pillrow{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #27303a;margin-top:25px}.about-pill{padding:22px 10px;border-right:1px solid #27303a;text-align:center}.about-pill:last-child{border:0}.about-pill b{display:block;font-size:25px;color:#fff}.about-pill span{font:600 9px Inter;text-transform:uppercase;color:#9ca3af}
+.about-lead{padding:75px 0}.about-lead-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}.about-lead-head h2{font:700 clamp(35px,4vw,56px)/1 Oswald;text-transform:uppercase;margin:8px 0}.about-lead-head p{max-width:430px;color:#6b7280;line-height:1.6}
+.about-lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.leader-card{display:grid;grid-template-columns:180px 1fr;border:1px solid #e5e7eb;background:#fff;min-height:260px;overflow:hidden;transition:.35s}.leader-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08)}.leader-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}.leader-copy{padding:25px}.leader-copy h3{font:700 25px Oswald;margin:3px 0}.leader-copy small{color:#ed1c24;font:700 10px Inter;text-transform:uppercase}.leader-copy p{font-size:12px;line-height:1.65;color:#59616d}
+.about-cta{position:relative;min-height:280px;overflow:hidden;color:#fff}.about-cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.about-cta:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,10,14,.92),rgba(7,10,14,.35))}.about-cta .container{position:relative;z-index:1;min-height:280px;display:flex;align-items:center;justify-content:space-between;gap:30px}.about-cta h2{font:700 clamp(36px,5vw,65px)/.94 Oswald;text-transform:uppercase;margin:10px 0}.about-cta p{color:#e5e7eb;max-width:520px}.about-cta .about-btn{background:#ed1c24;border-color:#ed1c24}
+.about-reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.2,1)}.about-reveal.in{opacity:1;transform:none}
+.about-delay-1{transition-delay:.08s}.about-delay-2{transition-delay:.16s}.about-delay-3{transition-delay:.24s}
+@keyframes aboutIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.about-statbar{grid-template-columns:repeat(2,1fr)}.about-stat:nth-child(2n){border-right:0}.about-block,.about-strength{grid-template-columns:1fr}.about-story{grid-template-columns:1fr}.about-image{min-height:350px}.about-side-nav{display:none}.about-hero-copy{width:90%}.about-lead-grid{grid-template-columns:1fr}.about-cta .container{padding-top:50px;padding-bottom:50px;flex-direction:column;align-items:flex-start}.about-pillrow{grid-template-columns:repeat(2,1fr)}.about-pill:nth-child(2){border-right:0}}
+@media(max-width:600px){.about-hero,.about-hero-inner{min-height:570px}.about-hero h1{font-size:48px}.about-hero-copy p{font-size:13px}.about-stat{min-height:80px}.about-stat strong{font-size:21px}.about-stat-icon{width:30px;height:30px}.about-copybox{padding:50px 22px}.about-collage{padding:12px}.about-image{min-height:300px}.about-full-copy{padding:40px 22px}.about-strength-visual{min-height:260px}.leader-card{grid-template-columns:110px 1fr}.leader-copy{padding:18px}.about-lead{padding:55px 0}.about-lead-head{display:block}.about-cta .container{min-height:310px}}
+@media(prefers-reduced-motion:reduce){.about-reveal,.about-hero-copy,.about-image img,.leader-card{transition:none!important;animation:none!important}}
+</style>
+<link rel="stylesheet" href="css/home-style-sync.css">
 </head>
 <body>
 <div class="page-progress" id="pageProgress"></div>
@@ -16,64 +82,128 @@
     <a class="site-logo" href="index.html"><img src="assets/images/logo-header.png" alt="Krishna Outdoor"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" id="nav">
-      <a href="index.html">Home</a><a class="active" href="about.html">About Us</a><a href="services.html">Media</a><a href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a>
+      <a href="index.html">Home</a><a class="active" href="about.html">About Us</a>
+      <div class="nav-dropdown"><a href="services.html">Media Solutions</a><button class="nav-arrow" type="button" aria-label="Open Media Solutions menu" aria-expanded="false">▼</button><div class="nav-menu"><a href="ooh-media.html">OOH Media</a><a href="transit-media.html">Transit Media</a><a href="digital-media.html">Digital Media</a></div></div>
+      <a href="network.html">Our Network</a><a href="projects.html">Our Work</a><a href="careers.html">Careers</a>
       <a class="nav-cta" href="contact.html">Enquire Now <span>→</span></a>
     </nav>
   </div>
 </header>
 
-<main>
-<section class="hero" id="home">
-  <video class="hero-media" autoplay muted loop playsinline preload="auto"><source src="assets/videos/ad-intro.mp4" type="video/mp4"></video>
-  <div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-noise"></div>
-  <div class="container hero-inner reveal">
-    <h1>ABOUT<br><em>KRISHNA OUTDOOR.</em></h1>
+<main class="about-refresh">
+<section class="about-hero">
+  <img class="about-hero-media" src="assets/images/work/work-04.png" alt="Krishna Outdoor billboard campaign">
+  <div class="about-hero-grid"></div>
+  <div class="about-hero-inner container">
+    <div class="about-hero-copy about-reveal in">
+      <div class="about-kicker about-reveal in">ABOUT US</div>
+      <h1 class="about-hero-title about-reveal in">A LEGACY BUILT<br>AROUND HOW<br><em>BRANDS ARE SEEN.</em></h1>
+      <p class="about-hero-desc about-reveal in">For more than four decades, Krishna Outdoor has been shaped by advertising, media and a deep understanding of how brands connect with people. Markets evolve. Cities have expanded. Technology has transformed communication. But the purpose remains the same — helping brands reach the right audience with the right message.</p>
+      <div class="about-hero-actions about-reveal in"><a class="about-btn primary" href="#story">Our Story <span>→</span></a><a class="about-btn" href="#leadership">Meet Our Team <span>↓</span></a></div>
+    </div>
+  </div>
+  <div class="about-side-nav"><span class="active">01 <i></i> OUR STORY</span><span>02 <i></i> OUR VISION</span><span>03 <i></i> OUR MISSION</span><span>04 <i></i> OUR STRENGTH</span><span>05 <i></i> MEDIA LEGACY</span><span>06 <i></i> LEADERSHIP</span></div>
+</section>
+
+<section class="about-statbar about-stagger">
+  <div class="about-stat"><span class="about-stat-icon">♜</span><div><strong>43+</strong><small>Years of<br>Experience</small></div></div>
+  <div class="about-stat"><span class="about-stat-icon">⌖</span><div><strong>2000+</strong><small>Media Sites<br>Across Gujarat</small></div></div>
+  <div class="about-stat"><span class="about-stat-icon">▥</span><div><strong>30+</strong><small>Key<br>Markets</small></div></div>
+  <div class="about-stat"><span class="about-stat-icon">♧</span><div><strong>500+</strong><small>Happy<br>Clients</small></div></div>
+  <div class="about-stat"><span class="about-stat-icon">✓</span><div><strong>01</strong><small>Trusted Advertising<br>Partner</small></div></div>
+</section>
+
+<section class="about-block about-story" id="story">
+  <div class="about-copybox redline about-reveal">
+    <div class="about-tag">OUR STORY</div>
+    <h2>From Advertising<br>Experience to a Broader<br>Media Network.</h2>
+    <p>Krishna Outdoor has grown with the changing needs of brands and the evolving media landscape.</p>
+    <p>With a strong foundation in advertising and media, our capabilities today span outdoor, transit, print, electronic, digital and social communication.</p>
+    <p>Our outdoor and transit network remains at the heart of Krishna Outdoor. At the same time, our wider advertising expertise allows us to support communication requirements that extend beyond a single media format.</p>
+    <p>We believe brands should not have to think about advertising in isolated channels. A campaign should begin with an objective, an audience and a market — and then explore the media opportunities that can bring that campaign to life.</p>
+    <a class="about-btn primary" href="services.html" style="width:max-content;margin-top:8px">Explore Our Media <span>→</span></a>
+  </div>
+  <div class="about-collage about-reveal about-delay-1">
+    <div class="tile"><img src="assets/images/work/work-04.png" alt="Outdoor billboard campaign"><b>Ideas Travel Further</b></div>
+    <div class="tile"><img src="assets/images/train-advertisement.jpg" alt="Transit advertising"><b>Then &amp; Now</b></div>
+    <div class="tile"><img src="assets/images/bus.webp" alt="Bus branding campaign"><b>Brands Move With People</b></div>
   </div>
 </section>
 
-<section class="experience section" id="experience">
-  <div class="container experience-grid">
-    <div class="experience-art reveal">
-      <div class="experience-art-glow"></div>
-      <img src="assets/images/experience-illustration.png" alt="Krishna Outdoor experience illustration">
-      <span class="experience-dot d1"></span><span class="experience-dot d2"></span><span class="experience-dot d3"></span>
+<section class="about-block">
+  <div class="about-image about-reveal"><img src="assets/images/lights-night-city.png" alt="City skyline at night"><span class="image-label">A BROADER<br>TOMORROW</span></div>
+  <div class="about-copybox about-reveal about-delay-1">
+    <div class="about-tag">OUR VISION</div>
+    <h3>To Be the Advertising Partner<br>Brands Choose with Confidence.</h3>
+    <p>Our vision is to be a trusted advertising and media partner with a broad foundation in outdoor, dependable and effective communication solutions.</p>
+    <p>We aim to combine experience, market understanding and a wide range of media opportunities to help brands make better decisions about where and how they communicate.</p>
+  </div>
+</section>
+
+<section class="about-block">
+  <div class="about-copybox redline about-reveal">
+    <div class="about-tag">OUR MISSION</div>
+    <h3>Make Advertising Simpler.<br>Make Visibility Stronger.</h3>
+    <p>Our mission is to help brands explore the right advertising opportunities without unnecessary complexity.</p>
+    <p>From outdoor and transit media to print, electronic and digital communication, we bring relevant media possibilities together through one experienced team.</p>
+    <p>The objective is simple — clearer planning, easier coordination and stronger brand visibility.</p>
+  </div>
+  <div class="about-image about-reveal about-delay-1"><img src="assets/images/work/work-05.png" alt="Outdoor advertising at sunset"><span class="image-label">MORE POSSIBILITIES<br>FOR YOUR BRAND</span></div>
+</section>
+
+<section class="about-strength">
+  <div class="about-strength-visual about-reveal"><img src="assets/images/lights-night-city.png" alt="Mumbai city lights"></div>
+  <div class="about-strength-copy about-reveal">
+    <div class="about-tag">OUR STRENGTH</div>
+    <h2>Experience.<br>Relationships.<br>Integrated Thinking.</h2>
+    <p>More than four decades in advertising have taught us that strong media solutions are built on more than inventory. They are built on understanding markets, knowing locations, maintaining relationships and listening carefully to client requirements.</p>
+    <p>Our strength lies in combining this experience with a broad view of today's media landscape.</p>
+    <div class="about-pillrow about-stagger"><div class="about-pill"><b>01</b><span>Market Understanding</span></div><div class="about-pill"><b>02</b><span>Strong Relationships</span></div><div class="about-pill"><b>03</b><span>Experienced Team</span></div><div class="about-pill"><b>04</b><span>Integrated Thinking</span></div></div>
+  </div>
+</section>
+
+<section class="about-block">
+  <div class="about-copybox about-reveal">
+    <div class="about-tag">OUR MEDIA LEGACY</div>
+    <h3>A Wider Perspective<br>on Advertising.</h3>
+    <p>Our capabilities are strengthened by long-standing advertising experience and a practical understanding of outdoor, transit, electronic, print and digital communication.</p>
+    <p>This wider media foundation helps Krishna Outdoor offer clients more than outdoor visibility. It allows us to look at the complete communication requirement and explore the right mix of media around it.</p>
+  </div>
+  <div class="about-image about-reveal about-delay-1"><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising legacy"><span class="image-label">A STRONGER<br>FOUNDATION</span></div>
+</section>
+
+<section class="about-lead" id="leadership">
+  <div class="container">
+    <div class="about-lead-head about-reveal">
+      <div><div class="about-tag">LEADERSHIP</div><h2>Leadership Built on Experience<br>and New Thinking.</h2></div>
+      <p>The people behind the work bring together long-term advertising experience, market knowledge and a practical understanding of how brands need to communicate today.</p>
     </div>
-    <div class="experience-copy reveal">
-      <div class="since">SINCE 1985</div>
-      <h2>We Have 43+ Years<br>Industrial Experience</h2>
-      <p class="experience-quote">"emerged as a visionary outdoor media company. Today, we proudly lead the way among India’s premier Out-of-Home (OOH) media organizations, expanding our influence across the nation. Our unwavering commitment is to provide advertising solutions that transcend cost-effectiveness and endurance, ensuring your message resonates with the necessary reach and frequency."</p>
-      <a class="experience-link" href="about.html">Discover Our Story <span>→</span></a>
+    <div class="about-lead-grid">
+      <article class="leader-card about-reveal about-delay-1"><img src="assets/images/about-img-2.jpeg" alt="Krishna Outdoor team"><div class="leader-copy"><small>Leadership &amp; Team</small><h3>Experience That Keeps Moving.</h3><p>Krishna Outdoor's team works across media planning, relationships and campaign execution with a focus on dependable delivery and clear communication.</p><p>Our approach is built around listening first, understanding the market and then creating practical media solutions.</p></div></article>
+      <article class="leader-card about-reveal about-delay-2"><img src="assets/images/about-img-1.jpeg" alt="Krishna Outdoor media environment"><div class="leader-copy"><small>Integrated Thinking</small><h3>Ideas That Travel Further.</h3><p>From outdoor locations and transit formats to broader communication opportunities, our teams connect the pieces that help a campaign stay consistent.</p><p>We believe the strongest partnerships grow through transparency, responsiveness and shared objectives.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="section about" id="about"><div class="container about-grid">
-  <div class="about-copy reveal"><div class="tag">KRISHNA OUTDOOR</div><h2>MORE THAN<br>MEDIA.<br><em>A STRONGER<br>PRESENCE.</em></h2><p>For over four decades, Krishna Outdoor has been helping brands connect with people through high-impact advertising across outdoor, transit, print, electronic and digital media. With a strong network, strategic locations and a commitment to results, we make sure your brand gets the visibility it deserves.</p><a class="small-btn" href="contact.html">Talk To Our Team <span>→</span></a></div>
-  <div class="about-scene reveal"><div class="about-frame f1"><img src="assets/images/bus.webp" alt="Bus advertising campaign"></div><div class="about-frame f2"><img src="assets/images/work/work-04.png" alt="Porsche outdoor campaign"></div><div class="year-badge">43+<span>YEARS OF<br>BUILDING BRAND<br>VISIBILITY</span></div><div class="about-frame f3"><img src="assets/images/train-advertisement.jpg" alt="Train advertising campaign"></div><div class="scan-line"></div></div>
-</div></section>
-
-<section class="network" id="network"><div class="network-photo" style="background-image:url('assets/images/work/work-05.png')"></div><div class="network-lines"></div><div class="container network-inner reveal"><div class="network-copy"><div class="tag light">OUR NETWORK</div><h2>ACROSS CITIES.<br><em>CLOSER TO PEOPLE.</em></h2><p>From key urban centres to growing markets, our media network spans multiple cities with high-impact locations across outdoor and transit environments.</p><a class="btn red" href="contact.html">Explore Our Network <b>→</b></a></div><div class="network-stack-stats" aria-label="Krishna Outdoor network highlights"><div>100+<span>Brands</span></div><div>45+<span>Years</span></div><div>5000+<span>Campaigns</span></div><div>25+<span>Cities</span></div></div></div></section>
-
-<section class="cta" id="contact"><div class="container cta-inner reveal"><div><div class="tag light">LET’S CREATE</div><h2>LET’S BUILD YOUR<br><em>NEXT CAMPAIGN.</em></h2><p>For over four decades we’ve helped brands stay visible. Let’s talk about yours.</p></div><a class="btn white" href="contact.html">Contact Us <b>→</b></a></div></section>
-
+<section class="about-cta about-reveal">
+  <img src="assets/images/work/work-03.png" alt="City outdoor campaign">
+  <div class="container">
+    <div><div class="about-tag">LET'S CREATE</div><h2>LET'S CREATE<br><span class="about-red">BIGGER VISIBILITY</span><br>TOGETHER.</h2><p>Partner with Krishna Outdoor and take your brand to more people, more places and new possibilities.</p></div>
+    <a class="about-btn primary" href="contact.html">Get In Touch <span>→</span></a>
+  </div>
+</section>
 </main>
 
-<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media</a><a href="projects.html">Projects</a><a href="careers.html">Careers</a><a href="index.html#network">Location</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
-
-<button class="chatbot" id="chatbot" aria-label="Open Krishna Outdoor assistant">
-  <span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span>
-</button>
-<div class="chat-panel" id="chatPanel" aria-hidden="true">
-  <div class="chat-head"><div class="chat-brand"><span class="chat-brand-icon">✦</span><div><b>Krishna AI</b><small><i></i> Online • replies instantly</small></div></div><button id="chatClose" aria-label="Close">×</button></div>
-  <div class="chat-body"><div class="chat-welcome"><span class="chat-avatar">K</span><div><b>Hi there 👋</b><p>How can we help with your next outdoor campaign?</p></div></div>
-    <div class="chat-options"><button data-chat="media"><span>01</span>Explore media solutions <b>→</b></button><button data-chat="campaign"><span>02</span>Plan a campaign <b>→</b></button><button data-chat="contact"><span>03</span>Talk to our team <b>→</b></button></div>
-    <div class="chat-reply" id="chatReply"></div>
-    <div class="chat-direct"><a href="tel:+919920011574">Call team</a><a href="mailto:info.team@krishnaoutdoor.in">Email us</a></div>
-  </div>
-</div>
-
-<div class="work-lightbox" id="workLightbox" aria-hidden="true"><div class="work-lightbox-inner"><button id="workLightboxClose" aria-label="Close image">×</button><img id="workLightboxImage" src="" alt="Selected campaign"><div id="workLightboxCaption"></div></div></div>
-<div class="story-modal" id="storyModal" aria-hidden="true"><div class="story-dialog"><button id="storyClose">×</button><video controls playsinline preload="metadata"><source src="assets/videos/story-video.mp4" type="video/mp4"></video><div><div class="tag">KRISHNA OUTDOOR</div><h3>YOUR BRAND.<br><em>OUR MEDIA.</em></h3></div></div></div>
+<footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img src="assets/images/logo-footer.png" alt="Krishna Outdoor"></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media Solutions</a><a href="network.html">Our Network</a><a href="projects.html">Our Work</a><a href="contact.html">Contact Us</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img src="assets/images/rakesh-advertising.jpeg" alt="Rakesh Advertising"></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
+<button class="chatbot" id="chatbot" aria-label="Open Krishna Outdoor assistant"><span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span></button>
+<div class="chat-panel" id="chatPanel" aria-hidden="true"><div class="chat-head"><div class="chat-brand"><span class="chat-brand-icon">✦</span><div><b>Krishna AI</b><small><i></i> Online • replies instantly</small></div></div><button id="chatClose" aria-label="Close">×</button></div><div class="chat-body"><div class="chat-welcome"><span class="chat-avatar">K</span><div><b>Hi there 👋</b><p>How can we help with your next outdoor campaign?</p></div></div><div class="chat-options"><button data-chat="media"><span>01</span>Explore media solutions <b>→</b></button><button data-chat="campaign"><span>02</span>Plan a campaign <b>→</b></button><button data-chat="contact"><span>03</span>Talk to our team <b>→</b></button></div><div class="chat-reply" id="chatReply"></div><div class="chat-direct"><a href="tel:+919920011574">Call team</a><a href="mailto:info.team@krishnaoutdoor.in">Email us</a></div></div></div>
 <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
 <script src="js/main.js"></script>
+<script>
+(function(){
+ const els=document.querySelectorAll('.about-reveal');
+ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+ els.forEach(e=>io.observe(e));
+})();
+</script>
 </body></html>

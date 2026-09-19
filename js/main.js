@@ -163,9 +163,9 @@ if(clientStageEl){
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
- ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/digital-billboard-advertising-campaign.webp', color:'#ff2832'},
- transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertising-campaign.webp', color:'#53bffb'},
- print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/porsche-outdoor-billboard-campaign.webp', color:'#a78bfa'}
+ ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
+ transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'},
+ print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
@@ -225,3 +225,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()
 const cursor=$('#cursor'), ring=$('#cursorRing');
 if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemove',e=>{cursor.style.opacity=1;ring.style.opacity=.65;cursor.style.left=`${e.clientX}px`;cursor.style.top=`${e.clientY}px`;ring.style.left=`${e.clientX}px`;ring.style.top=`${e.clientY}px`});$$('a,button').forEach(el=>el.addEventListener('mouseenter',()=>ring.style.transform='translate(-50%,-50%) scale(1.6)'));$$('a,button').forEach(el=>el.addEventListener('mouseleave',()=>ring.style.transform='translate(-50%,-50%) scale(1)'))}
 
+
+/* Small premium interactions — no changes to existing site logic */
+(()=>{const els=document.querySelectorAll('.ko-role,.ko-value,.ko-people-card,.ko-enquiry-card,.ko-location-panel');els.forEach(el=>{el.addEventListener('pointermove',e=>{if(matchMedia('(hover:hover)').matches){const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`translateY(-7px) perspective(800px) rotateX(${-y*1.5}deg) rotateY(${x*1.5}deg)`}});el.addEventListener('pointerleave',()=>el.style.transform='')})})();

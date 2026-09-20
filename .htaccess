@@ -1,0 +1,38 @@
+RewriteEngine On
+# Force HTTPS and one canonical host.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^krishnaoutdoor\.in$ [NC]
+RewriteRule ^ https://krishnaoutdoor.in%{REQUEST_URI} [R=301,L]
+
+# Clean URLs -> existing static HTML files.
+RewriteRule ^about/?$ about.html [L]
+RewriteRule ^media-solutions/?$ services.html [L]
+RewriteRule ^media/digital/?$ digital-media.html [L]
+RewriteRule ^media/ooh/?$ ooh-media.html [L]
+RewriteRule ^media/transit/?$ transit-media.html [L]
+RewriteRule ^our-network/?$ network.html [L]
+RewriteRule ^our-work/?$ projects.html [L]
+RewriteRule ^careers/?$ careers.html [L]
+RewriteRule ^enquire/?$ contact.html [L]
+
+# Redirect legacy .html URLs to clean canonical URLs.
+RewriteCond %{THE_REQUEST} \s/+about\.html[?\s] [NC]
+RewriteRule ^about\.html$ /about [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+services\.html[?\s] [NC]
+RewriteRule ^services\.html$ /media-solutions [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+digital-media\.html[?\s] [NC]
+RewriteRule ^digital-media\.html$ /media/digital [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+ooh-media\.html[?\s] [NC]
+RewriteRule ^ooh-media\.html$ /media/ooh [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+transit-media\.html[?\s] [NC]
+RewriteRule ^transit-media\.html$ /media/transit [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+network\.html[?\s] [NC]
+RewriteRule ^network\.html$ /our-network [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+projects\.html[?\s] [NC]
+RewriteRule ^projects\.html$ /our-work [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+careers\.html[?\s] [NC]
+RewriteRule ^careers\.html$ /careers [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+contact\.html[?\s] [NC]
+RewriteRule ^contact\.html$ /enquire [R=301,L]
+
+ErrorDocument 404 /404.html

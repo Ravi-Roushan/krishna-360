@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /test/
+Disallow: /tmp/
+Sitemap: https://krishnaoutdoor.in/sitemap.xml

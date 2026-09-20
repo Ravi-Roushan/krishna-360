@@ -2006,3 +2006,160 @@ h1,h2,h3,h4,h5,h6,
     line-height:1.45!important;
   }
 }
+
+/* NAV ITEM SIZE UNIFICATION — equal visual blocks without changing the approved design */
+@media (min-width: 901px){
+  .header .nav{
+    align-items:center!important;
+    gap:12px!important;
+  }
+  .header .nav > a:not(.nav-cta),
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown > a{
+    width:112px!important;
+    min-width:112px!important;
+    max-width:112px!important;
+    box-sizing:border-box!important;
+    text-align:center!important;
+  }
+  .header .nav > a:not(.nav-cta){
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    white-space:nowrap!important;
+  }
+  .header .nav .nav-dropdown{
+    position:relative!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:0!important;
+    height:100%!important;
+  }
+  .header .nav .nav-dropdown > a{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding-left:4px!important;
+    padding-right:22px!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow{
+    position:absolute!important;
+    right:5px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    padding:5px 3px!important;
+    z-index:4!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow:hover,
+  .header .nav .nav-dropdown.open .nav-arrow{
+    transform:translateY(-50%)!important;
+  }
+  .header .nav .nav-dropdown > a::after{
+    left:8px!important;
+    right:8px!important;
+    width:0!important;
+  }
+  .header .nav .nav-dropdown > a:hover::after,
+  .header .nav .nav-dropdown.open > a::after{
+    width:calc(100% - 16px)!important;
+  }
+}
+
+/* === INNER PAGE HERO HEIGHT CONSISTENCY ===
+   Keep the approved Home design untouched. All inner-page hero/banner blocks
+   use one consistent desktop height and one consistent mobile height. */
+@media (min-width: 901px){
+  .about-hero,
+  .about-hero-inner,
+  .media-hero,
+  .media-hero-inner,
+  .network-hero,
+  .ow-hero,
+  .kr-hero{
+    min-height:590px !important;
+    height:590px !important;
+  }
+  .ow-hero-inner{min-height:590px;}
+  .kr-hero{height:590px !important;}
+}
+
+@media (max-width: 900px){
+  .about-hero,
+  .about-hero-inner,
+  .media-hero,
+  .media-hero-inner,
+  .network-hero,
+  .ow-hero,
+  .kr-hero{
+    min-height:520px !important;
+    height:520px !important;
+  }
+  .ow-hero-inner{min-height:520px;}
+  .kr-hero{height:520px !important;}
+}
+
+/* =========================================================
+   HERO / BANNER HEIGHT CONSISTENCY
+   All inner-page hero banners use one consistent frame.
+   Home .hero remains unchanged.
+   ========================================================= */
+.about-hero,
+.media-hero,
+.hero,
+.network-hero,
+.ow-hero,
+.kr-hero,
+.kr-enquiry-hero{
+  height:590px !important;
+  min-height:590px !important;
+}
+
+.media-hero-inner,
+.about-hero-inner,
+.ow-hero-inner,
+.kr-hero-inner{
+  min-height:590px !important;
+  height:590px !important;
+}
+
+.kr-enquiry-hero .inner{
+  min-height:590px !important;
+  height:590px !important;
+}
+
+.kr-enquiry-visual{
+  min-height:590px !important;
+  height:590px !important;
+}
+
+@media (max-width:760px){
+  .about-hero,
+  .media-hero,
+  .hero,
+  .network-hero,
+  .ow-hero,
+  .kr-hero,
+  .kr-enquiry-hero{
+    height:520px !important;
+    min-height:520px !important;
+  }
+
+  .media-hero-inner,
+  .about-hero-inner,
+  .ow-hero-inner,
+  .kr-hero-inner{
+    min-height:520px !important;
+    height:520px !important;
+  }
+
+  .kr-enquiry-hero .inner{
+    min-height:520px !important;
+    height:520px !important;
+  }
+
+  .kr-enquiry-visual{
+    min-height:520px !important;
+    height:520px !important;
+  }
+}

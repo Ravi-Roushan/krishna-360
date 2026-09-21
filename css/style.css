@@ -3773,3 +3773,50 @@ body.inner-page:has(.network-reference-page) .header .nav .nav-cta:hover{transfo
   .network-reference-page .network-map-note{width:min(92vw,320px) !important;padding:14px !important;}
   .network-reference-page .map-label{font-size:10px !important;}
 }
+
+/* FINAL NETWORK POLISH: remove rotating hero orbit + enlarge Explore Our Network card */
+.network-reference-page .network-hero-orbit,
+.network-reference-page .network-hero-orbit::before,
+.network-reference-page .network-hero-orbit::after{
+  display:none !important;
+  animation:none !important;
+}
+
+@media (min-width:981px){
+  .network-reference-page .network-map-note{
+    width:320px !important;
+    min-height:300px !important;
+    padding:30px !important;
+    box-sizing:border-box !important;
+  }
+  .network-reference-page .network-map-note .map-note-icon{
+    width:58px !important;
+    height:58px !important;
+    font-size:27px !important;
+    margin-bottom:24px !important;
+  }
+  .network-reference-page .network-map-note strong{
+    font-size:17px !important;
+    line-height:1.1 !important;
+  }
+  .network-reference-page .network-map-note p{
+    font-size:12px !important;
+    line-height:1.65 !important;
+    max-width:250px !important;
+    margin-top:12px !important;
+  }
+  .network-reference-page .network-map-legend{
+    gap:12px !important;
+    margin-top:24px !important;
+    font-size:11px !important;
+  }
+  .network-reference-page .network-map-layout{
+    grid-template-columns:320px minmax(0,1fr) 50px !important;
+    gap:28px !important;
+  }
+}
+
+@media (min-width:981px) and (max-width:1200px){
+  .network-reference-page .network-map-note{width:290px !important;padding:26px !important;}
+  .network-reference-page .network-map-layout{grid-template-columns:290px minmax(0,1fr) 36px !important;gap:20px !important;}
+}

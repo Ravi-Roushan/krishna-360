@@ -64,30 +64,57 @@ if(serviceTitle){ setInterval(()=>setService(serviceIndex+1),5000); }
 
 
 // Continuous planet-style orbit for the 360° Advertising Solutions cards.
+// One geometry for desktop + mobile: six perfectly circular cards, equally spaced
+// on the same circular path. Mobile only scales the complete composition.
 const orbitRingEl=document.querySelector('.solutions-360 .orbit-ring');
 const orbitCards=[...document.querySelectorAll('.solutions-360 .orbit-card')];
 let orbitAngle=0, orbitFrame;
-function animateServiceOrbit(ts){
+function animateServiceOrbit(){
   if(!orbitRingEl || !orbitCards.length) return;
-  const w=orbitRingEl.clientWidth, h=orbitRingEl.clientHeight;
-  const rx=Math.max(110,w*.39), ry=Math.max(90,h*.39);
+  const w=orbitRingEl.clientWidth;
+  const h=orbitRingEl.clientHeight;
+  const mobile=window.innerWidth<=760;
+
+  // Keep every card completely inside the outer ring while preserving a true circle.
+  const cardSize = mobile
+    ? Math.min(58, Math.max(48, w * 0.19))
+    : Math.min(105, Math.max(88, w * 0.17));
+  const safe = mobile ? 7 : 10;
+  const radius = Math.max(1, Math.min(w,h)/2 - cardSize/2 - safe);
   const cx=w/2, cy=h/2;
   const step=(Math.PI*2)/orbitCards.length;
+
   orbitCards.forEach((card,i)=>{
-    const a=orbitAngle + i*step - Math.PI/2;
-    const x=cx + Math.cos(a)*rx;
-    const y=cy + Math.sin(a)*ry;
-    const depth=(Math.sin(a)+1)/2;
-    const scale=.76 + depth*.30;
-    const z=Math.round(depth*160);
-    card.style.left='0'; card.style.top='0'; card.style.margin='0';
-    card.style.transform=`translate3d(${x-52.5}px,${y-52.5}px,${z}px) scale(${scale})`;
-    card.style.zIndex=30+Math.round(depth*20);
+    // Start at the same orientation as the desktop/reference composition.
+    const a=orbitAngle + i*step - Math.PI/3;
+    const x=cx + Math.cos(a)*radius;
+    const y=cy + Math.sin(a)*radius;
+    const active=card.classList.contains('active');
+    const scale=active ? 1.08 : 1;
+
+    card.style.width=`${cardSize}px`;
+    card.style.height=`${cardSize}px`;
+    card.style.left='0px';
+    card.style.top='0px';
+    card.style.right='auto';
+    card.style.bottom='auto';
+    card.style.margin='0';
+    card.style.borderRadius='50%';
+    card.style.setProperty('--orbit-transform',`translate3d(${x-cardSize/2}px,${y-cardSize/2}px,0) scale(${scale})`);
+    card.style.zIndex=active ? 50 : 30;
   });
-  orbitAngle += 0.00055 * (ts ? 16.67 : 16.67);
+
+  // Slightly faster than desktop, while remaining smooth and continuous.
+  orbitAngle += 0.009; // Faster, consistent orbit speed on desktop and mobile
   orbitFrame=requestAnimationFrame(animateServiceOrbit);
 }
-if(orbitRingEl && orbitCards.length){orbitFrame=requestAnimationFrame(animateServiceOrbit);window.addEventListener('resize',()=>{orbitCards.forEach(c=>{c.style.transform=''});});}
+if(orbitRingEl && orbitCards.length){
+  orbitFrame=requestAnimationFrame(animateServiceOrbit);
+  window.addEventListener('resize',()=>{
+    cancelAnimationFrame(orbitFrame);
+    orbitFrame=requestAnimationFrame(animateServiceOrbit);
+  });
+}
 
 // Bottom media-format rail: smooth continuous six-item marquee.
 const slideType = document.querySelector('.solutions-360 .slide-type');

@@ -2190,3 +2190,467 @@ h1,h2,h3,h4,h5,h6,
 .kr-field input[type=file]{padding:10px 12px;cursor:pointer}
 .file-note{display:block;margin-top:6px;font-size:10px;line-height:1.4;color:#7a7d80}
 @media(max-width:600px){.media-detail-hero-bg img{object-position:center}.media-detail-hero .hero-inner h1{font-size:46px}.kr-field input[type=file]{font-size:11px}}
+
+/* FINAL GLOBAL CTA + MOBILE SAFE POLISH */
+.btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.nav-cta,.experience-link,.cta .btn,.about-cta .btn,.ow-cta .btn,.media-final-cta .btn,.kr-final-cta .btn{
+  border-radius:999px !important;
+  min-height:44px;
+  padding:12px 22px !important;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn::after,.small-btn::after,.outline-btn::after,.kr-btn::after,.ow-btn::after,.media-btn::after,.network-btn::after,.network-card-link::after,.kr-office-btn::after,.about-btn::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);opacity:.7;
+}
+.btn:active,.small-btn:active,.outline-btn:active,.kr-btn:active,.ow-btn:active,.media-btn:active,.network-btn:active,.network-card-link:active,.kr-office-btn:active,.about-btn:active{transform:translateY(-1px) scale(.985)!important}
+
+/* Keep every CTA visually consistent, while preserving each section's existing red/white color. */
+.media-btn,.network-btn,.network-card-link,.kr-office-btn,.small-btn,.about-btn,.ow-btn,.kr-btn{border:1px solid var(--red)!important}
+.outline-btn,.btn.white,.kr-btn.alt{border:1px solid #ddd!important}
+
+@media (max-width:760px){
+  .container{width:min(calc(100% - 30px),var(--max));}
+  .hero-actions{flex-wrap:wrap;gap:10px}
+  .hero-actions .btn{width:auto;max-width:100%;}
+  .btn,.small-btn,.outline-btn,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,.about-btn,.experience-link,.cta .btn,.about-cta .btn,.ow-cta .btn,.media-final-cta .btn,.kr-final-cta .btn{min-height:42px;padding:11px 18px!important;font-size:10px!important;max-width:100%;}
+
+  /* Home Our Solutions orbit: keep the complete rotating graphic inside the viewport. */
+  .solutions-360{overflow:hidden!important;padding-left:0!important;padding-right:0!important;}
+  .solutions-360 .orbit-layout{width:100%;overflow:visible!important;}
+  .solutions-360 .orbit-ring{width:min(360px,calc(100vw - 34px))!important;height:min(360px,calc(100vw - 34px))!important;max-width:360px!important;margin-left:auto!important;margin-right:auto!important;overflow:visible!important;}
+  .solutions-360 .orbit-card{width:82px!important;height:82px!important;}
+  .solutions-360 .orbit-card b{font-size:10px!important;}
+  .solutions-360 .orbit-card span{font-size:9px!important;}
+  .solutions-360 .orbit-center{inset:36%!important;}
+  .solutions-360 .orbit-center span{font-size:34px!important;}
+  .solutions-360 .orbit-center small{font-size:7px!important;letter-spacing:2px!important;}
+  .solutions-360 .oc1{top:-3px!important;margin-left:-41px!important}
+  .solutions-360 .oc4{bottom:-3px!important;margin-left:-41px!important}
+  .solutions-360 .oc2{right:0!important;top:20%!important}
+  .solutions-360 .oc3{right:1%!important;bottom:20%!important}
+  .solutions-360 .oc5{left:1%!important;bottom:20%!important}
+  .solutions-360 .oc6{left:0!important;top:20%!important}
+}
+
+/* FINAL BUTTON SHAPE — square/chamfered corners, NOT pill/rounded */
+.btn,
+.small-btn,
+.outline-btn,
+.footer-campaign,
+.service-next,
+.tab,
+.story-button,
+.nav-cta {
+  border-radius: 0 !important;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 11px) 0,
+    100% 11px,
+    100% calc(100% - 11px),
+    calc(100% - 11px) 100%,
+    11px 100%,
+    0 calc(100% - 11px),
+    0 11px
+  ) !important;
+}
+
+.btn:hover,
+.small-btn:hover,
+.outline-btn:hover,
+.footer-campaign:hover,
+.service-next:hover,
+.tab:hover,
+.story-button:hover,
+.nav-cta:hover {
+  border-radius: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .btn,
+  .small-btn,
+  .outline-btn,
+  .footer-campaign,
+  .service-next,
+  .tab,
+  .story-button,
+  .nav-cta {
+    border-radius: 0 !important;
+    clip-path: polygon(
+      0 0,
+      calc(100% - 8px) 0,
+      100% 8px,
+      100% calc(100% - 8px),
+      calc(100% - 8px) 100%,
+      8px 100%,
+      0 calc(100% - 8px),
+      0 8px
+    ) !important;
+  }
+}
+
+/* FINAL USER BUTTON POLISH — match the Enquire Now button shape everywhere.
+   No pill shape and no chamfer/clip-path. Keep the existing Home hover/sweep animation. */
+.btn,.small-btn,.outline-btn,.footer-campaign,.service-next,.tab,.story-button,
+.nav-cta,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,
+.about-btn,.experience-link,.cta .btn,.about-cta .btn,.ow-cta .btn,
+.media-final-cta .btn,.kr-final-cta .btn,.kr-final-cta,.media-final-cta,.ow-cta .btn{
+  border-radius:6px !important;
+  clip-path:none !important;
+}
+
+/* Keep compact controls comfortable on touch screens without changing their visual language. */
+@media (max-width:760px){
+  .btn,.small-btn,.outline-btn,.footer-campaign,.service-next,.tab,.story-button,
+  .nav-cta,.kr-btn,.ow-btn,.media-btn,.network-btn,.network-card-link,.kr-office-btn,
+  .about-btn,.experience-link,.cta .btn,.about-cta .btn,.ow-cta .btn,
+  .media-final-cta .btn,.kr-final-cta .btn,.kr-final-cta,.media-final-cta,.ow-cta .btn{
+    border-radius:6px !important;
+    clip-path:none !important;
+    max-width:100%;
+    white-space:normal;
+    text-align:center;
+  }
+
+  /* Keep the Home Our Solutions wheel completely inside the mobile viewport. */
+  .solutions-360{overflow:hidden !important; width:100%;}
+  .solutions-360 .orbit-layout{width:100%;min-width:0;overflow:visible !important;}
+  .solutions-360 .orbit-ring{
+    width:calc(100vw - 48px) !important;
+    height:calc(100vw - 48px) !important;
+    max-width:340px !important;
+    max-height:340px !important;
+    margin-inline:auto !important;
+  }
+  .solutions-360 .orbit-card{
+    width:74px !important;
+    height:74px !important;
+  }
+  .solutions-360 .oc1{top:-1px !important;margin-left:-37px !important;}
+  .solutions-360 .oc4{bottom:-1px !important;margin-left:-37px !important;}
+  .solutions-360 .oc2{right:1px !important;top:19% !important;}
+  .solutions-360 .oc3{right:1px !important;bottom:19% !important;}
+  .solutions-360 .oc5{left:1px !important;bottom:19% !important;}
+  .solutions-360 .oc6{left:1px !important;top:19% !important;}
+}
+
+@media (max-width:390px){
+  .solutions-360 .orbit-ring{
+    width:calc(100vw - 56px) !important;
+    height:calc(100vw - 56px) !important;
+  }
+  .solutions-360 .orbit-card{width:68px !important;height:68px !important;}
+  .solutions-360 .oc1{margin-left:-34px !important;}
+  .solutions-360 .oc4{margin-left:-34px !important;}
+  .solutions-360 .orbit-card b{font-size:9px !important;}
+  .solutions-360 .orbit-card span{font-size:8px !important;}
+}
+
+/* FINAL 360° ORBIT MOBILE FIX — keep the full circular composition visible */
+.solutions-360 .orbit-ring{aspect-ratio:1/1!important;border-radius:50%!important;overflow:visible!important;flex:none!important;}
+.solutions-360 .orbit-ring::before,
+.solutions-360 .orbit-ring::after{border-radius:50%!important;}
+
+@media (max-width:760px){
+  .solutions-360{overflow:visible!important;}
+  .solutions-360 .orbit-layout{padding:0 8px!important;overflow:visible!important;}
+  .solutions-360 .orbit-ring{
+    width:min(310px,calc(100vw - 76px))!important;
+    height:min(310px,calc(100vw - 76px))!important;
+    max-width:none!important;
+    max-height:none!important;
+    margin:6px auto 0!important;
+  }
+  .solutions-360 .orbit-card{
+    width:64px!important;
+    height:64px!important;
+    transform-origin:center!important;
+  }
+  .solutions-360 .orbit-card:hover,
+  .solutions-360 .orbit-card.active{transform:scale(1.08)!important;}
+  .solutions-360 .oc1{top:-2px!important;left:50%!important;margin-left:-32px!important;}
+  .solutions-360 .oc4{bottom:-2px!important;left:50%!important;margin-left:-32px!important;}
+  .solutions-360 .oc2{right:-1px!important;top:18%!important;}
+  .solutions-360 .oc3{right:-1px!important;bottom:18%!important;}
+  .solutions-360 .oc5{left:-1px!important;bottom:18%!important;}
+  .solutions-360 .oc6{left:-1px!important;top:18%!important;}
+  .solutions-360 .orbit-center{inset:34%!important;}
+  .solutions-360 .orbit-center span{font-size:30px!important;line-height:1!important;}
+  .solutions-360 .orbit-center small{font-size:6px!important;letter-spacing:1.8px!important;}
+  .solutions-360 .orbit-center b{font-size:8px!important;margin-top:6px!important;}
+}
+
+@media (max-width:390px){
+  .solutions-360 .orbit-ring{
+    width:calc(100vw - 68px)!important;
+    height:calc(100vw - 68px)!important;
+  }
+  .solutions-360 .orbit-card{width:58px!important;height:58px!important;}
+  .solutions-360 .oc1,.solutions-360 .oc4{margin-left:-29px!important;}
+  .solutions-360 .orbit-card b{font-size:8px!important;}
+  .solutions-360 .orbit-card span{font-size:7px!important;}
+  .solutions-360 .orbit-center{inset:33%!important;}
+}
+
+/* 360° Advertising Solutions — mobile reference match */
+@media(max-width:760px){
+  .solutions-360{overflow:hidden!important}
+  .solutions-360 .container{width:calc(100% - 24px)!important}
+  .solutions-360 .orbit-layout{display:flex!important;flex-direction:column!important;gap:4px!important}
+  .solutions-360 .orbit-ring{width:min(286px,92vw)!important;height:min(286px,92vw)!important;min-height:0!important;margin:0 auto!important;border-radius:50%!important;overflow:visible!important}
+  .solutions-360 .orbit-ring:before{inset:7%!important}
+  .solutions-360 .orbit-ring:after{inset:27%!important}
+  .solutions-360 .orbit-center{inset:34%!important;min-width:0!important;min-height:0!important}
+  .solutions-360 .orbit-center span{font-size:30px!important;line-height:1!important}
+  .solutions-360 .orbit-center small{font-size:7px!important;letter-spacing:2px!important}
+  .solutions-360 .orbit-center b{font-size:7px!important;margin-top:4px!important}
+  .solutions-360 .orbit-card{width:48px!important;height:48px!important;padding:0!important}
+  .solutions-360 .orbit-card b{font-size:7px!important;margin-bottom:1px!important}
+  .solutions-360 .orbit-card span{font-size:6.5px!important;line-height:1!important}
+  .solutions-360 .service-panel{padding:22px 4px 0!important;max-width:100%!important}
+  .solutions-360 .service-panel h3{font-size:34px!important;line-height:.95!important;margin:10px auto 14px!important;max-width:330px!important}
+  .solutions-360 .service-panel p{font-size:10px!important;line-height:1.65!important;min-height:0!important;max-width:330px!important;margin:0 auto!important}
+  .solutions-360 .service-meter{max-width:330px!important;margin:22px auto 16px!important}
+}
+@media(max-width:360px){
+  .solutions-360 .orbit-ring{width:260px!important;height:260px!important}
+  .solutions-360 .service-panel h3{font-size:30px!important}
+}
+
+/* FINAL 360 ORBIT MOBILE REFERENCE FIX
+   Keep the desktop orbit untouched. On phones the ring must fit INSIDE the
+   content column (never use viewport width larger than the container), while
+   retaining the same six-point circular geometry as desktop/reference. */
+@media (max-width:760px){
+  .solutions-360{overflow:hidden!important}
+  .solutions-360 .container{overflow:visible!important}
+  .solutions-360 .orbit-layout{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    justify-items:center!important;
+    width:100%!important;
+  }
+  .solutions-360 .orbit-ring{
+    width:min(300px,calc(100vw - 42px))!important;
+    height:auto!important;
+    aspect-ratio:1 / 1!important;
+    min-width:0!important;
+    max-width:300px!important;
+    margin:0 auto!important;
+    flex:none!important;
+    overflow:visible!important;
+  }
+  .solutions-360 .orbit-ring:before{inset:7%!important}
+  .solutions-360 .orbit-ring:after{inset:25%!important}
+  .solutions-360 .orbit-glow{inset:35%!important}
+  .solutions-360 .orbit-center{
+    inset:34%!important;
+    width:auto!important;
+    height:auto!important;
+    aspect-ratio:1!important;
+  }
+  .solutions-360 .orbit-center span{font-size:36px!important;line-height:1!important}
+  .solutions-360 .orbit-center small{font-size:9px!important;letter-spacing:2px!important}
+  .solutions-360 .orbit-center b{font-size:8px!important;margin-top:5px!important}
+  .solutions-360 .orbit-card{
+    min-width:0!important;
+    min-height:0!important;
+    border-radius:50%!important;
+    padding:0!important;
+    box-shadow:0 10px 24px #00000012!important;
+  }
+  .solutions-360 .orbit-card b{font-size:8px!important;margin-bottom:2px!important}
+  .solutions-360 .orbit-card span{font-size:8px!important;line-height:1.05!important}
+  .solutions-360 .service-panel{
+    width:100%!important;
+    max-width:560px!important;
+    padding:34px 0 0!important;
+    text-align:center!important;
+    margin:0 auto!important;
+  }
+  .solutions-360 .service-panel h3{font-size:34px!important;line-height:.98!important}
+  .solutions-360 .service-panel p{min-height:0!important}
+}
+@media (max-width:360px){
+  .solutions-360 .orbit-ring{width:min(270px,calc(100vw - 38px))!important}
+  .solutions-360 .orbit-center span{font-size:32px!important}
+  .solutions-360 .service-panel h3{font-size:31px!important}
+}
+
+
+/* FINAL MOBILE ORBIT GEOMETRY — preserve the desktop circular composition on phones */
+@media (max-width:760px){
+  .solutions-360{overflow:hidden!important}
+  .solutions-360 .orbit-layout{display:grid!important;grid-template-columns:1fr!important;justify-items:center!important}
+  .solutions-360 .orbit-ring{
+    width:min(300px,calc(100vw - 40px))!important;
+    height:min(300px,calc(100vw - 40px))!important;
+    aspect-ratio:1/1!important;
+    flex:none!important;
+    margin:0 auto!important;
+    border:1px solid #d9d9d9!important;
+    border-radius:50%!important;
+    position:relative!important;
+    overflow:visible!important;
+  }
+  .solutions-360 .orbit-ring:before{
+    inset:8%!important;
+    border-radius:50%!important;
+  }
+  .solutions-360 .orbit-ring:after{
+    inset:27%!important;
+    border-radius:50%!important;
+  }
+  .solutions-360 .orbit-card{
+    width:50px!important;
+    height:50px!important;
+    min-width:50px!important;
+    min-height:50px!important;
+    padding:0!important;
+    border-radius:50%!important;
+    aspect-ratio:1/1!important;
+    overflow:hidden!important;
+    flex:none!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+    transform-origin:center center!important;
+  }
+  .solutions-360 .orbit-card b{font-size:9px!important;line-height:1!important;margin-bottom:3px!important}
+  .solutions-360 .orbit-card span{font-size:8px!important;line-height:1.05!important}
+  .solutions-360 .orbit-center{
+    width:auto!important;height:auto!important;
+    inset:35%!important;
+    border-radius:50%!important;
+    aspect-ratio:1/1!important;
+  }
+  .solutions-360 .orbit-center span{font-size:37px!important;line-height:.9!important}
+  .solutions-360 .orbit-center small{font-size:8px!important;letter-spacing:2px!important}
+  .solutions-360 .orbit-center b{font-size:7px!important;margin-top:6px!important}
+  .solutions-360 .service-panel{width:100%!important;max-width:430px!important;padding:32px 8px 0!important;text-align:center!important}
+  .solutions-360 .service-panel h3{font-size:36px!important;line-height:.98!important}
+  .solutions-360 .service-panel p{min-height:0!important}
+}
+@media (max-width:360px){
+  .solutions-360 .orbit-ring{width:280px!important;height:280px!important}
+  .solutions-360 .orbit-card{width:47px!important;height:47px!important;min-width:47px!important;min-height:47px!important}
+  .solutions-360 .orbit-center{inset:34%!important}
+  .solutions-360 .orbit-center span{font-size:34px!important}
+}
+
+/* FINAL 360° ORBIT MOBILE ALIGNMENT — same orbit geometry as desktop, scaled only. */
+@media (max-width:760px){
+  .solutions-360 .orbit-layout{display:grid!important;grid-template-columns:1fr!important;justify-items:center!important;}
+  .solutions-360 .orbit-ring{
+    width:min(390px,92vw)!important;
+    height:auto!important;
+    aspect-ratio:1/1!important;
+    margin:0 auto!important;
+    overflow:visible!important;
+  }
+  .solutions-360 .orbit-card{
+    border-radius:50%!important;
+    aspect-ratio:1/1!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+  }
+  .solutions-360 .orbit-center{border-radius:50%!important;}
+}
+
+
+/* FINAL 360 ORBIT MOBILE ALIGNMENT: JS owns all six positions.
+   Remove legacy corner positioning/hover transforms so every card stays on the
+   same circular path at equal angular intervals, like the desktop orbit. */
+@media (max-width:760px){
+  .solutions-360 .orbit-ring{
+    width:min(300px,calc(100vw - 52px)) !important;
+    height:min(300px,calc(100vw - 52px)) !important;
+    max-width:300px !important;
+    max-height:300px !important;
+    margin-inline:auto !important;
+  }
+  .solutions-360 .orbit-card,
+  .solutions-360 .orbit-card:hover,
+  .solutions-360 .orbit-card:focus,
+  .solutions-360 .orbit-card.active{
+    position:absolute !important;
+    top:0 !important; left:0 !important; right:auto !important; bottom:auto !important;
+    margin:0 !important;
+    border-radius:50% !important;
+    transform-origin:center center !important;
+  }
+}
+@media (max-width:390px){
+  .solutions-360 .orbit-ring{
+    width:min(276px,calc(100vw - 52px)) !important;
+    height:min(276px,calc(100vw - 52px)) !important;
+  }
+}
+
+
+/* FINAL ORBIT POLISH — all six service cards remain perfectly circular,
+   equally spaced and continuously moving on one true circular path. */
+.solutions-360 .orbit-card,
+.solutions-360 .orbit-card:hover,
+.solutions-360 .orbit-card:focus,
+.solutions-360 .orbit-card.active{
+  border-radius:50% !important;
+  aspect-ratio:1 / 1 !important;
+  transition:background .28s ease,color .28s ease,box-shadow .28s ease !important;
+  transform-origin:center center !important;
+}
+.solutions-360 .orbit-ring{
+  aspect-ratio:1 / 1 !important;
+  border-radius:50% !important;
+  overflow:visible !important;
+}
+@media(max-width:760px){
+  .solutions-360 .orbit-ring{
+    width:min(300px,calc(100vw - 44px)) !important;
+    height:min(300px,calc(100vw - 44px)) !important;
+    max-width:300px !important;
+    max-height:300px !important;
+    margin-inline:auto !important;
+  }
+  .solutions-360 .orbit-card,
+  .solutions-360 .orbit-card:hover,
+  .solutions-360 .orbit-card:focus,
+  .solutions-360 .orbit-card.active{
+    border-radius:50% !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+  }
+}
+@media(max-width:390px){
+  .solutions-360 .orbit-ring{
+    width:min(276px,calc(100vw - 48px)) !important;
+    height:min(276px,calc(100vw - 48px)) !important;
+  }
+}
+
+
+/* FINAL 360 ORBIT MOTION LOCK — JS is the single source of truth for card position.
+   Prevent hover/active styles from overriding the circular motion on mobile or desktop. */
+.solutions-360 .orbit-card,
+.solutions-360 .orbit-card:hover,
+.solutions-360 .orbit-card:focus,
+.solutions-360 .orbit-card.active{
+  transform:var(--orbit-transform, translate3d(0,0,0)) !important;
+  transition:background .28s ease,color .28s ease,box-shadow .28s ease !important;
+  transform-origin:center center !important;
+  border-radius:50% !important;
+  aspect-ratio:1 / 1 !important;
+}
+@media(max-width:760px){
+  .solutions-360 .orbit-card,
+  .solutions-360 .orbit-card:hover,
+  .solutions-360 .orbit-card:focus,
+  .solutions-360 .orbit-card.active{
+    border-radius:50% !important;
+    overflow:hidden !important;
+  }
+}

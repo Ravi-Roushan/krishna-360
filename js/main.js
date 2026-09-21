@@ -116,6 +116,82 @@ if(orbitRingEl && orbitCards.length){
   });
 }
 
+// Hero stats strip: duplicate the six cards once for a seamless automatic loop.
+const heroStatsTrack = document.querySelector('.stats-strip-track');
+if (heroStatsTrack && !heroStatsTrack.dataset.autoLoopReady) {
+  heroStatsTrack.dataset.autoLoopReady = 'true';
+  [...heroStatsTrack.children].forEach((el) => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    heroStatsTrack.appendChild(clone);
+  });
+}
+
+// Hero stats: desktop remains static. Mobile/tablet gets a very slow auto-slide
+// with mouse-hover pause and touch/mouse drag support. The duplicated track makes
+// the loop seamless without changing the original design.
+if (heroStatsTrack && !heroStatsTrack.dataset.mobileMotionReady) {
+  heroStatsTrack.dataset.mobileMotionReady = 'true';
+  const strip = heroStatsTrack.closest('.stats-strip');
+  const mq = window.matchMedia('(max-width: 900px)');
+  let x = 0, raf = 0, last = 0, paused = false, dragging = false;
+  let startPointer = 0, startX = 0;
+  const speed = 10; // px/sec — intentionally slow
+  const loopWidth = () => heroStatsTrack.scrollWidth / 2;
+  const apply = () => { heroStatsTrack.style.transform = `translate3d(${x}px,0,0)`; };
+  const normalize = () => {
+    const w = loopWidth();
+    if (w > 0) {
+      while (x <= -w) x += w;
+      while (x > 0) x -= w;
+    }
+  };
+  const tick = (t) => {
+    if (!last) last = t;
+    const dt = Math.min(50, t-last);
+    last = t;
+    if (mq.matches && !paused && !dragging) {
+      x -= speed * dt / 1000;
+      normalize();
+      apply();
+    }
+    raf = requestAnimationFrame(tick);
+  };
+  const start = (e) => {
+    if (!mq.matches) return;
+    dragging = true;
+    paused = true;
+    startPointer = e.clientX;
+    startX = x;
+    strip?.classList.add('is-dragging');
+    heroStatsTrack.setPointerCapture?.(e.pointerId);
+  };
+  const move = (e) => {
+    if (!dragging || !mq.matches) return;
+    x = startX + (e.clientX - startPointer);
+    normalize();
+    apply();
+    if (Math.abs(e.clientX-startPointer) > 2) e.preventDefault();
+  };
+  const end = () => {
+    if (!dragging) return;
+    dragging = false;
+    paused = false;
+    strip?.classList.remove('is-dragging');
+  };
+  // Cursor enters the stats strip -> pause. Leaving -> resume.
+  strip?.addEventListener('mouseenter',()=>{ if(mq.matches) paused=true; });
+  strip?.addEventListener('mouseleave',()=>{ if(mq.matches && !dragging) paused=false; });
+  strip?.addEventListener('pointerdown',start);
+  strip?.addEventListener('pointermove',move,{passive:false});
+  strip?.addEventListener('pointerup',end);
+  strip?.addEventListener('pointercancel',end);
+  strip?.addEventListener('lostpointercapture',end);
+  mq.addEventListener?.('change',()=>{ x=0; apply(); });
+  apply();
+  raf = requestAnimationFrame(tick);
+}
+
 // Bottom media-format rail: smooth continuous six-item marquee.
 const slideType = document.querySelector('.solutions-360 .slide-type');
 const slideTrack = document.querySelector('.solutions-360 .slide-type-track');

@@ -2654,3 +2654,40 @@ h1,h2,h3,h4,h5,h6,
     overflow:hidden !important;
   }
 }
+
+/* ===== HERO STATS: DESKTOP STATIC / MOBILE SLOW AUTO-SLIDE + DRAG ===== */
+.stats-strip{overflow:hidden!important;position:relative!important}
+.stats-strip-track{
+  display:flex!important;
+  align-items:stretch!important;
+  width:max-content!important;
+  min-width:0!important;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+.stats-strip .stats-item{
+  flex:0 0 calc(100vw / 6)!important;
+  width:calc(100vw / 6)!important;
+  min-width:calc(100vw / 6)!important;
+}
+/* Desktop stays completely static. */
+@media(min-width:901px){
+  .stats-strip-track{animation:none!important;transform:translate3d(0,0,0)!important}
+}
+/* Mobile/tablet: very slow automatic movement + mouse/touch drag. */
+@media(max-width:900px){
+  .stats-strip{overflow:hidden!important;touch-action:pan-y!important;cursor:grab}
+  .stats-strip.is-dragging{cursor:grabbing}
+  .stats-strip-track{animation:none!important;cursor:grab}
+  .stats-strip .stats-item{
+    flex:0 0 205px!important;
+    width:205px!important;
+    min-width:205px!important;
+    min-height:88px!important;
+  }
+}
+@media(max-width:480px){
+  .stats-strip .stats-item{flex-basis:190px!important;width:190px!important;min-width:190px!important;padding:14px 15px!important}
+  .stats-strip .stats-item strong{font-size:25px!important}
+  .stats-strip .stats-item span{font-size:9px!important}
+}

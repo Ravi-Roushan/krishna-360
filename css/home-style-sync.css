@@ -359,3 +359,6 @@
   .kr-page .kr-application{grid-template-columns:1fr!important}
   .kr-page .kr-form{padding:22px 18px!important}
 }
+
+/* Our Network custom vector India map */
+.network-map-svg{display:block;width:min(620px,100%);height:auto;max-height:680px;margin:0 auto;overflow:visible}.network-map-wrap{overflow:visible}.network-map{display:flex;align-items:center;justify-content:center;width:100%;min-height:520px}.network-map-aura{pointer-events:none}@media(max-width:900px){.network-map{min-height:430px;padding:8px 0 18px}.network-map-svg{width:min(560px,100%);max-width:100%}}@media(max-width:600px){.network-map{min-height:360px;padding:0 2px 14px}.network-map-svg{width:100%;max-width:430px}.network-map-layout{gap:22px}}

@@ -169,3 +169,193 @@
 .about-hero~*, .media-page, .network-hero~*, .ow-hero~*, .kr-page{--inner-max:1240px}
 .about-collage .tile{position:relative}
 .media-card,.network-card,.ow-card{position:relative}
+
+/* =========================================================
+   FINAL CAREERS + ENQUIRE HERO POLISH
+   Match the compact inner-page hero language without touching Home.
+   ========================================================= */
+
+/* Shared hero frame and readable content stage */
+.kr-page .kr-hero,
+.kr-page .kr-enquiry-hero{
+  position:relative!important;
+  height:590px!important;
+  min-height:590px!important;
+  overflow:hidden!important;
+}
+
+.kr-page .kr-hero-inner{
+  width:min(calc(100% - 64px),var(--content-max))!important;
+  max-width:var(--content-max)!important;
+  min-height:590px!important;
+  height:590px!important;
+  padding:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+}
+
+.kr-page .kr-hero h1,
+.kr-page .kr-enquiry-copy h1{
+  font-size:clamp(36px,4vw,54px)!important;
+  line-height:.94!important;
+  max-width:610px!important;
+  margin:8px 0 14px!important;
+  letter-spacing:-.035em!important;
+}
+
+.kr-page .kr-hero p,
+.kr-page .kr-enquiry-copy p{
+  max-width:500px!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+  margin:0 0 22px!important;
+}
+
+.kr-page .kr-kicker{
+  font-size:9px!important;
+  letter-spacing:.16em!important;
+  margin-bottom:9px!important;
+}
+
+.kr-page .kr-actions{gap:10px!important}
+.kr-page .kr-btn{
+  min-height:44px!important;
+  padding:12px 18px!important;
+  font-size:12px!important;
+}
+
+/* Careers: keep its original static image, but make the text stage cleaner. */
+.kr-page .kr-hero:after{
+  background:linear-gradient(90deg,rgba(5,8,11,.94) 0%,rgba(5,8,11,.70) 43%,rgba(5,8,11,.16) 82%),linear-gradient(0deg,rgba(0,0,0,.62),transparent 55%)!important;
+}
+
+/* Enquire: use the same full hero composition as other inner pages. */
+.kr-page .kr-enquiry-hero .inner{
+  position:relative!important;
+  width:min(calc(100% - 64px),var(--content-max))!important;
+  max-width:var(--content-max)!important;
+  min-height:590px!important;
+  height:590px!important;
+  display:flex!important;
+  align-items:center!important;
+  margin-inline:auto!important;
+}
+
+.kr-page .kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  z-index:0!important;
+}
+.kr-page .kr-enquiry-visual img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.kr-page .kr-enquiry-visual:before{
+  background:linear-gradient(90deg,rgba(5,8,11,.94) 0%,rgba(5,8,11,.72) 42%,rgba(5,8,11,.16) 82%)!important;
+}
+.kr-page .kr-enquiry-copy{
+  position:relative!important;
+  z-index:3!important;
+  width:58%!important;
+  padding:0!important;
+  background:none!important;
+  display:block!important;
+}
+.kr-page .kr-enquiry-copy:after{display:none!important}
+.kr-page .kr-enquiry-copy h1{color:#fff!important}
+.kr-page .kr-enquiry-copy p{color:rgba(255,255,255,.82)!important}
+.kr-page .kr-enquiry-steps{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  max-width:570px!important;
+  margin-top:18px!important;
+  gap:8px!important;
+}
+.kr-page .kr-enquiry-step{
+  padding:11px 12px!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  background:rgba(0,0,0,.18)!important;
+  backdrop-filter:blur(5px)!important;
+}
+.kr-page .kr-enquiry-step b{font-size:16px!important;margin-bottom:3px!important}
+.kr-page .kr-enquiry-step span{font-size:9px!important}
+
+/* Keep lower enquiry content compact and visually balanced. */
+.kr-page .kr-form-layout{width:min(100%,var(--content-max))!important}
+.kr-page .kr-contact-form,
+.kr-page .kr-side-message,
+.kr-page .kr-guidance{border-radius:0!important}
+
+@media(max-width:900px){
+  .kr-page .kr-hero,
+  .kr-page .kr-enquiry-hero,
+  .kr-page .kr-hero-inner,
+  .kr-page .kr-enquiry-hero .inner{
+    height:520px!important;
+    min-height:520px!important;
+  }
+  .kr-page .kr-hero-inner,
+  .kr-page .kr-enquiry-hero .inner{
+    width:calc(100% - 34px)!important;
+  }
+  .kr-page .kr-enquiry-copy{width:72%!important}
+}
+
+@media(max-width:600px){
+  .kr-page .kr-hero,
+  .kr-page .kr-enquiry-hero,
+  .kr-page .kr-hero-inner,
+  .kr-page .kr-enquiry-hero .inner{
+    height:520px!important;
+    min-height:520px!important;
+  }
+  .kr-page .kr-hero-inner,
+  .kr-page .kr-enquiry-hero .inner{
+    width:calc(100% - 32px)!important;
+  }
+  .kr-page .kr-hero-inner{justify-content:center!important;padding:0!important}
+  .kr-page .kr-hero h1,
+  .kr-page .kr-enquiry-copy h1{
+    font-size:31px!important;
+    line-height:.98!important;
+    max-width:340px!important;
+    margin:7px 0 12px!important;
+  }
+  .kr-page .kr-hero p,
+  .kr-page .kr-enquiry-copy p{
+    font-size:11px!important;
+    line-height:1.5!important;
+    max-width:330px!important;
+    margin-bottom:17px!important;
+  }
+  .kr-page .kr-kicker{font-size:8px!important;margin-bottom:7px!important}
+  .kr-page .kr-actions{flex-wrap:wrap!important;gap:8px!important}
+  .kr-page .kr-btn{min-height:40px!important;padding:10px 14px!important;font-size:10px!important}
+
+  .kr-page .kr-enquiry-copy{width:100%!important;padding:0!important}
+  .kr-page .kr-enquiry-copy h1{max-width:330px!important}
+  .kr-page .kr-enquiry-steps{
+    grid-template-columns:1fr!important;
+    max-width:290px!important;
+    gap:6px!important;
+    margin-top:12px!important;
+  }
+  .kr-page .kr-enquiry-step{padding:8px 10px!important;display:flex!important;align-items:center!important;gap:9px!important}
+  .kr-page .kr-enquiry-step b{font-size:13px!important;margin:0!important;min-width:23px!important}
+  .kr-page .kr-enquiry-step span{font-size:8px!important}
+  .kr-page .kr-enquiry-visual:before{background:linear-gradient(90deg,rgba(5,8,11,.94),rgba(5,8,11,.68))!important}
+
+  .kr-page .kr-career-grid{gap:28px!important}
+  .kr-page .kr-image-stack{min-height:320px!important}
+  .kr-page .kr-roles{grid-template-columns:1fr!important}
+  .kr-page .kr-steps{grid-template-columns:1fr!important}
+  .kr-page .kr-application{grid-template-columns:1fr!important}
+  .kr-page .kr-form{padding:22px 18px!important}
+}

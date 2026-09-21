@@ -2691,3 +2691,369 @@ h1,h2,h3,h4,h5,h6,
   .stats-strip .stats-item strong{font-size:25px!important}
   .stats-strip .stats-item span{font-size:9px!important}
 }
+
+
+/* =========================================================
+   FINAL INNER HERO STANDARDIZATION
+   Home hero is explicitly preserved. Every other page uses
+   the same banner frame, typography scale and left alignment.
+   ========================================================= */
+.home-page .hero{height:680px!important;min-height:680px!important}
+
+.inner-page .about-hero,
+.inner-page .media-hero,
+.inner-page .media-detail-hero,
+.inner-page .network-hero,
+.inner-page .ow-hero,
+.inner-page .kr-hero,
+.inner-page .kr-enquiry-hero{
+  height:590px!important;
+  min-height:590px!important;
+}
+
+.inner-page .about-hero-inner,
+.inner-page .media-hero-inner,
+.inner-page .network-hero-inner,
+.inner-page .ow-hero-inner,
+.inner-page .kr-hero-inner{
+  height:590px!important;
+  min-height:590px!important;
+  display:flex!important;
+  align-items:center!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+
+/* One shared compact hero type system */
+.inner-page .about-hero-title,
+.inner-page .media-hero-copy h1,
+.inner-page .media-detail-hero .hero-inner h1,
+.inner-page .network-hero-copy h1,
+.inner-page .ow-hero h1,
+.inner-page .kr-hero h1,
+.inner-page .kr-enquiry-copy h1{
+  font-size:42px!important;
+  line-height:.95!important;
+  letter-spacing:-.7px!important;
+  max-width:560px!important;
+  margin:10px 0 16px!important;
+}
+.inner-page .about-hero-desc,
+.inner-page .media-hero-copy p,
+.inner-page .media-detail-hero .hero-inner p,
+.inner-page .network-hero-copy p,
+.inner-page .ow-hero-copy,
+.inner-page .kr-hero p,
+.inner-page .kr-enquiry-copy p{
+  font-size:12px!important;
+  line-height:1.55!important;
+  max-width:500px!important;
+  margin-bottom:20px!important;
+}
+.inner-page .about-hero-copy,
+.inner-page .media-hero-copy,
+.inner-page .network-hero-copy,
+.inner-page .ow-hero-inner>div:first-child,
+.inner-page .kr-hero-inner,
+.inner-page .kr-enquiry-copy{
+  position:relative;
+  z-index:4;
+}
+
+/* Detail pages: keep the same full-bleed hero treatment */
+.inner-page .media-detail-hero .hero-inner{
+  height:590px!important;
+  min-height:590px!important;
+  display:flex!important;
+  align-items:center!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+.inner-page .media-detail-hero .hero-inner h1{max-width:560px!important}
+
+/* Careers: same visual frame as every other inner hero */
+.inner-page .kr-hero{align-items:center!important}
+.inner-page .kr-hero-inner{padding-left:0!important}
+
+/* Enquire: use its existing image as a full hero background instead of a split banner */
+.inner-page .kr-enquiry-hero .inner{
+  height:590px!important;
+  min-height:590px!important;
+  max-width:1240px!important;
+  width:min(calc(100% - 64px),1240px)!important;
+  display:flex!important;
+  align-items:center!important;
+  position:relative!important;
+}
+.inner-page .kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:590px!important;
+  min-height:590px!important;
+  z-index:0!important;
+}
+.inner-page .kr-enquiry-visual:before{
+  background:linear-gradient(90deg,rgba(5,8,11,.94) 0%,rgba(5,8,11,.78) 40%,rgba(5,8,11,.25) 75%,rgba(5,8,11,.16) 100%)!important;
+}
+.inner-page .kr-enquiry-visual:after{display:none!important}
+.inner-page .kr-enquiry-copy{
+  width:min(620px,70%)!important;
+  padding:0!important;
+}
+.inner-page .kr-enquiry-steps{max-width:560px!important;margin-top:26px!important}
+
+/* Our Work: static image in the hero; no train/work-showcase video */
+.inner-page .ow-hero-media{object-position:center!important;filter:saturate(.92) contrast(1.04)!important}
+
+@media(max-width:760px){
+  .home-page .hero{height:520px!important;min-height:520px!important}
+  .inner-page .about-hero,
+  .inner-page .media-hero,
+  .inner-page .media-detail-hero,
+  .inner-page .network-hero,
+  .inner-page .ow-hero,
+  .inner-page .kr-hero,
+  .inner-page .kr-enquiry-hero{
+    height:520px!important;
+    min-height:520px!important;
+  }
+  .inner-page .about-hero-inner,
+  .inner-page .media-hero-inner,
+  .inner-page .network-hero-inner,
+  .inner-page .ow-hero-inner,
+  .inner-page .kr-hero-inner,
+  .inner-page .media-detail-hero .hero-inner{
+    height:520px!important;
+    min-height:520px!important;
+    padding:0!important;
+  }
+  .inner-page .about-hero-title,
+  .inner-page .media-hero-copy h1,
+  .inner-page .media-detail-hero .hero-inner h1,
+  .inner-page .network-hero-copy h1,
+  .inner-page .ow-hero h1,
+  .inner-page .kr-hero h1,
+  .inner-page .kr-enquiry-copy h1{
+    font-size:32px!important;
+    line-height:.98!important;
+    letter-spacing:-.45px!important;
+    max-width:100%!important;
+    margin:8px 0 13px!important;
+  }
+  .inner-page .about-hero-desc,
+  .inner-page .media-hero-copy p,
+  .inner-page .media-detail-hero .hero-inner p,
+  .inner-page .network-hero-copy p,
+  .inner-page .ow-hero-copy,
+  .inner-page .kr-hero p,
+  .inner-page .kr-enquiry-copy p{
+    font-size:11px!important;
+    line-height:1.45!important;
+    max-width:360px!important;
+    margin-bottom:16px!important;
+  }
+  .inner-page .about-hero-copy,
+  .inner-page .media-hero-copy,
+  .inner-page .network-hero-copy,
+  .inner-page .ow-hero-inner>div:first-child,
+  .inner-page .kr-hero-inner,
+  .inner-page .kr-enquiry-copy{
+    width:100%!important;
+  }
+  .inner-page .kr-enquiry-hero .inner{
+    width:min(calc(100% - 32px),1240px)!important;
+    height:520px!important;
+    min-height:520px!important;
+  }
+  .inner-page .kr-enquiry-visual{height:520px!important;min-height:520px!important}
+  .inner-page .kr-enquiry-steps{grid-template-columns:1fr!important;max-width:330px!important;margin-top:18px!important}
+  .inner-page .kr-enquiry-step{padding:10px 12px!important}
+  .inner-page .kr-enquiry-step b{font-size:16px!important;margin-bottom:3px!important}
+  .inner-page .kr-enquiry-step span{font-size:10px!important}
+}
+
+/* FINAL NAV + ENQUIRE HERO REFINEMENT */
+@media (min-width: 1051px){
+  .header .nav{gap:18px!important;font-size:12px!important;letter-spacing:0!important}
+  .header .nav>a{font-size:12px!important;white-space:nowrap}
+  .header .nav>a:not(.nav-cta){padding:26px 1px!important}
+  .header .nav-cta{font-size:11px!important;padding:12px 16px!important;margin-left:2px!important;white-space:nowrap}
+  .header .nav-dropdown{gap:2px!important}
+  .header .nav-dropdown>a{font-size:12px!important}
+  .header .nav-arrow{padding-inline:2px!important}
+}
+@media (min-width: 761px) and (max-width:1050px){
+  .header .nav{gap:12px!important;font-size:11px!important}
+  .header .nav>a{font-size:11px!important;white-space:nowrap}
+  .header .nav>a:not(.nav-cta){padding:25px 0!important}
+  .header .nav-cta{font-size:10px!important;padding:11px 13px!important}
+}
+@media (max-width:760px){
+  .header .nav>a{font-size:12px!important}
+  .header .nav{gap:0!important}
+  .header .nav-cta{font-size:11px!important}
+}
+
+/* Enquire hero should remain a true full-width banner on mobile; do not crop the side edges because of the content container. */
+.kr-page .kr-enquiry-hero .inner{width:100%!important;max-width:none!important}
+.kr-page .kr-enquiry-visual{left:0!important;right:0!important;width:100%!important}
+.kr-page .kr-enquiry-copy{width:min(58%,720px)!important;margin-left:max(32px,calc((100vw - var(--content-max))/2))!important}
+@media(max-width:900px){
+  .kr-page .kr-enquiry-copy{width:min(72%,520px)!important;margin-left:17px!important}
+}
+@media(max-width:600px){
+  .kr-page .kr-enquiry-copy{width:calc(100% - 32px)!important;margin-left:16px!important}
+  .kr-page .kr-enquiry-visual img{object-position:center center!important}
+}
+
+/* FINAL NAV + ENQUIRE BANNER CLEANUP */
+@media (min-width: 1051px){
+  .header .nav-wrap{justify-content:flex-start!important}
+  .site-logo img{width:150px!important;max-height:46px!important}
+  .header .nav{margin-left:auto!important;gap:28px!important;font-size:13px!important;align-items:center!important}
+  .header .nav>a:not(.nav-cta){font-size:13px!important;font-weight:600!important;padding:29px 0!important}
+  .header .nav-dropdown>a{font-size:13px!important;font-weight:600!important;padding:29px 0!important}
+  .header .nav-arrow{font-size:9px!important;padding:6px 1px!important}
+  .header .nav-cta{font-size:12px!important;font-weight:700!important;padding:12px 22px!important;margin-left:4px!important;min-height:42px!important}
+}
+@media (min-width: 761px) and (max-width:1050px){
+  .header .nav{margin-left:auto!important;gap:18px!important}
+  .header .nav>a:not(.nav-cta),.header .nav-dropdown>a{font-size:12px!important;padding:27px 0!important}
+  .header .nav-cta{font-size:11px!important;padding:11px 16px!important;margin-left:2px!important}
+}
+
+/* Enquire banner: true edge-to-edge frame on every viewport. Keep the shared hero height,
+   but never let the banner itself inherit the content container's side margins. */
+.kr-page .kr-enquiry-hero{width:100%!important;overflow:hidden!important}
+.kr-page .kr-enquiry-hero .inner{width:100vw!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important}
+.kr-page .kr-enquiry-visual{left:0!important;right:0!important;width:100vw!important;height:100%!important}
+.kr-page .kr-enquiry-visual img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+.kr-page .kr-enquiry-copy{margin-left:clamp(24px,calc((100vw - 1240px)/2),80px)!important}
+@media(max-width:760px){
+  .kr-page .kr-enquiry-hero .inner{width:100vw!important;height:520px!important;min-height:520px!important}
+  .kr-page .kr-enquiry-visual{width:100vw!important;height:520px!important;min-height:520px!important}
+  .kr-page .kr-enquiry-visual img{width:100vw!important;height:520px!important;object-fit:cover!important;object-position:center center!important}
+  .kr-page .kr-enquiry-copy{width:calc(100vw - 32px)!important;max-width:360px!important;margin-left:16px!important}
+}
+@media(max-width:390px){
+  .kr-page .kr-enquiry-copy{width:calc(100vw - 28px)!important;margin-left:14px!important}
+}
+
+/* ===== USER FINAL FIX 2026-09-21: compact nav + full Enquire banner ===== */
+@media (min-width:1051px){
+  .header{height:82px!important;overflow:visible!important}
+  .header .nav-wrap{
+    width:calc(100% - 56px)!important;
+    max-width:1760px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:28px!important;
+    overflow:visible!important;
+  }
+  .header .site-logo{flex:0 0 auto!important}
+  .header .site-logo img{width:145px!important;max-height:48px!important}
+  .header .nav{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:clamp(16px,1.55vw,30px)!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+  }
+  .header .nav>a:not(.nav-cta),
+  .header .nav-dropdown>a{
+    font-size:12px!important;
+    line-height:1!important;
+    font-weight:600!important;
+    padding:32px 0!important;
+    margin:0!important;
+    letter-spacing:0!important;
+  }
+  .header .nav-dropdown{gap:4px!important;flex:0 0 auto!important}
+  .header .nav-arrow{padding:6px 0!important;font-size:8px!important}
+  .header .nav-cta{
+    flex:0 0 auto!important;
+    margin:0 8px 0 10px!important;
+    padding:13px 20px!important;
+    min-height:0!important;
+    font-size:11px!important;
+    line-height:1.2!important;
+    border-radius:8px!important;
+    white-space:nowrap!important;
+  }
+}
+@media (min-width:1051px) and (max-width:1320px){
+  .header .nav-wrap{width:calc(100% - 32px)!important;gap:18px!important}
+  .header .site-logo img{width:132px!important}
+  .header .nav{gap:14px!important}
+  .header .nav>a:not(.nav-cta),.header .nav-dropdown>a{font-size:10.5px!important}
+  .header .nav-cta{font-size:10px!important;padding:11px 14px!important;margin-left:4px!important;margin-right:4px!important}
+}
+
+/* Enquire hero image is a true full-banner background; content stays safely inset. */
+.kr-page .kr-enquiry-hero{
+  position:relative!important;
+  width:100%!important;
+  height:590px!important;
+  min-height:590px!important;
+  overflow:hidden!important;
+}
+.kr-page .kr-enquiry-hero .inner{
+  position:relative!important;
+  width:100%!important;
+  max-width:none!important;
+  height:100%!important;
+  min-height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+}
+.kr-page .kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  z-index:0!important;
+  overflow:hidden!important;
+}
+.kr-page .kr-enquiry-visual img{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:none!important;
+}
+.kr-page .kr-enquiry-copy{
+  position:relative!important;
+  z-index:3!important;
+  width:min(560px,calc(100% - 64px))!important;
+  margin:0 0 0 max(32px,calc((100vw - 1240px)/2))!important;
+  padding:0!important;
+}
+@media(max-width:760px){
+  .kr-page .kr-enquiry-hero{height:520px!important;min-height:520px!important;width:100%!important}
+  .kr-page .kr-enquiry-hero .inner{width:100%!important;height:520px!important;min-height:520px!important}
+  .kr-page .kr-enquiry-visual{inset:0!important;width:100%!important;height:520px!important;min-height:520px!important}
+  .kr-page .kr-enquiry-visual img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:58% center!important}
+  .kr-page .kr-enquiry-copy{
+    width:calc(100% - 32px)!important;
+    max-width:390px!important;
+    margin:0 16px!important;
+    padding:0!important;
+  }
+  .kr-page .kr-enquiry-visual:before{background:linear-gradient(90deg,rgba(5,8,11,.93) 0%,rgba(5,8,11,.70) 55%,rgba(5,8,11,.25) 100%)!important}
+  .kr-page .kr-enquiry-visual:after{display:none!important}
+}

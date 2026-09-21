@@ -258,6 +258,6 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
     items.forEach(el=>io.observe(el));
   }
   ['careerPhone','enquiryPhone'].forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('input',()=>{el.value=el.value.replace(/\\D/g,'').slice(0,10)})}});
-  const forms=[['careerForm','careerStatus','Application ready — please send your resume/link to info.team@krishnaoutdoor.in.'],['enquiryForm','enquiryStatus','Thanks — your enquiry is ready. Our team will get back to you shortly.']];
+  const forms=[['careerForm','careerStatus','Application ready — your resume link or attachment can now be included. Our team will review your application.'],['enquiryForm','enquiryStatus','Thanks — your enquiry is ready. Our team will get back to you shortly.']];
   forms.forEach(([fid,sid,msg])=>{const f=document.getElementById(fid),status=document.getElementById(sid);if(f){f.addEventListener('submit',e=>{e.preventDefault(); if(!f.checkValidity()){f.reportValidity();return;} status.textContent=msg;status.style.color='#ef2027'; f.reset();})}});
 })();

@@ -65,3 +65,107 @@
 @media(prefers-reduced-motion:reduce){
   .about-reveal.in,.reveal.in,.ow-reveal.in,.kr-reveal.is-visible{animation:none!important}
 }
+
+
+/* =========================================================
+   FINAL INNER-PAGE VISUAL SYNC
+   Home remains the visual master and is intentionally excluded.
+   ========================================================= */
+.inner-page,
+.about-page,
+.media-page,
+.kr-page{--inner-max:1240px}
+
+/* Same visual language as Home: compact typography, clean spacing, depth. */
+.about-page .about-block,
+.about-page .about-strength,
+.media-page .media-section,
+.kr-page .kr-section,
+.network-map-section,
+.network-market-showcase,
+.network-capabilities,
+.ow-work,
+.ow-filter{scroll-margin-top:90px}
+
+.about-page img,
+.media-page img,
+.kr-page img,
+.ow-work img{border-radius:0;}
+
+/* Compact oversized media so imagery supports the content instead of dominating it. */
+.about-page .about-image{min-height:380px!important;max-height:440px;overflow:hidden}
+.about-page .about-image img{height:100%;max-height:440px;object-fit:cover}
+.about-page .about-collage{min-height:400px!important;max-height:470px}
+.about-page .about-collage .tile{min-height:170px;max-height:220px;overflow:hidden}
+.about-page .about-collage .tile img{width:100%;height:100%;object-fit:cover}
+
+.media-page .transit-image{height:430px!important;max-height:430px}
+.media-page .electronic-visual,
+.media-page .digital-visual{height:410px!important;max-height:410px}
+.media-page .print-visual{min-height:330px!important;max-height:390px}
+.media-page .media-card{transform-style:preserve-3d}
+.media-page .media-card img{height:165px!important;object-fit:cover}
+.media-page .transit-strip img{height:62px!important}
+
+.network-market-showcase .network-card-media{height:210px!important;max-height:210px;overflow:hidden}
+.network-market-showcase .network-card-media img{width:100%;height:100%;object-fit:cover}
+.network-capabilities .network-cap{min-height:180px}
+
+.ow-work .ow-card-media{height:245px!important;max-height:245px;overflow:hidden}
+.ow-work .ow-card-media img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .45s ease}
+.ow-work .ow-card:hover .ow-card-media img{transform:scale(1.055);filter:saturate(1.05)}
+
+/* Consistent 3D depth on all inner cards, matching the Home stack-card feel. */
+.about-page .about-collage .tile,
+.media-page .media-card,
+.media-page .electronic-cards article,
+.network-market-showcase .network-card,
+.ow-work .ow-card,
+.kr-page .kr-office,
+.kr-page .kr-role,
+.kr-page .kr-step{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease,border-color .35s ease}
+.about-page .about-collage .tile:hover,
+.media-page .media-card:hover,
+.media-page .electronic-cards article:hover,
+.network-market-showcase .network-card:hover,
+.ow-work .ow-card:hover,
+.kr-page .kr-role:hover,
+.kr-page .kr-step:hover{transform:translateY(-7px) perspective(1000px) rotateX(1.2deg) rotateY(-1deg)!important;box-shadow:0 22px 48px rgba(0,0,0,.12)}
+.kr-page .kr-office:hover{transform:translateY(-8px) perspective(1000px) rotateX(1deg) rotateY(-.7deg)!important}
+
+/* Image shine used by Home, carried consistently to inner cards. */
+.about-page .about-collage .tile:after,
+.media-page .media-card:after,
+.network-market-showcase .network-card:after,
+.ow-work .ow-card-media:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.24) 48%,transparent 65%);transform:translateX(-130%) skewX(-16deg);transition:transform .75s cubic-bezier(.2,.7,0,1);z-index:2}
+.about-page .about-collage .tile:hover:after,
+.media-page .media-card:hover:after,
+.network-market-showcase .network-card:hover:after,
+.ow-work .ow-card:hover .ow-card-media:after{transform:translateX(130%) skewX(-16deg)}
+
+/* Inner hero typography stays compact; Home hero is untouched. */
+.about-hero-title,.media-hero-copy h1,.network-hero-copy h1,.ow-hero h1,.kr-hero h1{letter-spacing:-.035em}
+.about-hero-desc,.media-hero-copy p,.network-hero-copy p,.ow-hero-copy,.kr-hero p{max-width:540px}
+
+/* Careers: static hero only — ad-intro is reserved for Home. */
+.careers-hero-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.95) contrast(1.04);animation:innerHeroDrift 14s ease-in-out infinite alternate}
+@keyframes innerHeroDrift{from{transform:scale(1.02)}to{transform:scale(1.065)}}
+
+@media(max-width:900px){
+ .about-page .about-image{min-height:300px!important;max-height:360px}
+ .about-page .about-collage{min-height:300px!important;max-height:360px}
+ .about-page .about-collage .tile{min-height:125px;max-height:165px}
+ .media-page .transit-image{height:330px!important;max-height:330px}
+ .media-page .electronic-visual,.media-page .digital-visual{height:320px!important;max-height:320px}
+ .media-page .print-visual{min-height:280px!important;max-height:320px}
+ .media-page .media-card img{height:145px!important}
+ .network-market-showcase .network-card-media{height:200px!important}
+ .ow-work .ow-card-media{height:220px!important}
+}
+
+@media(prefers-reduced-motion:reduce){.careers-hero-image{animation:none!important}}
+
+/* Apply the same compact/depth treatment even on pages whose body has no page class. */
+.about-hero~*, .media-page, .network-hero~*, .ow-hero~*, .kr-page{--inner-max:1240px}
+.about-collage .tile{position:relative}
+.media-card,.network-card,.ow-card{position:relative}

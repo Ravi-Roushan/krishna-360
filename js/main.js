@@ -40,6 +40,26 @@ $$('.reveal').forEach(el=>io.observe(el));
 
 // Active nav is set per page via the .active class already present on the matching link.
 
+// Responsive hero art direction — keep only the matching desktop/mobile video active.
+(function(){
+ const desktopVideo=document.querySelector('.hero-media-desktop');
+ const mobileVideo=document.querySelector('.hero-media-mobile');
+ if(!desktopVideo && !mobileVideo) return;
+ const mq=window.matchMedia('(max-width:760px)');
+ const sync=()=>{
+   const active=mq.matches?mobileVideo:desktopVideo;
+   [desktopVideo,mobileVideo].forEach(v=>{
+     if(!v) return;
+     if(v===active){ v.play().catch(()=>{}); }
+     else { v.pause(); }
+   });
+ };
+ sync();
+ mq.addEventListener?.('change',sync);
+ mq.addListener?.(sync);
+})();
+
+
 // Story modal
 const storyModal=$('#storyModal'), storyVideo=$('#storyModal video');
 $('#storyOpen')?.addEventListener('click',()=>{storyModal?.classList.add('open');storyModal?.setAttribute('aria-hidden','false')});
@@ -48,12 +68,12 @@ storyModal?.addEventListener('click',e=>{if(e.target===storyModal){storyModal.cl
 
 // 360 orbit services
 const services=[
- ['Outdoor Advertising That Puts You Everywhere','From hoardings to backlit boards, our outdoor advertising in Ahmedabad and across India puts your brand in front of the right audience, at the right place, every single day.'],
- ['Transit Media Advertising','Reach commuters where they spend their time. With exclusive rights on bus branding, bus shelters, and Western Railway Train , our transit media network keeps your brand moving with your customers — across Ahmedabad, Mumbai, and beyond.'],
- ['Print & Electronic Media','One agency, every channel. We plan and place print and electronic media advertising alongside your outdoor campaign, so your brand story stays consistent across every touchpoint.'],
- ['Print & Electronic Media','One agency, every channel. We plan and place print and electronic media advertising alongside your outdoor campaign, so your brand story stays consistent across every touchpoint.'],
- ['Digital Marketing','Complete the 360° loop. We extend your outdoor presence online with digital and social media marketing that drives measurable engagement and leads.'],
- ['Branding & Creative Production','From concept to installation — our in-house creative and production team designs branding solutions that are built to perform on billboards, buses, and everywhere in between.']
+ ['Make a Strong Impression in the Real World.','Outdoor advertising gives brands a physical presence in the places people see every day. Through our network of hoardings, unipoles and gantries, Krishna Outdoor helps brands create high-impact visibility across Ahmedabad, Gujarat and other key markets.'],
+ ['Visibility That Moves with Your Audience.','Transit advertising takes a brand into everyday movement. From Ahmedabad city buses and bus shelters to Surat EV buses, Mumbai local trains, BEST buses and TMT buses, Krishna Outdoor helps brands create repeated visibility across urban routes and commuter environments.'],
+ ['Put Your Message in a Medium People Trust.','Newspaper advertising remains an important communication platform for brands looking for market reach, credibility and strong regional communication. Krishna Outdoor’s wider advertising expertise includes print capabilities strengthened by the legacy and experience of Rakesh Advertising. Through experienced media planning and INS agency capabilities, we help brands explore relevant newspaper opportunities based on market, readership, campaign objective and budget.'],
+ ['Sound. Sight. Storytelling.','Electronic media gives brands the opportunity to communicate through powerful combinations of audio, visual storytelling and audience reach. Radio can help brands connect through sound, frequency and local relevance. Television remains a powerful medium for building awareness through sight, sound and storytelling. OTT advertising can help brands reach audiences through digital entertainment environments and complement wider campaigns.'],
+ ['Keep the Conversation Going.','Today’s audience moves between the physical and digital worlds throughout the day. Our digital and social media services help brands support wider campaign objectives through relevant online communication, targeted promotion and audience engagement. We help brands strengthen their online presence and support campaign objectives through relevant digital communication and performance-focused activity.'],
+ ['Build a Brand People Recognise.','Advertising can create attention, but a clear and consistent brand identity helps turn attention into recognition. Our branding solutions help businesses shape the way they communicate through clear identity, campaign communication, creative direction and marketing support.']
 ];
 let serviceIndex=0;
 const serviceTitle=$('#serviceTitle'),serviceText=$('#serviceText'),serviceCount=$('#serviceCount'),serviceMeter=$('#serviceMeter'),orbitServiceNo=$('#orbitServiceNo');
@@ -105,15 +125,13 @@ function animateServiceOrbit(){
   });
 
   // Slightly faster than desktop, while remaining smooth and continuous.
-  orbitAngle += 0.009; // Faster, consistent orbit speed on desktop and mobile
+  orbitAngle += 0.0045; // Smooth continuous orbit speed across desktop and mobile
   orbitFrame=requestAnimationFrame(animateServiceOrbit);
 }
 if(orbitRingEl && orbitCards.length){
   orbitFrame=requestAnimationFrame(animateServiceOrbit);
-  window.addEventListener('resize',()=>{
-    cancelAnimationFrame(orbitFrame);
-    orbitFrame=requestAnimationFrame(animateServiceOrbit);
-  });
+  window.addEventListener('resize',()=>{ cancelAnimationFrame(orbitFrame); orbitFrame=requestAnimationFrame(animateServiceOrbit); });
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden){ cancelAnimationFrame(orbitFrame); } else { orbitFrame=requestAnimationFrame(animateServiceOrbit); } });
 }
 
 // Hero stats strip: duplicate the six cards once for a seamless automatic loop.
@@ -278,9 +296,9 @@ if(clientStageEl){
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
- ooh:{title:'OOH Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
+ ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
  transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'},
- print:{title:'Print & Electronic Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
+ print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){

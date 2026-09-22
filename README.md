@@ -20,7 +20,8 @@ Open `http://localhost:5500`.
 - `assets/images/rakesh-advertising.jpeg`
 - existing about / bus / train / billboard imagery
 - client logos
-- `assets/videos/ad-intro.mp4` — hero
+- `assets/videos/hero-desktop.mp4` — desktop hero
+- `assets/videos/hero-mobile.mp4` — mobile hero
 - `assets/videos/story-video.mp4` — story modal
 
 ## Backend phase

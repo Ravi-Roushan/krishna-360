@@ -315,11 +315,19 @@ workViewport?.addEventListener('touchstart',()=>clearInterval(workAutoTimer),{pa
 workViewport?.addEventListener('touchend',restartWorkAuto,{passive:true});
 sizeWorkCards(); window.addEventListener('resize',()=>{sizeWorkCards();workStep=0;workViewport?.scrollTo({left:0,behavior:'auto'})}); restartWorkAuto();
 
-// Chatbot
-const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatReply=$('#chatReply');
-chatbot.addEventListener('click',()=>{chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',chatPanel.classList.contains('open')?'false':'true')});
-chatClose.addEventListener('click',()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')});
-$$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{const m=b.dataset.chat;chatReply.innerHTML=m==='media'?'<b>Media solutions:</b> outdoor, transit, print, electronic and digital formats.':m==='campaign'?'<b>Plan a campaign:</b> tell us your city, audience and campaign goal.': '<b>Talk to our team:</b> email info.team@krishnaoutdoor.in or call +91-9920011574.';}));
+// Chatbot — modern conversational interactions
+const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatMessages=$('#chatMessages'),chatComposer=$('#chatComposer'),chatInput=$('#chatInput');
+if(chatbot && chatPanel){
+ const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
+ const addMessage=(text,who='bot')=>{if(!chatMessages) return; const row=document.createElement('div');row.className=`msg-row ${who}`; if(who==='bot'){row.innerHTML=`<span class="msg-avatar">✦</span><div class="msg-bubble">${text}</div>`}else{row.innerHTML=`<div class="msg-bubble">${text}</div>`} chatMessages.appendChild(row); chatMessages.scrollTop=chatMessages.scrollHeight};
+ const reply=(type)=>{const text={location:'Sure. Explore our network across Ahmedabad, Mumbai, Thane and Rajasthan from the Our Network page.',media:'We offer OOH, Transit, Digital, Print & Electronic Media and branding solutions for campaigns.',ooh:'Our OOH solutions include hoardings, billboards and other high-visibility outdoor media formats.',digital:'We can help with digital media and DOOH campaign options. Tell me your city and campaign objective.',transit:'Our Transit Media solutions cover buses, bus shelters and railway environments designed for high-frequency audience visibility.',campaign:'Great. Share your city, campaign duration and target audience, and we’ll guide you through suitable media options.'}[type]||'Sure. Tell me what you are looking for and I’ll guide you.'; addMessage(text,'bot')};
+ chatbot.addEventListener('click',()=>{const open=chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',open?'false':'true');if(open) setTimeout(()=>chatInput?.focus(),250)});
+ chatClose?.addEventListener('click',closeChat);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});
+ document.addEventListener('click',e=>{if(chatPanel.classList.contains('open') && !e.target.closest('#chatPanel') && !e.target.closest('#chatbot')) closeChat()});
+ $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent.replace('↗','').trim(),'user');setTimeout(()=>reply(b.dataset.chat),380)}));
+ chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;addMessage(value,'user');chatInput.value='';setTimeout(()=>addMessage('Thanks! I’m here. Tell me a little more about your requirement and I’ll guide you.','bot'),420)});
+}
 
 // Work image lightbox — click any campaign card to view it larger
 const workLightbox=$('#workLightbox'), workLightboxImage=$('#workLightboxImage'), workLightboxCaption=$('#workLightboxCaption'), workLightboxClose=$('#workLightboxClose');

@@ -50,19 +50,51 @@
 <section class="cta" id="contact"><div class="container cta-inner reveal"><div><div class="tag light">LET’S CREATE</div><h2>KEEP YOUR BRAND<br/><em>ALWAYS MOVING.</em></h2><p>Ask us about bus, bus-shelter and train branding availability in your city.</p></div><a class="btn white" href="contact.html">Enquire Now <b>→</b></a></div></section>
 </main>
 <footer class="footer"><div class="container footer-top"><a class="site-logo" href="index.html"><img alt="Krishna Outdoor" src="assets/images/logo-footer.png"/></a><nav><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Media Solutions</a><a href="network.html">Our Network</a><a href="projects.html">Our Work</a><a href="contact.html">Contact Us</a></nav><div class="legacy"><small>Integrated media expertise supported by the legacy of</small><img alt="Rakesh Advertising" src="assets/images/rakesh-advertising.jpeg"/></div></div><div class="footer-bottom"><div class="container"><span>© 2026 Krishna Outdoor. All Rights Reserved.</span><span class="social-text">Follow Us <b>in</b><b>◎</b><b>f</b><b>▶</b></span><span>Design &amp; Developed by Tcongs Infotech</span></div></div></footer>
-<button aria-label="Open Krishna Outdoor assistant" class="chatbot" id="chatbot">
-<span class="chatbot-orb"><span>✦</span></span><span class="chatbot-text"><b>Krishna AI</b><small><i></i> Online</small></span><span class="chatbot-ping"></span>
+<button aria-label="Open Krishna AI assistant" class="chatbot" id="chatbot" type="button">
+  <span class="cute-robot" aria-hidden="true">
+    <span class="robot-antenna"></span>
+    <span class="robot-head">
+      <i class="robot-eye"></i><i class="robot-eye"></i>
+      <b class="robot-smile"></b>
+    </span>
+    <span class="robot-ear robot-ear-left"></span>
+    <span class="robot-ear robot-ear-right"></span>
+    <span class="robot-body"></span>
+  </span>
+  <span class="chatbot-ping"></span>
 </button>
 <div aria-hidden="true" class="chat-panel" id="chatPanel">
-<div class="chat-head"><div class="chat-brand"><span class="chat-brand-icon">✦</span><div><b>Krishna AI</b><small><i></i> Online • replies instantly</small></div></div><button aria-label="Close" id="chatClose">×</button></div>
-<div class="chat-body"><div class="chat-welcome"><span class="chat-avatar">K</span><div><b>Hi there 👋</b><p>How can we help with your next outdoor campaign?</p></div></div>
-<div class="chat-options"><button data-chat="media"><span>01</span>Explore media solutions <b>→</b></button><button data-chat="campaign"><span>02</span>Plan a campaign <b>→</b></button><button data-chat="contact"><span>03</span>Talk to our team <b>→</b></button></div>
-<div class="chat-reply" id="chatReply"></div>
-<div class="chat-direct"><a href="tel:+919920011574">Call team</a><a href="mailto:info.team@krishnaoutdoor.in">Email us</a></div>
+  <div class="chat-head">
+    <div class="chat-brand">
+      <span class="chat-brand-icon" aria-hidden="true">
+        <span class="brand-antenna"></span>
+        <span class="brand-face"><i></i><i></i><b></b></span>
+      </span>
+      <div class="chat-brand-copy">
+        <b>Krishna AI</b>
+        <small><i></i> ONLINE</small>
+      </div>
+    </div>
+    <button aria-label="Close chat" id="chatClose" type="button">×</button>
+  </div>
+  <div class="chat-body">
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg-row bot"><div class="msg-bubble">Ask about OOH, Transit, Digital Media, locations, campaigns or enquiries.</div></div>
+      <div class="msg-row bot"><div class="msg-bubble">Hello! I’m Krishna AI. How can I help you today?</div></div>
+    </div>
+    <div class="chat-options" aria-label="Quick questions">
+      <button type="button" data-chat="location">Our Network</button>
+      <button type="button" data-chat="ooh">OOH Media</button>
+      <button type="button" data-chat="digital">Digital Media</button>
+      <button type="button" data-chat="transit">Transit Media</button>
+    </div>
+    <form class="chat-composer" id="chatComposer">
+      <input id="chatInput" type="text" autocomplete="off" placeholder="Ask about Krishna Outdoor…" aria-label="Ask Krishna AI">
+      <button aria-label="Send message" type="submit">Send</button>
+    </form>
+    <div class="chat-direct"><span>Need a person?</span><a href="tel:+919920011574">Call us</a><a href="mailto:info.team@krishnaoutdoor.in">Email</a></div>
+  </div>
 </div>
-</div>
-<div aria-hidden="true" class="work-lightbox" id="workLightbox"><div class="work-lightbox-inner"><button aria-label="Close image" id="workLightboxClose">×</button><img alt="Selected campaign" decoding="async" id="workLightboxImage" loading="lazy" src=""/><div id="workLightboxCaption"></div></div></div>
-<div aria-hidden="true" class="story-modal" id="storyModal"><div class="story-dialog"><button id="storyClose">×</button><video controls="" playsinline="" preload="metadata"><source src="assets/videos/story-video.mp4" type="video/mp4"/></video><div><div class="tag">KRISHNA OUTDOOR</div><h3>YOUR BRAND.<br/><em>OUR MEDIA.</em></h3></div></div></div>
 <div class="cursor" id="cursor"></div><div class="cursor-ring" id="cursorRing"></div>
 <script defer="defer" src="js/main.js"></script>
 </body></html>

@@ -5406,3 +5406,20 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
   }
 }
 
+
+/* HOME non-hero paragraph spacing: compact the gaps without changing copy/layout */
+#experience .experience-quote{line-height:1.55!important;margin-bottom:0!important}
+#experience .experience-quote br + br{display:none!important}
+
+#about .about-copy p{line-height:1.55!important;margin-bottom:0!important}
+#about .about-copy p br + br{display:none!important}
+
+#why-krishna-doc .doc-home-copy p{line-height:1.55!important;margin:0 0 5px!important}
+#why-krishna-doc .doc-home-copy p:last-child{margin-bottom:0!important}
+#why-krishna-doc .doc-home-panel p{line-height:1.55!important;margin:0 0 5px!important}
+#why-krishna-doc .doc-home-panel p:last-child{margin-bottom:0!important}
+
+#media-legacy-doc p{line-height:1.55!important;margin:0 0 5px!important}
+#media-legacy-doc p:last-child{margin-bottom:0!important}
+
+#clients .clients-copy p{line-height:1.55!important;margin-bottom:8px!important}

@@ -5681,3 +5681,117 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
   .kr-office-info{padding:20px!important}
   .leader-copy .leader-role{font-size:11px!important;margin:-2px 0 9px!important}
 }
+
+
+/* FINAL HERO TEXT POSITION — requested: move hero headline lower on desktop + mobile. */
+.home-page .hero .hero-inner{padding-top:105px!important;}
+@media(max-width:760px){
+  .home-page .hero .hero-inner{padding-top:65px!important;}
+}
+
+/* ===== FINAL BUTTON + CTA BANNER CLEANUP ===== */
+/* Keep the same compact Enquire Now shape on every action button.
+   Preserve each button's existing color; only normalize geometry + hover sweep. */
+.btn,
+.small-btn,
+.outline-btn,
+.kr-btn,
+.ow-btn,
+.media-btn,
+.network-btn,
+.network-card-link,
+.kr-office-btn,
+.about-btn,
+.footer-campaign,
+.service-next,
+.tab,
+.nav-cta,
+.experience-link {
+  border-radius:6px !important;
+  clip-path:none !important;
+}
+
+.btn::before,
+.btn::after,
+.small-btn::before,
+.small-btn::after,
+.outline-btn::before,
+.outline-btn::after,
+.kr-btn::before,
+.kr-btn::after,
+.ow-btn::before,
+.ow-btn::after,
+.media-btn::before,
+.media-btn::after,
+.network-btn::before,
+.network-btn::after,
+.network-card-link::before,
+.network-card-link::after,
+.kr-office-btn::before,
+.kr-office-btn::after,
+.about-btn::before,
+.about-btn::after,
+.footer-campaign::before,
+.footer-campaign::after,
+.nav-cta::before,
+.nav-cta::after {
+  border-radius:inherit !important;
+  clip-path:none !important;
+}
+
+.btn:hover,
+.small-btn:hover,
+.outline-btn:hover,
+.kr-btn:hover,
+.ow-btn:hover,
+.media-btn:hover,
+.network-btn:hover,
+.network-card-link:hover,
+.kr-office-btn:hover,
+.about-btn:hover,
+.footer-campaign:hover,
+.service-next:hover,
+.tab:hover,
+.nav-cta:hover,
+.experience-link:hover {
+  border-radius:6px !important;
+  clip-path:none !important;
+}
+
+/* Circular utility controls keep their intended circular geometry. */
+.work-scroll-arrow,
+.client-arrow,
+.story-dialog > button,
+.network-map-compass b {
+  border-radius:50% !important;
+  clip-path:none !important;
+}
+
+/* CTA/banner backgrounds: remove decorative photo backgrounds only.
+   Hero video/media sections are intentionally untouched. */
+.media-final-cta::before,
+.kr-final-cta::before,
+.kr-career-cta::before {
+  display:none !important;
+  background:none !important;
+  animation:none !important;
+}
+
+.about-cta > img,
+.ow-cta-bg,
+.network-journey-bg img,
+.network-cta > img {
+  display:none !important;
+  visibility:hidden !important;
+}
+
+.about-cta,
+.media-final-cta,
+.ow-cta,
+.network-journey,
+.network-cta,
+.kr-final-cta,
+.kr-career-cta {
+  background:#0c1015 !important;
+  background-image:none !important;
+}

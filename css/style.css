@@ -5034,3 +5034,162 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
 .about-cta .container,.network-cta .container{min-width:0;}
 @media(max-width:900px){.doc-home-grid{grid-template-columns:1fr}.doc-home-panel{padding:28px}.doc-home-block,.doc-home-legacy{padding:58px 0}}
 @media(max-width:760px){.doc-home-copy h2,.doc-home-legacy h2{font-size:39px}.doc-home-copy p,.doc-home-legacy p,.doc-home-panel p{font-size:11px;line-height:1.65}.doc-home-panel h3{font-size:34px}.doc-digital-items{margin-top:18px}.cta-inner .btn,.media-final-inner .btn,.ow-cta .ow-btn,.network-journey-inner .btn,.kr-final-cta .kr-btn,.kr-career-cta .kr-btn{width:100%!important;max-width:100%!important}.kr-career-cta .container{align-items:flex-start!important}.kr-career-cta-copy{max-width:none!important}}
+
+/* ===== VISIBILITY FIX — MEDIA NAV + OFFICE BUTTONS + LEADERSHIP ===== */
+
+/* Media Solutions must stay readable against the transparent hero header. */
+.header .nav .nav-dropdown > a,
+.header .nav .nav-dropdown > .nav-arrow{
+  color:rgba(255,255,255,.88)!important;
+  opacity:1!important;
+}
+.header.scrolled .nav .nav-dropdown > a,
+.header.scrolled .nav .nav-dropdown > .nav-arrow{
+  color:#111318!important;
+}
+.header .nav .nav-dropdown > a:hover,
+.header .nav .nav-dropdown > a:focus-visible,
+.header .nav .nav-dropdown > .nav-arrow:hover,
+.header .nav .nav-dropdown.open > .nav-arrow{
+  color:#ff3038!important;
+}
+.header .nav .nav-dropdown{z-index:160!important}
+.header .nav .nav-menu{z-index:250!important}
+
+/* Keep the enquiry office cards compact enough that BOTH map buttons remain visible. */
+.kr-offices{align-items:stretch!important}
+.kr-office{min-height:0!important;align-items:stretch!important}
+.kr-office-info{padding:21px 22px!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;min-width:0!important}
+.kr-office-info .tag{margin-bottom:8px!important;font-size:9px!important}
+.kr-office-info h3{font-size:24px!important;margin:0 0 10px!important;line-height:1!important}
+.kr-office-info p{font-size:12px!important;line-height:1.52!important;margin:0!important}
+.kr-office-info a:not(.kr-office-btn){font-size:12px!important;margin-top:7px!important;line-height:1.35!important}
+.kr-office-btn{font-size:10px!important;line-height:1!important;padding:10px 13px!important;margin-top:13px!important;align-self:flex-start!important;white-space:nowrap!important}
+@media(max-width:900px){
+  .kr-office-info{padding:20px!important}
+}
+@media(max-width:600px){
+  .kr-office-info{padding:18px!important}
+  .kr-office-info h3{font-size:23px!important}
+  .kr-office-info p{font-size:11.5px!important}
+  .kr-office-info a:not(.kr-office-btn){font-size:11.5px!important}
+}
+
+/* Leadership: show the COMPLETE Gandhi photos without cropping and reduce text density. */
+.about-lead-head{margin-bottom:22px!important}
+.about-lead-head h2{font-size:clamp(32px,3.6vw,50px)!important;line-height:.96!important;margin:7px 0!important}
+.about-lead-head p{font-size:11px!important;line-height:1.45!important;max-width:260px!important}
+.about-lead-grid{gap:16px!important;align-items:start!important}
+.leader-card{
+  grid-template-columns:170px minmax(0,1fr)!important;
+  align-items:start!important;
+  min-height:0!important;
+}
+.leader-card img{
+  width:170px!important;
+  height:245px!important;
+  min-height:245px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#f5f5f5!important;
+  align-self:start!important;
+}
+.leader-copy{padding:17px 18px!important;min-width:0!important}
+.leader-copy small{font-size:9px!important;letter-spacing:.08em!important}
+.leader-copy h3{font-size:22px!important;line-height:1!important;margin:3px 0 9px!important}
+.leader-copy p{font-size:11px!important;line-height:1.42!important;color:#59616d!important;margin:0 0 7px!important}
+.leader-copy p:last-child{margin-bottom:0!important}
+@media(max-width:900px){
+  .leader-card{grid-template-columns:145px minmax(0,1fr)!important}
+  .leader-card img{width:145px!important;height:220px!important;min-height:220px!important}
+  .leader-copy{padding:15px 16px!important}
+  .leader-copy p{font-size:10.5px!important;line-height:1.4!important}
+}
+@media(max-width:600px){
+  .about-lead-head h2{font-size:38px!important}
+  .about-lead-head p{max-width:none!important;margin-top:10px!important}
+  .leader-card{grid-template-columns:1fr!important}
+  .leader-card img{width:100%!important;height:230px!important;min-height:230px!important;object-fit:contain!important}
+  .leader-copy{padding:16px!important}
+  .leader-copy h3{font-size:23px!important}
+  .leader-copy p{font-size:11px!important;line-height:1.48!important;margin-bottom:7px!important}
+}
+
+/* Prevent the desktop header from squeezing the Media Solutions item out of view. */
+@media(min-width:1101px){
+  .header .nav{gap:20px!important;flex-shrink:0!important}
+  .header .nav .nav-dropdown > a{font-size:12px!important}
+}
+@media(min-width:761px) and (max-width:1100px){
+  .header .nav{gap:12px!important}
+  .header .nav .nav-dropdown{gap:2px!important}
+  .header .nav .nav-dropdown > a{font-size:11px!important}
+}
+
+/* FINAL USER FIX — Office CTA text always readable; leadership portraits clean and proportionate */
+.kr-office-info .kr-office-btn{
+  position:relative!important;
+  z-index:2!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:112px!important;
+  max-width:100%!important;
+  min-height:36px!important;
+  height:auto!important;
+  padding:9px 14px!important;
+  margin-top:auto!important;
+  margin-bottom:0!important;
+  line-height:1.15!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  box-sizing:border-box!important;
+  color:#ef2027!important;
+  background:#fff!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.kr-office-info .kr-office-btn::before{z-index:-1!important}
+.kr-office-info .kr-office-btn:hover{color:#fff!important;background:#ef2027!important}
+
+.leader-card{
+  grid-template-columns:220px minmax(0,1fr)!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  align-items:stretch!important;
+}
+.leader-card img{
+  width:220px!important;
+  height:260px!important;
+  min-height:260px!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  display:block!important;
+  background:#eee!important;
+  transform:none!important;
+}
+.leader-card:hover img{transform:scale(1.018)!important}
+.leader-copy{
+  padding:18px 20px!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+.leader-copy h3{font-size:23px!important;line-height:1.05!important;margin:4px 0 9px!important}
+.leader-copy p{font-size:11px!important;line-height:1.38!important;margin:0 0 7px!important}
+@media(max-width:900px){
+  .kr-office-info .kr-office-btn{min-width:112px!important;padding:9px 13px!important;font-size:10.5px!important}
+  .leader-card{grid-template-columns:175px minmax(0,1fr)!important}
+  .leader-card img{width:175px!important;height:245px!important;min-height:245px!important}
+  .leader-copy{padding:16px 17px!important}
+}
+@media(max-width:600px){
+  .kr-office-info .kr-office-btn{min-width:118px!important;font-size:11px!important;padding:10px 14px!important}
+  .leader-card{grid-template-columns:1fr!important}
+  .leader-card img{width:100%!important;height:300px!important;min-height:300px!important;object-fit:cover!important;object-position:center center!important}
+  .leader-copy{padding:17px!important}
+  .leader-copy h3{font-size:22px!important}
+  .leader-copy p{font-size:11px!important;line-height:1.45!important}
+}

@@ -40,26 +40,6 @@ $$('.reveal').forEach(el=>io.observe(el));
 
 // Active nav is set per page via the .active class already present on the matching link.
 
-// Responsive hero art direction — keep only the matching desktop/mobile video active.
-(function(){
- const desktopVideo=document.querySelector('.hero-media-desktop');
- const mobileVideo=document.querySelector('.hero-media-mobile');
- if(!desktopVideo && !mobileVideo) return;
- const mq=window.matchMedia('(max-width:760px)');
- const sync=()=>{
-   const active=mq.matches?mobileVideo:desktopVideo;
-   [desktopVideo,mobileVideo].forEach(v=>{
-     if(!v) return;
-     if(v===active){ v.play().catch(()=>{}); }
-     else { v.pause(); }
-   });
- };
- sync();
- mq.addEventListener?.('change',sync);
- mq.addListener?.(sync);
-})();
-
-
 // Story modal
 const storyModal=$('#storyModal'), storyVideo=$('#storyModal video');
 $('#storyOpen')?.addEventListener('click',()=>{storyModal?.classList.add('open');storyModal?.setAttribute('aria-hidden','false')});
@@ -391,20 +371,87 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
   forms.forEach(([fid,sid,msg])=>{const f=document.getElementById(fid),status=document.getElementById(sid);if(f){f.addEventListener('submit',e=>{e.preventDefault(); if(!f.checkValidity()){f.reportValidity();return;} status.textContent=msg;status.style.color='#ef2027'; f.reset();})}});
 })();
 
-
-// Responsive hero video guard: only the active art-directed source plays.
+// Hero video visibility + sound control.
+// Only the desktop/mobile video matching the viewport is allowed to play.
+// When the hero leaves the viewport it pauses and mutes. Audio is unlocked on the
+// user's first real interaction, which avoids browser autoplay-with-sound blocking.
 (function(){
   const desktop=document.querySelector('.hero-media-desktop');
   const mobile=document.querySelector('.hero-media-mobile');
-  if(!desktop || !mobile) return;
-  const syncHeroVideo=()=>{
-    const isMobile=window.matchMedia('(max-width:760px)').matches;
-    const active=isMobile?mobile:desktop;
-    const inactive=isMobile?desktop:mobile;
-    inactive.pause();
-    inactive.currentTime=0;
-    active.play().catch(()=>{});
+  if(!desktop && !mobile) return;
+
+  const videos=[desktop,mobile].filter(Boolean);
+  const hero=document.querySelector('.hero');
+  const mq=window.matchMedia('(max-width:760px)');
+  let heroVisible=false;
+  // Try sound-on autoplay first; browsers that block it will fall back to muted playback.
+  // The first user gesture then unlocks sound for subsequent plays.
+  let audioUnlocked=true;
+
+  const activeVideo=()=>mq.matches?mobile:desktop;
+
+  const stopVideo=(video,reset=false)=>{
+    if(!video) return;
+    video.pause();
+    video.muted=true;
+    if(reset){
+      try{ video.currentTime=0; }catch{}
+    }
   };
-  syncHeroVideo();
-  window.addEventListener('resize',syncHeroVideo,{passive:true});
+
+  const playVisibleVideo=()=>{
+    videos.forEach(video=>{
+      if(video!==activeVideo()) stopVideo(video,true);
+    });
+    const active=activeVideo();
+    if(!active || !heroVisible) return;
+    active.muted=!audioUnlocked;
+    active.play().catch(()=>{
+      // Browsers may block unmuted autoplay. Keep the visible video moving silently
+      // until a user gesture unlocks audio.
+      active.muted=true;
+      active.play().catch(()=>{});
+    });
+  };
+
+  const unlockAudio=()=>{
+    audioUnlocked=true;
+    playVisibleVideo();
+  };
+
+  ['pointerdown','touchstart','keydown'].forEach(type=>{
+    window.addEventListener(type,unlockAudio,{passive:true,once:false});
+  });
+
+  if(hero){
+    const observer=new IntersectionObserver(entries=>{
+      const entry=entries[0];
+      heroVisible=entry.isIntersecting && entry.intersectionRatio>=0.35;
+      if(heroVisible){
+        playVisibleVideo();
+      }else{
+        videos.forEach(video=>stopVideo(video,false));
+      }
+    },{threshold:[0,0.35,0.6,1]});
+    observer.observe(hero);
+  }
+
+  const handleViewportChange=()=>{
+    videos.forEach(video=>stopVideo(video,true));
+    playVisibleVideo();
+  };
+  mq.addEventListener?.('change',handleViewportChange);
+  mq.addListener?.(handleViewportChange);
+  window.addEventListener('resize',handleViewportChange,{passive:true});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){
+      videos.forEach(video=>stopVideo(video,false));
+    }else{
+      playVisibleVideo();
+    }
+  });
+
+  // Ensure the correct source is initially silent/paused until visibility is known.
+  videos.forEach(video=>stopVideo(video,true));
 })();
+

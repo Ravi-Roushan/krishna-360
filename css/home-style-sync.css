@@ -362,3 +362,75 @@
 
 /* Our Network custom vector India map */
 .network-map-svg{display:block;width:min(620px,100%);height:auto;max-height:680px;margin:0 auto;overflow:visible}.network-map-wrap{overflow:visible}.network-map{display:flex;align-items:center;justify-content:center;width:100%;min-height:520px}.network-map-aura{pointer-events:none}@media(max-width:900px){.network-map{min-height:430px;padding:8px 0 18px}.network-map-svg{width:min(560px,100%);max-width:100%}}@media(max-width:600px){.network-map{min-height:360px;padding:0 2px 14px}.network-map-svg{width:100%;max-width:430px}.network-map-layout{gap:22px}}
+
+/* ===== FINAL BANNER CROP / FULL-BLEED FIX ===== */
+/* Enquiry banner: use the full viewport as the image stage so no black side strips appear. */
+.kr-enquiry-hero{
+  position:relative!important;
+  min-height:78vh!important;
+  overflow:hidden!important;
+  background:#0c0f13!important;
+}
+.kr-enquiry-hero .inner{
+  position:relative!important;
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:78vh!important;
+  margin:0!important;
+}
+.kr-enquiry-copy{
+  position:relative!important;
+  z-index:3!important;
+  width:min(650px,calc(100% - 64px))!important;
+  margin-left:max(32px,calc((100vw - var(--content-max))/2))!important;
+  padding:108px 0 72px!important;
+}
+.kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  z-index:0!important;
+  overflow:hidden!important;
+}
+.kr-enquiry-visual img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:scale(1.06)!important;
+}
+.kr-enquiry-visual:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(90deg,rgba(5,8,11,.86) 0%,rgba(5,8,11,.62) 34%,rgba(5,8,11,.20) 67%,rgba(5,8,11,.04) 100%)!important;
+}
+.kr-enquiry-visual:after{
+  z-index:2!important;
+}
+
+/* About hero: trim the unnecessary lower road without changing the banner structure. */
+.about-hero-media{
+  transform:scale(1.12)!important;
+  transform-origin:center center!important;
+  object-position:center 30%!important;
+}
+
+@media(max-width:760px){
+  .kr-enquiry-hero,
+  .kr-enquiry-hero .inner{min-height:72vh!important;}
+  .kr-enquiry-copy{
+    width:calc(100% - 32px)!important;
+    margin-left:16px!important;
+    padding:82px 0 46px!important;
+  }
+  .kr-enquiry-visual img{transform:scale(1.05)!important;object-position:center center!important;}
+  .kr-enquiry-visual:before{
+    background:linear-gradient(90deg,rgba(5,8,11,.82) 0%,rgba(5,8,11,.52) 52%,rgba(5,8,11,.12) 100%)!important;
+  }
+  .about-hero-media{transform:scale(1.10)!important;object-position:center 28%!important;}
+}

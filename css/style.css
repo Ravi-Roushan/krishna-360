@@ -5423,3 +5423,236 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
 #media-legacy-doc p:last-child{margin-bottom:0!important}
 
 #clients .clients-copy p{line-height:1.55!important;margin-bottom:8px!important}
+
+/* Mumbai marker hover office card + slightly lower Key Markets panel */
+.network-reference-page .network-market-list{transform:translateY(36px);}
+.network-reference-page .network-map{position:relative;}
+.network-reference-page .mumbai-office-tooltip{
+  --tooltip-width:300px;
+  position:absolute;
+  width:var(--tooltip-width);
+  max-width:calc(100% - 24px);
+  padding:14px 16px 15px;
+  background:#fff;
+  border:1px solid #e7e7e7;
+  border-top:3px solid var(--red);
+  box-shadow:0 18px 45px rgba(0,0,0,.14);
+  z-index:8;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:opacity .28s ease,visibility .28s ease,transform .28s ease;
+  pointer-events:none;
+}
+.network-reference-page .mumbai-office-tooltip.is-visible{opacity:1;visibility:visible;transform:translateY(0);}
+.network-reference-page .mumbai-office-tooltip-kicker{font:800 9px/1 Inter,sans-serif;letter-spacing:1.8px;color:var(--red);margin-bottom:6px;}
+.network-reference-page .mumbai-office-tooltip strong{display:block;font:800 17px/1.15 Oswald,Arial,sans-serif;color:#16191d;text-transform:uppercase;margin-bottom:8px;}
+.network-reference-page .mumbai-office-tooltip p{font:500 10px/1.55 Inter,Arial,sans-serif;color:#666;margin:0 0 8px;}
+.network-reference-page .mumbai-office-tooltip a{font:800 10px/1 Inter,Arial,sans-serif;color:#111;text-decoration:none;}
+.network-reference-page .mumbai-office-tooltip a:hover{color:var(--red);}
+.network-reference-page .marker-mumbai{cursor:pointer;}
+@media(max-width:680px){
+  .network-reference-page .network-market-list{transform:translateY(28px);}
+  .network-reference-page .mumbai-office-tooltip{padding:12px 14px 13px;}
+  .network-reference-page .mumbai-office-tooltip strong{font-size:15px;}
+  .network-reference-page .mumbai-office-tooltip p{font-size:9px;}
+}
+
+/* FINAL MAP + MUMBAI OFFICE HOVER POLISH */
+.network-reference-page .network-map{width:min(85vw,578px)!important;max-width:578px!important;}
+.network-reference-page .mumbai-office-tooltip{max-width:275px;}
+.network-reference-page .mumbai-office-tooltip.is-visible{transform:translateY(0) translateX(0);}
+.network-reference-page .mumbai-office-connector{
+  position:absolute;
+  height:2px;
+  min-width:0;
+  background:var(--red);
+  transform-origin:0 50%;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  z-index:7;
+  box-shadow:0 0 10px rgba(229,27,35,.28);
+  transition:opacity .22s ease,width .22s ease,top .22s ease,left .22s ease,transform .22s ease;
+}
+.network-reference-page .mumbai-office-connector::after{
+  content:'';
+  position:absolute;
+  right:-1px;
+  top:50%;
+  width:0;
+  height:0;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:8px solid var(--red);
+  transform:translateY(-50%);
+}
+.network-reference-page .mumbai-office-connector.is-visible{opacity:1;visibility:visible;}
+.network-reference-page #market-maharashtra,
+.network-reference-page .marker-mumbai{cursor:pointer;}
+@media(min-width:981px) and (max-width:1180px){
+  .network-reference-page .network-map{width:min(85vw,544px)!important;max-width:544px!important;}
+}
+@media(max-width:980px){
+  .network-reference-page .network-map{width:min(85vw,425px)!important;max-width:425px!important;}
+  .network-reference-page .mumbai-office-tooltip{max-width:255px;}
+}
+@media(max-width:680px){
+  .network-reference-page .network-map{width:min(85vw,374px)!important;max-width:374px!important;}
+  .network-reference-page .mumbai-office-tooltip{max-width:min(255px,calc(100vw - 44px));padding:11px 13px 12px;}
+}
+@media(max-width:420px){
+  .network-reference-page .network-map{width:min(85vw,357px)!important;max-width:357px!important;}
+  .network-reference-page .mumbai-office-tooltip{max-width:calc(100vw - 36px);}
+}
+
+
+/* FINAL USER REQUEST — network map another 15% smaller + Mumbai office hover card to the left */
+.network-reference-page #indiaNetworkSvg.network-map-svg,
+.network-reference-page .network-map{
+  width:536px !important;
+  max-width:536px !important;
+  height:auto !important;
+  transform:none !important;
+}
+.network-reference-page .mumbai-office-tooltip{
+  max-width:275px;
+}
+@media (min-width:981px) and (max-width:1180px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:510px !important;
+    max-width:510px !important;
+  }
+}
+@media (max-width:980px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:min(80vw,536px) !important;
+    max-width:536px !important;
+    height:auto !important;
+  }
+}
+@media (max-width:680px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:min(82vw,500px) !important;
+    max-width:500px !important;
+  }
+}
+
+
+/* ===== FINAL USER REQUEST: smaller network map + Mumbai hover card clearly left of map + compact Explore card ===== */
+@media (min-width:981px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:482px !important;
+    max-width:482px !important;
+  }
+  .network-reference-page .network-map-note{
+    width:270px !important;
+    min-height:250px !important;
+    padding:24px !important;
+  }
+  .network-reference-page .network-map-note .map-note-icon{
+    width:48px !important;
+    height:48px !important;
+    font-size:22px !important;
+    margin-bottom:18px !important;
+  }
+  .network-reference-page .network-map-note strong{
+    font-size:14px !important;
+    line-height:1.1 !important;
+  }
+  .network-reference-page .network-map-note p{
+    font-size:10px !important;
+    line-height:1.5 !important;
+    max-width:220px !important;
+    margin-top:9px !important;
+  }
+  .network-reference-page .network-map-legend{
+    gap:10px !important;
+    margin-top:18px !important;
+    font-size:9px !important;
+  }
+  .network-reference-page .mumbai-office-tooltip{
+    pointer-events:none;
+  }
+  .network-reference-page .mumbai-office-tooltip.is-visible{
+    pointer-events:auto;
+  }
+  .network-reference-page .mumbai-office-connector::after{
+    right:auto;
+    left:-1px;
+    border-left:0;
+    border-right:8px solid var(--red);
+  }
+}
+@media (min-width:981px) and (max-width:1180px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:459px !important;
+    max-width:459px !important;
+  }
+}
+@media (max-width:980px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:min(72vw,482px) !important;
+    max-width:482px !important;
+  }
+}
+@media (max-width:680px){
+  .network-reference-page #indiaNetworkSvg.network-map-svg,
+  .network-reference-page .network-map{
+    width:min(74vw,450px) !important;
+    max-width:450px !important;
+  }
+}
+
+
+/* FINAL NETWORK POLISH — compact map, exact Key Markets offsets, smaller hover arrow, mobile-safe hover card */
+@media (min-width:1181px){
+  .network-reference-page .network-market-list{transform:translateY(36px)!important;}
+  .network-reference-page .network-map{width:min(100%,630px)!important;max-width:630px!important;}
+  .network-reference-page .network-map-aura{width:450px!important;height:450px!important;}
+}
+@media (min-width:981px) and (max-width:1180px){
+  .network-reference-page .network-market-list{transform:translateY(36px)!important;}
+  .network-reference-page .network-map{width:min(100%,585px)!important;max-width:585px!important;}
+  .network-reference-page .network-map-aura{width:360px!important;height:360px!important;}
+}
+
+/* Smaller, cleaner connector arrow — keeps the same red line animation. */
+.network-reference-page .mumbai-office-connector::after{
+  right:auto!important;
+  left:-1px!important;
+  border-left:0!important;
+  border-right:6px solid var(--red)!important;
+  border-top-width:4px!important;
+  border-bottom-width:4px!important;
+}
+
+@media (max-width:980px){
+  .network-reference-page .network-market-list{transform:translateY(8px)!important;}
+  .network-reference-page .network-map{width:min(90vw,558px)!important;max-width:558px!important;}
+  .network-reference-page .network-map-aura{width:330px!important;height:330px!important;}
+}
+@media (max-width:680px){
+  .network-reference-page .network-market-list{transform:translateY(8px)!important;}
+  .network-reference-page .network-map{width:90vw!important;max-width:500px!important;}
+  .network-reference-page .mumbai-office-tooltip{
+    width:min(188px,calc(100vw - 24px))!important;
+    max-width:188px!important;
+    padding:10px 12px 11px!important;
+    z-index:30!important;
+  }
+  .network-reference-page .mumbai-office-tooltip strong{font-size:14px!important;}
+  .network-reference-page .mumbai-office-tooltip p{font-size:8.5px!important;line-height:1.5!important;}
+  .network-reference-page .mumbai-office-tooltip a{font-size:9px!important;}
+}
+@media (max-width:420px){
+  .network-reference-page .network-map{width:90vw!important;max-width:390px!important;}
+  .network-reference-page .mumbai-office-tooltip{width:175px!important;max-width:calc(100vw - 24px)!important;}
+}
+\n\n/* FINAL REQUEST — Mumbai office hover: desktop LEFT of map, mobile BELOW map */\n@media (min-width:681px){\n  .network-reference-page .network-map-wrap{overflow:visible!important;}\n  .network-reference-page .mumbai-office-tooltip{z-index:40!important;}\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-top:4px solid transparent!important;\n    border-bottom:4px solid transparent!important;\n    border-left:0!important;\n    border-right:7px solid var(--red)!important;\n    transform:translateY(-50%)!important;\n  }\n}\n@media (max-width:680px){\n  .network-reference-page .network-map-wrap{\n    overflow:visible!important;\n    min-height:0!important;\n    padding-bottom:0;\n  }\n  .network-reference-page .mumbai-office-tooltip{\n    left:50%!important;\n    top:calc(100% + 18px)!important;\n    transform:translateY(8px);\n    z-index:40!important;\n    width:min(188px,calc(100vw - 24px))!important;\n    max-width:min(188px,calc(100vw - 24px))!important;\n  }\n  .network-reference-page .mumbai-office-tooltip.is-visible{\n    transform:translateX(0) translateY(0)!important;\n  }\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-left:4px solid transparent!important;\n    border-right:4px solid transparent!important;\n    border-top:7px solid var(--red)!important;\n    border-bottom:0!important;\n    transform:translateY(-50%)!important;\n  }\n}\n

@@ -6027,4 +6027,156 @@ BEST Bus Advertising</p></div><div class="network-cap-grid"><article class="netw
     if(mumbaiTooltip?.classList.contains('is-visible')) positionMumbaiOffice();
   },{passive:true});
 })();
-</script></body></html>
+</script>
+<style id="network-mobile-office-visibility-final">
+/* FINAL MOBILE OFFICE VISIBILITY FIX
+   Mobile: keep Explore card in its original flow, insert the Mumbai office card
+   between the map and Explore only while it is open. */
+@media (max-width:680px){
+  .network-reference-page .network-map-section,
+  .network-reference-page .network-map-layout,
+  .network-reference-page .network-map-wrap{overflow:visible!important;}
+
+  .network-reference-page .network-map-layout.mobile-office-open{
+    grid-template-columns:1fr!important;
+    grid-auto-rows:auto!important;
+    gap:10px!important;
+  }
+
+  .network-reference-page .network-map-wrap{order:1!important;z-index:5!important;}
+
+  .network-reference-page .mumbai-office-tooltip{
+    position:relative!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    display:none!important;
+    grid-column:1!important;
+    order:2!important;
+    justify-self:center!important;
+    width:min(240px,calc(100vw - 32px))!important;
+    max-width:240px!important;
+    margin:18px auto 2px!important;
+    padding:12px 14px 13px!important;
+    z-index:20!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .network-reference-page .mumbai-office-tooltip.is-visible{
+    display:block!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+    pointer-events:auto!important;
+  }
+  .network-reference-page .mumbai-office-tooltip::before{
+    content:"";
+    position:absolute;
+    left:var(--office-arrow-left,28%);
+    top:-18px;
+    width:2px;
+    height:18px;
+    background:var(--red);
+    transform:translateX(-50%);
+    box-shadow:0 0 8px rgba(229,27,35,.25);
+  }
+  .network-reference-page .mumbai-office-tooltip::after{
+    content:"";
+    position:absolute;
+    left:var(--office-arrow-left,28%);
+    top:-6px;
+    width:0;
+    height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:7px solid var(--red);
+    transform:translateX(-50%);
+  }
+
+  .network-reference-page .mumbai-office-connector{display:none!important;}
+  .network-reference-page .network-map-note{
+    order:3!important;
+    z-index:1!important;
+  }
+}
+</style>
+<script>
+(()=>{
+  const layout=document.querySelector('.network-reference-page .network-map-layout');
+  const mapWrap=document.querySelector('.network-reference-page .network-map-wrap');
+  const tooltip=document.getElementById('mumbaiOfficeTooltip');
+  const connector=document.getElementById('mumbaiOfficeConnector');
+  const note=document.querySelector('.network-reference-page .network-map-note');
+  const marker=document.querySelector('#indiaNetworkSvg .marker-mumbai');
+  const region=document.getElementById('market-maharashtra');
+  const maharashtraLabel=document.querySelector('#indiaNetworkSvg .label-maharashtra');
+  if(!layout || !mapWrap || !tooltip) return;
+
+  const isMobile=()=>window.matchMedia('(max-width:680px)').matches;
+  function syncHost(){
+    if(isMobile()){
+      if(tooltip.parentElement!==layout) layout.appendChild(tooltip);
+      if(connector && connector.parentElement!==layout) layout.appendChild(connector);
+    }else{
+      if(tooltip.parentElement!==mapWrap) mapWrap.appendChild(tooltip);
+      if(connector && connector.parentElement!==mapWrap) mapWrap.appendChild(connector);
+      layout.classList.remove('mobile-office-open');
+    }
+  }
+  function positionArrow(){
+    if(!isMobile() || !tooltip || !marker) return;
+    const mr=marker.getBoundingClientRect();
+    const tr=tooltip.getBoundingClientRect();
+    if(!tr.width) return;
+    const x=Math.max(16,Math.min(tr.width-16,mr.left + mr.width/2 - tr.left));
+    tooltip.style.setProperty('--office-arrow-left',x+'px');
+  }
+  function openMobileOffice(){
+    if(!isMobile()) return;
+    syncHost();
+    tooltip.classList.add('is-visible');
+    tooltip.setAttribute('aria-hidden','false');
+    layout.classList.add('mobile-office-open');
+    requestAnimationFrame(positionArrow);
+  }
+  function closeMobileOffice(){
+    if(!isMobile()) return;
+    tooltip.classList.remove('is-visible');
+    tooltip.setAttribute('aria-hidden','true');
+    layout.classList.remove('mobile-office-open');
+  }
+
+  syncHost();
+
+  [marker,region,maharashtraLabel].filter(Boolean).forEach(el=>{
+    el.style.cursor='pointer';
+    el.addEventListener('pointerup',e=>{
+      if(!isMobile()) return;
+      e.preventDefault();
+      if(tooltip.classList.contains('is-visible')) closeMobileOffice();
+      else openMobileOffice();
+    },{passive:false});
+  });
+  tooltip.addEventListener('pointerup',e=>e.stopPropagation());
+
+  const observer=new MutationObserver(()=>{
+    if(!isMobile()) return;
+    if(tooltip.classList.contains('is-visible')){
+      layout.classList.add('mobile-office-open');
+      requestAnimationFrame(positionArrow);
+    }else{
+      layout.classList.remove('mobile-office-open');
+    }
+  });
+  observer.observe(tooltip,{attributes:true,attributeFilter:['class','aria-hidden']});
+
+  document.addEventListener('pointerup',e=>{
+    if(!isMobile() || !tooltip.classList.contains('is-visible')) return;
+    if(!tooltip.contains(e.target) && !marker?.contains(e.target) && !region?.contains(e.target) && !maharashtraLabel?.contains(e.target)) closeMobileOffice();
+  },{passive:true});
+  window.addEventListener('resize',()=>{syncHost(); if(tooltip.classList.contains('is-visible')){layout.classList.add('mobile-office-open'); requestAnimationFrame(positionArrow);}}, {passive:true});
+})();
+</script>
+
+</body></html>

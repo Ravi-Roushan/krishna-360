@@ -434,3 +434,28 @@
   }
   .about-hero-media{transform:scale(1.10)!important;object-position:center 28%!important;}
 }
+
+
+/* FINAL: keep a subtle black edge on the Enquiry hero, matching the approved mobile reference. */
+.kr-enquiry-hero{
+  background:#0c0f13!important;
+}
+.kr-enquiry-visual{
+  inset:0 6px!important;
+  width:auto!important;
+  height:100%!important;
+}
+.kr-enquiry-visual img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  transform:scale(1.035)!important;
+}
+@media(max-width:760px){
+  .kr-enquiry-visual{
+    inset:0 5px!important;
+  }
+  .kr-enquiry-visual img{
+    transform:scale(1.025)!important;
+  }
+}

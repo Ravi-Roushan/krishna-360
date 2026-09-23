@@ -5977,8 +5977,117 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
     text-align:center!important;
     white-space:nowrap!important;
     font-size:clamp(17px,5.8vw,25px)!important;
-    line-height:1!important;
-    letter-spacing:-.8px!important;
+    line-height:1.05!important;
+    letter-spacing:-.15px!important;
+    word-spacing:5px!important;
     z-index:4!important;
   }
+}
+
+
+/* ===== FINAL ENQUIRE HERO EDGE CLEANUP =====
+   Keep the enquiry hero truly edge-to-edge and prevent dark source/background
+   edges from appearing on either side. The image slightly overscans the frame,
+   while the overlay is uniform instead of a side-heavy black gradient. */
+.kr-page .kr-enquiry-hero{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:#111!important;
+}
+.kr-page .kr-enquiry-hero .inner{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+.kr-page .kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+}
+.kr-page .kr-enquiry-visual img{
+  position:absolute!important;
+  left:-3%!important;
+  top:-3%!important;
+  width:106%!important;
+  height:106%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:none!important;
+}
+.kr-page .kr-enquiry-visual:before{
+  background:rgba(5,8,11,.42)!important;
+}
+.kr-page .kr-enquiry-visual:after{display:none!important;}
+@media(max-width:760px){
+  .kr-page .kr-enquiry-hero,
+  .kr-page .kr-enquiry-hero .inner,
+  .kr-page .kr-enquiry-visual{
+    width:100%!important;
+    max-width:none!important;
+  }
+  .kr-page .kr-enquiry-visual img{
+    left:-4%!important;
+    top:-4%!important;
+    width:108%!important;
+    height:108%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  .kr-page .kr-enquiry-visual:before{
+    background:rgba(5,8,11,.38)!important;
+  }
+}
+
+/* FINAL FULL-BLEED ENQUIRY HERO — eliminate any side gutters/black strips */
+html,body{width:100%!important;max-width:none!important;overflow-x:hidden!important;background:#fff!important;}
+.kr-page{width:100%!important;max-width:none!important;margin:0!important;background:#fff!important;}
+.kr-page .kr-enquiry-hero{
+  width:100vw!important;
+  max-width:none!important;
+  min-width:100vw!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:calc(50% - 50vw)!important;
+  padding:0!important;
+  background:#000!important;
+  overflow:hidden!important;
+}
+.kr-page .kr-enquiry-hero .inner{
+  width:100vw!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  min-height:100%!important;
+}
+.kr-page .kr-enquiry-visual{
+  position:absolute!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100%!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  overflow:hidden!important;
+}
+.kr-page .kr-enquiry-visual img{
+  left:-2%!important;
+  top:-2%!important;
+  width:104%!important;
+  height:104%!important;
+  max-width:none!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+.kr-page .kr-enquiry-copy{position:relative!important;z-index:3!important;}
+@media(max-width:760px){
+  .kr-page .kr-enquiry-hero{width:100vw!important;min-width:100vw!important;margin-left:calc(50% - 50vw)!important;}
+  .kr-page .kr-enquiry-visual img{left:-3%!important;top:-3%!important;width:106%!important;height:106%!important;object-fit:cover!important;object-position:center center!important;}
 }

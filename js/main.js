@@ -390,3 +390,21 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
   const forms=[['careerForm','careerStatus','Application ready — your resume link or attachment can now be included. Our team will review your application.'],['enquiryForm','enquiryStatus','Thanks — your enquiry is ready. Our team will get back to you shortly.']];
   forms.forEach(([fid,sid,msg])=>{const f=document.getElementById(fid),status=document.getElementById(sid);if(f){f.addEventListener('submit',e=>{e.preventDefault(); if(!f.checkValidity()){f.reportValidity();return;} status.textContent=msg;status.style.color='#ef2027'; f.reset();})}});
 })();
+
+
+// Responsive hero video guard: only the active art-directed source plays.
+(function(){
+  const desktop=document.querySelector('.hero-media-desktop');
+  const mobile=document.querySelector('.hero-media-mobile');
+  if(!desktop || !mobile) return;
+  const syncHeroVideo=()=>{
+    const isMobile=window.matchMedia('(max-width:760px)').matches;
+    const active=isMobile?mobile:desktop;
+    const inactive=isMobile?desktop:mobile;
+    inactive.pause();
+    inactive.currentTime=0;
+    active.play().catch(()=>{});
+  };
+  syncHeroVideo();
+  window.addEventListener('resize',syncHeroVideo,{passive:true});
+})();

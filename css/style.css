@@ -5684,9 +5684,9 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
 
 
 /* FINAL HERO TEXT POSITION — requested: move hero headline lower on desktop + mobile. */
-.home-page .hero .hero-inner{padding-top:105px!important;}
+.home-page .hero .hero-inner{padding-top:198px!important;}
 @media(max-width:760px){
-  .home-page .hero .hero-inner{padding-top:65px!important;}
+  .home-page .hero .hero-inner{padding-top:138px!important;}
 }
 
 /* ===== FINAL BUTTON + CTA BANNER CLEANUP ===== */

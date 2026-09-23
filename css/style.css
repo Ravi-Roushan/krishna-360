@@ -5795,3 +5795,107 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
   background:#0c1015 !important;
   background-image:none !important;
 }
+
+/* ===== REQUESTED FINAL HERO POLISH =====
+/* Home hero: mobile headline 30% lower than the previous mobile position.
+   Desktop position remains unchanged. */
+@media (max-width:760px){
+  .home-page .hero .hero-inner{padding-top:180px!important;}
+}
+
+/* About: remove the dead/extra space under the inner-page hero by making
+   the hero frame slightly more compact while keeping its content centered. */
+.inner-page .about-hero,
+.inner-page .about-hero-inner{
+  height:550px!important;
+  min-height:550px!important;
+}
+.inner-page .about-statbar{margin-top:0!important;}
+
+/* Enquire hero: remove the dark/black side feel by filling the frame from
+   edge-to-edge and slightly oversizing the source image to crop any source bars. */
+.kr-page .kr-enquiry-visual,
+.kr-page .kr-enquiry-visual img{
+  background:transparent!important;
+}
+.kr-page .kr-enquiry-visual img{
+  transform:scale(1.10)!important;
+  transform-origin:center center!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+.kr-page .kr-enquiry-visual:before{
+  background:linear-gradient(90deg,rgba(5,8,11,.78) 0%,rgba(5,8,11,.34) 30%,rgba(5,8,11,.06) 60%,transparent 100%)!important;
+}
+@media(max-width:760px){
+  .inner-page .about-hero,
+  .inner-page .about-hero-inner{
+    height:490px!important;
+    min-height:490px!important;
+  }
+  .kr-page .kr-enquiry-visual img{
+    transform:scale(1.12)!important;
+    object-position:center center!important;
+  }
+  .kr-page .kr-enquiry-visual:before{
+    background:linear-gradient(90deg,rgba(5,8,11,.72) 0%,rgba(5,8,11,.28) 34%,rgba(5,8,11,.04) 68%,transparent 100%)!important;
+  }
+}
+
+/* ===== USER FIX: FULL-BLEED ENQUIRE HERO + ABOUT HERO CROP ===== */
+/* Enquiry hero: remove left black content block so the supplied image runs edge-to-edge. */
+.kr-page .kr-enquiry-hero{background:#0b0f14!important;}
+.kr-page .kr-enquiry-copy{background:transparent!important;}
+.kr-page .kr-enquiry-copy:after{display:none!important;}
+.kr-page .kr-enquiry-visual:before{
+  background:linear-gradient(90deg,rgba(5,8,11,.72) 0%,rgba(5,8,11,.46) 38%,rgba(5,8,11,.16) 72%,rgba(5,8,11,.06) 100%)!important;
+}
+.kr-page .kr-enquiry-visual img{
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+@media(max-width:760px){
+  .kr-page .kr-enquiry-copy{background:transparent!important;}
+  .kr-page .kr-enquiry-visual:before{
+    background:linear-gradient(90deg,rgba(5,8,11,.74) 0%,rgba(5,8,11,.42) 55%,rgba(5,8,11,.14) 100%)!important;
+  }
+}
+
+/* About hero: keep the same banner height but crop the unnecessary lower road area. */
+.about-hero-media{
+  object-fit:cover!important;
+  object-position:center 18%!important;
+}
+@media(max-width:760px){
+  .about-hero-media{object-position:center 16%!important;}
+}
+
+
+/* ABOUT + ENQUIRY INNER BANNER CLEANUP — keep Home hero untouched */
+.inner-page .about-hero-media{
+  transform:scale(1.085)!important;
+  transform-origin:center center!important;
+  object-position:center 42%!important;
+}
+.inner-page .about-hero{
+  overflow:hidden!important;
+}
+.inner-page .kr-enquiry-visual{
+  width:100vw!important;
+  left:50%!important;
+  right:auto!important;
+  margin-left:-50vw!important;
+  overflow:hidden!important;
+}
+.inner-page .kr-enquiry-visual img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  transform:scale(1.09)!important;
+  transform-origin:center center!important;
+}
+@media(max-width:760px){
+  .inner-page .about-hero-media{transform:scale(1.08)!important;object-position:center 45%!important;}
+  .inner-page .kr-enquiry-visual img{transform:scale(1.12)!important;object-position:center center!important;}
+}

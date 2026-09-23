@@ -5656,3 +5656,28 @@ h1,h2,h3,h4,p,small,a,button,span{overflow-wrap:anywhere;}
   .network-reference-page .mumbai-office-tooltip{width:175px!important;max-width:calc(100vw - 24px)!important;}
 }
 \n\n/* FINAL REQUEST — Mumbai office hover: desktop LEFT of map, mobile BELOW map */\n@media (min-width:681px){\n  .network-reference-page .network-map-wrap{overflow:visible!important;}\n  .network-reference-page .mumbai-office-tooltip{z-index:40!important;}\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-top:4px solid transparent!important;\n    border-bottom:4px solid transparent!important;\n    border-left:0!important;\n    border-right:7px solid var(--red)!important;\n    transform:translateY(-50%)!important;\n  }\n}\n@media (max-width:680px){\n  .network-reference-page .network-map-wrap{\n    overflow:visible!important;\n    min-height:0!important;\n    padding-bottom:0;\n  }\n  .network-reference-page .mumbai-office-tooltip{\n    left:50%!important;\n    top:calc(100% + 18px)!important;\n    transform:translateY(8px);\n    z-index:40!important;\n    width:min(188px,calc(100vw - 24px))!important;\n    max-width:min(188px,calc(100vw - 24px))!important;\n  }\n  .network-reference-page .mumbai-office-tooltip.is-visible{\n    transform:translateX(0) translateY(0)!important;\n  }\n  .network-reference-page .mumbai-office-connector{z-index:39!important;}\n  .network-reference-page .mumbai-office-connector::after{\n    right:-1px!important;\n    left:auto!important;\n    top:50%!important;\n    border-left:4px solid transparent!important;\n    border-right:4px solid transparent!important;\n    border-top:7px solid var(--red)!important;\n    border-bottom:0!important;\n    transform:translateY(-50%)!important;\n  }\n}\n
+/* Final requested compact office + leadership alignment */
+.kr-office{height:500px!important;min-height:0!important}
+.kr-office img{height:500px!important;min-height:0!important}
+.leader-copy .leader-role{font:600 10px/1.35 Inter,sans-serif;color:#6b7280;margin:0 0 7px;text-transform:none;letter-spacing:.02em}
+.about-lead-head>p{display:none!important}
+@media(max-width:900px){.kr-office{height:auto!important}.kr-office img{height:300px!important;min-height:0!important}.leader-copy .leader-role{font-size:10px!important}}
+@media(max-width:600px){.kr-office img{height:230px!important}.leader-copy .leader-role{font-size:10px!important;margin-bottom:6px}}
+
+/* Leadership role alignment — keep designation inside each card */
+.leader-copy .leader-role{font-size:12px!important;line-height:1.25!important;color:#59616d!important;font-weight:700!important;margin:-4px 0 10px!important}
+
+/* Office cards — slightly smaller image so office copy has better balance */
+.kr-office{grid-template-columns:.74fr 1.26fr!important}
+.kr-office img{width:100%!important;height:100%!important;min-height:235px!important;object-fit:cover!important;object-position:center center!important}
+.kr-office-info{padding:24px 26px!important}
+@media(max-width:900px){
+  .kr-office{grid-template-columns:.78fr 1.22fr!important}
+  .kr-office img{min-height:220px!important}
+}
+@media(max-width:600px){
+  .kr-office{grid-template-columns:1fr!important}
+  .kr-office img{height:200px!important;min-height:200px!important;object-fit:cover!important;object-position:center center!important}
+  .kr-office-info{padding:20px!important}
+  .leader-copy .leader-role{font-size:11px!important;margin:-2px 0 9px!important}
+}

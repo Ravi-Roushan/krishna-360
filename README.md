@@ -1,28 +1,8 @@
-# Krishna Outdoor — Premium Frontend
+Krishna Outdoor — exact requested image/video fix
 
-Frontend-only build using the available Krishna Outdoor assets.
-
-## Run
-No PHP/MySQL/Laravel is required.
-
-### VS Code
-Use Live Server on `index.html`.
-
-### Or Python
-```bash
-python -m http.server 5500
-```
-Open `http://localhost:5500`.
-
-## Included real assets
-- `assets/images/logo-header.png`
-- `assets/images/logo-footer.png`
-- `assets/images/rakesh-advertising.jpeg`
-- existing about / bus / train / billboard imagery
-- client logos
-- `assets/videos/hero-desktop.mp4` — desktop hero
-- `assets/videos/hero-mobile.mp4` — mobile hero
-- `assets/videos/story-video.mp4` — story modal
-
-## Backend phase
-After visual approval, connect the same frontend to Laravel routes, database, enquiry form, email notifications and admin functionality.
+- Home 360 mosaic: HD Bus / work-1.png / Mumbai local train.
+- Home Media Showcase: Transit uses HD Bus; Print & Electronic uses newspaper/radio media visual.
+- Supplied newspaper and press-release images are retained in print assets and referenced in the Print Media and Media Legacy sections.
+- Original desktop and mobile hero videos retained.
+- Hero video is forced to full-bleed cover to avoid black side bars.
+- Existing design, typography, colors, and interaction structure were otherwise left unchanged.

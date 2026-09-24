@@ -204,7 +204,7 @@ if (slideType && slideTrack && !slideTrack.dataset.loopReady) {
 
 // Client 360 carousel — click, drag and touch swipe
 const clientLogos=[
- ['airtel','png'],['apple','png'],['audi','png'],['giva','png'],['gshock','png'],['gulab-oil','png'],['havells','png'],['hyundai','png'],['jio-hotstar','jpg'],['kitkat','png'],['loreal','png'],['mercedes','png'],['porsche','png'],['prime','png'],['spotify','webp'],['times-fashion-week','png'],['tresemme','png'],['vadilal','png'],['zoho','png']
+ ['client-airtel-logo','png'],['client-apple-logo','png'],['client-audi-logo','png'],['client-giva-logo','png'],['client-gshock-logo','png'],['client-gulab-oil-logo','png'],['client-havells-logo','png'],['client-hyundai-logo','png'],['client-jio-hotstar-logo','jpg'],['client-kitkat-logo','png'],['client-loreal-logo','png'],['client-mercedes-logo','png'],['client-porsche-logo','png'],['client-prime-logo','png'],['client-spotify-logo','webp'],['client-times-fashion-week-logo','png'],['client-tresemme-logo','png'],['client-vadilal-logo','png'],['client-zoho-logo','png']
 ];
 const carouselEl=$('#clientCarousel');
 let clientCenter=0, clientTimer, clientPointerStart=0, clientPointerLast=0, clientDragging=false, clientDragged=false;
@@ -276,9 +276,9 @@ if(clientStageEl){
 
 // Outdoor solutions showcase — image-backed and fully interactive
 const panels={
- ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'assets/images/work/work-03.png', color:'#ff2832'},
- transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/train-advertisement.jpg', color:'#53bffb'},
- print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/work/work-04.png', color:'#a78bfa'}
+ ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'assets/images/media/home-360-outdoor-hoarding-night-02.webp', color:'#ff2832'},
+ transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/home/home-360-bus-hd.webp', color:'#53bffb'},
+ print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/media/media-print-newspaper-radio.webp', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){

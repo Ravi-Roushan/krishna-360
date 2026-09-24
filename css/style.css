@@ -7350,3 +7350,1154 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .header .nav .nav-dropdown{position:relative!important;z-index:1404!important;}
   .header .nav .nav-menu{position:relative!important;z-index:1405!important;}
 }
+
+/* =========================================================
+   MOBILE NAV FINAL POLISH — transparent rounded drawer
+   Base layout/content untouched.
+   ========================================================= */
+@media (max-width:760px){
+  /* Keep the mobile header compact and aligned like the reference. */
+  .header{
+    z-index:1600!important;
+    overflow:visible!important;
+    transform-origin:top center!important;
+  }
+  .header .nav-wrap{
+    width:100%!important;
+    min-height:58px!important;
+    padding:8px 12px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Rounded transparent logo capsule. */
+  .header .site-logo{
+    width:auto!important;
+    max-width:calc(100% - 62px)!important;
+    height:42px!important;
+    padding:4px 11px!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    border-radius:999px!important;
+    background:rgba(255,255,255,.76)!important;
+    border:1px solid rgba(255,255,255,.62)!important;
+    box-shadow:0 7px 22px rgba(0,0,0,.14)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    overflow:hidden!important;
+    flex:0 1 auto!important;
+  }
+  .header .site-logo img{
+    display:block!important;
+    width:94px!important;
+    max-width:100%!important;
+    height:auto!important;
+    max-height:31px!important;
+    object-fit:contain!important;
+  }
+
+  /* Circular menu control: always visible and above drawer. */
+  .header .nav-toggle{
+    position:relative!important;
+    z-index:1705!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    margin:0!important;
+    padding:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.82)!important;
+    border:1px solid rgba(255,255,255,.72)!important;
+    box-shadow:0 7px 22px rgba(0,0,0,.16)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    flex:0 0 42px!important;
+  }
+  .header .nav-toggle span{
+    width:17px!important;
+    height:2px!important;
+    margin:0!important;
+    display:block!important;
+    border-radius:99px!important;
+    background:#30343a!important;
+    transform-origin:center!important;
+  }
+  .header .nav-toggle.menu-open span:nth-child(1){transform:translateY(6px) rotate(45deg)!important;}
+  .header .nav-toggle.menu-open span:nth-child(2){opacity:0!important;transform:scaleX(.25)!important;}
+  .header .nav-toggle.menu-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)!important;}
+
+  /* Transparent rounded drawer, no page blur. */
+  .header .nav{
+    position:fixed!important;
+    top:68px!important;
+    right:11px!important;
+    left:auto!important;
+    width:min(84vw,310px)!important;
+    max-width:310px!important;
+    max-height:calc(100dvh - 82px)!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    gap:3px!important;
+    padding:10px!important;
+    margin:0!important;
+    border-radius:24px!important;
+    border:1px solid rgba(255,255,255,.62)!important;
+    background:rgba(255,255,255,.68)!important;
+    backdrop-filter:blur(16px) saturate(120%)!important;
+    -webkit-backdrop-filter:blur(16px) saturate(120%)!important;
+    box-shadow:0 20px 48px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.5)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translate3d(calc(100% + 24px),0,0)!important;
+    transition:transform .38s cubic-bezier(.2,.78,.2,1),opacity .22s ease,visibility 0s linear .38s!important;
+    z-index:1700!important;
+  }
+  .header .nav.open{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translate3d(0,0,0)!important;
+    transition:transform .38s cubic-bezier(.2,.78,.2,1),opacity .22s ease,visibility 0s linear 0s!important;
+  }
+
+  /* Small label; avoids empty-looking space without clutter. */
+  .header .nav::before{
+    content:'MENU'!important;
+    display:block!important;
+    height:auto!important;
+    padding:2px 9px 7px!important;
+    margin:0 2px 2px!important;
+    color:rgba(35,39,43,.48)!important;
+    font-size:7px!important;
+    line-height:1!important;
+    font-weight:800!important;
+    letter-spacing:.18em!important;
+    border-bottom:1px solid rgba(35,39,43,.10)!important;
+  }
+
+  /* Every main link gets exactly the same geometry. */
+  .header .nav>a,
+  .header .nav>a:not(.nav-cta){
+    position:relative!important;
+    z-index:1702!important;
+    width:100%!important;
+    min-height:43px!important;
+    height:43px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    flex:0 0 43px!important;
+    margin:0!important;
+    padding:0 12px!important;
+    border:0!important;
+    border-radius:12px!important;
+    color:#24282d!important;
+    background:rgba(255,255,255,.20)!important;
+    font-size:11px!important;
+    line-height:1!important;
+    font-weight:650!important;
+    letter-spacing:.1px!important;
+    white-space:nowrap!important;
+    transform:none!important;
+    transition:background .18s ease,color .18s ease!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+  .header .nav>a:not(.nav-cta)::before{
+    content:'•'!important;
+    position:static!important;
+    display:inline-block!important;
+    width:12px!important;
+    min-width:12px!important;
+    height:auto!important;
+    margin:0 7px 0 0!important;
+    color:#e51b23!important;
+    opacity:.85!important;
+    background:none!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+  .header .nav>a:not(.nav-cta)::after{display:none!important;}
+  .header .nav>a:not(.nav-cta):hover,
+  .header .nav>a:not(.nav-cta):focus-visible,
+  .header .nav>a.active:not(.nav-cta){
+    background:rgba(229,27,35,.09)!important;
+    color:#d71920!important;
+    transform:none!important;
+  }
+
+  /* Media Solutions row: text and arrow are separate, stable click targets. */
+  .header .nav .nav-dropdown{
+    position:relative!important;
+    z-index:1703!important;
+    width:100%!important;
+    min-height:43px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 40px!important;
+    align-items:stretch!important;
+    gap:0!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:12px!important;
+    background:rgba(255,255,255,.20)!important;
+    overflow:visible!important;
+  }
+  .header .nav .nav-dropdown>a{
+    position:relative!important;
+    z-index:1704!important;
+    min-width:0!important;
+    min-height:43px!important;
+    height:43px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    box-sizing:border-box!important;
+    margin:0!important;
+    padding:0 12px!important;
+    border:0!important;
+    border-radius:12px 0 0 12px!important;
+    color:#24282d!important;
+    background:transparent!important;
+    font-size:11px!important;
+    line-height:1!important;
+    font-weight:650!important;
+    white-space:nowrap!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+  .header .nav .nav-dropdown>a::before{
+    content:'•'!important;
+    position:static!important;
+    display:inline-block!important;
+    width:12px!important;
+    min-width:12px!important;
+    margin:0 7px 0 0!important;
+    color:#e51b23!important;
+    opacity:.85!important;
+    background:none!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    position:relative!important;
+    z-index:1705!important;
+    width:40px!important;
+    min-width:40px!important;
+    height:43px!important;
+    min-height:43px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-left:1px solid rgba(35,39,43,.08)!important;
+    border-radius:0 12px 12px 0!important;
+    background:transparent!important;
+    color:#3b3f44!important;
+    font-size:13px!important;
+    line-height:1!important;
+    transform:none!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown>.nav-arrow:focus-visible{
+    background:rgba(229,27,35,.08)!important;
+    color:#d71920!important;
+  }
+
+  /* Submenu remains inside the drawer and never shifts the parent row sideways. */
+  .header .nav .nav-dropdown>.nav-menu{
+    position:relative!important;
+    grid-column:1 / -1!important;
+    top:auto!important;
+    left:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+    display:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:none!important;
+    padding:4px 5px 5px!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:10px!important;
+    background:rgba(255,255,255,.30)!important;
+    box-shadow:none!important;
+    z-index:1706!important;
+  }
+  .header .nav .nav-dropdown.open>.nav-menu{display:block!important;}
+  .header .nav .nav-dropdown>.nav-menu a{
+    position:relative!important;
+    z-index:1707!important;
+    width:100%!important;
+    min-height:36px!important;
+    height:36px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    margin:2px 0!important;
+    padding:0 11px!important;
+    border:0!important;
+    border-radius:9px!important;
+    color:#35393e!important;
+    background:rgba(255,255,255,.22)!important;
+    font-size:10px!important;
+    line-height:1!important;
+    font-weight:600!important;
+    white-space:nowrap!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a::before{
+    content:'→'!important;
+    position:static!important;
+    margin-right:8px!important;
+    color:#e51b23!important;
+    background:none!important;
+    box-shadow:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a:hover,
+  .header .nav .nav-dropdown>.nav-menu a:focus-visible{
+    color:#d71920!important;
+    background:rgba(229,27,35,.08)!important;
+    transform:none!important;
+  }
+
+  /* CTA is stable and aligned with every other row. */
+  .header .nav>a.nav-cta{
+    min-height:42px!important;
+    height:42px!important;
+    flex:0 0 42px!important;
+    margin:4px 0 0!important;
+    padding:0 14px!important;
+    justify-content:center!important;
+    border:1px solid rgba(229,27,35,.18)!important;
+    border-radius:12px!important;
+    background:#e51b23!important;
+    color:#fff!important;
+    font-size:10px!important;
+    font-weight:750!important;
+    box-shadow:0 8px 18px rgba(229,27,35,.18)!important;
+  }
+  .header .nav>a.nav-cta::before{display:none!important;}
+  .header .nav>a.nav-cta span{margin-left:5px!important;}
+
+  /* Outside-click layer is invisible and never sits over the controls.
+     JS closes the menu when the document is clicked outside #nav/#navToggle. */
+  .mobile-nav-backdrop,
+  .mobile-nav-backdrop.open{
+    position:fixed!important;
+    inset:0!important;
+    z-index:100!important;
+    background:transparent!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+
+  /* Do not blur the page when the menu opens. */
+  html.mobile-nav-lock body,
+  body.mobile-nav-lock{overflow:hidden!important;}
+}
+
+@media (max-width:380px){
+  .header .nav-wrap{padding-left:9px!important;padding-right:9px!important;}
+  .header .site-logo{height:40px!important;padding-left:9px!important;padding-right:9px!important;}
+  .header .site-logo img{width:88px!important;max-height:29px!important;}
+  .header .nav-toggle{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;flex-basis:40px!important;}
+  .header .nav{top:64px!important;right:8px!important;width:min(86vw,300px)!important;max-height:calc(100dvh - 76px)!important;border-radius:22px!important;}
+}
+
+
+/* ===== MOBILE NAV FINAL ALIGNMENT / REFERENCE STYLE ===== */
+@media (max-width:760px){
+  .header{
+    height:68px!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    transform:none;
+    overflow:visible!important;
+  }
+  .header.nav-scroll-hidden{transform:translateY(-100%)!important;}
+  .header .nav-wrap{
+    width:calc(100% - 20px)!important;
+    height:54px!important;
+    margin:7px 10px 0!important;
+    padding:5px 7px!important;
+    border-radius:28px!important;
+    background:rgba(255,255,255,.16)!important;
+    border:1px solid rgba(255,255,255,.38)!important;
+    box-shadow:0 8px 25px rgba(0,0,0,.10)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  .header .site-logo{
+    display:flex!important;
+    align-items:center!important;
+    height:42px!important;
+    padding:2px 11px!important;
+    border-radius:22px!important;
+    background:rgba(255,255,255,.90)!important;
+    border:1px solid rgba(255,255,255,.8)!important;
+    box-shadow:0 5px 16px rgba(0,0,0,.12)!important;
+    z-index:1303!important;
+  }
+  .header .site-logo img{
+    width:128px!important;
+    max-height:38px!important;
+    object-fit:contain!important;
+  }
+  .header .nav-toggle{
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    padding:0!important;
+    margin-left:auto!important;
+    display:grid!important;
+    place-items:center!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.90)!important;
+    border:1px solid rgba(255,255,255,.82)!important;
+    box-shadow:0 5px 16px rgba(0,0,0,.13)!important;
+    z-index:1304!important;
+  }
+  .header .nav-toggle span{
+    width:19px!important;height:2px!important;margin:2px 0!important;
+    background:#25292d!important;border-radius:99px!important;
+  }
+  .header .nav-toggle.menu-open{background:rgba(255,255,255,.96)!important;}
+
+  .header .nav{
+    top:72px!important;
+    right:10px!important;
+    left:10px!important;
+    width:auto!important;
+    max-width:none!important;
+    max-height:calc(100dvh - 84px)!important;
+    padding:8px!important;
+    border-radius:20px!important;
+    background:rgba(255,255,255,.72)!important;
+    border:1px solid rgba(255,255,255,.72)!important;
+    box-shadow:0 22px 50px rgba(0,0,0,.20)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    transform:translate3d(105%,0,0)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:transform .38s cubic-bezier(.16,.7,0,1),opacity .22s ease,visibility 0s linear .38s!important;
+    z-index:1301!important;
+  }
+  .header .nav.open{
+    transform:translate3d(0,0,0)!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transition:transform .38s cubic-bezier(.16,.7,0,1),opacity .22s ease,visibility 0s linear 0s!important;
+  }
+  .header .nav::before{
+    content:'MENU'!important;
+    display:block!important;
+    text-align:left!important;
+    padding:4px 11px 7px!important;
+    margin:0!important;
+    font-size:7px!important;
+    letter-spacing:.18em!important;
+    color:rgba(35,39,43,.48)!important;
+    border-bottom:1px solid rgba(35,39,43,.08)!important;
+  }
+  .header .nav>a,
+  .header .nav>a:not(.nav-cta){
+    width:100%!important;
+    min-height:48px!important;
+    padding:11px 16px!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    border:0!important;
+    border-bottom:1px solid rgba(35,39,43,.065)!important;
+    border-radius:10px!important;
+    color:#24282d!important;
+    background:transparent!important;
+    font-size:11px!important;
+    font-weight:600!important;
+    transform:none!important;
+  }
+  .header .nav>a:not(.nav-cta)::before,
+  .header .nav>a:not(.nav-cta)::after{display:none!important;content:none!important;}
+  .header .nav>a:hover,
+  .header .nav>a:focus-visible,
+  .header .nav>a.active:not(.nav-cta){
+    color:#e51b23!important;
+    background:rgba(255,255,255,.35)!important;
+    transform:none!important;
+  }
+
+  .header .nav .nav-dropdown{
+    width:100%!important;
+    min-height:48px!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 34px!important;
+    align-items:stretch!important;
+    margin:0!important;
+    padding:0!important;
+    border-bottom:1px solid rgba(35,39,43,.065)!important;
+    border-radius:10px!important;
+    overflow:visible!important;
+  }
+  .header .nav .nav-dropdown>a{
+    width:100%!important;
+    min-height:48px!important;
+    padding:11px 4px 11px 16px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    border:0!important;
+    border-radius:10px 0 0 10px!important;
+    color:#24282d!important;
+    background:transparent!important;
+    font-size:11px!important;
+    font-weight:600!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown>a::before,
+  .header .nav .nav-dropdown>a::after{display:none!important;content:none!important;}
+  .header .nav .nav-dropdown>.nav-arrow{
+    position:relative!important;
+    width:34px!important;
+    min-height:48px!important;
+    height:48px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+    color:#30343a!important;
+    font-size:9px!important;
+    z-index:5!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown.open>.nav-arrow{color:#e51b23!important;transform:rotate(180deg)!important;}
+  .header .nav .nav-dropdown>.nav-menu{
+    grid-column:1/3!important;
+    position:static!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:4px!important;
+    display:none!important;
+    background:rgba(255,255,255,.28)!important;
+    border:0!important;
+    border-radius:10px!important;
+    box-shadow:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown.open>.nav-menu{display:block!important;}
+  .header .nav .nav-dropdown>.nav-menu a{
+    min-height:38px!important;
+    width:100%!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:8px!important;
+    margin:0!important;
+    border:0!important;
+    border-bottom:1px solid rgba(35,39,43,.055)!important;
+    border-radius:8px!important;
+    text-align:center!important;
+    color:#444!important;
+    background:transparent!important;
+    font-size:9.5px!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a:last-child{border-bottom:0!important;}
+  .header .nav .nav-cta{
+    width:calc(100% - 4px)!important;
+    min-height:42px!important;
+    margin:9px 2px 2px!important;
+    padding:10px 14px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border:0!important;
+    border-radius:11px!important;
+    background:#e51b23!important;
+    color:#fff!important;
+    font-size:10px!important;
+    box-shadow:0 8px 20px rgba(229,27,35,.20)!important;
+  }
+  .header .nav.open > *{animation:mobileNavItemIn .32s cubic-bezier(.16,.7,0,1) both!important;}
+}
+
+/* ===== FINAL MOBILE MENU STATE FIX =====
+   Keep the exact same visual design on every click/focus/active state.
+   Clicking Location/Home/About/etc. must not tint, blur, shift, or reshape the row.
+   Media dropdown can still open, but its parent row keeps the same appearance. */
+@media (max-width:760px){
+  .header .nav > a:not(.nav-cta),
+  .header .nav > a:not(.nav-cta):hover,
+  .header .nav > a:not(.nav-cta):focus,
+  .header .nav > a:not(.nav-cta):focus-visible,
+  .header .nav > a:not(.nav-cta):active,
+  .header .nav > a.active:not(.nav-cta),
+  .header .nav > a:not(.nav-cta)[aria-current="page"]{
+    color:#24282d!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown:hover,
+  .header .nav .nav-dropdown:focus-within,
+  .header .nav .nav-dropdown.open{
+    background:transparent!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+
+  .header .nav .nav-dropdown > a,
+  .header .nav .nav-dropdown > a:hover,
+  .header .nav .nav-dropdown > a:focus,
+  .header .nav .nav-dropdown > a:focus-visible,
+  .header .nav .nav-dropdown > a:active,
+  .header .nav .nav-dropdown.open > a{
+    color:#24282d!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus,
+  .header .nav .nav-dropdown > .nav-arrow:focus-visible,
+  .header .nav .nav-dropdown > .nav-arrow:active,
+  .header .nav .nav-dropdown.open > .nav-arrow{
+    color:#30343a!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    filter:none!important;
+    outline:none!important;
+    transform:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-menu,
+  .header .nav .nav-dropdown.open > .nav-menu{
+    background:transparent!important;
+    box-shadow:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-menu a,
+  .header .nav .nav-dropdown > .nav-menu a:hover,
+  .header .nav .nav-dropdown > .nav-menu a:focus,
+  .header .nav .nav-dropdown > .nav-menu a:focus-visible,
+  .header .nav .nav-dropdown > .nav-menu a:active{
+    color:#444!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    transform:none!important;
+    outline:none!important;
+  }
+
+  .header .nav > a.nav-cta,
+  .header .nav > a.nav-cta:hover,
+  .header .nav > a.nav-cta:focus,
+  .header .nav > a.nav-cta:focus-visible,
+  .header .nav > a.nav-cta:active{
+    background:#e51b23!important;
+    color:#fff!important;
+    transform:none!important;
+    box-shadow:0 8px 20px rgba(229,27,35,.20)!important;
+    outline:none!important;
+  }
+}
+
+/* ===== MOBILE MENU — FINAL SAME-GLASS STATE =====
+   All menu rows keep one identical transparent/rounded appearance.
+   Navigation state, focus, active page and Location click must never
+   recolor, whiten, move or reshape the drawer. */
+@media (max-width:760px){
+  .header .nav{
+    background:rgba(255,255,255,.18)!important;
+    border:1px solid rgba(255,255,255,.48)!important;
+    box-shadow:0 20px 48px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.28)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    filter:none!important;
+  }
+
+  .header .nav > a:not(.nav-cta),
+  .header .nav > a:not(.nav-cta):hover,
+  .header .nav > a:not(.nav-cta):focus,
+  .header .nav > a:not(.nav-cta):focus-visible,
+  .header .nav > a:not(.nav-cta):active,
+  .header .nav > a.active:not(.nav-cta),
+  .header .nav > a:not(.nav-cta)[aria-current="page"]{
+    background:rgba(255,255,255,.20)!important;
+    color:#24282d!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+    opacity:1!important;
+  }
+
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown:hover,
+  .header .nav .nav-dropdown:focus-within,
+  .header .nav .nav-dropdown.open{
+    background:rgba(255,255,255,.20)!important;
+    color:#24282d!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+  }
+
+  .header .nav .nav-dropdown > a,
+  .header .nav .nav-dropdown > a:hover,
+  .header .nav .nav-dropdown > a:focus,
+  .header .nav .nav-dropdown > a:focus-visible,
+  .header .nav .nav-dropdown > a:active,
+  .header .nav .nav-dropdown.open > a{
+    background:transparent!important;
+    color:#24282d!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus,
+  .header .nav .nav-dropdown > .nav-arrow:focus-visible,
+  .header .nav .nav-dropdown > .nav-arrow:active,
+  .header .nav .nav-dropdown.open > .nav-arrow{
+    background:transparent!important;
+    color:#3b3f44!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-menu,
+  .header .nav .nav-dropdown.open > .nav-menu{
+    background:rgba(255,255,255,.12)!important;
+    border:0!important;
+    box-shadow:none!important;
+    filter:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-menu a,
+  .header .nav .nav-dropdown > .nav-menu a:hover,
+  .header .nav .nav-dropdown > .nav-menu a:focus,
+  .header .nav .nav-dropdown > .nav-menu a:focus-visible,
+  .header .nav .nav-dropdown > .nav-menu a:active{
+    background:rgba(255,255,255,.14)!important;
+    color:#444!important;
+    box-shadow:none!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  .header .nav > a.nav-cta,
+  .header .nav > a.nav-cta:hover,
+  .header .nav > a.nav-cta:focus,
+  .header .nav > a.nav-cta:focus-visible,
+  .header .nav > a.nav-cta:active{
+    background:#e51b23!important;
+    color:#fff!important;
+    box-shadow:0 8px 20px rgba(229,27,35,.20)!important;
+    transform:none!important;
+    filter:none!important;
+    outline:none!important;
+  }
+
+  /* Keep the outside layer invisible so the page never becomes blurred. */
+  .mobile-nav-backdrop,
+  .mobile-nav-backdrop.open{
+    background:transparent!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+}
+
+/* ===== MOBILE MENU FINAL: STABLE COLOURED PANEL / NO ACTIVE-ROW CHANGE ===== */
+@media (max-width:760px){
+  /* Solid soft panel: no transparent/glass wash and no blur. */
+  .header .nav{
+    background:rgba(239,239,239,.97)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    border:1px solid rgba(255,255,255,.95)!important;
+    box-shadow:0 18px 42px rgba(0,0,0,.28)!important;
+    border-radius:22px!important;
+  }
+
+  /* Keep every menu row left aligned and visually identical in every state. */
+  .header .nav>a:not(.nav-cta),
+  .header .nav>a:not(.nav-cta):hover,
+  .header .nav>a:not(.nav-cta):focus,
+  .header .nav>a:not(.nav-cta):focus-visible,
+  .header .nav>a:not(.nav-cta):active,
+  .header .nav>a.active:not(.nav-cta){
+    justify-content:flex-start!important;
+    text-align:left!important;
+    background:rgba(255,255,255,.24)!important;
+    color:#24282d!important;
+    box-shadow:none!important;
+    transform:none!important;
+    outline:none!important;
+  }
+
+  /* No active/pressed white or red block when navigating to a page. */
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown:hover,
+  .header .nav .nav-dropdown:focus-within,
+  .header .nav .nav-dropdown.open{
+    background:rgba(255,255,255,.24)!important;
+    box-shadow:none!important;
+  }
+  .header .nav .nav-dropdown>a,
+  .header .nav .nav-dropdown>a:hover,
+  .header .nav .nav-dropdown>a:focus,
+  .header .nav .nav-dropdown>a:active{
+    background:transparent!important;
+    color:#24282d!important;
+    box-shadow:none!important;
+    transform:none!important;
+    outline:none!important;
+  }
+
+  /* Arrow keeps the same neutral appearance before/after opening. */
+  .header .nav .nav-dropdown>.nav-arrow,
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown>.nav-arrow:focus,
+  .header .nav .nav-dropdown>.nav-arrow:active{
+    background:transparent!important;
+    color:#3b3f44!important;
+    box-shadow:none!important;
+    outline:none!important;
+  }
+
+  /* Submenu follows the same panel colour instead of creating a white block. */
+  .header .nav .nav-dropdown>.nav-menu,
+  .header .nav .nav-dropdown.open>.nav-menu{
+    background:rgba(255,255,255,.18)!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a,
+  .header .nav .nav-dropdown>.nav-menu a:hover,
+  .header .nav .nav-dropdown>.nav-menu a:focus,
+  .header .nav .nav-dropdown>.nav-menu a:active{
+    background:rgba(255,255,255,.20)!important;
+    color:#35393e!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    box-shadow:none!important;
+    transform:none!important;
+    outline:none!important;
+  }
+
+  /* Red bullets remain the only visual accent on normal menu rows. */
+  .header .nav>a:not(.nav-cta)::before,
+  .header .nav .nav-dropdown>a::before{
+    color:#e51b23!important;
+    opacity:1!important;
+  }
+
+  /* Enquire Now remains the only strong red button. */
+  .header .nav>a.nav-cta,
+  .header .nav>a.nav-cta:hover,
+  .header .nav>a.nav-cta:focus,
+  .header .nav>a.nav-cta:active{
+    background:#e51b23!important;
+    color:#fff!important;
+    box-shadow:0 8px 18px rgba(229,27,35,.22)!important;
+    transform:none!important;
+    outline:none!important;
+  }
+}
+
+/* ===== FINAL MOBILE MENU: LEFT ALIGN + STABLE PANEL DESIGN ===== */
+@media (max-width:760px){
+  /* Keep the drawer as a consistent soft panel; no glass/blur or page-dependent color changes. */
+  .header .nav{
+    background:rgba(245,245,245,.97)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    border:1px solid rgba(30,30,30,.10)!important;
+    box-shadow:0 18px 45px rgba(0,0,0,.20)!important;
+  }
+
+  /* Every normal menu item stays left aligned, including Media Solutions. */
+  .header .nav>a:not(.nav-cta),
+  .header .nav .nav-dropdown>a,
+  .header .nav .nav-dropdown>.nav-menu a{
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+
+  /* Active/current page must look exactly like an ordinary menu item. */
+  .header .nav>a:not(.nav-cta):hover,
+  .header .nav>a:not(.nav-cta):focus,
+  .header .nav>a:not(.nav-cta):focus-visible,
+  .header .nav>a:not(.nav-cta).active,
+  .header .nav>a:not(.nav-cta)[aria-current="page"],
+  .header .nav .nav-dropdown>a:hover,
+  .header .nav .nav-dropdown>a:focus,
+  .header .nav .nav-dropdown>a:focus-visible,
+  .header .nav .nav-dropdown>a.active,
+  .header .nav .nav-dropdown>a[aria-current="page"]{
+    color:#25292d!important;
+    background:transparent!important;
+    transform:none!important;
+    box-shadow:none!important;
+  }
+
+  /* Keep the red bullet fixed; it must not turn into a selected-state block. */
+  .header .nav>a:not(.nav-cta)::before,
+  .header .nav .nav-dropdown>a::before{
+    content:'•'!important;
+    color:var(--red)!important;
+    margin-right:9px!important;
+    width:auto!important;
+    height:auto!important;
+    background:none!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+
+  /* Media Solutions label remains left aligned and its arrow stays at the far right. */
+  .header .nav .nav-dropdown{
+    grid-template-columns:minmax(0,1fr) 36px!important;
+  }
+  .header .nav .nav-dropdown>a{
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow,
+  .header .nav .nav-dropdown.open>.nav-arrow{
+    justify-content:center!important;
+    background:transparent!important;
+    color:#3b4045!important;
+    box-shadow:none!important;
+  }
+
+  /* Submenu items also remain left aligned and keep one stable background. */
+  .header .nav .nav-dropdown>.nav-menu{
+    background:rgba(232,232,232,.72)!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a:hover,
+  .header .nav .nav-dropdown>.nav-menu a:focus,
+  .header .nav .nav-dropdown>.nav-menu a:focus-visible,
+  .header .nav .nav-dropdown>.nav-menu a.active,
+  .header .nav .nav-dropdown>.nav-menu a[aria-current="page"]{
+    color:#444!important;
+    background:transparent!important;
+    transform:none!important;
+  }
+
+  /* Remove the blur from the outside-click layer too, so the page stays sharp. */
+  .mobile-nav-backdrop{
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    background:rgba(10,12,15,.10)!important;
+  }
+}
+
+/* ===== MOBILE MENU: ABSOLUTELY STABLE DESIGN ON EVERY PAGE/STATE ===== */
+@media (max-width:760px){
+  .header .nav,
+  .header .nav.open{
+    background:#efefef!important;
+    background-image:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    border:1px solid #dedede!important;
+    box-shadow:0 18px 45px rgba(0,0,0,.20)!important;
+    border-radius:22px!important;
+  }
+
+  /* Every main row keeps the exact same look: no active/visited/hover redesign. */
+  .header .nav > a:not(.nav-cta),
+  .header .nav > a:not(.nav-cta):visited,
+  .header .nav > a:not(.nav-cta):hover,
+  .header .nav > a:not(.nav-cta):focus,
+  .header .nav > a:not(.nav-cta):focus-visible,
+  .header .nav > a:not(.nav-cta):active,
+  .header .nav > a:not(.nav-cta).active,
+  .header .nav > a:not(.nav-cta)[aria-current="page"]{
+    color:#24282d!important;
+    background:rgba(255,255,255,.34)!important;
+    background-image:none!important;
+    opacity:1!important;
+    transform:none!important;
+    box-shadow:none!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    outline:none!important;
+    text-shadow:none!important;
+    -webkit-tap-highlight-color:transparent!important;
+  }
+
+  /* Remove all desktop active/hover underline effects inside the mobile drawer. */
+  .header .nav > a:not(.nav-cta)::after,
+  .header .nav > a:not(.nav-cta):hover::after,
+  .header .nav > a:not(.nav-cta):focus::after,
+  .header .nav > a:not(.nav-cta):focus-visible::after,
+  .header .nav > a:not(.nav-cta):active::after,
+  .header .nav > a:not(.nav-cta).active::after,
+  .header .nav > a:not(.nav-cta)[aria-current="page"]::after{
+    width:0!important;
+    opacity:0!important;
+    display:none!important;
+  }
+
+  /* Stable red bullet; never turns into a selected-state block. */
+  .header .nav > a:not(.nav-cta)::before,
+  .header .nav .nav-dropdown > a::before{
+    content:'•'!important;
+    position:static!important;
+    display:inline!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0 9px 0 0!important;
+    background:none!important;
+    color:#e51b23!important;
+    opacity:1!important;
+    box-shadow:none!important;
+    transform:none!important;
+    left:auto!important;
+    top:auto!important;
+    pointer-events:none!important;
+  }
+
+  /* Media Solutions is left aligned exactly like every other row. */
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown:hover,
+  .header .nav .nav-dropdown:focus-within,
+  .header .nav .nav-dropdown.open{
+    background:rgba(255,255,255,.34)!important;
+    background-image:none!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown > a,
+  .header .nav .nav-dropdown > a:visited,
+  .header .nav .nav-dropdown > a:hover,
+  .header .nav .nav-dropdown > a:focus,
+  .header .nav .nav-dropdown > a:focus-visible,
+  .header .nav .nav-dropdown > a:active,
+  .header .nav .nav-dropdown > a.active,
+  .header .nav .nav-dropdown > a[aria-current="page"]{
+    color:#24282d!important;
+    background:transparent!important;
+    transform:none!important;
+    box-shadow:none!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    outline:none!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus,
+  .header .nav .nav-dropdown > .nav-arrow:focus-visible,
+  .header .nav .nav-dropdown > .nav-arrow:active{
+    background:transparent!important;
+    color:#3b3f44!important;
+    box-shadow:none!important;
+    transform:none!important;
+    outline:none!important;
+  }
+
+  .header .nav .nav-dropdown > .nav-menu,
+  .header .nav .nav-dropdown.open > .nav-menu{
+    background:#e6e6e6!important;
+    background-image:none!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+  .header .nav .nav-dropdown > .nav-menu a,
+  .header .nav .nav-dropdown > .nav-menu a:visited,
+  .header .nav .nav-dropdown > .nav-menu a:hover,
+  .header .nav .nav-dropdown > .nav-menu a:focus,
+  .header .nav .nav-dropdown > .nav-menu a:focus-visible,
+  .header .nav .nav-dropdown > .nav-menu a:active,
+  .header .nav .nav-dropdown > .nav-menu a.active,
+  .header .nav .nav-dropdown > .nav-menu a[aria-current="page"]{
+    color:#35393e!important;
+    background:rgba(255,255,255,.24)!important;
+    transform:none!important;
+    box-shadow:none!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+    outline:none!important;
+  }
+
+  .header .nav > a.nav-cta,
+  .header .nav > a.nav-cta:visited,
+  .header .nav > a.nav-cta:hover,
+  .header .nav > a.nav-cta:focus,
+  .header .nav > a.nav-cta:active{
+    background:#e51b23!important;
+    color:#fff!important;
+    opacity:1!important;
+    transform:none!important;
+    box-shadow:0 8px 18px rgba(229,27,35,.22)!important;
+    outline:none!important;
+  }
+}

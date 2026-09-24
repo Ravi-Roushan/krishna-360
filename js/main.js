@@ -56,6 +56,12 @@ document.addEventListener('click',(e)=>{
 // receives its normal click/navigation event.
 nav?.addEventListener('click',e=>{
   e.stopPropagation();
+  const link=e.target.closest('a');
+  if(link && nav.contains(link)){
+    // Let the browser follow the link normally, but close the drawer immediately
+    // so same-page links such as Location / Our Network never leave the menu open.
+    closeMobileNav();
+  }
 });
 window.addEventListener('resize',()=>{
   if(window.innerWidth>760) closeMobileNav();

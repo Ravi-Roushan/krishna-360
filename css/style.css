@@ -6698,30 +6698,53 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .footer-menu a{min-width:0!important;font-size:9px!important;padding:9px 10px!important;}
 }
 
-/* ===== FINAL PRECISE FIX: OUR WORK HEADING / MEDIA CARDS ===== */
-.work-grid{grid-template-columns:minmax(300px,34%) minmax(0,66%)!important;align-items:start!important;column-gap:28px!important;}
-.work-copy{padding-right:8px!important;min-width:0!important;}
-.work-copy h2{font-size:clamp(46px,4.4vw,58px)!important;line-height:.98!important;letter-spacing:-.02em!important;max-width:100%!important;margin-bottom:22px!important;}
-.work-copy h2 em{display:block!important;white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;}
-.work-gallery{min-width:0!important;}
-.work-video-card{height:205px!important;}
-.work-bottom-track .work-card{min-height:155px!important;}
-.work-bottom-track .work-card img{height:155px!important;min-height:155px!important;}
 
-@media(max-width:1050px){
-  .work-grid{grid-template-columns:1fr!important;column-gap:0!important;row-gap:24px!important;}
-  .work-copy h2{font-size:clamp(40px,7vw,52px)!important;line-height:1!important;}
+/* FINAL MEDIA SOLUTIONS NAV REFINEMENT
+   Footer stays a simple link; only the main navigation owns the dropdown. */
+.nav-dropdown .nav-menu{
+  top:calc(100% + 10px)!important;
+  transform:translate(-50%,-6px)!important;
+  border-radius:8px!important;
+  padding:7px!important;
+  min-width:185px!important;
+}
+.nav-dropdown.open .nav-menu{
+  transform:translate(-50%,0)!important;
+}
+.nav-dropdown .nav-menu::before{
+  content:"";
+  position:absolute;
+  top:-7px;
+  left:50%;
+  width:12px;
+  height:12px;
+  background:#fff;
+  border-left:1px solid #e8e8e8;
+  border-top:1px solid #e8e8e8;
+  transform:translateX(-50%) rotate(45deg);
 }
 @media(max-width:760px){
-  .work-grid{grid-template-columns:1fr!important;gap:20px!important;}
-  .work-copy{width:100%!important;padding:0!important;}
-  .work-copy h2{font-size:31px!important;line-height:1.08!important;letter-spacing:-.01em!important;margin:10px 0 16px!important;max-width:100%!important;}
-  .work-copy h2 em{display:block!important;white-space:normal!important;overflow-wrap:break-word!important;}
-  .work-gallery{width:100%!important;margin-top:0!important;}
-  .work-video-card{height:175px!important;}
-  .work-bottom-track .work-card{min-height:150px!important;}
-  .work-bottom-track .work-card img{height:150px!important;min-height:150px!important;}
-}
-@media(max-width:360px){
-  .work-copy h2{font-size:29px!important;line-height:1.08!important;}
+  .header .nav .nav-dropdown{
+    grid-template-columns:minmax(0,1fr) 42px!important;
+  }
+  .header .nav .nav-dropdown>a{
+    justify-content:center!important;
+    text-align:center!important;
+    padding-left:42px!important;
+    padding-right:10px!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    width:42px!important;
+    justify-content:center!important;
+  }
+  .header .nav .nav-dropdown>.nav-menu a{
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  .nav-dropdown .nav-menu{
+    top:auto!important;
+    transform:none!important;
+    border-radius:0!important;
+  }
+  .nav-dropdown .nav-menu::before{display:none!important;}
 }

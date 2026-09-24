@@ -33,10 +33,6 @@ $$('.nav-dropdown').forEach(drop=>{
  });
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')) $$('.nav-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('.nav-arrow')?.setAttribute('aria-expanded','false')})});
-// Footer Media Solutions dropdown — same compact interaction as the main nav.
-$$('.footer-dropdown').forEach(drop=>{const arrow=drop.querySelector('.footer-arrow');arrow?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const open=drop.classList.toggle('open');arrow.setAttribute('aria-expanded',open?'true':'false');$$('.footer-dropdown').forEach(other=>{if(other!==drop){other.classList.remove('open');other.querySelector('.footer-arrow')?.setAttribute('aria-expanded','false')}})});});
-document.addEventListener('click',e=>{if(!e.target.closest('.footer-dropdown')) $$('.footer-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('.footer-arrow')?.setAttribute('aria-expanded','false')})});
-
 // Scroll reveal
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 $$('.reveal').forEach(el=>io.observe(el));

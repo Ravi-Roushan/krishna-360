@@ -313,18 +313,76 @@ workViewport?.addEventListener('touchstart',()=>clearInterval(workAutoTimer),{pa
 workViewport?.addEventListener('touchend',restartWorkAuto,{passive:true});
 sizeWorkCards(); window.addEventListener('resize',()=>{sizeWorkCards();workStep=0;workViewport?.scrollTo({left:0,behavior:'auto'})}); restartWorkAuto();
 
-// Chatbot — modern conversational interactions
+// Chatbot — compact WhatsApp-style conversational interactions
 const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatMessages=$('#chatMessages'),chatComposer=$('#chatComposer'),chatInput=$('#chatInput');
 if(chatbot && chatPanel){
+ const pad=n=>String(n).padStart(2,'0');
+ const timeNow=()=>{const d=new Date();let h=d.getHours(),m=d.getMinutes();const ap=h>=12?'PM':'AM';h=h%12||12;return `${h}:${pad(m)} ${ap}`};
+ let chatStartedAt=null;
+ const scrollBottom=()=>{if(chatMessages) chatMessages.scrollTop=chatMessages.scrollHeight};
+ const stamp=(label='')=>{const el=document.createElement('div');el.className='msg-time';el.textContent=label||timeNow();return el};
+ const avatar=()=>`<span class="msg-avatar"><span class="mini-bot"><i></i><i></i><b></b></span></span>`;
+ const addMessage=(text,who='bot',withTime=true)=>{
+   if(!chatMessages) return;
+   const row=document.createElement('div'); row.className=`msg-row ${who}`;
+   if(who==='bot') row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
+   else row.innerHTML=`<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
+   chatMessages.appendChild(row);
+   if(withTime){
+     const t=stamp(timeNow());
+     if(who==='bot') t.classList.add('bot-time'); else t.classList.add('user-time');
+     row.querySelector('.msg-stack')?.appendChild(t);
+   }
+   scrollBottom(); return row;
+ };
+ const showTyping=()=>{
+   const row=document.createElement('div');row.className='msg-row bot typing-row';
+   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble typing-bubble"><span class="typing-label">Typing</span><span class="typing-dots"><i></i><i></i><i></i></span></div></div>`;
+   chatMessages?.appendChild(row);scrollBottom();return row;
+ };
+ const reply=(type)=>{
+   const text={location:'Sure. Explore our network across Ahmedabad, Mumbai, Thane and Rajasthan from the Our Network page.',media:'We offer OOH, Transit, Digital, Print & Electronic Media and branding solutions for campaigns.',ooh:'Our OOH solutions include hoardings, billboards and other high-visibility outdoor media formats.',digital:'We can help with digital media and DOOH campaign options. Tell me your city and campaign objective.',transit:'Our Transit Media solutions cover buses, bus shelters and railway environments designed for high-frequency audience visibility.',campaign:'Great. Share your city, campaign duration and target audience, and we’ll guide you through suitable media options.'}[type]||'Sure. Tell me what you are looking for and I’ll guide you.';
+   const typing=showTyping();
+   setTimeout(()=>{typing.remove();addMessage(text,'bot',true)},900);
+ };
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
- const addMessage=(text,who='bot')=>{if(!chatMessages) return; const row=document.createElement('div');row.className=`msg-row ${who}`; if(who==='bot'){row.innerHTML=`<span class="msg-avatar">✦</span><div class="msg-bubble">${text}</div>`}else{row.innerHTML=`<div class="msg-bubble">${text}</div>`} chatMessages.appendChild(row); chatMessages.scrollTop=chatMessages.scrollHeight};
- const reply=(type)=>{const text={location:'Sure. Explore our network across Ahmedabad, Mumbai, Thane and Rajasthan from the Our Network page.',media:'We offer OOH, Transit, Digital, Print & Electronic Media and branding solutions for campaigns.',ooh:'Our OOH solutions include hoardings, billboards and other high-visibility outdoor media formats.',digital:'We can help with digital media and DOOH campaign options. Tell me your city and campaign objective.',transit:'Our Transit Media solutions cover buses, bus shelters and railway environments designed for high-frequency audience visibility.',campaign:'Great. Share your city, campaign duration and target audience, and we’ll guide you through suitable media options.'}[type]||'Sure. Tell me what you are looking for and I’ll guide you.'; addMessage(text,'bot')};
- chatbot.addEventListener('click',()=>{const open=chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',open?'false':'true');if(open) setTimeout(()=>chatInput?.focus(),250)});
- chatClose?.addEventListener('click',closeChat);
+ const openChat=()=>{
+   const wasOpen=chatPanel.classList.contains('open');
+   chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');
+   if(!wasOpen){
+     if(!chatStartedAt){chatStartedAt=timeNow();
+       if(chatMessages){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${chatStartedAt}`;chatMessages.prepend(day)}
+     }
+     setTimeout(()=>chatInput?.focus(),220);
+   }
+   scrollBottom();
+ };
+ chatbot.addEventListener('click',openChat);
+ chatClose?.addEventListener('click',e=>{e.stopPropagation();closeChat()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});
  document.addEventListener('click',e=>{if(chatPanel.classList.contains('open') && !e.target.closest('#chatPanel') && !e.target.closest('#chatbot')) closeChat()});
- $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent.replace('↗','').trim(),'user');setTimeout(()=>reply(b.dataset.chat),380)}));
- chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;addMessage(value,'user');chatInput.value='';setTimeout(()=>addMessage('Thanks! I’m here. Tell me a little more about your requirement and I’ll guide you.','bot'),420)});
+ $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent.replace('↗','').trim(),'user');reply(b.dataset.chat)}));
+ chatComposer?.addEventListener('submit',e=>{
+   e.preventDefault();const value=chatInput?.value.trim();if(!value)return;
+   addMessage(value,'user');chatInput.value='';
+   const typing=showTyping();
+   setTimeout(()=>{typing.remove();addMessage('Thanks! I’m here. Tell me a little more about your requirement and I’ll guide you.','bot',true)},900);
+ });
+ // Add timestamps to the two existing welcome messages without changing their copy.
+ if(chatMessages && !chatMessages.querySelector('.chat-day')){
+   const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);
+   $$('.msg-row.bot',chatMessages).forEach(row=>{
+     if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());
+     let stack=row.querySelector('.msg-stack');
+     if(!stack){
+       const bubble=row.querySelector('.msg-bubble');
+       stack=document.createElement('div');stack.className='msg-stack';
+       if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}
+       row.appendChild(stack);
+     }
+     if(!stack.querySelector('.msg-time')){const t=stamp(timeNow());t.classList.add('bot-time');stack.appendChild(t)}
+   });
+ }
 }
 
 // Work image lightbox — click any campaign card to view it larger

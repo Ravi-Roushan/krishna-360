@@ -278,7 +278,7 @@ if(clientStageEl){
 const panels={
  ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'assets/images/media/home-360-outdoor-hoarding-night-02.webp', color:'#ff2832'},
  transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/home/home-360-bus-hd.webp', color:'#53bffb'},
- print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/media/media-print-newspaper-radio.webp', color:'#a78bfa'}
+ print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/print/newspaper.png', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){

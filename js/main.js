@@ -9,19 +9,57 @@ window.addEventListener('scroll',()=>{
   progress.style.width=`${max?window.scrollY/max*100:0}%`;
 },{passive:true});
 
-// Mobile navigation
+// Mobile navigation — compact right-side drawer with outside-tap close
 const nav=$('#nav'), navToggle=$('#navToggle');
-navToggle.addEventListener('click',()=>{
- const open=nav.classList.toggle('open');
- navToggle.setAttribute('aria-expanded',open);
- navToggle.classList.toggle('menu-open',open);
+let mobileNavBackdrop=document.querySelector('.mobile-nav-backdrop');
+if(!mobileNavBackdrop){
+  mobileNavBackdrop=document.createElement('div');
+  mobileNavBackdrop.className='mobile-nav-backdrop';
+  mobileNavBackdrop.setAttribute('aria-hidden','true');
+  document.body.appendChild(mobileNavBackdrop);
+}
+const closeMobileNav=()=>{
+  nav?.classList.remove('open');
+  navToggle?.classList.remove('menu-open');
+  navToggle?.setAttribute('aria-expanded','false');
+  mobileNavBackdrop?.classList.remove('open');
+  document.documentElement.classList.remove('mobile-nav-lock');
+  document.body.classList.remove('mobile-nav-lock');
+};
+const openMobileNav=()=>{
+  // Keep the mobile header controls above the outside-click layer.
+  header?.classList.remove('nav-scroll-hidden');
+  nav?.classList.add('open');
+  navToggle?.classList.add('menu-open');
+  navToggle?.setAttribute('aria-expanded','true');
+  mobileNavBackdrop?.classList.add('open');
+  document.documentElement.classList.add('mobile-nav-lock');
+  document.body.classList.add('mobile-nav-lock');
+};
+navToggle?.addEventListener('click',(e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+  nav?.classList.contains('open') ? closeMobileNav() : openMobileNav();
 });
-$$('.nav a').forEach(a=>a.addEventListener('click',()=>{
- if(a.closest('.nav-dropdown') && a.closest('.nav-dropdown').classList.contains('open') && a.parentElement?.classList.contains('nav-menu')){}
- nav.classList.remove('open');
- navToggle.classList.remove('menu-open');
- navToggle.setAttribute('aria-expanded','false');
-}));
+mobileNavBackdrop?.addEventListener('click',(e)=>{
+  if(e.target===mobileNavBackdrop) closeMobileNav();
+});
+
+// Any tap/click outside the mobile drawer closes it. The drawer itself stays
+// interactive so every menu link, Media arrow and submenu item remains clickable.
+document.addEventListener('click',(e)=>{
+  if(!nav?.classList.contains('open')) return;
+  if(e.target.closest('#nav') || e.target.closest('#navToggle')) return;
+  closeMobileNav();
+});
+// Keep menu links fully interactive. Do not close the drawer before the link
+// receives its normal click/navigation event.
+nav?.addEventListener('click',e=>{
+  e.stopPropagation();
+});
+window.addEventListener('resize',()=>{
+  if(window.innerWidth>760) closeMobileNav();
+},{passive:true});
 
 // Navbar dropdowns — text links navigate; only the arrow toggles the menu.
 $$('.nav-dropdown').forEach(drop=>{

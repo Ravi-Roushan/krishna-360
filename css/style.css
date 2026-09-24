@@ -6748,3 +6748,197 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   }
   .nav-dropdown .nav-menu::before{display:none!important;}
 }
+
+
+/* ===== LATEST FINAL POLISH ===== */
+/* Keep Media Solutions arrow directly with the label; dropdown is owned by the nav only. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown{display:inline-flex!important;align-items:center!important;gap:2px!important;position:relative!important;}
+  .header .nav .nav-dropdown>.nav-arrow{width:20px!important;height:28px!important;padding:2px 3px!important;margin:0!important;font-size:10px!important;}
+  .header .nav .nav-dropdown>.nav-menu{top:calc(100% + 12px)!important;}
+}
+/* Mobile logo: centered in the header, slightly smaller and kept at the existing vertical position. */
+@media (max-width:760px){
+  .header .nav-wrap{position:relative!important;justify-content:center!important;}
+  .header .site-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;margin:0!important;}
+  .header .site-logo img{width:116px!important;max-height:36px!important;}
+  .header .nav-toggle{position:absolute!important;right:0!important;}
+  .header .nav{top:62px!important;}
+  .header .nav .nav-dropdown{display:grid!important;grid-template-columns:minmax(0,1fr) 42px!important;align-items:stretch!important;}
+  .header .nav .nav-dropdown>a{justify-content:center!important;text-align:center!important;padding:10px 8px!important;}
+  .header .nav .nav-dropdown>.nav-arrow{display:flex!important;width:42px!important;height:44px!important;align-items:center!important;justify-content:center!important;}
+}
+/* Work heading: exactly three visual lines, with POSSIBILITIES fully below MANY. */
+.work-copy h2 em{display:block!important;white-space:normal!important;line-height:1.02!important;}
+@media (min-width:761px){
+  .work-copy h2{line-height:1.02!important;}
+  .work-copy h2 em br{display:block!important;}
+}
+@media (max-width:760px){
+  .work-copy h2{font-size:clamp(29px,7.8vw,38px)!important;line-height:1.04!important;max-width:100%!important;margin-bottom:18px!important;}
+  .work-copy h2 em{display:block!important;line-height:1.04!important;}
+  .work-gallery{margin-top:0!important;}
+  .work-video-card{height:175px!important;}
+  .work-bottom-track .work-card,.work-bottom-track .work-card img{min-height:155px!important;height:155px!important;}
+}
+
+/* ===== FINAL USER-REQUESTED POLISH ===== */
+/* Desktop: keep Media Solutions arrow immediately beside its label, never near Location. */
+@media (min-width:761px){
+  .header .nav{gap:28px!important;}
+  .header .nav .nav-dropdown{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    position:relative!important;
+    gap:3px!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:100%!important;
+  }
+  .header .nav .nav-dropdown>a{
+    width:auto!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    position:static!important;
+    flex:0 0 14px!important;
+    width:14px!important;
+    min-width:14px!important;
+    height:22px!important;
+    padding:0!important;
+    margin:0 0 0 1px!important;
+    border:0!important;
+    border-radius:0!important;
+    outline:0!important;
+    box-shadow:none!important;
+    background:transparent!important;
+    color:#30343a!important;
+    font-size:10px!important;
+    line-height:22px!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown.open>.nav-arrow{
+    color:var(--red)!important;
+    transform:none!important;
+  }
+
+  /* Give the work copy enough room and make the video/cards narrower. */
+  .work-grid{
+    grid-template-columns:34% 66%!important;
+    gap:0!important;
+  }
+  .work-gallery{
+    width:91%!important;
+    justify-self:end!important;
+  }
+  .work-video-card{height:205px!important;}
+  .work-bottom-track .work-card,
+  .work-bottom-track .work-card img{
+    min-height:160px!important;
+    height:160px!important;
+  }
+  .work-copy h2{
+    font-size:52px!important;
+    line-height:1.0!important;
+    max-width:100%!important;
+  }
+  .work-copy h2 em{display:block!important;}
+}
+
+/* Mobile: logo stays on the left, menu button on the right. */
+@media (max-width:760px){
+  .header .nav-wrap{
+    position:relative!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+  }
+  .header .site-logo{
+    position:static!important;
+    left:auto!important;
+    top:auto!important;
+    transform:none!important;
+    margin:0!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:center!important;
+  }
+  .header .site-logo img{
+    width:108px!important;
+    max-height:34px!important;
+  }
+  .header .nav-toggle{
+    position:static!important;
+    margin-left:auto!important;
+    flex:0 0 auto!important;
+  }
+
+  /* Same compact dropdown button treatment as the mobile menu rows. */
+  .header .nav .nav-dropdown{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 38px!important;
+    width:100%!important;
+    align-items:stretch!important;
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown>a{
+    justify-content:center!important;
+    text-align:center!important;
+    padding:10px 8px!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    display:flex!important;
+    position:static!important;
+    width:38px!important;
+    min-width:38px!important;
+    height:44px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    color:#444!important;
+    font-size:10px!important;
+  }
+
+  /* Work heading gets its own full-width block; gallery is smaller so it cannot cover text. */
+  .work-copy h2{
+    font-size:clamp(28px,7.2vw,36px)!important;
+    line-height:1.04!important;
+    max-width:100%!important;
+    margin-bottom:18px!important;
+  }
+  .work-copy h2 em{
+    display:block!important;
+    white-space:normal!important;
+    line-height:1.04!important;
+  }
+  .work-gallery{
+    width:92%!important;
+    justify-self:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  .work-video-card{height:160px!important;}
+  .work-bottom-track .work-card,
+  .work-bottom-track .work-card img{
+    min-height:145px!important;
+    height:145px!important;
+  }
+}
+
+@media (max-width:380px){
+  .header .site-logo img{width:102px!important;max-height:32px!important;}
+  .work-copy h2{font-size:29px!important;}
+  .work-gallery{width:90%!important;}
+  .work-video-card{height:150px!important;}
+}

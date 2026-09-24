@@ -507,3 +507,29 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
   videos.forEach(video=>stopVideo(video,true));
 })();
 
+
+/* Navbar scroll behavior: hide while scrolling down, reveal while scrolling up. */
+(function(){
+  const header=document.getElementById('header');
+  if(!header) return;
+  let lastY=window.scrollY||0;
+  let ticking=false;
+  const update=()=>{
+    const y=window.scrollY||window.pageYOffset||0;
+    const nav=document.getElementById('nav');
+    const menuOpen=nav && (nav.classList.contains('open') || nav.classList.contains('active'));
+    if(y<=12 || y<lastY || menuOpen){
+      header.classList.remove('nav-scroll-hidden');
+    }else if(y>lastY+2){
+      header.classList.add('nav-scroll-hidden');
+    }
+    lastY=y;
+    ticking=false;
+  };
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      window.requestAnimationFrame(update);
+      ticking=true;
+    }
+  },{passive:true});
+})();

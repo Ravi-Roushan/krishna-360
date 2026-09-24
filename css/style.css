@@ -6942,3 +6942,32 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .work-gallery{width:90%!important;}
   .work-video-card{height:150px!important;}
 }
+
+/* MOBILE CHAT KEYBOARD FIX — chatbot only; no other site styles changed */
+@media (max-width:760px){
+  .chat-panel.chat-keyboard-open{
+    bottom:calc(var(--kr-chat-keyboard, 0px) + 8px)!important;
+    max-height:calc(var(--kr-chat-viewport, 100vh) - 16px)!important;
+    height:min(440px,calc(var(--kr-chat-viewport, 100vh) - 16px))!important;
+  }
+  .chat-panel.chat-keyboard-open .chat-body{
+    min-height:0!important;
+    overflow:hidden!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  .chat-panel.chat-keyboard-open .chat-messages{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  .chat-panel.chat-keyboard-open .chat-composer{
+    flex:0 0 auto!important;
+  }
+}
+
+/* NAVBAR SCROLL BEHAVIOR — hide on downward scroll, reveal on upward scroll */
+.header.nav-scroll-hidden{transform:translateY(-100%);}
+.header.nav-scroll-hidden{transition:transform .32s ease,box-shadow .3s ease;}

@@ -6385,3 +6385,25 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .msg-stack{max-width:84%!important}
   .msg-bubble{font-size:11px!important;line-height:1.55!important}
 }
+
+
+/* Final requested polish: original logo with a simple curved white panel, no red highlight. */
+.header .site-logo{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  background:#fff!important;border:1px solid rgba(18,20,22,.12)!important;
+  border-radius:14px!important;padding:5px 10px!important;
+  box-shadow:0 5px 18px rgba(18,20,22,.10)!important;
+}
+.header .site-logo:hover{border-color:rgba(18,20,22,.16)!important;box-shadow:0 7px 22px rgba(18,20,22,.13)!important;transform:none!important}
+.header .site-logo img{display:block!important}
+.footer-top nav a .footer-nav-arrow{display:inline-block!important;margin-left:6px!important;color:currentColor!important;font-weight:900!important;transition:transform .25s ease!important}
+.footer-top nav a:hover .footer-nav-arrow{transform:translateX(4px)!important;color:currentColor!important}
+/* Keep chatbot compact while allowing the conversation to breathe. */
+.chat-panel .msg-stack{min-width:0}
+.chat-panel .msg-bubble{white-space:normal}
+.chat-panel .msg-avatar{display:grid!important}
+.chat-panel .typing-bubble{display:inline-flex!important;align-items:center!important;gap:7px!important}
+.chat-panel .typing-dots{display:inline-flex!important;gap:3px!important;align-items:center!important}
+.chat-panel .typing-dots i{width:4px!important;height:4px!important;border-radius:50%!important;background:currentColor!important;opacity:.45!important;animation:krishnaTyping 1.1s infinite ease-in-out!important}
+.chat-panel .typing-dots i:nth-child(2){animation-delay:.15s!important}.chat-panel .typing-dots i:nth-child(3){animation-delay:.3s!important}
+@keyframes krishnaTyping{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-3px);opacity:1}}

@@ -278,7 +278,7 @@ if(clientStageEl){
 const panels={
  ooh:{title:'Outdoor Media', kicker:'OOH MEDIA', image:'assets/images/media/home-360-outdoor-hoarding-night-02.webp', color:'#ff2832'},
  transit:{title:'Transit Media', kicker:'TRANSIT MEDIA', image:'assets/images/home/home-360-bus-hd.webp', color:'#53bffb'},
- print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/media/media-print-newspaper-radio.webp', color:'#a78bfa'}
+ print:{title:'Print Media', kicker:'PRINT & ELECTRONIC MEDIA', image:'assets/images/print/print-media-newspaper-collage.png', color:'#a78bfa'}
 };
 const showSection=$('.solution-showcase'), showTitle=$('#showcaseTitle'), showIndex=$('#showcaseIndex'), showImage=$('#showcaseImage'), showVisualKicker=$('#showcaseVisualKicker'), showVisualTitle=$('#showcaseVisualTitle');
 function setPanel(name){
@@ -328,61 +328,47 @@ if(chatbot && chatPanel){
    if(who==='bot') row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
    else row.innerHTML=`<div class="msg-stack"><div class="msg-bubble">${text}</div></div>`;
    chatMessages.appendChild(row);
-   if(withTime){
-     const t=stamp(timeNow());
-     if(who==='bot') t.classList.add('bot-time'); else t.classList.add('user-time');
-     row.querySelector('.msg-stack')?.appendChild(t);
-   }
+   if(withTime){const t=stamp(timeNow());t.classList.add(who==='bot'?'bot-time':'user-time');row.querySelector('.msg-stack')?.appendChild(t)}
    scrollBottom(); return row;
  };
  const showTyping=()=>{
    const row=document.createElement('div');row.className='msg-row bot typing-row';
-   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble typing-bubble"><span class="typing-label">Typing</span><span class="typing-dots"><i></i><i></i><i></i></span></div></div>`;
+   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble typing-bubble"><span class="typing-label">Typing</span><span class="typing-dots"><i></i><i></i><i></i></span></div><div class="msg-time bot-time">${timeNow()}</div></div>`;
    chatMessages?.appendChild(row);scrollBottom();return row;
  };
- const reply=(type)=>{
-   const text={location:'Sure. Explore our network across Ahmedabad, Mumbai, Thane and Rajasthan from the Our Network page.',media:'We offer OOH, Transit, Digital, Print & Electronic Media and branding solutions for campaigns.',ooh:'Our OOH solutions include hoardings, billboards and other high-visibility outdoor media formats.',digital:'We can help with digital media and DOOH campaign options. Tell me your city and campaign objective.',transit:'Our Transit Media solutions cover buses, bus shelters and railway environments designed for high-frequency audience visibility.',campaign:'Great. Share your city, campaign duration and target audience, and we’ll guide you through suitable media options.'}[type]||'Sure. Tell me what you are looking for and I’ll guide you.';
-   const typing=showTyping();
-   setTimeout(()=>{typing.remove();addMessage(text,'bot',true)},900);
+ const pageName=(document.title||'').toLowerCase();
+ const getReply=(input)=>{
+   const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ');
+   if(/\b(hi|hello|hey|hii|namaste|good morning|good afternoon|good evening)\b/.test(q)) return 'Hello! I’m Krishna AI. How can I help you today?';
+   if(/\b(name|who are you|your name)\b/.test(q)) return 'I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can help you with media solutions, locations, projects and enquiries.';
+   if(/\b(service|services|media solution|media solutions|advertising)\b/.test(q)) return 'We provide OOH, Transit Media, Digital Media, Print & Electronic Media, branding and integrated advertising solutions.';
+   if(/\b(ooh|hoarding|hoardings|billboard|billboards|outdoor)\b/.test(q)) return 'Our OOH solutions include hoardings, billboards and high-visibility outdoor media formats. Tell me your city and campaign requirement for more guidance.';
+   if(/\b(transit|bus|train|railway|metro|shelter)\b/.test(q)) return 'Our Transit Media solutions cover buses, bus shelters, trains and railway environments for high-frequency audience visibility.';
+   if(/\b(digital|dooh|screen|digital billboard)\b/.test(q)) return 'We offer Digital Media and DOOH options for dynamic, high-visibility campaigns. Share your city and campaign objective and I’ll guide you.';
+   if(/\b(print|newspaper|press|radio|electronic media)\b/.test(q)) return 'Our Print & Electronic Media solutions can cover newspaper, press and radio formats as part of an integrated campaign.';
+   if(/\b(location|where|city|ahmedabad|mumbai|thane|rajasthan|address)\b/.test(q)) return 'Krishna Outdoor has media presence across Ahmedabad, Mumbai, Thane and Rajasthan. Open the Location / Our Network page for the available market details.';
+   if(/\b(contact|phone|call|email|mail|enquire|enquiry|quote|quotation)\b/.test(q)) return 'You can use the Enquire Now page to send your requirement. You can also use the contact options shown in the footer.';
+   if(/\b(project|projects|work|campaign|portfolio)\b/.test(q)) return 'You can explore our completed work and campaign examples on the Our Work page.';
+   if(/\b(about|company|history|legacy|years|experience)\b/.test(q)) return 'Krishna Outdoor has more than four decades of outdoor advertising experience, with capabilities extending across multiple media formats.';
+   if(/\b(career|careers|job|jobs|join)\b/.test(q)) return 'For career opportunities, please open the Careers page and check the current openings and enquiry details.';
+   if(/\b(price|pricing|cost|rate|budget)\b/.test(q)) return 'Pricing depends on the market, media format, location, duration and campaign size. Share those details and our team can help with an enquiry.';
+   if(/\b(thank|thanks|okay|ok|great)\b/.test(q)) return 'You’re welcome! If you need anything else, just ask me.';
+   if(pageName.includes('transit')) return 'You’re on the Transit Media page. I can help with buses, trains, shelters, campaign planning and other media options.';
+   if(pageName.includes('digital')) return 'You’re on the Digital Media page. Ask me about DOOH, digital billboards or campaign planning.';
+   if(pageName.includes('ooh')) return 'You’re on the OOH Media page. Ask me about hoardings, billboards, locations or campaign planning.';
+   if(pageName.includes('network')) return 'You’re on the Our Network page. Ask me about Ahmedabad, Mumbai, Thane or Rajasthan media presence.';
+   return 'Sure — tell me what you need, such as OOH, Transit, Digital, Print & Electronic Media, locations, projects or an enquiry, and I’ll guide you.';
  };
+ const reply=(input)=>{const typing=showTyping();setTimeout(()=>{typing.remove();addMessage(getReply(input),'bot',true)},850)};
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
- const openChat=()=>{
-   const wasOpen=chatPanel.classList.contains('open');
-   chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');
-   if(!wasOpen){
-     if(!chatStartedAt){chatStartedAt=timeNow();
-       if(chatMessages){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${chatStartedAt}`;chatMessages.prepend(day)}
-     }
-     setTimeout(()=>chatInput?.focus(),220);
-   }
-   scrollBottom();
- };
+ const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');if(!wasOpen){if(!chatStartedAt){chatStartedAt=timeNow();if(chatMessages){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${chatStartedAt}`;chatMessages.prepend(day)}}setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
  chatbot.addEventListener('click',openChat);
  chatClose?.addEventListener('click',e=>{e.stopPropagation();closeChat()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});
- document.addEventListener('click',e=>{if(chatPanel.classList.contains('open') && !e.target.closest('#chatPanel') && !e.target.closest('#chatbot')) closeChat()});
- $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{addMessage(b.textContent.replace('↗','').trim(),'user');reply(b.dataset.chat)}));
- chatComposer?.addEventListener('submit',e=>{
-   e.preventDefault();const value=chatInput?.value.trim();if(!value)return;
-   addMessage(value,'user');chatInput.value='';
-   const typing=showTyping();
-   setTimeout(()=>{typing.remove();addMessage('Thanks! I’m here. Tell me a little more about your requirement and I’ll guide you.','bot',true)},900);
- });
- // Add timestamps to the two existing welcome messages without changing their copy.
- if(chatMessages && !chatMessages.querySelector('.chat-day')){
-   const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);
-   $$('.msg-row.bot',chatMessages).forEach(row=>{
-     if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());
-     let stack=row.querySelector('.msg-stack');
-     if(!stack){
-       const bubble=row.querySelector('.msg-bubble');
-       stack=document.createElement('div');stack.className='msg-stack';
-       if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}
-       row.appendChild(stack);
-     }
-     if(!stack.querySelector('.msg-time')){const t=stamp(timeNow());t.classList.add('bot-time');stack.appendChild(t)}
-   });
- }
+ document.addEventListener('click',e=>{if(chatPanel.classList.contains('open')&&!e.target.closest('#chatPanel')&&!e.target.closest('#chatbot')) closeChat()});
+ $$('[data-chat]').forEach(b=>b.addEventListener('click',()=>{const value=b.textContent.replace('↗','').trim();addMessage(value,'user');reply(value)}));
+ chatComposer?.addEventListener('submit',e=>{e.preventDefault();const value=chatInput?.value.trim();if(!value)return;addMessage(value,'user');chatInput.value='';reply(value)});
+ if(chatMessages && !chatMessages.querySelector('.chat-day')){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);$$('.msg-row.bot',chatMessages).forEach(row=>{if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());let stack=row.querySelector('.msg-stack');if(!stack){const bubble=row.querySelector('.msg-bubble');stack=document.createElement('div');stack.className='msg-stack';if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}row.appendChild(stack)}if(!stack.querySelector('.msg-time')){const t=stamp(timeNow());t.classList.add('bot-time');stack.appendChild(t)}})}
 }
 
 // Work image lightbox — click any campaign card to view it larger

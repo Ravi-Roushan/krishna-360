@@ -33,6 +33,9 @@ $$('.nav-dropdown').forEach(drop=>{
  });
 });
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')) $$('.nav-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('.nav-arrow')?.setAttribute('aria-expanded','false')})});
+// Footer Media Solutions dropdown — same compact interaction as the main nav.
+$$('.footer-dropdown').forEach(drop=>{const arrow=drop.querySelector('.footer-arrow');arrow?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const open=drop.classList.toggle('open');arrow.setAttribute('aria-expanded',open?'true':'false');$$('.footer-dropdown').forEach(other=>{if(other!==drop){other.classList.remove('open');other.querySelector('.footer-arrow')?.setAttribute('aria-expanded','false')}})});});
+document.addEventListener('click',e=>{if(!e.target.closest('.footer-dropdown')) $$('.footer-dropdown.open').forEach(d=>{d.classList.remove('open');d.querySelector('.footer-arrow')?.setAttribute('aria-expanded','false')})});
 
 // Scroll reveal
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
@@ -338,26 +341,35 @@ if(chatbot && chatPanel){
  };
  const pageName=(document.title||'').toLowerCase();
  const getReply=(input)=>{
-   const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ');
-   if(/\b(hi|hello|hey|hii|namaste|good morning|good afternoon|good evening)\b/.test(q)) return 'Hello! I’m Krishna AI. How can I help you today?';
-   if(/\b(name|who are you|your name)\b/.test(q)) return 'I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can help you with media solutions, locations, projects and enquiries.';
-   if(/\b(service|services|media solution|media solutions|advertising)\b/.test(q)) return 'We provide OOH, Transit Media, Digital Media, Print & Electronic Media, branding and integrated advertising solutions.';
-   if(/\b(ooh|hoarding|hoardings|billboard|billboards|outdoor)\b/.test(q)) return 'Our OOH solutions include hoardings, billboards and high-visibility outdoor media formats. Tell me your city and campaign requirement for more guidance.';
-   if(/\b(transit|bus|train|railway|metro|shelter)\b/.test(q)) return 'Our Transit Media solutions cover buses, bus shelters, trains and railway environments for high-frequency audience visibility.';
-   if(/\b(digital|dooh|screen|digital billboard)\b/.test(q)) return 'We offer Digital Media and DOOH options for dynamic, high-visibility campaigns. Share your city and campaign objective and I’ll guide you.';
-   if(/\b(print|newspaper|press|radio|electronic media)\b/.test(q)) return 'Our Print & Electronic Media solutions can cover newspaper, press and radio formats as part of an integrated campaign.';
-   if(/\b(location|where|city|ahmedabad|mumbai|thane|rajasthan|address)\b/.test(q)) return 'Krishna Outdoor has media presence across Ahmedabad, Mumbai, Thane and Rajasthan. Open the Location / Our Network page for the available market details.';
-   if(/\b(contact|phone|call|email|mail|enquire|enquiry|quote|quotation)\b/.test(q)) return 'You can use the Enquire Now page to send your requirement. You can also use the contact options shown in the footer.';
-   if(/\b(project|projects|work|campaign|portfolio)\b/.test(q)) return 'You can explore our completed work and campaign examples on the Our Work page.';
-   if(/\b(about|company|history|legacy|years|experience)\b/.test(q)) return 'Krishna Outdoor has more than four decades of outdoor advertising experience, with capabilities extending across multiple media formats.';
-   if(/\b(career|careers|job|jobs|join)\b/.test(q)) return 'For career opportunities, please open the Careers page and check the current openings and enquiry details.';
-   if(/\b(price|pricing|cost|rate|budget)\b/.test(q)) return 'Pricing depends on the market, media format, location, duration and campaign size. Share those details and our team can help with an enquiry.';
-   if(/\b(thank|thanks|okay|ok|great)\b/.test(q)) return 'You’re welcome! If you need anything else, just ask me.';
-   if(pageName.includes('transit')) return 'You’re on the Transit Media page. I can help with buses, trains, shelters, campaign planning and other media options.';
-   if(pageName.includes('digital')) return 'You’re on the Digital Media page. Ask me about DOOH, digital billboards or campaign planning.';
-   if(pageName.includes('ooh')) return 'You’re on the OOH Media page. Ask me about hoardings, billboards, locations or campaign planning.';
-   if(pageName.includes('network')) return 'You’re on the Our Network page. Ask me about Ahmedabad, Mumbai, Thane or Rajasthan media presence.';
-   return 'Sure — tell me what you need, such as OOH, Transit, Digital, Print & Electronic Media, locations, projects or an enquiry, and I’ll guide you.';
+   const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ').replace(/\s+/g,' ').trim();
+   const page=document.title.toLowerCase();
+   const has=(...terms)=>terms.some(t=>q.includes(t));
+   if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return 'Hello! I’m Krishna AI. I have access to the information across this website. Ask me about Home, About, Media Solutions, OOH Media, Transit Media, Digital Media, Location, Our Network, Our Work, Careers or Enquire Now.';
+   if(has('name','who are you','your name')) return 'I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.';
+   if(has('home','homepage')) return 'The Home page covers Krishna Outdoor’s outdoor advertising story, Our Solutions, Our Work, network highlights, clients and the latest enquiry path.';
+   if(has('about','company','history','legacy','years','experience')) return 'The About page explains Krishna Outdoor’s advertising journey, leadership, 43+ years of experience, stronger foundation and wider media legacy.';
+   if(has('service','services','media solution','media solutions')) return 'Media Solutions includes OOH Media, Transit Media and Digital Media. The broader solutions also cover print & electronic media, branding and digital marketing.';
+   if(has('ooh','hoarding','hoardings','billboard','billboards','outdoor')) return 'OOH Media covers outdoor formats such as hoardings and billboards. Ask me about OOH formats, locations, campaigns or the OOH Media page.';
+   if(has('transit','bus','train','railway','metro','shelter')) return 'Transit Media covers buses, bus shelters, trains and railway environments. I can guide you to the Transit Media page and its available formats.';
+   if(has('digital','dooh','screen','digital billboard')) return 'Digital Media and DOOH cover dynamic digital billboard and screen-led advertising. Ask about formats, campaigns or the Digital Media page.';
+   if(has('print','newspaper','press','radio','electronic media')) return 'Print & Electronic Media can include newspaper, press and radio formats as part of an integrated media approach.';
+   if(has('location','where','city','ahmedabad','mumbai','thane','rajasthan','address','market')) return 'The Location / Our Network pages cover Krishna Outdoor’s market presence and media opportunities. Ask me about Ahmedabad, Mumbai, Thane, Rajasthan or another market.';
+   if(has('network','presence','sites','cities')) return 'Our Network page explains Krishna Outdoor’s media presence, market coverage, hoardings, buses, shelters and train opportunities across key markets.';
+   if(has('project','projects','work','campaign','portfolio','case study')) return 'Our Work shows campaign examples and project work. Ask about a campaign, format or the Our Work page and I’ll guide you.';
+   if(has('career','careers','job','jobs','join','opening')) return 'The Careers page is available from the website navigation. Ask me about careers or openings and I’ll point you to that section.';
+   if(has('contact','phone','call','email','mail','enquire','enquiry','quote','quotation')) return 'Use Enquire Now to send your requirement. The Contact / Enquire page and footer also provide the available contact options.';
+   if(has('price','pricing','cost','rate','budget','quotation')) return 'Pricing depends on media format, market, location, duration and campaign size. Tell me the format, city and duration and I can explain what information is needed for an enquiry.';
+   if(has('logo','brand','client','clients')) return 'The website includes Krishna Outdoor brand information and an Our Esteemed Clients section. Ask about clients, branding or the relevant page.';
+   if(has('thank','thanks','okay','ok','great')) return 'You’re welcome! Ask me anything about the Krishna Outdoor website or its media solutions.';
+   if(page.includes('transit')) return 'You’re on the Transit Media page. I can answer questions about buses, trains, shelters, formats and campaign planning.';
+   if(page.includes('digital')) return 'You’re on the Digital Media page. I can answer questions about DOOH, digital billboards, screens and campaign planning.';
+   if(page.includes('ooh')) return 'You’re on the OOH Media page. I can answer questions about hoardings, billboards, locations and outdoor formats.';
+   if(page.includes('about')) return 'You’re on the About page. Ask me about Krishna Outdoor’s journey, experience, leadership or media legacy.';
+   if(page.includes('project') || page.includes('work')) return 'You’re on the Our Work page. Ask me about campaigns, projects, media formats or the work showcased here.';
+   if(page.includes('network') || page.includes('location')) return 'You’re on the Location / Our Network section. Ask me about market presence, cities, sites or media opportunities.';
+   if(page.includes('career')) return 'You’re on the Careers page. Ask me about career information or the available openings section.';
+   if(page.includes('contact') || page.includes('enquir')) return 'You’re on the Enquire page. Ask me about submitting a requirement, contact details or the enquiry process.';
+   return 'I can help with the full Krishna Outdoor website. Ask me about Home, About, Media Solutions, OOH Media, Transit Media, Digital Media, Print & Electronic Media, Location, Our Network, Our Work, Careers, Clients or Enquire Now.';
  };
  const reply=(input)=>{const typing=showTyping();setTimeout(()=>{typing.remove();addMessage(getReply(input),'bot',true)},850)};
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};

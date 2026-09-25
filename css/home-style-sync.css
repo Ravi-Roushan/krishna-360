@@ -459,3 +459,363 @@
     transform:scale(1.025)!important;
   }
 }
+
+/* =========================================================
+   FINAL MOBILE BANNER + LEADERSHIP FIT
+   Requested mobile-only polish: smaller banner typography,
+   clean wrapping, and equal leadership image boxes.
+   ========================================================= */
+@media (max-width: 600px){
+  /* Home hero — compact enough to stay comfortably inside the banner. */
+  .hero-inner{padding-top:42px!important;padding-bottom:34px!important}
+  .hero-kicker{font-size:8px!important;letter-spacing:1.4px!important}
+  .hero h1{font-size:44px!important;line-height:.91!important;letter-spacing:-1.2px!important;margin:12px 0 15px!important;max-width:330px!important}
+  .hero-inner>p{font-size:11.5px!important;line-height:1.42!important;max-width:330px!important}
+  .hero-actions{margin-top:18px!important;gap:8px!important}
+  .hero-actions .btn{padding:11px 13px!important;font-size:9px!important;gap:10px!important}
+
+  /* About hero */
+  .about-hero,.about-hero-inner{min-height:520px!important}
+  .about-hero-inner{padding-top:38px!important;padding-bottom:28px!important}
+  .about-hero-copy{width:92%!important;max-width:340px!important}
+  .about-kicker,.about-tag{font-size:8px!important;letter-spacing:.1em!important}
+  .about-hero-title{font-size:35px!important;line-height:.91!important;letter-spacing:-.55px!important;margin:9px 0 13px!important;max-width:330px!important}
+  .about-hero-desc{font-size:10.5px!important;line-height:1.38!important;max-width:320px!important;margin-bottom:13px!important}
+  .about-hero-actions{gap:7px!important}
+  .about-hero-actions .about-btn{padding:9px 11px!important;font-size:9px!important}
+
+  /* Media Solutions hero */
+  .media-hero,.media-hero-inner{min-height:545px!important}
+  .media-hero-inner{align-items:flex-start!important}
+  .media-hero-copy{width:100%!important;max-width:330px!important;padding:42px 0 30px!important}
+  .media-hero-copy .tag{font-size:8px!important;letter-spacing:1px!important}
+  .media-hero-copy h1{font-size:33px!important;line-height:.93!important;letter-spacing:-.45px!important;margin:9px 0 13px!important;max-width:330px!important}
+  .media-hero-copy p{font-size:10.5px!important;line-height:1.4!important;max-width:315px!important;margin:0 0 7px!important}
+  .media-quote{font-size:11px!important;line-height:1.2!important;margin-top:12px!important}
+
+  /* Network hero */
+  .network-hero{min-height:545px!important}
+  .network-hero-inner{padding:76px 0 34px!important}
+  .network-hero-copy{max-width:330px!important}
+  .network-hero-copy .tag{font-size:8px!important;letter-spacing:1px!important}
+  .network-hero-copy h1{font-size:34px!important;line-height:.92!important;letter-spacing:-.5px!important;margin:9px 0 13px!important}
+  .network-hero-copy p{font-size:10.5px!important;line-height:1.4!important;max-width:320px!important}
+  .network-btn{font-size:9px!important;padding:10px 12px!important;margin-top:13px!important}
+  .network-stats{margin-top:18px!important}
+
+  /* Our Work / Campaign hero */
+  .ow-hero{min-height:545px!important}
+  .ow-hero-inner{padding-top:62px!important;padding-bottom:30px!important}
+  .ow-kicker{font-size:8px!important;letter-spacing:1px!important}
+  .ow-hero h1{font-size:34px!important;line-height:.92!important;letter-spacing:-.5px!important;margin:9px 0 13px!important}
+  .ow-hero-copy{font-size:10.5px!important;line-height:1.4!important;max-width:320px!important;margin-bottom:7px!important}
+  .ow-btn{font-size:9px!important;padding:10px 12px!important}
+
+  /* Careers + Enquire banners */
+  .kr-page .kr-hero,.kr-page .kr-enquiry-hero,
+  .kr-page .kr-hero-inner,.kr-page .kr-enquiry-hero .inner{height:500px!important;min-height:500px!important}
+  .kr-page .kr-hero-inner,.kr-page .kr-enquiry-hero .inner{width:calc(100% - 32px)!important}
+  .kr-page .kr-hero-inner{justify-content:center!important;padding:0!important}
+  .kr-page .kr-kicker{font-size:8px!important;letter-spacing:1px!important;margin-bottom:6px!important}
+  .kr-page .kr-hero h1,.kr-page .kr-enquiry-copy h1{font-size:30px!important;line-height:.94!important;letter-spacing:-.45px!important;max-width:320px!important;margin:6px 0 11px!important}
+  .kr-page .kr-hero p,.kr-page .kr-enquiry-copy p{font-size:10.5px!important;line-height:1.4!important;max-width:315px!important;margin-bottom:13px!important}
+  .kr-page .kr-btn{min-height:36px!important;padding:9px 12px!important;font-size:9px!important}
+
+  /* Media detail heroes */
+  .media-detail-hero{height:520px!important;min-height:520px!important}
+  .media-detail-hero .hero-inner{padding-top:55px!important;padding-bottom:30px!important}
+  .media-detail-hero .hero-kicker{font-size:8px!important}
+  .media-detail-hero .hero-inner h1{font-size:39px!important;line-height:.92!important;letter-spacing:-.55px!important;margin:10px 0 13px!important;max-width:330px!important}
+  .media-detail-hero .hero-inner>p{font-size:10.5px!important;line-height:1.4!important;max-width:315px!important}
+
+  /* Leadership: identical card/image footprint for Rakesh + Kevin. */
+  .about-lead-grid{grid-template-columns:1fr!important;gap:14px!important;align-items:stretch!important}
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    width:100%!important;
+    min-height:0!important;
+    grid-template-columns:1fr!important;
+    display:grid!important;
+    overflow:hidden!important;
+    align-items:stretch!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:270px!important;
+    min-height:270px!important;
+    max-height:270px!important;
+    display:block!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+    background:#f4f4f4!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  /* Kevin has a small amount of empty floor below the shoes; trim only that area. */
+  .about-lead-grid .leader-card:nth-child(2) img{object-position:center bottom!important}
+  .about-lead-grid .leader-copy{padding:13px 14px 14px!important}
+  .about-lead-grid .leader-copy small{font-size:8px!important}
+  .about-lead-grid .leader-copy h3{font-size:21px!important;line-height:1!important;margin:3px 0 7px!important}
+  .about-lead-grid .leader-copy .leader-role{font-size:10px!important;line-height:1.25!important;margin:-1px 0 7px!important}
+  .about-lead-grid .leader-copy p{font-size:10.5px!important;line-height:1.38!important;margin-bottom:5px!important}
+  .about-lead-grid .leader-readmore{font-size:8.5px!important;padding:7px 10px!important}
+}
+
+/* =========================================================
+   MOBILE BANNER COMPACT + READ-MORE POLISH
+   Keep Home hero unchanged; compact all other hero banners.
+   ========================================================= */
+@media (max-width:600px){
+  .about-hero-title,.media-hero-copy h1,.network-hero-copy h1,.ow-hero h1,
+  .kr-page .kr-hero h1,.kr-page .kr-enquiry-copy h1,.media-detail-hero .hero-inner h1{
+    font-size:29px!important;
+    line-height:.95!important;
+    letter-spacing:-.4px!important;
+    margin:7px 0 9px!important;
+  }
+  .about-hero-desc,.media-hero-copy p,.network-hero-copy p,.ow-hero-copy,
+  .kr-page .kr-hero p,.kr-page .kr-enquiry-copy p,.media-detail-hero .hero-inner>p{
+    font-size:9.5px!important;
+    line-height:1.32!important;
+    max-width:315px!important;
+    margin-bottom:7px!important;
+  }
+  .about-hero-copy,.media-hero-copy,.network-hero-copy,.ow-hero-inner>div:first-child,
+  .kr-page .kr-hero-inner,.kr-page .kr-enquiry-copy,.media-detail-hero .hero-inner{
+    max-width:320px!important;
+  }
+  .about-hero-actions,.kr-actions{gap:6px!important;margin-top:9px!important}
+  .about-hero-actions .about-btn,.network-btn,.ow-btn,.kr-page .kr-btn{font-size:8px!important;padding:8px 10px!important}
+  .media-quote{font-size:9px!important;line-height:1.15!important;margin-top:7px!important}
+  .mobile-banner-text-wrap{position:relative;max-width:315px!important}
+  .mobile-banner-text-wrap.is-collapsed{max-height:39px;overflow:hidden}
+  .mobile-banner-text-wrap.is-expanded{max-height:1000px;overflow:visible}
+  .mobile-banner-text-wrap.is-collapsed:after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:20px;
+    background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.78));pointer-events:none;
+  }
+  .mobile-read-more{
+    display:inline-flex!important;align-items:center;justify-content:center;
+    width:27px;height:27px;margin:4px 0 0 0;padding:0;border:1px solid rgba(255,255,255,.7);
+    border-radius:50%;background:rgba(0,0,0,.28);color:#fff;font-size:16px;line-height:1;
+    cursor:pointer;transition:transform .3s ease,background .3s ease,border-color .3s ease;
+  }
+  .mobile-read-more:active{transform:scale(.94)}
+  .mobile-read-more.is-open{transform:rotate(180deg);background:#fff;color:#111;border-color:#fff}
+  .mobile-banner-actions{margin-top:8px!important}
+  /* Keep banner buttons on the banner even when copy is collapsed. */
+  .about-hero-actions,.network-btn,.ow-btn,.kr-actions,.kr-enquiry-steps{position:relative;z-index:3}
+}
+@media (min-width:601px){.mobile-read-more{display:none!important}}
+
+/* =========================================================
+   FINAL MOBILE HERO ARRANGEMENT — clean compact copy + inline reveal
+   Home hero is intentionally excluded.
+   ========================================================= */
+@media (max-width:600px){
+  /* Keep the inner-page hero composition calm and consistent. */
+  .about-hero,.media-hero,.network-hero,.ow-hero,
+  .kr-page .kr-hero,.kr-page .kr-enquiry-hero,.media-detail-hero{
+    overflow:hidden!important;
+  }
+
+  .about-hero-copy,.media-hero-copy,.network-hero-copy,
+  .ow-hero-inner>div:first-child,.kr-page .kr-hero-inner,
+  .kr-page .kr-enquiry-copy,.media-detail-hero .hero-inner{
+    width:100%!important;
+    max-width:312px!important;
+  }
+
+  /* Compact, readable headings — no crowding or oversized wraps. */
+  .about-hero-title,.about-hero h1,
+  .media-hero-copy h1,.network-hero-copy h1,.ow-hero h1,
+  .kr-page .kr-hero h1,.kr-page .kr-enquiry-copy h1,
+  .media-detail-hero .hero-inner h1{
+    font-size:27px!important;
+    line-height:.96!important;
+    letter-spacing:-.35px!important;
+    margin:6px 0 8px!important;
+    max-width:312px!important;
+  }
+
+  .about-hero-desc,.media-hero-copy p,.network-hero-copy p,
+  .ow-hero-copy,.kr-page .kr-hero p,.kr-page .kr-enquiry-copy p,
+  .media-detail-hero .hero-inner>p{
+    font-size:9.25px!important;
+    line-height:1.28!important;
+    max-width:300px!important;
+    margin:0!important;
+  }
+
+  /* The reveal area is now a tidy two-line preview, rather than a clipped block. */
+  .mobile-banner-text-wrap{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    max-width:300px!important;
+    padding:0 29px 0 0!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+  .mobile-banner-text-wrap.is-collapsed{
+    max-height:24px!important;
+    overflow:hidden!important;
+  }
+  .mobile-banner-text-wrap.is-expanded{
+    max-height:180px!important;
+    overflow:visible!important;
+  }
+  .mobile-banner-text-wrap.is-collapsed:after{
+    content:""!important;
+    position:absolute!important;
+    left:0!important;
+    right:29px!important;
+    bottom:0!important;
+    height:12px!important;
+    background:linear-gradient(to bottom,transparent,rgba(0,0,0,.62))!important;
+    pointer-events:none!important;
+  }
+  .mobile-banner-text-wrap p{
+    margin:0 0 3px!important;
+    font-size:9.25px!important;
+    line-height:1.28!important;
+  }
+
+  /* Small arrow sits at the end of the copy area, not as a large separate control. */
+  .mobile-read-more{
+    display:inline-grid!important;
+    place-items:center!important;
+    width:22px!important;
+    height:22px!important;
+    margin:0!important;
+    padding:0!important;
+    border:1px solid rgba(255,255,255,.72)!important;
+    border-radius:50%!important;
+    background:rgba(0,0,0,.32)!important;
+    color:#fff!important;
+    font-size:12px!important;
+    line-height:1!important;
+    vertical-align:middle!important;
+    transform:none!important;
+    transition:transform .25s ease,background .25s ease,color .25s ease!important;
+  }
+  .mobile-read-more.is-open{
+    transform:rotate(180deg)!important;
+    background:#fff!important;
+    color:#111!important;
+    border-color:#fff!important;
+  }
+
+  /* Keep the real CTA buttons immediately after the compact copy/reveal. */
+  .about-hero-actions,.network-btn,.ow-btn,.kr-actions,.kr-enquiry-steps,.media-quote{
+    margin-top:7px!important;
+  }
+  .about-hero-actions{gap:6px!important}
+  .about-hero-actions .about-btn,.network-btn,.ow-btn,.kr-page .kr-btn{
+    min-height:32px!important;
+    padding:7px 10px!important;
+    font-size:8px!important;
+    line-height:1!important;
+  }
+
+  /* Media quote is secondary text: keep it compact and visually separate. */
+  .media-quote{font-size:8.75px!important;line-height:1.18!important}
+
+  /* Preserve the hero action row instead of letting the reveal push buttons off-screen. */
+  .about-hero-actions,.about-hero-actions .about-btn{white-space:nowrap!important}
+}
+
+@media (max-width:600px){
+  .mobile-banner-text-wrap{padding-right:30px!important}
+  .mobile-banner-text-wrap .mobile-read-more{
+    position:absolute!important;
+    right:0!important;
+    bottom:0!important;
+    z-index:4!important;
+  }
+  .mobile-banner-text-wrap.is-expanded .mobile-read-more{bottom:0!important}
+}
+
+/* FINAL MOBILE HOME HERO: compact, single-line, bottom-centred headline. */
+@media (max-width: 760px){
+  .home-page .hero .hero-inner{
+    height:100%!important;
+    padding:0 14px 42px!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    text-align:center!important;
+  }
+  .home-page .hero .hero-kicker{
+    font-size:7px!important;
+    letter-spacing:1px!important;
+    margin-bottom:6px!important;
+  }
+  .home-page .hero .hero-inner h1{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:5px 0 10px!important;
+    font-size:clamp(16px,5.2vw,22px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.15px!important;
+    white-space:nowrap!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:none!important;}
+  .home-page .hero .hero-inner>p{
+    width:100%!important;
+    max-width:300px!important;
+    margin:0 auto!important;
+    font-size:9px!important;
+    line-height:1.35!important;
+  }
+  .home-page .hero .hero-actions{
+    justify-content:center!important;
+    align-items:center!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    gap:6px!important;
+    margin-top:12px!important;
+  }
+  .home-page .hero .hero-actions .btn{
+    padding:8px 10px!important;
+    font-size:7.5px!important;
+    white-space:nowrap!important;
+  }
+}
+
+/* FINAL HOME MOBILE HERO — single-line centered headline, safely inside the banner */
+@media (max-width: 760px){
+  .home-page .hero{position:relative!important;height:620px!important;min-height:620px!important;overflow:hidden!important}
+  .home-page .hero-inner{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    bottom:20px!important;
+    top:auto!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0 12px!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    z-index:5!important;
+  }
+  .home-page .hero-inner h1{
+    display:block!important;
+    width:max-content!important;
+    max-width:100%!important;
+    margin:0 auto!important;
+    padding:0!important;
+    white-space:nowrap!important;
+    font-size:17px!important;
+    line-height:1.05!important;
+    letter-spacing:-.35px!important;
+    text-align:center!important;
+    transform:none!important;
+  }
+  .home-page .hero-inner h1 br{display:none!important}
+  .home-page .hero-inner h1 em{display:inline!important}
+}

@@ -571,3 +571,49 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
     }
   },{passive:true});
 })();
+
+/* Mobile hero copy: compact preview with an arrow to reveal the full text. */
+(function(){
+  const mobileMQ=window.matchMedia('(max-width:600px)');
+  const configs=[
+    {root:'.about-hero-copy', text:['.about-hero-desc'], after:'.about-hero-actions'},
+    {root:'.media-hero-copy', text:['p'], after:'.media-quote'},
+    {root:'.network-hero-copy', text:['p'], after:'.network-btn'},
+    {root:'.ow-hero-inner > div:first-child', text:['.ow-hero-copy'], after:'.ow-btn'},
+    {root:'.kr-page .kr-hero-inner', text:['p'], after:'.kr-actions'},
+    {root:'.kr-page .kr-enquiry-copy', text:['p'], after:'.kr-enquiry-steps'},
+    {root:'.media-detail-hero .hero-inner', text:['> p'], after:null}
+  ];
+  function setup(){
+    if(!mobileMQ.matches) return;
+    configs.forEach(cfg=>{
+      document.querySelectorAll(cfg.root).forEach(root=>{
+        if(root.dataset.mobileReadReady==='1') return;
+        const nodes=[];
+        cfg.text.forEach(sel=>root.querySelectorAll(sel).forEach(el=>nodes.push(el)));
+        if(!nodes.length) return;
+        const wrap=document.createElement('div');
+        wrap.className='mobile-banner-text-wrap is-collapsed';
+        const first=nodes[0];
+        first.parentNode.insertBefore(wrap,first);
+        nodes.forEach(n=>wrap.appendChild(n));
+        const btn=document.createElement('button');
+        btn.type='button'; btn.className='mobile-read-more'; btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Show more text'); btn.textContent='↓';
+        /* Keep the reveal arrow visually attached to the copy block. */
+        wrap.appendChild(btn);
+        btn.addEventListener('click',()=>{
+          const open=wrap.classList.toggle('is-expanded');
+          wrap.classList.toggle('is-collapsed',!open);
+          btn.classList.toggle('is-open',open);
+          btn.setAttribute('aria-expanded',String(open));
+          btn.setAttribute('aria-label',open?'Hide text':'Show more text');
+          btn.textContent=open?'↑':'↓';
+        });
+        root.dataset.mobileReadReady='1';
+      });
+    });
+  }
+  setup();
+  mobileMQ.addEventListener?.('change',()=>{ if(mobileMQ.matches) setup(); });
+})();

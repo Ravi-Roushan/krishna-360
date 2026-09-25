@@ -9599,3 +9599,313 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     flex:0 0 auto !important;
   }
 }
+
+
+/* FINAL REQUEST — Home Discover / Plan buttons use the same slow moving shine as the other CTAs. */
+.experience-actions .experience-link,
+.experience-actions .experience-link.secondary{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  transform:none!important;
+  box-shadow:none!important;
+  transition:background .28s ease,color .28s ease,border-color .28s ease!important;
+}
+.experience-actions .experience-link::before,
+.experience-actions .experience-link.secondary::before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  top:-45%!important;
+  left:-90%!important;
+  width:48%!important;
+  height:190%!important;
+  transform:skewX(-18deg)!important;
+  transition:left .68s cubic-bezier(.2,.7,0,1)!important;
+  pointer-events:none!important;
+  opacity:1!important;
+}
+.experience-actions .experience-link::before{
+  background:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.04) 38%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.04) 62%,transparent 90%)!important;
+}
+.experience-actions .experience-link.secondary::before{
+  background:linear-gradient(105deg,transparent 10%,rgba(229,27,35,.04) 38%,rgba(229,27,35,.72) 50%,rgba(229,27,35,.04) 62%,transparent 90%)!important;
+}
+.experience-actions .experience-link:hover::before,
+.experience-actions .experience-link.secondary:hover::before{left:145%!important;}
+.experience-actions .experience-link > *,
+.experience-actions .experience-link.secondary > *{position:relative!important;z-index:1!important;}
+.experience-actions .experience-link:hover,
+.experience-actions .experience-link.secondary:hover{transform:none!important;box-shadow:none!important;}
+
+/* Kevin Gandhi portrait: always show the complete source image without cropping. */
+.leader-card:nth-child(2) img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#fff!important;
+  transform:none!important;
+}
+.leader-card:nth-child(2):hover img{transform:none!important;}
+@media(max-width:600px){
+  .leader-card:nth-child(2) img{
+    height:260px!important;
+    min-height:260px!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:#fff!important;
+  }
+}
+
+/* ===== FINAL MOBILE HERO/BANNER COMPACT PASS =====
+   Keep desktop untouched. Mobile hero/banner typography is intentionally
+   smaller and tighter so no heading, paragraph, or CTA gets clipped. */
+@media (max-width:760px){
+  /* Home hero */
+  .home-page .hero .hero-inner{
+    padding:0 16px 86px!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    transform:none!important;
+  }
+  .home-page .hero .hero-inner h1{
+    position:relative!important;
+    left:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    white-space:normal!important;
+    text-align:center!important;
+    font-size:clamp(25px,7.4vw,34px)!important;
+    line-height:.98!important;
+    letter-spacing:-.4px!important;
+    word-spacing:.08em!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:none!important}
+  .home-page .hero .hero-inner h1 em{display:inline!important;margin-left:.28em!important}
+
+  /* All inner-page hero banners */
+  .about-hero,
+  .about-hero-inner,
+  .media-hero,
+  .media-hero-inner,
+  .network-hero,
+  .ow-hero,
+  .kr-hero,
+  .kr-enquiry-hero{
+    height:auto!important;
+    min-height:500px!important;
+  }
+  .about-hero-inner,
+  .media-hero-inner,
+  .ow-hero-inner,
+  .kr-hero-inner{
+    min-height:500px!important;
+    height:auto!important;
+  }
+
+  .about-hero-copy,
+  .media-hero-copy,
+  .network-hero-copy,
+  .ow-hero-inner>div:first-child,
+  .kr-hero-inner,
+  .kr-enquiry-copy{
+    width:100%!important;
+    max-width:100%!important;
+    padding:26px 18px 42px!important;
+    transform:none!important;
+    box-sizing:border-box!important;
+  }
+
+  .about-hero-title,
+  .media-hero-copy h1,
+  .network-hero-copy h1,
+  .ow-hero h1,
+  .kr-enquiry-copy h1,
+  .kr-hero h1{
+    font-size:clamp(29px,8.4vw,38px)!important;
+    line-height:.98!important;
+    letter-spacing:-.45px!important;
+    max-width:100%!important;
+    margin:6px 0 10px!important;
+    text-wrap:balance!important;
+  }
+
+  .about-hero-desc,
+  .media-hero-copy p,
+  .network-hero-copy p,
+  .ow-hero-copy,
+  .kr-enquiry-copy p,
+  .kr-hero p{
+    max-width:100%!important;
+    font-size:11.5px!important;
+    line-height:1.36!important;
+    margin:6px 0 10px!important;
+  }
+
+  .about-hero-copy .tag,
+  .media-hero-copy .tag,
+  .network-hero-copy .tag,
+  .ow-kicker,
+  .kr-kicker{
+    font-size:7.5px!important;
+    line-height:1.1!important;
+    letter-spacing:1.1px!important;
+  }
+
+  .about-hero-actions,
+  .kr-actions{
+    gap:7px!important;
+    margin-top:9px!important;
+  }
+  .about-hero-actions .about-btn,
+  .kr-actions .kr-btn{
+    padding:9px 12px!important;
+    min-height:36px!important;
+    font-size:9px!important;
+  }
+
+  /* Media hero has its own large mobile copy rule; override it last. */
+  .media-hero-copy{padding:28px 16px 38px!important}
+  .media-hero-copy h1{font-size:clamp(29px,8.2vw,37px)!important}
+  .media-hero-copy p{font-size:11.5px!important;line-height:1.36!important}
+  .media-quote{font-size:11px!important;line-height:1.25!important;margin-top:10px!important}
+
+  /* Network hero: keep title/stats inside the banner instead of pushing below it. */
+  .network-hero-inner{padding:72px 16px 38px!important}
+  .network-hero-copy h1{font-size:clamp(29px,8.2vw,37px)!important}
+  .network-hero-copy p{font-size:11.5px!important;line-height:1.36!important}
+  .network-stats{margin-top:20px!important}
+  .network-stat{padding:10px 10px 12px!important}
+  .network-stat strong{font-size:22px!important}
+  .network-stat span{font-size:8px!important;line-height:1.25!important}
+
+  /* Work / Campaign hero */
+  .ow-hero-inner{padding:72px 16px 38px!important}
+  .ow-hero h1{font-size:clamp(29px,8.2vw,37px)!important}
+  .ow-hero-copy{font-size:11.5px!important;line-height:1.36!important}
+
+  /* Enquiry/Careers style hero */
+  .kr-page .kr-hero-inner{padding:72px 18px 38px!important}
+  .kr-page .kr-hero h1{font-size:clamp(29px,8.2vw,37px)!important}
+  .kr-page .kr-hero p{font-size:11.5px!important;line-height:1.36!important}
+  .kr-page .kr-enquiry-copy{padding:48px 18px 30px!important}
+  .kr-page .kr-enquiry-copy h1{font-size:clamp(29px,8.2vw,37px)!important}
+  .kr-page .kr-enquiry-copy p{font-size:11.5px!important;line-height:1.36!important}
+}
+
+/* Kevin Gandhi — mobile: preserve both shoes while trimming only the empty
+   lower background area. The portrait itself is never cropped at the shoes. */
+@media (max-width:600px){
+  .about-lead-grid .leader-card:nth-child(2){overflow:hidden!important}
+  .about-lead-grid .leader-card:nth-child(2) img{
+    display:block!important;
+    width:100%!important;
+    height:315px!important;
+    min-height:315px!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+    background:#fff!important;
+    transform:translateY(-10px)!important;
+    margin-bottom:-10px!important;
+  }
+  .about-lead-grid .leader-card:nth-child(2):hover img{transform:translateY(-10px)!important}
+}
+
+/* ===== FINAL USER REQUEST: restore mobile Home hero + match About/Network banner typography to Our Work/Enquiry ===== */
+@media (max-width:760px){
+  /* Home hero: restore the earlier mobile hero treatment; do not use the compact inner-page banner sizing here. */
+  .home-page .hero{
+    height:620px!important;
+    min-height:620px!important;
+  }
+  .home-page .hero .hero-inner{
+    min-height:620px!important;
+    height:100%!important;
+    padding:55px 16px 0!important;
+    justify-content:center!important;
+    align-items:initial!important;
+    transform:none!important;
+  }
+  .home-page .hero .hero-inner h1{
+    position:relative!important;
+    left:auto!important;
+    bottom:auto!important;
+    width:auto!important;
+    max-width:100%!important;
+    margin:21px 0 25px!important;
+    text-align:left!important;
+    white-space:normal!important;
+    font-size:62px!important;
+    line-height:.88!important;
+    letter-spacing:-1.5px!important;
+    word-spacing:normal!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:block!important;}
+  .home-page .hero .hero-inner h1 em{display:inline!important;margin-left:0!important;}
+  .home-page .hero .hero-inner>p{
+    max-width:400px!important;
+    font-size:14px!important;
+    line-height:1.65!important;
+    margin:0!important;
+  }
+  .home-page .hero .hero-actions{
+    margin-top:30px!important;
+  }
+
+  /* Match the mobile hero/banner typography used by Our Work and Enquiry. */
+  .inner-page .about-hero-title,
+  .inner-page .network-hero-copy h1{
+    font-size:clamp(29px,8.2vw,37px)!important;
+    line-height:.98!important;
+    letter-spacing:-.45px!important;
+    max-width:100%!important;
+    margin:6px 0 10px!important;
+    text-wrap:balance!important;
+  }
+  .inner-page .about-hero-desc,
+  .inner-page .network-hero-copy p{
+    max-width:100%!important;
+    font-size:11.5px!important;
+    line-height:1.36!important;
+    margin:6px 0 10px!important;
+  }
+  .inner-page .about-hero-copy .about-kicker,
+  .inner-page .network-hero-copy .tag{
+    font-size:7.5px!important;
+    line-height:1.1!important;
+    letter-spacing:1.1px!important;
+  }
+  .inner-page .network-hero-copy{width:100%!important;max-width:100%!important;}
+}
+@media (max-width:430px){
+  .home-page .hero .hero-inner h1{font-size:53px!important;}
+}
+
+
+/* FINAL MOBILE HOME HERO — centered and bottom-centered text */
+@media (max-width:760px){
+  .home-page .hero .hero-inner{
+    position:absolute!important;
+    left:50%!important;
+    bottom:42px!important;
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    height:auto!important;
+    padding:0!important;
+    margin:0!important;
+    transform:translateX(-50%)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+    text-align:center!important;
+  }
+  .home-page .hero .hero-inner h1{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    text-align:center!important;
+    align-self:center!important;
+  }
+}

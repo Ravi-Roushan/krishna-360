@@ -9215,3 +9215,163 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     z-index:10000!important;
   }
 }
+
+/* ===== FINAL USER POLISH — COMPACT HERO TEXT + LOWER POSITION ===== */
+@media (min-width:761px){
+  /* Keep every inner-page hero/banner heading compact and move the complete text block slightly lower. */
+  .about-hero-copy,
+  .media-hero-copy,
+  .network-hero-copy,
+  .ow-hero-inner>div:first-child,
+  .kr-hero-inner,
+  .kr-enquiry-copy{
+    transform:translateY(9%)!important;
+  }
+
+  .about-hero-title,
+  .media-hero-copy h1,
+  .media-detail-hero .hero-inner h1,
+  .network-hero-copy h1,
+  .ow-hero h1,
+  .kr-enquiry-copy h1,
+  .kr-hero h1{
+    font-size:clamp(32px,2.55vw,40px)!important;
+    line-height:.96!important;
+    letter-spacing:-.55px!important;
+    margin:7px 0 10px!important;
+    max-width:520px!important;
+  }
+
+  .about-hero-desc,
+  .media-hero-copy p,
+  .media-detail-hero .hero-inner p,
+  .network-hero-copy p,
+  .ow-hero-copy,
+  .kr-enquiry-copy p,
+  .kr-hero p{
+    font-size:12px!important;
+    line-height:1.45!important;
+    max-width:470px!important;
+  }
+
+  /* Home hero: smaller, lower, centered single line. */
+  .home-page .hero .hero-inner{
+    transform:none!important;
+  }
+  .home-page .hero .hero-inner h1{
+    bottom:55px!important;
+    font-size:clamp(38px,4.35vw,62px)!important;
+    line-height:1!important;
+    letter-spacing:.01em!important;
+    word-spacing:.08em!important;
+    max-width:none!important;
+  }
+  /* Add a clearly visible gap after “WHERE”. */
+  .home-page .hero .hero-inner h1 em{
+    margin-left:.34em!important;
+  }
+}
+
+/* ===== FINAL USER REQUEST — HERO TEXT EXTRA COMPACT + HOME HEADLINE HIGHER ===== */
+@media (min-width:761px){
+  /* Home hero: keep the headline clearly inside the lower part of the video,
+     but above the bottom edge so the full line is always visible. */
+  .home-page .hero .hero-inner h1{
+    bottom:120px!important;
+    font-size:clamp(34px,3.8vw,54px)!important;
+    line-height:1!important;
+    letter-spacing:.01em!important;
+    word-spacing:.10em!important;
+    max-width:none!important;
+    white-space:nowrap!important;
+  }
+  .home-page .hero .hero-inner h1 em{
+    margin-left:.42em!important;
+  }
+
+  /* All desktop hero/banner typography: smaller, tighter and cleaner. */
+  .about-hero-title,
+  .media-hero-copy h1,
+  .media-detail-hero .hero-inner h1,
+  .network-hero-copy h1,
+  .ow-hero h1,
+  .kr-enquiry-copy h1,
+  .kr-hero h1{
+    font-size:clamp(28px,2.2vw,35px)!important;
+    line-height:.96!important;
+    letter-spacing:-.45px!important;
+    margin:6px 0 9px!important;
+    max-width:480px!important;
+  }
+  .about-hero-desc,
+  .media-hero-copy p,
+  .media-detail-hero .hero-inner p,
+  .network-hero-copy p,
+  .ow-hero-copy,
+  .kr-enquiry-copy p,
+  .kr-hero p{
+    font-size:11.5px!important;
+    line-height:1.42!important;
+    max-width:450px!important;
+  }
+  .about-hero-copy,
+  .media-hero-copy,
+  .network-hero-copy,
+  .ow-hero-inner>div:first-child,
+  .kr-hero-inner,
+  .kr-enquiry-copy{
+    transform:translateY(9%)!important;
+  }
+}
+
+/* ===== FINAL DESKTOP HERO COMPACT PASS =====
+   User request: move Home hero headline slightly upward and make all desktop hero/banner text smaller + tighter.
+   Mobile rules above remain unchanged. */
+@media(min-width:761px){
+  /* Home: only a subtle 5% upward adjustment from the previous desktop position. */
+  .home-page .hero .hero-inner{padding-top:188px!important;}
+  .home-page .hero h1{
+    font-size:clamp(43px,5.25vw,76px)!important;
+    line-height:.93!important;
+    letter-spacing:-1.1px!important;
+    word-spacing:4px!important;
+    margin:0!important;
+  }
+
+  /* All inner-page hero/banner headings: smaller and more compact. */
+  .inner-page .about-hero-title,
+  .inner-page .media-hero-copy h1,
+  .inner-page .media-detail-hero .hero-inner h1,
+  .inner-page .network-hero-copy h1,
+  .inner-page .ow-hero h1,
+  .inner-page .kr-hero h1,
+  .inner-page .kr-enquiry-copy h1{
+    font-size:41px!important;
+    line-height:.94!important;
+    letter-spacing:-.6px!important;
+    max-width:540px!important;
+    margin:8px 0 13px!important;
+  }
+
+  .inner-page .about-hero-desc,
+  .inner-page .media-hero-copy p,
+  .inner-page .media-detail-hero .hero-inner p,
+  .inner-page .network-hero-copy p,
+  .inner-page .ow-hero-copy,
+  .inner-page .kr-hero p,
+  .inner-page .kr-enquiry-copy p{
+    font-size:12.5px!important;
+    line-height:1.48!important;
+    max-width:470px!important;
+    margin-bottom:17px!important;
+  }
+
+  .inner-page .about-hero-copy .tag,
+  .inner-page .media-hero-copy .tag,
+  .inner-page .network-hero-copy .tag,
+  .inner-page .ow-kicker,
+  .inner-page .kr-kicker{
+    font-size:8px!important;
+    letter-spacing:.15em!important;
+  }
+}

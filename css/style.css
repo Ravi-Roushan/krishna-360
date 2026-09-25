@@ -9434,3 +9434,8 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     letter-spacing:1.2px!important;
   }
 }
+
+/* FINAL REQUEST: move Home hero headline slightly upward */
+@media(min-width:761px){
+  .hero .hero-inner h1{transform:translateY(-3%);}
+}

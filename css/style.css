@@ -9439,3 +9439,48 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
 @media(min-width:761px){
   .hero .hero-inner h1{transform:translateY(-3%);}
 }
+
+/* FINAL FIX — keep the complete desktop navigation pill visible on every page.
+   The Network/Location pages were inheriting a 780px max-width, which caused
+   the Campaign item to fall outside the visible pill. */
+@media (min-width:761px){
+  .header .nav{
+    width:max-content!important;
+    max-width:none!important;
+    min-width:max-content!important;
+    flex:0 0 auto!important;
+    flex-shrink:0!important;
+    overflow:visible!important;
+    white-space:nowrap!important;
+    gap:2px!important;
+  }
+  .header .nav > a:not(.nav-cta),
+  .header .nav > .nav-dropdown{
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+  }
+}
+@media (min-width:761px) and (max-width:1320px){
+  .header .nav{gap:1px!important;padding:5px!important}
+  .header .nav > a:not(.nav-cta),
+  .header .nav .nav-dropdown > a{
+    font-size:10.5px!important;
+    padding:10px 9px!important;
+  }
+  .header .nav .nav-dropdown > a{padding-left:9px!important;padding-right:5px!important}
+  .header .nav .nav-arrow{padding:4px 6px 4px 1px!important;font-size:8px!important}
+}
+@media (min-width:1321px){
+  .header .nav > a:not(.nav-cta),
+  .header .nav .nav-dropdown > a{font-size:12.5px!important}
+}
+
+
+/* Final desktop hero positioning fix */
+@media (min-width: 761px){
+  .home-page .hero .hero-inner{
+    transform:translateY(-35px)!important;
+  }
+}

@@ -233,18 +233,6 @@ if (heroStatsTrack && !heroStatsTrack.dataset.mobileMotionReady) {
   raf = requestAnimationFrame(tick);
 }
 
-// Bottom media-format rail: smooth continuous six-item marquee.
-const slideType = document.querySelector('.solutions-360 .slide-type');
-const slideTrack = document.querySelector('.solutions-360 .slide-type-track');
-if (slideType && slideTrack && !slideTrack.dataset.loopReady) {
-  slideTrack.dataset.loopReady = 'true';
-  [...slideTrack.children].forEach(el => {
-    const clone = el.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    slideTrack.appendChild(clone);
-  });
-}
-
 // Client 360 carousel — click, drag and touch swipe
 const clientLogos=[
  ['client-airtel-logo','png'],['client-apple-logo','png'],['client-audi-logo','png'],['client-giva-logo','png'],['client-gshock-logo','png'],['client-gulab-oil-logo','png'],['client-havells-logo','png'],['client-hyundai-logo','png'],['client-jio-hotstar-logo','jpg'],['client-kitkat-logo','png'],['client-loreal-logo','png'],['client-mercedes-logo','png'],['client-porsche-logo','png'],['client-prime-logo','png'],['client-spotify-logo','webp'],['client-times-fashion-week-logo','png'],['client-tresemme-logo','png'],['client-vadilal-logo','png'],['client-zoho-logo','png']
@@ -356,7 +344,7 @@ workViewport?.addEventListener('touchstart',()=>clearInterval(workAutoTimer),{pa
 workViewport?.addEventListener('touchend',restartWorkAuto,{passive:true});
 sizeWorkCards(); window.addEventListener('resize',()=>{sizeWorkCards();workStep=0;workViewport?.scrollTo({left:0,behavior:'auto'})}); restartWorkAuto();
 
-// Chatbot — compact WhatsApp-style conversational interactions
+// Chatbot — compact conversational assistant with a clear thinking state and page/contact links.
 const chatbot=$('#chatbot'),chatPanel=$('#chatPanel'),chatClose=$('#chatClose'),chatMessages=$('#chatMessages'),chatComposer=$('#chatComposer'),chatInput=$('#chatInput');
 if(chatbot && chatPanel){
  const pad=n=>String(n).padStart(2,'0');
@@ -374,44 +362,50 @@ if(chatbot && chatPanel){
    if(withTime){const t=stamp(timeNow());t.classList.add(who==='bot'?'bot-time':'user-time');row.querySelector('.msg-stack')?.appendChild(t)}
    scrollBottom(); return row;
  };
- const showTyping=()=>{
-   const row=document.createElement('div');row.className='msg-row bot typing-row';
-   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble typing-bubble"><span class="typing-label">Typing</span><span class="typing-dots"><i></i><i></i><i></i></span></div><div class="msg-time bot-time">${timeNow()}</div></div>`;
+ const showThinking=()=>{
+   const row=document.createElement('div');row.className='msg-row bot thinking-row';
+   row.innerHTML=`${avatar()}<div class="msg-stack"><div class="msg-bubble thinking-bubble"><span class="thinking-label">Thinking</span><span class="thinking-dots"><i></i><i></i><i></i></span></div><div class="msg-time bot-time">${timeNow()}</div></div>`;
    chatMessages?.appendChild(row);scrollBottom();return row;
  };
+ const L={
+   home:'index.html',about:'about.html',services:'services.html',ooh:'ooh-media.html',transit:'transit-media.html',digital:'digital-media.html',network:'network.html',location:'network.html#presence',campaign:'projects.html#campaigns',work:'projects.html',careers:'careers.html',enquire:'contact.html'
+ };
+ const link=(href,label)=>`<a href="${href}">${label}</a>`;
+ const pageLinks=()=>`<div class="chat-link-list">${link(L.home,'Home')} ${link(L.about,'About Us')} ${link(L.services,'Media Solutions')} ${link(L.ooh,'OOH Media')} ${link(L.transit,'Transit Media')} ${link(L.digital,'Digital Media')} ${link(L.location,'Location')} ${link(L.network,'Our Network')} ${link(L.campaign,'Campaign')} ${link(L.work,'Our Work')} ${link(L.careers,'Careers')} ${link(L.enquire,'Enquire Now')}</div>`;
+ const contactInfo=()=>`<strong>Contact Krishna Outdoor</strong><br>Ahmedabad: ${link('tel:+919879616411','+91 98796 16411')} · ${link('mailto:info@krishnaoutdoor.in','info@krishnaoutdoor.in')}<br>301, 3rd Floor, Shilp Aaron, Opp. Arvind, Sindhu Bhavan Road, Bodakdev, Ahmedabad – 380054, Gujarat, India.<br><br>Mumbai: ${link('tel:+919920011574','+91 99200 11574')} · ${link('mailto:mumbai@krishnaoutdoor.in','mumbai@krishnaoutdoor.in')}<br>1207, Lodha Supremus, Senapati Bapat Marg, Lower Parel, Mumbai – 400013, Maharashtra, India.<br><br>${link(L.enquire,'Open Enquire Now')}`;
  const pageName=(document.title||'').toLowerCase();
  const getReply=(input)=>{
    const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ').replace(/\s+/g,' ').trim();
-   const page=document.title.toLowerCase();
    const has=(...terms)=>terms.some(t=>q.includes(t));
-   if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return 'Hello! I’m Krishna AI. I have access to the information across this website. Ask me about Home, About, Media Solutions, OOH Media, Transit Media, Digital Media, Location, Our Network, Our Work, Careers or Enquire Now.';
-   if(has('name','who are you','your name')) return 'I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.';
-   if(has('home','homepage')) return 'The Home page covers Krishna Outdoor’s outdoor advertising story, Our Solutions, Our Work, network highlights, clients and the latest enquiry path.';
-   if(has('about','company','history','legacy','years','experience')) return 'The About page explains Krishna Outdoor’s advertising journey, leadership, 43+ years of experience, stronger foundation and wider media legacy.';
-   if(has('service','services','media solution','media solutions')) return 'Media Solutions includes OOH Media, Transit Media and Digital Media. The broader solutions also cover print & electronic media, branding and digital marketing.';
-   if(has('ooh','hoarding','hoardings','billboard','billboards','outdoor')) return 'OOH Media covers outdoor formats such as hoardings and billboards. Ask me about OOH formats, locations, campaigns or the OOH Media page.';
-   if(has('transit','bus','train','railway','metro','shelter')) return 'Transit Media covers buses, bus shelters, trains and railway environments. I can guide you to the Transit Media page and its available formats.';
-   if(has('digital','dooh','screen','digital billboard')) return 'Digital Media and DOOH cover dynamic digital billboard and screen-led advertising. Ask about formats, campaigns or the Digital Media page.';
-   if(has('print','newspaper','press','radio','electronic media')) return 'Print & Electronic Media can include newspaper, press and radio formats as part of an integrated media approach.';
-   if(has('location','where','city','ahmedabad','mumbai','thane','rajasthan','address','market')) return 'The Location / Our Network pages cover Krishna Outdoor’s market presence and media opportunities. Ask me about Ahmedabad, Mumbai, Thane, Rajasthan or another market.';
-   if(has('network','presence','sites','cities')) return 'Our Network page explains Krishna Outdoor’s media presence, market coverage, hoardings, buses, shelters and train opportunities across key markets.';
-   if(has('project','projects','work','campaign','portfolio','case study')) return 'Our Work shows campaign examples and project work. Ask about a campaign, format or the Our Work page and I’ll guide you.';
-   if(has('career','careers','job','jobs','join','opening')) return 'The Careers page is available from the website navigation. Ask me about careers or openings and I’ll point you to that section.';
-   if(has('contact','phone','call','email','mail','enquire','enquiry','quote','quotation')) return 'Use Enquire Now to send your requirement. The Contact / Enquire page and footer also provide the available contact options.';
-   if(has('price','pricing','cost','rate','budget','quotation')) return 'Pricing depends on media format, market, location, duration and campaign size. Tell me the format, city and duration and I can explain what information is needed for an enquiry.';
-   if(has('logo','brand','client','clients')) return 'The website includes Krishna Outdoor brand information and an Our Esteemed Clients section. Ask about clients, branding or the relevant page.';
-   if(has('thank','thanks','okay','ok','great')) return 'You’re welcome! Ask me anything about the Krishna Outdoor website or its media solutions.';
-   if(page.includes('transit')) return 'You’re on the Transit Media page. I can answer questions about buses, trains, shelters, formats and campaign planning.';
-   if(page.includes('digital')) return 'You’re on the Digital Media page. I can answer questions about DOOH, digital billboards, screens and campaign planning.';
-   if(page.includes('ooh')) return 'You’re on the OOH Media page. I can answer questions about hoardings, billboards, locations and outdoor formats.';
-   if(page.includes('about')) return 'You’re on the About page. Ask me about Krishna Outdoor’s journey, experience, leadership or media legacy.';
-   if(page.includes('project') || page.includes('work')) return 'You’re on the Our Work page. Ask me about campaigns, projects, media formats or the work showcased here.';
-   if(page.includes('network') || page.includes('location')) return 'You’re on the Location / Our Network section. Ask me about market presence, cities, sites or media opportunities.';
-   if(page.includes('career')) return 'You’re on the Careers page. Ask me about career information or the available openings section.';
-   if(page.includes('contact') || page.includes('enquir')) return 'You’re on the Enquire page. Ask me about submitting a requirement, contact details or the enquiry process.';
-   return 'I can help with the full Krishna Outdoor website. Ask me about Home, About, Media Solutions, OOH Media, Transit Media, Digital Media, Print & Electronic Media, Location, Our Network, Our Work, Careers, Clients or Enquire Now.';
+   if(has('all page','all pages','page link','page links','website link','links')) return `Here are all the website pages:<br>${pageLinks()}`;
+   if(has('contact','phone','call','email','mail','enquire','enquiry','quote','quotation','address','office')) return contactInfo();
+   if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return `Hello! I’m Krishna AI. I can guide you through every page of Krishna Outdoor.<br>${pageLinks()}`;
+   if(has('name','who are you','your name')) return `I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.<br>${link(L.enquire,'Enquire Now')}`;
+   if(has('home','homepage')) return `The Home page covers Krishna Outdoor’s outdoor advertising story, solutions, campaigns, network and enquiry path.<br>${link(L.home,'Open Home')}`;
+   if(has('about','company','history','legacy','years','experience')) return `The About page explains Krishna Outdoor’s journey, leadership, 43+ years of experience and media legacy.<br>${link(L.about,'Open About Us')}`;
+   if(has('service','services','media solution','media solutions')) return `Media Solutions includes OOH Media, Transit Media and Digital Media. The wider offering also covers print & electronic media, branding and digital marketing.<br>${link(L.services,'Open Media Solutions')} · ${link(L.ooh,'OOH')} · ${link(L.transit,'Transit')} · ${link(L.digital,'Digital')}`;
+   if(has('ooh','hoarding','hoardings','billboard','billboards','outdoor')) return `OOH Media covers outdoor formats such as hoardings and billboards.<br>${link(L.ooh,'Open OOH Media')} · ${link(L.enquire,'Enquire Now')}`;
+   if(has('transit','bus','train','railway','metro','shelter')) return `Transit Media covers buses, bus shelters, trains and railway environments.<br>${link(L.transit,'Open Transit Media')} · ${link(L.enquire,'Enquire Now')}`;
+   if(has('digital','dooh','screen','digital billboard')) return `Digital Media and DOOH cover dynamic digital billboard and screen-led advertising.<br>${link(L.digital,'Open Digital Media')} · ${link(L.enquire,'Enquire Now')}`;
+   if(has('print','newspaper','press','radio','electronic media')) return `Print & Electronic Media can include newspaper, press and radio formats as part of an integrated media approach.<br>${link(L.services,'Open Media Solutions')} · ${link(L.enquire,'Enquire Now')}`;
+   if(has('location','where','city','ahmedabad','mumbai','thane','rajasthan','market')) return `Our Location / Network pages cover Ahmedabad, Mumbai, Thane and Rajasthan market presence and media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
+   if(has('network','presence','sites','cities')) return `Our Network page explains Krishna Outdoor’s media presence, market coverage, hoardings, buses, shelters and train opportunities across key markets.<br>${link(L.network,'Open Our Network')}`;
+   if(has('project','projects','work','campaign','portfolio','case study')) return `Our Work shows campaign examples and project work. The Campaign section is also available directly.<br>${link(L.campaign,'Open Campaign')} · ${link(L.work,'Open Our Work')}`;
+   if(has('career','careers','job','jobs','join','opening')) return `The Careers page contains the opportunity/application section for roles across sales, operations, design, client servicing, digital and administration.<br>${link(L.careers,'Open Careers')}`;
+   if(has('price','pricing','cost','rate','budget')) return `Pricing depends on media format, market, location, duration and campaign size. Share your city, format and duration through Enquire Now.<br>${link(L.enquire,'Start an Enquiry')}`;
+   if(has('logo','brand','client','clients')) return `The website includes Krishna Outdoor brand information and an Our Esteemed Clients section.<br>${link(L.home,'Home')} · ${link(L.work,'Our Work')}`;
+   if(has('thank','thanks','okay','ok','great')) return `You’re welcome! Ask me about any Krishna Outdoor page, media solution, campaign or contact detail.`;
+   if(pageName.includes('transit')) return `You’re on the Transit Media page. I can answer questions about buses, trains, shelters, formats and campaign planning.<br>${link(L.transit,'Open Transit Media')}`;
+   if(pageName.includes('digital')) return `You’re on the Digital Media page. I can answer questions about DOOH, digital billboards, screens and campaign planning.<br>${link(L.digital,'Open Digital Media')}`;
+   if(pageName.includes('ooh')) return `You’re on the OOH Media page. I can answer questions about hoardings, billboards, locations and outdoor formats.<br>${link(L.ooh,'Open OOH Media')}`;
+   if(pageName.includes('about')) return `You’re on the About page. Ask me about Krishna Outdoor’s journey, experience, leadership or media legacy.<br>${link(L.about,'Open About Us')}`;
+   if(pageName.includes('project') || pageName.includes('work')) return `You’re on the Our Work page. Ask me about campaigns, projects, media formats or the work showcased here.<br>${link(L.work,'Open Our Work')} · ${link(L.campaign,'Open Campaign')}`;
+   if(pageName.includes('network') || pageName.includes('location')) return `You’re on the Location / Our Network section. Ask me about market presence, cities, sites or media opportunities.<br>${link(L.location,'Open Location')} · ${link(L.network,'Open Our Network')}`;
+   if(pageName.includes('career')) return `You’re on the Careers page. Ask me about career information or openings.<br>${link(L.careers,'Open Careers')}`;
+   if(pageName.includes('contact') || pageName.includes('enquir')) return `You’re on the Enquire page. Here are the direct contact details:<br>${contactInfo()}`;
+   return `I can help with the full Krishna Outdoor website. Ask me about Home, About, Media Solutions, OOH, Transit, Digital, Location, Our Network, Campaign, Our Work, Careers or Enquire Now.<br>${pageLinks()}`;
  };
- const reply=(input)=>{const typing=showTyping();setTimeout(()=>{typing.remove();addMessage(getReply(input),'bot',true)},850)};
+ const reply=(input)=>{const thinking=showThinking();setTimeout(()=>{thinking.remove();addMessage(getReply(input),'bot',true)},900)};
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
  const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');if(!wasOpen){if(!chatStartedAt){chatStartedAt=timeNow();if(chatMessages){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${chatStartedAt}`;chatMessages.prepend(day)}}setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
  chatbot.addEventListener('click',openChat);

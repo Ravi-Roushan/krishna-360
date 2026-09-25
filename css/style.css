@@ -1685,6 +1685,11 @@ h1,h2,h3,h4,h5,h6,
 .nav-arrow{border:0;background:transparent;color:rgba(48,52,58,.78);font-size:9px;line-height:1;padding:7px 2px;cursor:pointer;transition:color .25s ease,transform .25s ease;text-shadow:none}
 .nav-arrow:hover,.nav-dropdown.open .nav-arrow{color:var(--red);transform:translateY(-1px)}
 .nav-menu{position:absolute;top:calc(100% - 2px);left:50%;transform:translate(-50%,-8px);min-width:175px;padding:7px;background:rgba(255,255,255,.98);border:1px solid #e8e8e8;box-shadow:0 18px 40px rgba(0,0,0,.14);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,visibility .25s ease;z-index:150}
+/* Keep a small invisible hover bridge between the nav control and dropdown so the menu does not disappear while moving onto an option. */
+@media(min-width:761px){
+ .nav-dropdown:hover .nav-menu,.nav-dropdown:focus-within .nav-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+ .nav-menu::before{content:"";position:absolute;left:-2px;right:-2px;top:-12px;height:13px;background:transparent}
+}
 .nav-dropdown.open .nav-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
 .nav-menu a{display:block!important;padding:11px 13px!important;font-size:13px!important;font-weight:600!important;color:#30343a!important;white-space:nowrap!important;border-bottom:1px solid #f0f0f0;transition:background .2s ease,color .2s ease,transform .2s ease!important}
 .nav-menu a:last-child{border-bottom:0}.nav-menu a:hover{background:#fafafa!important;color:var(--red)!important;transform:translateX(3px)!important}
@@ -9076,4 +9081,137 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .solutions-360 .orbit-center span{font-size:25px!important;}
   .solutions-360 .orbit-center small{font-size:5.5px!important;}
   .solutions-360 .orbit-center b{font-size:6.5px!important;}
+}
+
+/* Chatbot thinking state: the bot face rotates only while a reply is being prepared. */
+.thinking-row .msg-avatar .mini-bot{animation:krishnaBotThinking .72s linear infinite;transform-origin:center}
+.thinking-row .thinking-bubble{display:flex;align-items:center;gap:8px}
+.thinking-label{font-weight:800;letter-spacing:.2px}
+.thinking-dots{display:inline-flex;gap:3px;align-items:center}
+.thinking-dots i{width:4px;height:4px;border-radius:50%;background:currentColor;display:block;animation:krishnaThinkingDot 1s ease-in-out infinite}
+.thinking-dots i:nth-child(2){animation-delay:.15s}.thinking-dots i:nth-child(3){animation-delay:.3s}
+@keyframes krishnaBotThinking{to{transform:rotate(360deg)}}
+@keyframes krishnaThinkingDot{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}
+.chat-link-list{display:flex;flex-wrap:wrap;gap:5px 10px;margin-top:7px}
+.chat-link-list a,.msg-bubble a{color:var(--red);font-weight:800;text-decoration:underline;text-underline-offset:2px}
+
+
+/* ===== FINAL REQUESTED FIXES ===== */
+@media (min-width:761px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    display:inline-flex!important; visibility:visible!important; opacity:1!important;
+    position:relative!important; left:auto!important; right:auto!important; top:auto!important;
+    transform:none!important; width:18px!important; height:30px!important;
+    margin-left:2px!important; padding:3px 0!important; color:#30343a!important;
+    background:transparent!important; border:0!important; z-index:999!important;
+  }
+  .header.scrolled .nav .nav-dropdown > .nav-arrow{color:#111318!important}
+  .header .nav .nav-dropdown:hover > .nav-arrow,
+  .header .nav .nav-dropdown.open > .nav-arrow{color:var(--red)!important}
+}
+.solutions-360 .slide-type{display:none!important}
+@media (min-width:761px){
+  .home-page .hero .hero-inner h1{
+    position:absolute!important; left:50%!important; bottom:92px!important;
+    transform:translateX(-50%)!important; width:max-content!important; max-width:92vw!important;
+    margin:0!important; white-space:nowrap!important; text-align:center!important;
+    font-size:clamp(42px,5.1vw,72px)!important; line-height:.92!important; letter-spacing:-1.5px!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:none!important}
+}
+
+/* FINAL DESKTOP HERO HEADLINE — keep the headline on one horizontal line, centered and slightly higher. */
+@media(min-width:761px){
+  .home-page .hero .hero-inner{padding-top:0!important;}
+  .home-page .hero h1{
+    position:absolute!important;
+    left:50%!important;
+    bottom:105px!important;
+    transform:translateX(-50%)!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+    font-size:clamp(42px,5.2vw,76px)!important;
+    line-height:1!important;
+    letter-spacing:.015em!important;
+    word-spacing:.16em!important;
+  }
+  .home-page .hero h1 br{display:none!important;}
+  .home-page .hero h1 em{display:inline!important;}
+}
+
+/* ===== FINAL USER POLISH — DESKTOP HERO + MEDIA DROPDOWN ===== */
+@media (min-width:761px){
+  /* Home hero: move headline higher and make it more compact so it never clips at the bottom. */
+  .home-page .hero-inner{
+    justify-content:center!important;
+    transform:translateY(-20%)!important;
+    padding-top:0!important;
+  }
+  .home-page .hero-inner h1{
+    font-size:clamp(48px,5.2vw,76px)!important;
+    line-height:.9!important;
+    letter-spacing:-1.2px!important;
+    margin:0!important;
+    max-width:900px!important;
+  }
+
+  /* Keep inner-page banner typography compact and balanced. */
+  .about-hero-title,
+  .media-hero-copy h1,
+  .network-hero-copy h1,
+  .ow-hero h1,
+  .kr-enquiry-copy h1,
+  .kr-hero h1{
+    font-size:clamp(36px,3vw,44px)!important;
+    line-height:.94!important;
+    letter-spacing:-.7px!important;
+    margin:8px 0 12px!important;
+  }
+  .about-hero-desc,
+  .media-hero-copy p,
+  .network-hero-copy p,
+  .ow-hero-copy,
+  .kr-enquiry-copy p,
+  .kr-hero p{
+    font-size:13px!important;
+    line-height:1.48!important;
+  }
+
+  /* Media Solutions dropdown: no hover gap; keep the whole dropdown area interactive. */
+  .header .nav .nav-dropdown{
+    position:relative!important;
+    z-index:500!important;
+  }
+  .header .nav .nav-dropdown > .nav-menu{
+    top:100%!important;
+    margin-top:0!important;
+    z-index:9999!important;
+  }
+  .header .nav .nav-dropdown::after{
+    content:"";
+    position:absolute;
+    left:-12px;
+    right:-12px;
+    top:100%;
+    height:24px;
+    background:transparent;
+    z-index:9998;
+    pointer-events:auto;
+  }
+  .header .nav .nav-dropdown:hover > .nav-menu,
+  .header .nav .nav-dropdown:focus-within > .nav-menu,
+  .header .nav .nav-dropdown.open > .nav-menu{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translate(-50%,0)!important;
+  }
+  .header .nav .nav-dropdown > .nav-menu a{
+    position:relative!important;
+    z-index:10000!important;
+  }
 }

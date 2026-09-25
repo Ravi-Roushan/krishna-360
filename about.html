@@ -267,4 +267,103 @@
   });
 })();
 </script>
-</body></html>
+</body></html><style id="mobile-about-overlap-fix">
+/* Mobile About-page cleanup: keep the hero copy compact and give the stats a balanced stack. */
+@media (max-width:760px){
+  .inner-page .about-hero,
+  .inner-page .about-hero-inner,
+  .about-hero,
+  .about-hero-inner{
+    min-height:500px!important;
+    height:500px!important;
+  }
+  .about-hero-inner{
+    padding-top:34px!important;
+    align-items:flex-start!important;
+  }
+  .about-hero-copy{
+    width:92%!important;
+    max-width:315px!important;
+  }
+  .about-kicker{
+    font-size:8px!important;
+    line-height:1.1!important;
+    letter-spacing:.11em!important;
+    gap:7px!important;
+  }
+  .about-kicker:after{width:30px!important;height:1px!important}
+  .about-hero-title,
+  .about-hero h1{
+    font-size:34px!important;
+    line-height:.93!important;
+    letter-spacing:-.018em!important;
+    margin:9px 0 12px!important;
+  }
+  .about-hero-desc,
+  .about-hero-copy p{
+    max-width:305px!important;
+    font-size:10.5px!important;
+    line-height:1.28!important;
+    margin:0 0 11px!important;
+  }
+  .about-hero-desc br{display:none!important}
+  .about-hero-actions{
+    gap:8px!important;
+    margin-top:2px!important;
+  }
+  .about-hero-actions .about-btn{
+    padding:9px 12px!important;
+    font-size:8px!important;
+    line-height:1!important;
+    gap:7px!important;
+    letter-spacing:.3px!important;
+  }
+  .about-statbar{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    width:100%!important;
+  }
+  .about-stat{
+    min-height:72px!important;
+    padding:10px 8px!important;
+    gap:8px!important;
+  }
+  .about-stat:nth-child(2n){border-right:0!important}
+  .about-stat:last-child{
+    grid-column:1 / -1!important;
+    border-right:0!important;
+    justify-content:center!important;
+  }
+  .about-stat-icon{
+    width:27px!important;
+    height:27px!important;
+    font-size:13px!important;
+    flex:0 0 27px!important;
+  }
+  .about-stat strong{font-size:20px!important;line-height:1!important}
+  .about-stat small{font-size:7px!important;line-height:1.2!important}
+  .about-story{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+  .about-copybox{
+    padding:30px 18px 34px!important;
+  }
+  .about-copybox h2{
+    font-size:31px!important;
+    line-height:.96!important;
+    margin:9px 0 12px!important;
+  }
+  .about-copybox p{
+    font-size:11px!important;
+    line-height:1.42!important;
+    margin-bottom:8px!important;
+  }
+  .about-collage{
+    min-height:285px!important;
+    padding:9px!important;
+    gap:7px!important;
+  }
+  .about-collage .tile{min-height:128px!important}
+  .about-collage b{font-size:13px!important;left:9px!important;bottom:8px!important}
+}
+</style>

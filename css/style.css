@@ -9484,3 +9484,118 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     transform:translateY(-35px)!important;
   }
 }
+
+/* ===== FINAL BUTTON MOTION + HOME CTA MOBILE ALIGNMENT ===== */
+/* Red buttons: slow white sweep. White buttons: slow red sweep. */
+.btn.red::before,
+.tab.active::after,
+.small-btn::before,
+.media-btn::before,
+.network-btn::before,
+.network-card-link::before,
+.kr-btn:not(.alt)::before,
+.ow-btn::before,
+.kr-office-btn::before,
+.about-btn::before,
+.nav-cta::before,
+.experience-link::before,
+.footer-campaign::before,
+.service-next::before {
+  background:linear-gradient(105deg,
+    transparent 8%,
+    rgba(255,255,255,.05) 32%,
+    rgba(255,255,255,.88) 50%,
+    rgba(255,255,255,.05) 68%,
+    transparent 92%) !important;
+  transition:left 1.15s cubic-bezier(.2,.7,0,1) !important;
+}
+
+.btn.white::before,
+.outline-btn::before,
+.kr-btn.alt::before,
+.tab:not(.active)::after {
+  background:linear-gradient(105deg,
+    transparent 8%,
+    rgba(229,27,35,.05) 32%,
+    rgba(229,27,35,.82) 50%,
+    rgba(229,27,35,.05) 68%,
+    transparent 92%) !important;
+  transition:left 1.15s cubic-bezier(.2,.7,0,1) !important;
+}
+
+.btn.red::after,
+.tab.active::before,
+.small-btn::after,
+.media-btn::after,
+.network-btn::after,
+.network-card-link::after,
+.kr-btn:not(.alt)::after,
+.ow-btn::after,
+.kr-office-btn::after,
+.about-btn::after,
+.nav-cta::after,
+.experience-link::after,
+.footer-campaign::after,
+.service-next::after {
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent) !important;
+  transition:left 1.05s cubic-bezier(.2,.75,0,1),opacity .35s ease !important;
+}
+
+.btn.white::after,
+.outline-btn::after,
+.kr-btn.alt::after,
+.tab:not(.active)::after {
+  background:linear-gradient(90deg,transparent,rgba(229,27,35,.28),transparent) !important;
+  transition:left 1.05s cubic-bezier(.2,.75,0,1),opacity .35s ease !important;
+}
+
+/* Keep the motion subtle and consistent across all actionable buttons. */
+.btn:hover,
+.small-btn:hover,
+.outline-btn:hover,
+.kr-btn:hover,
+.ow-btn:hover,
+.media-btn:hover,
+.network-btn:hover,
+.network-card-link:hover,
+.kr-office-btn:hover,
+.about-btn:hover,
+.footer-campaign:hover,
+.service-next:hover,
+.tab:hover,
+.nav-cta:hover,
+.experience-link:hover {
+  transition:transform .42s cubic-bezier(.2,.75,.2,1),box-shadow .42s ease,
+    border-color .42s ease,background-color .42s ease,color .42s ease !important;
+}
+
+/* Home hero: keep Discover + Plan on one compact row on mobile. */
+@media(max-width:760px){
+  .experience-actions{
+    width:100% !important;
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    align-items:center !important;
+    gap:8px !important;
+    margin-top:18px !important;
+  }
+  .experience-actions .experience-link,
+  .experience-actions .experience-link.secondary{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+    width:auto !important;
+    margin:0 !important;
+    padding:10px 8px !important;
+    min-height:40px !important;
+    gap:6px !important;
+    font-size:9px !important;
+    line-height:1.1 !important;
+    letter-spacing:.25px !important;
+    white-space:nowrap !important;
+    text-align:center !important;
+  }
+  .experience-actions .experience-link span,
+  .experience-actions .experience-link.secondary span{
+    flex:0 0 auto !important;
+  }
+}

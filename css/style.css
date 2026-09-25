@@ -8679,3 +8679,191 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     transform:none!important;
   }
 }
+
+/* ===================================================================
+   FINAL NAVBAR REDESIGN — grouped pill nav, separated logo/hamburger
+   and a distinct rounded "Enquire Now" button.
+   New markup (same on every page):
+   .header .nav-wrap > .nav-brand(.nav-toggle + .site-logo), .nav, .nav-cta
+   =================================================================== */
+
+.header .nav-wrap{
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+}
+
+/* Circular hamburger, now visible and consistent on every screen size */
+.header .nav-toggle{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  border-radius:50%!important;
+  border:1px solid #e9e9e9!important;
+  background:var(--soft)!important;
+  cursor:pointer!important;
+  flex:0 0 44px!important;
+  transition:background .25s ease,border-color .25s ease!important;
+}
+@media (min-width:761px){
+  .header .nav-toggle{
+    display:none!important;
+  }
+}
+.header .nav-toggle:hover{
+  background:#ececec!important;
+  border-color:#dcdcdc!important;
+}
+.header .nav-toggle span{
+  width:18px!important;
+  height:2px!important;
+  background:var(--ink)!important;
+  border-radius:2px!important;
+  transition:transform .25s ease,opacity .25s ease!important;
+}
+.header .nav-toggle.menu-open span:nth-child(1){transform:translateY(7px) rotate(45deg)!important}
+.header .nav-toggle.menu-open span:nth-child(2){opacity:0!important}
+.header .nav-toggle.menu-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)!important}
+
+.header .site-logo{
+  order:1!important;
+}
+.header .site-logo img{
+  width:128px!important;
+  max-height:34px!important;
+  height:auto!important;
+  object-fit:contain!important;
+}
+.header .nav{order:2!important}
+.header .nav-cta{order:3!important}
+.header .nav-toggle{order:4!important}
+
+/* Desktop pill navigation — all links grouped in one soft capsule */
+@media (min-width:761px){
+  .header .nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:2px!important;
+    height:auto!important;
+    background:rgba(246,246,244,.28)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    border:1px solid rgba(255,255,255,.38)!important;
+    border-radius:999px!important;
+    padding:6px!important;
+    flex:1 1 auto!important;
+    max-width:640px!important;
+    margin:0 auto!important;
+  }
+  .header .nav>a:not(.nav-cta){
+    position:relative!important;
+    padding:12px 18px!important;
+    border-radius:999px!important;
+    font-size:11px!important;
+    font-weight:800!important;
+    color:#30343a!important;
+    white-space:nowrap!important;
+    transition:background .25s ease,color .25s ease,box-shadow .25s ease!important;
+  }
+  .header .nav>a:not(.nav-cta)::before,
+  .header .nav>a:not(.nav-cta)::after{
+    content:none!important;
+    display:none!important;
+  }
+  .header .nav>a:not(.nav-cta):hover,
+  .header .nav>a:not(.nav-cta).active,
+  .header .nav>a:not(.nav-cta)[aria-current="page"]{
+    background:#fff!important;
+    color:var(--red)!important;
+    box-shadow:0 6px 16px rgba(0,0,0,.08)!important;
+  }
+
+  .header .nav .nav-dropdown{
+    position:relative!important;
+    height:auto!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:0!important;
+    border-radius:999px!important;
+  }
+  .header .nav .nav-dropdown>a{
+    padding:12px 8px 12px 18px!important;
+    font-size:11px!important;
+    font-weight:800!important;
+    color:#30343a!important;
+  }
+  .header .nav .nav-dropdown>a::before,
+  .header .nav .nav-dropdown>a::after{
+    content:none!important;
+    display:none!important;
+  }
+  .header .nav .nav-dropdown:hover,
+  .header .nav .nav-dropdown.open{
+    background:#fff!important;
+    box-shadow:0 6px 16px rgba(0,0,0,.08)!important;
+  }
+  .header .nav .nav-dropdown:hover>a,
+  .header .nav .nav-dropdown.open>a{color:var(--red)!important}
+  .header .nav .nav-arrow{
+    padding:6px 14px 6px 4px!important;
+    font-size:8px!important;
+    color:#8a8d90!important;
+  }
+  .header .nav .nav-dropdown:hover .nav-arrow,
+  .header .nav .nav-dropdown.open .nav-arrow{color:var(--red)!important}
+
+  .header .nav .nav-menu{
+    top:calc(100% + 10px)!important;
+    border-radius:14px!important;
+  }
+}
+
+/* Distinct rounded CTA button, clearly separated from the nav pill */
+.header .nav-cta{
+  position:relative!important;
+  z-index:1!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  background:var(--red)!important;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  padding:13px 18px!important;
+  border-radius:6px!important;
+  box-shadow:0 9px 20px rgba(229,27,35,.30)!important;
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+  transition:background .25s ease,box-shadow .25s ease!important;
+}
+.header .nav-cta span{
+  display:inline-flex!important;
+  align-items:center!important;
+}
+.header .nav-cta:hover{
+  background:var(--red2)!important;
+  box-shadow:0 9px 20px rgba(184,15,22,.32)!important;
+}
+
+/* Mobile: brand + compact CTA stay visible in the header, links collapse into the drawer */
+@media (max-width:760px){
+  .header .nav-wrap{
+    flex-wrap:nowrap!important;
+    gap:10px!important;
+    justify-content:space-between!important;
+  }
+  .header .nav-cta{
+    display:none!important;
+  }
+  .header .site-logo{order:1!important}
+  .header .nav{order:2!important}
+  .header .nav-toggle{order:3!important;margin-left:auto!important}
+}

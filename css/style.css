@@ -9909,3 +9909,177 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     align-self:center!important;
   }
 }
+
+/* =========================================================
+   MOBILE INNER-BANNER REPAIR — keep HOME hero untouched
+   Compact, consistent, non-cropping typography + CTA layout
+   ========================================================= */
+@media (max-width:760px){
+  /* Every inner-page banner except the Home hero */
+  .inner-page .about-hero,
+  .inner-page .media-hero,
+  .inner-page .media-detail-hero,
+  .inner-page .network-hero,
+  .inner-page .ow-hero,
+  .inner-page .kr-hero,
+  .inner-page .kr-enquiry-hero{
+    height:500px!important;
+    min-height:500px!important;
+    overflow:hidden!important;
+  }
+
+  .inner-page .about-hero-inner,
+  .inner-page .media-hero-inner,
+  .inner-page .network-hero-inner,
+  .inner-page .ow-hero-inner,
+  .inner-page .kr-hero-inner,
+  .inner-page .media-detail-hero .hero-inner,
+  .inner-page .kr-enquiry-hero .inner{
+    height:500px!important;
+    min-height:500px!important;
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    padding:0!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    box-sizing:border-box!important;
+  }
+
+  .inner-page .about-hero-copy,
+  .inner-page .media-hero-copy,
+  .inner-page .network-hero-copy,
+  .inner-page .ow-hero-inner>div:first-child,
+  .inner-page .kr-hero-inner,
+  .inner-page .kr-enquiry-copy{
+    width:100%!important;
+    max-width:330px!important;
+    padding:0 0 38px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+
+  .inner-page .about-hero-title,
+  .inner-page .about-hero h1,
+  .inner-page .media-hero-copy h1,
+  .inner-page .media-detail-hero .hero-inner h1,
+  .inner-page .network-hero-copy h1,
+  .inner-page .ow-hero h1,
+  .inner-page .kr-hero h1,
+  .inner-page .kr-enquiry-copy h1{
+    font-size:32px!important;
+    line-height:.98!important;
+    letter-spacing:-.45px!important;
+    max-width:330px!important;
+    margin:7px 0 10px!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+
+  .inner-page .about-hero-desc,
+  .inner-page .about-hero-copy p,
+  .inner-page .media-hero-copy p,
+  .inner-page .media-detail-hero .hero-inner p,
+  .inner-page .network-hero-copy p,
+  .inner-page .ow-hero-copy,
+  .inner-page .kr-hero p,
+  .inner-page .kr-enquiry-copy p{
+    font-size:12px!important;
+    line-height:1.4!important;
+    max-width:325px!important;
+    margin:0 0 12px!important;
+  }
+
+  .inner-page .about-kicker,
+  .inner-page .kr-kicker,
+  .inner-page .media-hero-copy .tag,
+  .inner-page .network-hero-copy .tag,
+  .inner-page .ow-kicker,
+  .inner-page .about-tag{
+    font-size:8px!important;
+    line-height:1.15!important;
+    letter-spacing:.1em!important;
+  }
+
+  /* Keep CTA buttons neat and aligned in one row where they fit. */
+  .inner-page .about-hero-actions,
+  .inner-page .kr-actions,
+  .inner-page .ow-hero .ow-btn,
+  .inner-page .network-hero .network-btn{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+  .inner-page .about-hero-actions a,
+  .inner-page .kr-actions .kr-btn,
+  .inner-page .ow-hero .ow-btn,
+  .inner-page .network-hero .network-btn{
+    min-width:0!important;
+    width:auto!important;
+    max-width:100%!important;
+    padding:10px 13px!important;
+    font-size:9px!important;
+    line-height:1.1!important;
+    white-space:nowrap!important;
+  }
+
+  /* Media Solutions hero has several paragraphs: keep the stack compact. */
+  .inner-page .media-hero-copy p + p{margin-top:4px!important}
+  .inner-page .media-quote{font-size:10px!important;line-height:1.25!important;margin-top:8px!important}
+
+  /* Network side/stats should not steal the banner text area on small screens. */
+  .inner-page .network-hero-side{display:none!important}
+  .inner-page .network-stats{display:none!important}
+
+  /* Enquiry hero: text stays readable and CTA/steps don't collide. */
+  .inner-page .kr-enquiry-hero .inner{display:block!important;position:relative!important}
+  .inner-page .kr-enquiry-copy{padding-top:150px!important;padding-bottom:28px!important}
+  .inner-page .kr-enquiry-visual{position:absolute!important;inset:0!important;min-height:500px!important;z-index:0!important}
+  .inner-page .kr-enquiry-copy{z-index:3!important}
+  .inner-page .kr-enquiry-steps{grid-template-columns:repeat(3,1fr)!important;margin-top:16px!important}
+  .inner-page .kr-enquiry-step{padding:8px 7px!important}
+  .inner-page .kr-enquiry-step b{font-size:17px!important;margin-bottom:3px!important}
+  .inner-page .kr-enquiry-step span{font-size:8px!important;line-height:1.2!important}
+
+  /* Detail-media heroes use the same compact baseline. */
+  .inner-page .media-detail-hero .hero-inner{align-items:flex-end!important}
+}
+
+@media (max-width:420px){
+  .inner-page .about-hero,
+  .inner-page .media-hero,
+  .inner-page .media-detail-hero,
+  .inner-page .network-hero,
+  .inner-page .ow-hero,
+  .inner-page .kr-hero,
+  .inner-page .kr-enquiry-hero,
+  .inner-page .about-hero-inner,
+  .inner-page .media-hero-inner,
+  .inner-page .network-hero-inner,
+  .inner-page .ow-hero-inner,
+  .inner-page .kr-hero-inner,
+  .inner-page .media-detail-hero .hero-inner{
+    height:500px!important;
+    min-height:500px!important;
+  }
+  .inner-page .about-hero-title,
+  .inner-page .about-hero h1,
+  .inner-page .media-hero-copy h1,
+  .inner-page .media-detail-hero .hero-inner h1,
+  .inner-page .network-hero-copy h1,
+  .inner-page .ow-hero h1,
+  .inner-page .kr-hero h1,
+  .inner-page .kr-enquiry-copy h1{font-size:29px!important;line-height:1!important}
+  .inner-page .about-hero-desc,
+  .inner-page .about-hero-copy p,
+  .inner-page .media-hero-copy p,
+  .inner-page .media-detail-hero .hero-inner p,
+  .inner-page .network-hero-copy p,
+  .inner-page .ow-hero-copy,
+  .inner-page .kr-hero p,
+  .inner-page .kr-enquiry-copy p{font-size:11px!important;line-height:1.38!important}
+  .inner-page .about-hero-actions a,
+  .inner-page .kr-actions .kr-btn,
+  .inner-page .ow-hero .ow-btn,
+  .inner-page .network-hero .network-btn{padding:9px 11px!important;font-size:8.5px!important}
+}

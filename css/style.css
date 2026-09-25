@@ -9375,3 +9375,62 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     letter-spacing:.15em!important;
   }
 }
+
+/* ===== FINAL USER POLISH: HOME HERO + MOBILE NON-HERO BANNERS ===== */
+/* Move only the Home desktop hero headline slightly upward; mobile hero remains untouched. */
+@media (min-width:761px){
+  .home-page .hero .hero-inner{padding-top:188px!important;}
+}
+
+/* Keep mobile hero typography exactly as-is; compact only non-hero banner/section headings. */
+@media (max-width:760px){
+  .home-page main > section:not(.hero) .section-head h2,
+  .home-page main > section:not(.hero) .about-copy h2,
+  .home-page main > section:not(.hero) .doc-home-copy h2,
+  .home-page main > section:not(.hero) .doc-home-panel h3,
+  .home-page main > section:not(.hero) .doc-home-legacy h2,
+  .home-page main > section:not(.hero) .clients-copy h2,
+  .home-page main > section:not(.hero) .showcase-copy h2,
+  .home-page main > section:not(.hero) .work-copy h2,
+  .home-page main > section:not(.hero) .impact-copy h2,
+  .home-page main > section:not(.hero) .cta-inner h2,
+  .inner-page .network-presence-head h2,
+  .inner-page .network-section-head h2,
+  .inner-page .network-journey h2,
+  .inner-page .kr-head h2,
+  .inner-page .media-section h2,
+  .inner-page .media-final-inner h2,
+  .inner-page .ow-work h2,
+  .inner-page .ow-cta h2,
+  .inner-page .about-cta h2,
+  .inner-page .network-cta h2,
+  .inner-page .kr-final-cta h2,
+  .inner-page .kr-career-cta h2{
+    font-size:clamp(28px,7.8vw,39px)!important;
+    line-height:.98!important;
+    letter-spacing:-.02em!important;
+  }
+
+  .home-page main > section:not(.hero) .section-head p,
+  .home-page main > section:not(.hero) .doc-home-copy p,
+  .home-page main > section:not(.hero) .doc-home-panel p,
+  .home-page main > section:not(.hero) .doc-home-legacy p,
+  .home-page main > section:not(.hero) .clients-copy p,
+  .inner-page .network-presence-head p,
+  .inner-page .network-section-head > p,
+  .inner-page .network-journey p,
+  .inner-page .kr-head p,
+  .inner-page .media-section p,
+  .inner-page .media-final-inner p{
+    font-size:12px!important;
+    line-height:1.5!important;
+  }
+
+  .home-page main > section:not(.hero) .tag,
+  .inner-page .network-section-head .tag,
+  .inner-page .network-presence-head .tag,
+  .inner-page .kr-head .kr-kicker{
+    font-size:8px!important;
+    letter-spacing:1.2px!important;
+  }
+}

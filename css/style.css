@@ -9049,3 +9049,31 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
     box-shadow:0 7px 16px rgba(229,27,35,.24)!important;
   }
 }
+
+/* MOBILE ONLY — 360° center typography compact fix
+   Desktop/tablet styles remain untouched. */
+@media (max-width:760px){
+  .solutions-360 .orbit-center span{
+    font-size:28px!important;
+    line-height:.95!important;
+    white-space:nowrap!important;
+  }
+  .solutions-360 .orbit-center small{
+    font-size:6px!important;
+    letter-spacing:1.2px!important;
+    line-height:1!important;
+    white-space:nowrap!important;
+  }
+  .solutions-360 .orbit-center b{
+    font-size:7px!important;
+    line-height:1!important;
+    letter-spacing:.6px!important;
+    margin-top:4px!important;
+    white-space:nowrap!important;
+  }
+}
+@media (max-width:390px){
+  .solutions-360 .orbit-center span{font-size:25px!important;}
+  .solutions-360 .orbit-center small{font-size:5.5px!important;}
+  .solutions-360 .orbit-center b{font-size:6.5px!important;}
+}

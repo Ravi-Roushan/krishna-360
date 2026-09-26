@@ -10322,3 +10322,77 @@ body.inner-page .stats-strip + .cta{
     min-width:0!important;
   }
 }
+
+/* ===== FINAL USER FIX — ENQUIRY DESKTOP/MOBILE + CHAT TIMESTAMP + FOOTER LINK ===== */
+
+/* Desktop enquiry side panel: keep the full words intact and prevent the
+   heading from breaking through the panel. */
+@media (min-width: 1101px){
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:42px!important;
+    line-height:.96!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+    white-space:normal!important;
+    max-width:100%!important;
+  }
+  .kr-page .kr-form-area .kr-side-message p{
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+    max-width:100%!important;
+  }
+}
+
+/* Tablet/desktop widths: never allow the enquiry heading to split a word. */
+@media (min-width: 761px) and (max-width: 1100px){
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:40px!important;
+    line-height:.96!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+}
+
+/* Mobile enquiry block: reduce the excessive empty gap while keeping the
+   paragraph, background image and campaign caption separated. */
+@media (max-width:760px){
+  .kr-page .kr-form-area .kr-side-message{
+    min-height:470px!important;
+    padding:25px 20px 175px!important;
+  }
+  .kr-page .kr-form-area .kr-side-message img{
+    height:155px!important;
+  }
+  .kr-page .kr-form-area .kr-side-caption{
+    bottom:14px!important;
+    font-size:19px!important;
+    line-height:.97!important;
+  }
+  .kr-page .kr-form-area .kr-side-message h2{
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+}
+
+/* Keep exactly one time marker in the chatbot: the Today marker remains;
+   individual message timestamps are removed from layout as well as hidden. */
+.chat-panel .msg-time,
+.chat-panel .bot-time,
+.chat-panel .user-time{
+  display:none!important;
+}
+
+/* Tcongs Infotech should always appear as an underlined footer link. */
+.footer-dev-link,
+.footer-dev-link:visited{
+  text-decoration:underline!important;
+  text-underline-offset:3px!important;
+}
+
+/* Desktop Media Solutions arrow: move it closer to the label. */
+@media (min-width:1051px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    right:15px!important;
+    margin-left:0!important;
+  }
+}

@@ -10430,3 +10430,91 @@ body.inner-page .stats-strip + .cta{
     line-height:.97!important;
   }
 }
+
+/* ===== LATEST USER FIX — MOBILE HEADER / ENQUIRY / MAP / NAV POLISH ===== */
+
+/* Mobile header: keep the original white logo panel, but make it fully opaque
+   so the hero artwork can never show through the logo. */
+@media (max-width:760px){
+  .header .site-logo{
+    background:#fff!important;
+    border-color:#d9dde1!important;
+    box-shadow:0 5px 16px rgba(0,0,0,.12)!important;
+  }
+  .header .site-logo img{
+    opacity:1!important;
+    visibility:visible!important;
+    filter:none!important;
+  }
+
+  /* Keep the mobile header pill centered with a clean, stable width. */
+  .header .nav-wrap{
+    width:calc(100% - 20px)!important;
+    max-width:none!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+
+/* Desktop enquiry heading: make the complete phrase fit inside the left
+   panel without clipping the final word. */
+@media (min-width:1101px){
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:35px!important;
+    line-height:.97!important;
+    letter-spacing:-.55px!important;
+    max-width:100%!important;
+    width:100%!important;
+    overflow:visible!important;
+    white-space:normal!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+  }
+}
+
+@media (min-width:761px) and (max-width:1100px){
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:34px!important;
+    line-height:.98!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    white-space:normal!important;
+  }
+}
+
+/* View on Map: keep it centered inside the office card with breathing room
+   so it never sits against/touches the bottom edge. */
+.kr-office-info .kr-office-btn{
+  align-self:center!important;
+  margin-top:14px!important;
+  margin-bottom:10px!important;
+  position:relative!important;
+}
+
+@media (max-width:600px){
+  .kr-office-info .kr-office-btn{
+    align-self:center!important;
+    margin-top:14px!important;
+    margin-bottom:8px!important;
+  }
+}
+
+/* Media Solutions dropdown arrow: slightly higher and visually centered with
+   the label instead of sitting low. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    transform:translateY(-1px)!important;
+  }
+}
+
+/* About banner buttons: add a little breathing room below the copy so the
+   buttons do not visually touch the text/banner content. */
+.about-hero-actions{
+  margin-top:10px!important;
+}
+@media (max-width:760px){
+  .about-hero-actions{
+    margin-top:10px!important;
+    padding-bottom:4px!important;
+  }
+}

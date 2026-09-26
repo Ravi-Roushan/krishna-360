@@ -10083,3 +10083,242 @@ html,body{width:100%!important;max-width:none!important;overflow-x:hidden!import
   .inner-page .ow-hero .ow-btn,
   .inner-page .network-hero .network-btn{padding:9px 11px!important;font-size:8.5px!important}
 }
+
+
+/* =========================================================
+   FINAL USER FIXES — FOOTER LINK / MOBILE NAV / FAVICON / CHAT
+   ========================================================= */
+.footer-dev-link{
+  color:inherit!important;
+  text-decoration:none!important;
+  font-weight:800!important;
+  transition:color .2s ease!important;
+}
+.footer-dev-link:hover,
+.footer-dev-link:focus-visible{
+  color:var(--red)!important;
+  text-decoration:underline!important;
+  text-underline-offset:3px!important;
+}
+
+/* Bring the Media Solutions arrow visually closer to its label. */
+.header .nav .nav-dropdown > .nav-arrow{
+  margin-left:-4px!important;
+  padding-left:0!important;
+  padding-right:5px!important;
+}
+
+/* One timestamp only in the chatbot: keep the Today marker and hide
+   the repeated per-message time labels. */
+.chat-panel .msg-time{display:none!important;}
+.chat-panel .chat-day{display:block!important;}
+
+/* Media detail CTA: give the horizontal stats/scroll strip a little breathing room. */
+.media-detail-hero + .section + .stats + .cta,
+body.inner-page .stats-strip + .cta{
+  margin-top:28px!important;
+}
+
+/* Keep enquiry heading compact and prevent any text collision. */
+.kr-enquiry-copy h1,
+.kr-side-message h2{
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+
+@media(max-width:760px){
+  /* Remove the white logo pill/background on mobile only. */
+  .header .site-logo{
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    padding:0!important;
+    border-radius:0!important;
+  }
+
+  /* Mobile menu remains a rounded nav panel, but individual links do not
+     get an extra white block behind them. */
+  .header .nav,
+  .header .nav.open{
+    border-radius:20px!important;
+    background:#efefef!important;
+    box-shadow:0 16px 38px rgba(0,0,0,.18)!important;
+  }
+  .header .nav > a:not(.nav-cta),
+  .header .nav .nav-dropdown,
+  .header .nav .nav-dropdown > a{
+    background:transparent!important;
+    background-color:transparent!important;
+    box-shadow:none!important;
+  }
+  .header .nav > a:not(.nav-cta):hover,
+  .header .nav > a:not(.nav-cta):focus-visible,
+  .header .nav > a:not(.nav-cta).active,
+  .header .nav > a:not(.nav-cta)[aria-current="page"],
+  .header .nav .nav-dropdown.open,
+  .header .nav .nav-dropdown.open > a{
+    background:transparent!important;
+    box-shadow:none!important;
+    color:var(--red)!important;
+  }
+
+  /* Closer Media Solutions arrow on mobile. */
+  .header .nav .nav-dropdown{
+    grid-template-columns:minmax(0,1fr) 24px!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus,
+  .header .nav .nav-dropdown > .nav-arrow:active{
+    width:24px!important;
+    min-width:24px!important;
+    padding:4px 1px!important;
+    margin-left:-2px!important;
+    justify-self:start!important;
+  }
+
+  /* The mobile Enquire Now action is a true pill and stays inside the menu. */
+  .header .nav-cta-drawer-box{
+    margin-top:8px!important;
+    padding-top:8px!important;
+    background:transparent!important;
+  }
+  .header .nav-cta-drawer,
+  .header .nav-cta-drawer:visited,
+  .header .nav-cta-drawer:hover,
+  .header .nav-cta-drawer:focus,
+  .header .nav-cta-drawer:focus-visible,
+  .header .nav-cta-drawer:active{
+    width:calc(100% - 8px)!important;
+    margin:0 auto!important;
+    min-height:42px!important;
+    padding:11px 16px!important;
+    border-radius:999px!important;
+    background:var(--red)!important;
+    box-shadow:0 7px 16px rgba(229,27,35,.24)!important;
+  }
+
+  /* Compact enquiry hero heading on phones. */
+  .kr-page .kr-enquiry-copy{
+    padding:38px 16px 24px!important;
+  }
+  .kr-page .kr-enquiry-copy h1{
+    font-size:clamp(31px,8.8vw,39px)!important;
+    line-height:.9!important;
+    letter-spacing:-.3px!important;
+    margin:8px 0 13px!important;
+  }
+  .kr-page .kr-enquiry-copy p{
+    font-size:11px!important;
+    line-height:1.42!important;
+    margin:0!important;
+    max-width:340px!important;
+  }
+  .kr-page .kr-enquiry-steps{
+    margin-top:14px!important;
+    gap:7px!important;
+  }
+
+  .kr-side-message h2{
+    font-size:clamp(28px,8vw,36px)!important;
+    line-height:.94!important;
+    margin:7px 0 10px!important;
+  }
+
+  /* More breathing room above OOH / Transit enquiry banners. */
+  body.inner-page .stats-strip + .cta{
+    margin-top:20px!important;
+  }
+
+  /* Prevent CTA copy from touching the edges or overlapping buttons. */
+  body.inner-page .cta-inner{
+    gap:16px!important;
+    padding-top:25px!important;
+    padding-bottom:25px!important;
+  }
+  body.inner-page .cta-inner > div{
+    min-width:0!important;
+    width:100%!important;
+  }
+  body.inner-page .cta-inner h2{
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+  }
+}
+
+@media(max-width:420px){
+  .header .nav-cta-drawer{font-size:12px!important;}
+  .kr-page .kr-enquiry-copy h1{font-size:32px!important;}
+  .kr-page .kr-enquiry-copy p{font-size:10.5px!important;}
+  body.inner-page .cta-inner h2{font-size:32px!important;}
+  body.inner-page .cta-inner p{font-size:10.5px!important;line-height:1.48!important;}
+}
+
+/* ===== FINAL USER CORRECTION — LOGO + ENQUIRY OVERLAP + MEDIA ARROW ===== */
+/* Keep the original white logo panel on mobile; do not make it transparent. */
+@media (max-width:760px){
+  .header .site-logo{
+    background:#fff!important;
+    border:1px solid #d9dde1!important;
+    border-radius:7px!important;
+    padding:3px 7px!important;
+    box-shadow:0 2px 8px rgba(18,20,22,.08)!important;
+  }
+  .header .site-logo img{
+    filter:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+
+  /* Enquiry form-side message: give the copy its own space so the
+     background image/caption can never sit on top of the paragraph. */
+  .kr-page .kr-form-area .kr-side-message{
+    min-height:520px!important;
+    padding:25px 20px 205px!important;
+    box-sizing:border-box!important;
+  }
+  .kr-page .kr-form-area .kr-side-message .side-copy{
+    position:relative!important;
+    z-index:5!important;
+    width:100%!important;
+    max-width:100%!important;
+  }
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:31px!important;
+    line-height:.98!important;
+    margin:8px 0 13px!important;
+    max-width:100%!important;
+  }
+  .kr-page .kr-form-area .kr-side-message p{
+    font-size:11.5px!important;
+    line-height:1.48!important;
+    max-width:100%!important;
+    margin:0!important;
+  }
+  .kr-page .kr-form-area .kr-side-message img{
+    height:180px!important;
+    bottom:0!important;
+    z-index:1!important;
+  }
+  .kr-page .kr-form-area .kr-side-caption{
+    left:20px!important;
+    right:20px!important;
+    bottom:17px!important;
+    z-index:6!important;
+    font-size:20px!important;
+    line-height:.98!important;
+  }
+}
+
+/* Desktop: keep the Media Solutions down arrow immediately beside its label. */
+@media (min-width:1051px){
+  .header .nav .nav-dropdown{
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    margin-left:-7px!important;
+    padding:5px 3px 5px 0!important;
+    width:auto!important;
+    min-width:0!important;
+  }
+}

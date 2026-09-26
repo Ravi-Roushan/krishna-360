@@ -10518,3 +10518,724 @@ body.inner-page .stats-strip + .cta{
     padding-bottom:4px!important;
   }
 }
+
+/* ===== LATEST USER FIX — MOBILE PILL NAV + MEDIA ARROW STATE + ABOUT BUTTON GAP ===== */
+@media (max-width:760px){
+  /* Keep the mobile header as the compact rounded pill shown in the reference.
+     The pill is fully opaque so the hero artwork cannot bleed through it. */
+  .header{
+    position:absolute!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:70px!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    overflow:visible!important;
+  }
+  .header .nav-wrap{
+    width:calc(100% - 32px)!important;
+    height:54px!important;
+    min-height:54px!important;
+    margin:8px auto 0!important;
+    padding:5px 8px!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:10px!important;
+    border-radius:12px!important;
+    background:rgba(222,222,222,.97)!important;
+    border:1px solid rgba(255,255,255,.72)!important;
+    box-shadow:0 5px 18px rgba(0,0,0,.16)!important;
+    overflow:visible!important;
+  }
+  .header .site-logo{
+    flex:0 0 auto!important;
+    margin:0!important;
+    background:#fff!important;
+    border:1px solid #d9dde1!important;
+    border-radius:7px!important;
+    padding:3px 7px!important;
+    box-shadow:0 2px 8px rgba(18,20,22,.08)!important;
+  }
+  .header .site-logo img{
+    width:108px!important;
+    max-width:108px!important;
+    height:auto!important;
+    max-height:38px!important;
+    display:block!important;
+    opacity:1!important;
+    visibility:visible!important;
+    filter:none!important;
+  }
+  .header .nav-toggle{
+    flex:0 0 38px!important;
+    width:38px!important;
+    height:38px!important;
+    min-width:38px!important;
+    padding:0!important;
+    margin:0!important;
+    border-radius:50%!important;
+    background:#fff!important;
+    box-shadow:0 2px 8px rgba(0,0,0,.12)!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:4px!important;
+  }
+  .header .nav-toggle span{width:20px!important;height:2px!important;background:#222!important}
+}
+
+/* Desktop Media Solutions arrow: keep it slightly higher and flip it upward
+   only while the dropdown is open; closed state remains a downward arrow. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    position:relative!important;
+    top:-2px!important;
+    transform:translateY(-2px)!important;
+    transform-origin:center!important;
+  }
+  .header .nav .nav-dropdown.open > .nav-arrow{
+    transform:translateY(-3px) rotate(180deg)!important;
+  }
+}
+
+/* About banner: keep the button comfortably separated from the copy. */
+.about-hero-actions{margin-top:18px!important;}
+@media (max-width:760px){
+  .about-hero-actions{margin-top:16px!important;padding-bottom:6px!important;}
+}
+
+
+/* ===== FINAL REQUEST: MOBILE TRANSPARENT PILL + CHAT CONTACT + LEADERSHIP FIT + MEDIA ARROW ===== */
+@media (max-width:760px){
+  /* Light transparent pill header: the logo panel itself remains unchanged. */
+  .header{
+    position:absolute!important;
+    top:8px!important;
+    left:14px!important;
+    right:auto!important;
+    width:calc(100% - 28px)!important;
+    height:58px!important;
+    max-width:none!important;
+    border:1px solid rgba(255,255,255,.42)!important;
+    border-radius:30px!important;
+    background:rgba(255,255,255,.22)!important;
+    backdrop-filter:blur(12px)!important;
+    -webkit-backdrop-filter:blur(12px)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.10)!important;
+    overflow:visible!important;
+  }
+  .header.scrolled{
+    position:fixed!important;
+    top:8px!important;
+    left:14px!important;
+    width:calc(100% - 28px)!important;
+    background:rgba(255,255,255,.30)!important;
+    border-color:rgba(255,255,255,.55)!important;
+  }
+  .header .nav-wrap{
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    padding:5px 8px!important;
+    box-sizing:border-box!important;
+  }
+  .header .site-logo img{
+    width:108px!important;
+    max-height:34px!important;
+  }
+  .header .nav-toggle{
+    width:40px!important;
+    height:40px!important;
+    margin-left:auto!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.72)!important;
+    border:1px solid rgba(20,20,20,.10)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
+  }
+  .header .nav-toggle span{background:#111!important;}
+
+  /* Drawer remains readable; only the header pill is transparent. */
+  .header .nav{
+    top:62px!important;
+  }
+
+  /* Leadership cards: same footprint, full images without cropping. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    align-self:stretch!important;
+  }
+}
+
+@media (min-width:761px){
+  /* Equal leadership card height and uncropped portraits. */
+  .about-lead-grid{
+    align-items:stretch!important;
+  }
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    height:430px!important;
+    min-height:430px!important;
+    grid-template-columns:minmax(250px,42%) minmax(0,1fr)!important;
+    overflow:hidden!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:#f4f4f4!important;
+    transform:none!important;
+  }
+  .about-lead-grid .leader-copy{
+    height:100%!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+  }
+  .about-lead-grid .leader-visible p{
+    margin-bottom:10px!important;
+  }
+}
+
+/* Media Solutions arrow follows the dropdown state: down when closed, up when open. */
+.header .nav .nav-dropdown>.nav-arrow{
+  transition:transform .25s ease,color .25s ease!important;
+  transform:rotate(0deg)!important;
+}
+.header .nav .nav-dropdown.open>.nav-arrow{
+  transform:rotate(180deg)!important;
+  color:var(--red)!important;
+}
+
+/* ===== FINAL MOBILE HEADER + MEDIA ARROW STATE FIX ===== */
+@media (max-width:760px){
+  /* Keep the mobile pill above the hero/background and make it a true viewport-width pill. */
+  .header{
+    position:fixed!important;
+    top:8px!important;
+    left:14px!important;
+    right:auto!important;
+    width:calc(100vw - 28px)!important;
+    max-width:none!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+    z-index:10000!important;
+    isolation:isolate!important;
+    transform:none!important;
+    background:rgba(255,255,255,.22)!important;
+    border:1px solid rgba(255,255,255,.48)!important;
+    border-radius:30px!important;
+    overflow:visible!important;
+  }
+  .header.scrolled{
+    top:8px!important;
+    left:14px!important;
+    width:calc(100vw - 28px)!important;
+    background:rgba(255,255,255,.24)!important;
+  }
+  .header .nav-wrap{
+    position:relative!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    height:58px!important;
+    padding:5px 8px!important;
+    box-sizing:border-box!important;
+    z-index:2!important;
+  }
+  /* The logo panel stays white; only the outer pill is transparent. */
+  .header .site-logo{
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    transform:translate(-50%,-50%)!important;
+    z-index:3!important;
+    background:#fff!important;
+    border:1px solid rgba(18,20,22,.12)!important;
+    border-radius:7px!important;
+    padding:5px 10px!important;
+    height:auto!important;
+    margin:0!important;
+  }
+  .header .site-logo img{
+    display:block!important;
+    width:108px!important;
+    max-width:108px!important;
+    max-height:34px!important;
+    height:auto!important;
+  }
+  .header .nav-toggle{
+    position:absolute!important;
+    right:8px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    z-index:4!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.72)!important;
+  }
+  .header .nav{
+    z-index:5!important;
+  }
+}
+
+/* Desktop: hover/open/focus all use an upward arrow; closed state stays downward. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    transform:translateY(-1px) rotate(0deg)!important;
+    transition:transform .22s ease,color .22s ease!important;
+  }
+  .header .nav .nav-dropdown:hover > .nav-arrow,
+  .header .nav .nav-dropdown:focus-within > .nav-arrow,
+  .header .nav .nav-dropdown.open > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow[aria-expanded="true"]{
+    transform:translateY(-3px) rotate(180deg)!important;
+    color:var(--red)!important;
+  }
+}
+
+/* Mobile: arrow also flips only when the dropdown is actually open. */
+@media (max-width:760px){
+  .header .nav .nav-dropdown > .nav-arrow{
+    transform:translateY(0) rotate(0deg)!important;
+    transition:transform .22s ease,color .22s ease!important;
+  }
+  .header .nav .nav-dropdown.open > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow[aria-expanded="true"]{
+    transform:translateY(-2px) rotate(180deg)!important;
+    color:var(--red)!important;
+  }
+}
+
+/* ===== USER FINAL MOBILE HEADER + LEADERSHIP IMAGE FIX ===== */
+@media (max-width:760px){
+  /* Match the requested mobile pill: light transparent outer pill, white logo panel left, menu button right. */
+  .header{
+    position:fixed!important;
+    top:8px!important;
+    left:14px!important;
+    right:auto!important;
+    width:calc(100vw - 28px)!important;
+    height:58px!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+    border-radius:30px!important;
+    background:rgba(255,255,255,.20)!important;
+    border:1px solid rgba(255,255,255,.42)!important;
+    box-shadow:0 5px 18px rgba(0,0,0,.10)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+    z-index:10000!important;
+    overflow:visible!important;
+  }
+  .header.scrolled{
+    top:8px!important;
+    left:14px!important;
+    width:calc(100vw - 28px)!important;
+    background:rgba(255,255,255,.20)!important;
+    border-bottom-color:rgba(255,255,255,.42)!important;
+  }
+  .header .nav-wrap{
+    position:relative!important;
+    width:100%!important;
+    height:56px!important;
+    padding:5px 8px!important;
+    box-sizing:border-box!important;
+  }
+  /* Keep the white logo panel; move it to the left like the requested reference. */
+  .header .site-logo{
+    position:absolute!important;
+    left:10px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    margin:0!important;
+    z-index:3!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:#fff!important;
+    border:1px solid rgba(18,20,22,.12)!important;
+    border-radius:7px!important;
+    padding:5px 10px!important;
+    height:auto!important;
+    box-shadow:0 2px 8px rgba(0,0,0,.08)!important;
+  }
+  .header .site-logo img{
+    width:108px!important;
+    max-width:108px!important;
+    max-height:34px!important;
+    height:auto!important;
+    display:block!important;
+  }
+  .header .nav-toggle{
+    position:absolute!important;
+    right:8px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+    z-index:4!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.78)!important;
+    border:1px solid rgba(20,20,20,.10)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
+  }
+  .header .nav-toggle span{background:#111!important;}
+
+  /* Do not let the opened drawer sit over the pill controls. */
+  .header .nav{z-index:5!important;}
+
+  /* Leadership: preserve the complete photos and do not add an artificial white image background. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    overflow:hidden!important;
+    align-self:stretch!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:260px!important;
+    min-height:260px!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:transparent!important;
+    transform:none!important;
+    margin:0!important;
+    display:block!important;
+  }
+  .about-lead-grid .leader-card:nth-child(2) img:hover,
+  .about-lead-grid .leader-card img:hover{transform:none!important;}
+}
+
+@media (min-width:761px){
+  /* Desktop leadership images: no CSS background, no crop, equal card footprint. */
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    background:transparent!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:none!important;
+  }
+}
+
+/* ===== FINAL USER UPDATE — SOCIAL LINKS / COMPACT LEADERSHIP / TRANSPARENT MOBILE PILL ===== */
+.social-text a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:inherit!important;
+  text-decoration:none!important;
+  margin-left:10px!important;
+  transition:color .2s ease, transform .2s ease!important;
+}
+.social-text a:hover{color:var(--red)!important;transform:translateY(-1px)!important;}
+
+@media (min-width:761px){
+  /* Keep both leadership boxes equal but more compact. Never crop either portrait. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    height:350px!important;
+    min-height:350px!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    background:transparent!important;
+  }
+  .about-lead-grid .leader-copy{
+    padding:24px!important;
+  }
+  .about-lead-grid .leader-visible p{
+    display:-webkit-box!important;
+    -webkit-box-orient:vertical!important;
+    -webkit-line-clamp:4!important;
+    overflow:hidden!important;
+  }
+}
+
+@media (max-width:760px){
+  /* Outer mobile pill is transparent. Remove the separate white logo panel too. */
+  .header,
+  .header.scrolled{
+    background:rgba(255,255,255,.18)!important;
+    border-color:rgba(255,255,255,.35)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+  }
+  .header .site-logo{
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    padding:0!important;
+  }
+  .header .site-logo img{
+    content:url('../assets/images/header-logo-transparent.png')!important;
+    background:transparent!important;
+  }
+  .header .nav-toggle{
+    background:rgba(255,255,255,.62)!important;
+  }
+}
+
+/* ===== FINAL USER FIX 2026-09-26 — CLEAN MOBILE HEADER + COMPACT LEADERSHIP ===== */
+@media (max-width:760px){
+  /* Remove the large background from the mobile header pill. Keep only the
+     transparent glass outline, white logo panel and hamburger control. */
+  .header,
+  .header.scrolled{
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  .header .nav-wrap{
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+
+  /* Restore the white logo panel only. */
+  .header .site-logo{
+    background:#fff!important;
+    border:1px solid rgba(18,20,22,.12)!important;
+    border-radius:7px!important;
+    padding:5px 10px!important;
+    box-shadow:0 2px 8px rgba(0,0,0,.10)!important;
+  }
+  .header .site-logo img{
+    content:url('../assets/images/header-logo.png')!important;
+    background:transparent!important;
+    width:108px!important;
+    max-width:108px!important;
+    max-height:34px!important;
+  }
+
+  .header .nav-toggle{
+    background:rgba(255,255,255,.78)!important;
+    border:1px solid rgba(20,20,20,.10)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
+  }
+}
+
+@media (min-width:761px){
+  /* Match the compact, well-fitted leadership treatment of the Kevin card.
+     Both portraits keep their full source image; no artificial background and
+     no crop. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    height:350px!important;
+    min-height:350px!important;
+    grid-template-columns:minmax(0,36%) minmax(0,64%)!important;
+    gap:0!important;
+    overflow:hidden!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:transparent!important;
+    margin:0!important;
+  }
+  .about-lead-grid .leader-copy{
+    padding:22px 24px!important;
+    min-width:0!important;
+  }
+  .about-lead-grid .leader-copy h3{
+    margin:3px 0 8px!important;
+  }
+  .about-lead-grid .leader-copy .leader-role{
+    margin:-2px 0 9px!important;
+  }
+  .about-lead-grid .leader-visible p{
+    -webkit-line-clamp:3!important;
+    line-height:1.42!important;
+    margin-bottom:8px!important;
+  }
+}
+
+
+/* ===== FINAL USER FIX — LEADERSHIP IMAGE-FIT + MOBILE PILL SCROLL ===== */
+@media (min-width:761px){
+  /* Each leadership card follows its own source-image proportions instead of
+     forcing both portraits into one fixed-height box. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    height:auto!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,40%) minmax(0,60%)!important;
+    align-items:start!important;
+    overflow:hidden!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    background:transparent!important;
+    display:block!important;
+    align-self:start!important;
+  }
+  .about-lead-grid .leader-copy{
+    padding:22px 24px!important;
+    align-self:start!important;
+  }
+  .about-lead-grid .leader-visible p{
+    display:block!important;
+    -webkit-line-clamp:unset!important;
+    overflow:visible!important;
+    margin:0 0 9px!important;
+  }
+}
+
+@media (max-width:760px){
+  /* Keep the pill inside the viewport, with the logo panel and menu control
+     sitting inside the same glass pill. */
+  .header,
+  .header.scrolled{
+    position:fixed!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:68px!important;
+    z-index:1400!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    transition:transform .32s ease,opacity .25s ease!important;
+    transform:translateY(0)!important;
+  }
+  .header.nav-scroll-hidden{
+    transform:translateY(-110%)!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+  .header .nav-wrap{
+    width:calc(100% - 20px)!important;
+    height:54px!important;
+    margin:7px 10px 0!important;
+    padding:5px 7px!important;
+    box-sizing:border-box!important;
+    border-radius:28px!important;
+    background:rgba(255,255,255,.16)!important;
+    border:1px solid rgba(255,255,255,.38)!important;
+    box-shadow:0 8px 25px rgba(0,0,0,.10)!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+  }
+  .header .site-logo{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    height:42px!important;
+    padding:4px 10px!important;
+    box-sizing:border-box!important;
+    border-radius:7px!important;
+    background:#fff!important;
+    border:1px solid rgba(18,20,22,.12)!important;
+    box-shadow:0 2px 8px rgba(0,0,0,.10)!important;
+    z-index:1403!important;
+  }
+  .header .site-logo img{
+    content:url('../assets/images/header-logo.png')!important;
+    width:108px!important;
+    max-width:108px!important;
+    max-height:34px!important;
+    object-fit:contain!important;
+    background:transparent!important;
+  }
+  .header .nav-toggle{
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    margin-left:auto!important;
+    border-radius:50%!important;
+    background:rgba(255,255,255,.78)!important;
+    border:1px solid rgba(20,20,20,.10)!important;
+    box-shadow:0 4px 14px rgba(0,0,0,.10)!important;
+    z-index:1404!important;
+  }
+
+  /* Mobile leadership cards also size the portrait from the source image. */
+  .about-lead-grid .leader-card,
+  .about-lead-grid .leader-card:nth-child(2){
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:hidden!important;
+  }
+  .about-lead-grid .leader-card img,
+  .about-lead-grid .leader-card:nth-child(2) img{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    background:transparent!important;
+    transform:none!important;
+    margin:0!important;
+  }
+  .about-lead-grid .leader-copy{
+    padding:16px!important;
+  }
+  .about-lead-grid .leader-visible p{
+    display:block!important;
+    -webkit-line-clamp:unset!important;
+    overflow:visible!important;
+    margin-bottom:8px!important;
+  }
+}
+/* Final social brand icons — Facebook, LinkedIn, Instagram */
+.social-text a .social-icon{display:grid!important;place-items:center!important;line-height:1!important}
+.social-text .social-icon svg{width:15px!important;height:15px!important;display:block!important;fill:currentColor!important}
+.social-text .social-facebook svg{width:14px!important;height:14px!important}
+.social-text .social-linkedin svg{width:15px!important;height:15px!important}
+.social-text .social-instagram svg{width:15px!important;height:15px!important}
+@media(max-width:520px){.social-text .social-icon svg{width:14px!important;height:14px!important}}
+
+/* FINAL USER REQUEST — slightly smaller Krishna logo inside the mobile nav pill. */
+@media (max-width:760px){
+  .header .site-logo{
+    height:40px!important;
+    padding:3px 8px!important;
+  }
+  .header .site-logo img{
+    width:98px!important;
+    max-width:98px!important;
+    max-height:31px!important;
+  }
+}
+@media (max-width:380px){
+  .header .site-logo img{
+    width:94px!important;
+    max-width:94px!important;
+    max-height:30px!important;
+  }
+}

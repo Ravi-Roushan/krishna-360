@@ -377,7 +377,7 @@ if(chatbot && chatPanel){
    const q=input.toLowerCase().replace(/[^a-z0-9@.+#& -]/g,' ').replace(/\s+/g,' ').trim();
    const has=(...terms)=>terms.some(t=>q.includes(t));
    if(has('all page','all pages','page link','page links','website link','links')) return `Here are all the website pages:<br>${pageLinks()}`;
-   if(has('contact','phone','call','email','mail','enquire','enquiry','quote','quotation','address','office')) return contactInfo();
+   if(has('contact','phone','mobile','number','call','email','mail','enquire','enquiry','quote','quotation','address','office','details')) return contactInfo();
    if(has('hi','hello','hey','hii','namaste','good morning','good afternoon','good evening')) return `Hello! I’m Krishna AI. I can guide you through every page of Krishna Outdoor.<br>${pageLinks()}`;
    if(has('name','who are you','your name')) return `I’m Krishna AI, the virtual assistant for Krishna Outdoor. I can guide you through every section and page of this website.<br>${link(L.enquire,'Enquire Now')}`;
    if(has('home','homepage')) return `The Home page covers Krishna Outdoor’s outdoor advertising story, solutions, campaigns, network and enquiry path.<br>${link(L.home,'Open Home')}`;

@@ -406,7 +406,7 @@ if(chatbot && chatPanel){
  };
  const reply=(input)=>{const thinking=showThinking();setTimeout(()=>{thinking.remove();addMessage(getReply(input),'bot',true)},900)};
  const closeChat=()=>{chatPanel.classList.remove('open');chatPanel.setAttribute('aria-hidden','true')};
- const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');if(!wasOpen){if(!chatStartedAt){chatStartedAt=timeNow();if(chatMessages){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${chatStartedAt}`;chatMessages.prepend(day)}}setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
+ const openChat=()=>{const wasOpen=chatPanel.classList.contains('open');chatPanel.classList.toggle('open');chatPanel.setAttribute('aria-hidden',wasOpen?'true':'false');if(!wasOpen){if(!chatStartedAt) chatStartedAt=timeNow();setTimeout(()=>chatInput?.focus(),220)}scrollBottom()};
  chatbot.addEventListener('click',openChat);
  chatClose?.addEventListener('click',e=>{e.stopPropagation();closeChat()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeChat()});

@@ -10396,3 +10396,37 @@ body.inner-page .stats-strip + .cta{
     margin-left:0!important;
   }
 }
+
+
+/* ===== FINAL ENQUIRY + CHAT CLEANUP ===== */
+/* Desktop: keep the complete enquiry phrase inside the left panel. */
+@media (min-width:1101px){
+  .kr-page .kr-form-area .kr-side-message h2{
+    font-size:42px!important;
+    line-height:.95!important;
+    letter-spacing:-.7px!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    white-space:normal!important;
+  }
+  .kr-page .kr-form-area .kr-side-message .side-copy{
+    min-width:0!important;
+    max-width:100%!important;
+  }
+}
+
+/* Mobile: bring the campaign image/caption closer to the enquiry copy. */
+@media (max-width:760px){
+  .kr-page .kr-form-area .kr-side-message{
+    min-height:410px!important;
+    padding:25px 20px 145px!important;
+  }
+  .kr-page .kr-form-area .kr-side-message img{
+    height:135px!important;
+  }
+  .kr-page .kr-form-area .kr-side-caption{
+    bottom:12px!important;
+    font-size:18px!important;
+    line-height:.97!important;
+  }
+}

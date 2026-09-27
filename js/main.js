@@ -441,11 +441,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()
 
 // Keep the Media Solutions control as one simple downward arrow.
 $$('.nav-dropdown .nav-arrow').forEach(btn=>{
-  btn.textContent='⌄';
-  btn.addEventListener('mouseenter',()=>{btn.textContent='⌄'; btn.style.transform='none';});
-  btn.addEventListener('mouseleave',()=>{btn.textContent='⌄'; btn.style.transform='none';});
-  btn.addEventListener('focus',()=>{btn.textContent='⌄'; btn.style.transform='none';});
-  btn.addEventListener('blur',()=>{btn.textContent='⌄'; btn.style.transform='none';});
+  btn.textContent='';
+  btn.addEventListener('mouseenter',()=>{btn.textContent=''; btn.style.transform='none';});
+  btn.addEventListener('mouseleave',()=>{btn.textContent=''; btn.style.transform='none';});
+  btn.addEventListener('focus',()=>{btn.textContent=''; btn.style.transform='none';});
+  btn.addEventListener('blur',()=>{btn.textContent=''; btn.style.transform='none';});
 });
 
 // Cursor

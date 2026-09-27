@@ -11420,3 +11420,445 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
 .header .nav .nav-dropdown > .nav-arrow[aria-expanded="true"]{
   transform:none!important;
 }
+
+/* FINAL MOBILE HOME HERO — add a clean visual gap after "BE WHERE" */
+@media (max-width:760px){
+  .home-page .hero .hero-inner h1{
+    line-height:1.05!important;
+  }
+  .home-page .hero .hero-inner h1 em{
+    display:inline-block!important;
+    margin-top:.16em!important;
+  }
+}
+
+
+/* FINAL TEXT SPACING + MEDIA SOLUTIONS ARROW POSITION */
+.home-page .hero .hero-inner h1{
+  word-spacing:.08em!important;
+}
+.header .nav .nav-dropdown{
+  gap:0!important;
+}
+.header .nav .nav-dropdown>.nav-arrow,
+.header .nav .nav-dropdown>.nav-arrow:hover,
+.header .nav .nav-dropdown>.nav-arrow:focus,
+.header .nav .nav-dropdown>.nav-arrow:focus-visible,
+.header .nav .nav-dropdown>.nav-arrow:active,
+.header .nav .nav-dropdown.open>.nav-arrow,
+.header .nav .nav-dropdown:hover>.nav-arrow,
+.header .nav .nav-dropdown:focus-within>.nav-arrow,
+.header .nav .nav-dropdown>.nav-arrow[aria-expanded="true"]{
+  transform:translateY(-2px)!important;
+  min-width:10px!important;
+  width:10px!important;
+  padding:0 0 0 1px!important;
+  margin:0!important;
+  line-height:1!important;
+}
+
+/* FINAL MEDIA SOLUTIONS ARROW — match the compact “More ▾” reference.
+   Keep one small downward arrow only; never rotate or move it when opened. */
+.header .nav .nav-dropdown > .nav-arrow{
+  position:static!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0 0 0 3px!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  border-radius:0!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:0!important;
+  line-height:1!important;
+  color:currentColor!important;
+  transform:none!important;
+  vertical-align:middle!important;
+}
+.header .nav .nav-dropdown > .nav-arrow::before{
+  content:""!important;
+  display:block!important;
+  width:0!important;
+  height:0!important;
+  border-left:4px solid transparent!important;
+  border-right:4px solid transparent!important;
+  border-top:5px solid currentColor!important;
+  transform:none!important;
+  position:relative!important;
+  top:0!important;
+}
+.header .nav .nav-dropdown > .nav-arrow:hover,
+.header .nav .nav-dropdown > .nav-arrow:focus-visible,
+.header .nav .nav-dropdown.open > .nav-arrow{
+  transform:none!important;
+  color:inherit!important;
+}
+.header .nav .nav-dropdown > .nav-arrow:hover::before,
+.header .nav .nav-dropdown > .nav-arrow:focus-visible::before,
+.header .nav .nav-dropdown.open > .nav-arrow::before{
+  transform:none!important;
+  border-top-color:currentColor!important;
+}
+
+@media (min-width:761px){
+  .header .nav .nav-dropdown{
+    display:flex!important;
+    align-items:center!important;
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown > a{
+    padding-right:0!important;
+  }
+}
+
+@media (max-width:760px){
+  .header .nav .nav-dropdown{
+    grid-template-columns:max-content 12px!important;
+    justify-content:center!important;
+    column-gap:3px!important;
+  }
+  .header .nav .nav-dropdown > a{
+    width:auto!important;
+    min-width:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    width:12px!important;
+    min-height:52px!important;
+    margin-left:0!important;
+    color:#444!important;
+  }
+  .header .nav .nav-dropdown.open > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus-visible{
+    color:#444!important;
+  }
+}
+
+/* FINAL REQUEST — Media Solutions arrow sits tightly beside the label. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown{
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown > a{
+    padding-right:0!important;
+    margin-right:0!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    margin-left:-3px!important;
+    width:8px!important;
+    min-width:8px!important;
+    padding:0!important;
+    transform:translateY(-2px)!important;
+  }
+}
+
+/* Mobile hero: add a little more breathing room between the hero headline lines. */
+@media (max-width:760px){
+  .home-page .hero .hero-inner h1{
+    word-spacing:.12em!important;
+    line-height:1.12!important;
+  }
+  .home-page .hero .hero-inner h1 em{
+    display:inline-block!important;
+    margin-top:.24em!important;
+  }
+}
+
+/* FINAL USER FIX — desktop Home hero headline has even word spacing; Media Solutions arrow hugs label. */
+@media (min-width:761px){
+  .home-page .hero .hero-inner h1{
+    word-spacing:normal!important;
+    letter-spacing:-1.5px!important;
+  }
+  .header .nav .nav-dropdown{
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    margin-left:-8px!important;
+    margin-right:0!important;
+    transform:translateY(-2px)!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown.open > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:focus-visible{
+    transform:translateY(-2px)!important;
+  }
+}
+
+/* Keep the requested breathing room in the mobile Home hero without affecting desktop. */
+@media (max-width:760px){
+  .home-page .hero .hero-inner h1{
+    word-spacing:.04em!important;
+    line-height:1.12!important;
+  }
+  .home-page .hero .hero-inner h1 em{
+    margin-top:.28em!important;
+  }
+}
+
+
+/* FINAL USER FIX 25 — compact Media Solutions arrow, equal Home hero spacing, Tcongs link */
+.footer-dev-link,
+.footer-dev-link:visited,
+.footer-dev-link:hover,
+.footer-dev-link:focus,
+.footer-dev-link:focus-visible{
+  text-decoration:none!important;
+  text-underline-offset:0!important;
+}
+
+/* Keep the Media Solutions arrow immediately beside the label, matching the compact “More ▾” reference. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:0!important;
+    width:max-content!important;
+    min-width:0!important;
+  }
+  .header .nav .nav-dropdown>a{
+    flex:0 0 auto!important;
+    width:auto!important;
+    padding-right:0!important;
+    margin-right:0!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    flex:0 0 7px!important;
+    width:7px!important;
+    min-width:7px!important;
+    height:14px!important;
+    margin-left:-11px!important;
+    margin-right:0!important;
+    padding:0!important;
+    transform:translateY(-2px)!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow::before{
+    border-left-width:3.5px!important;
+    border-right-width:3.5px!important;
+    border-top-width:4.5px!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown>.nav-arrow:focus-visible,
+  .header .nav .nav-dropdown.open>.nav-arrow{
+    transform:translateY(-2px)!important;
+  }
+}
+
+/* Home hero desktop: equal, controlled word spacing with no oversized gap after “BE WHERE”. */
+@media (min-width:761px){
+  .home-page .hero .hero-inner h1{
+    letter-spacing:0!important;
+    word-spacing:.04em!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:none!important;}
+  .home-page .hero .hero-inner h1 em{
+    display:inline!important;
+    margin-left:0!important;
+  }
+}
+
+/* Home hero mobile: keep the requested visible breathing space while keeping every word evenly spaced. */
+@media (max-width:760px){
+  .home-page .hero .hero-inner h1{
+    letter-spacing:0!important;
+    word-spacing:.02em!important;
+  }
+  .home-page .hero .hero-inner h1 br{display:none!important;}
+  .home-page .hero .hero-inner h1 em{
+    display:inline!important;
+    margin-left:.12em!important;
+    margin-top:.28em!important;
+  }
+}
+
+/* FINAL USER REQUEST 26 — desktop navbar spacing + compact Media Solutions arrow */
+@media (min-width:761px){
+  .header .nav{
+    gap:26px!important;
+    white-space:nowrap!important;
+    flex-wrap:nowrap!important;
+  }
+  .header .nav .nav-dropdown{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:1px!important;
+    width:max-content!important;
+    min-width:0!important;
+    white-space:nowrap!important;
+  }
+  .header .nav .nav-dropdown>a{
+    flex:0 0 auto!important;
+    width:auto!important;
+    margin:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    white-space:nowrap!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    flex:0 0 9px!important;
+    width:9px!important;
+    min-width:9px!important;
+    height:16px!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:16px!important;
+    transform:translateY(-2px)!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown>.nav-arrow:focus-visible,
+  .header .nav .nav-dropdown.open>.nav-arrow{
+    transform:translateY(-2px)!important;
+  }
+}
+
+/* ===== FINAL MEDIA SOLUTIONS ARROW POSITION =====
+   Keep the arrow attached directly to the Media Solutions label. */
+@media (min-width:1051px){
+  .header .nav .nav-dropdown{
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    gap:0!important;
+    justify-content:flex-start!important;
+    display:flex!important;
+    align-items:center!important;
+  }
+  .header .nav .nav-dropdown > a{
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    margin:0!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow{
+    position:static!important;
+    width:auto!important;
+    min-width:0!important;
+    height:auto!important;
+    margin:0 0 0 2px!important;
+    padding:0!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    transform:none!important;
+    line-height:1!important;
+    font-size:9px!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow:hover,
+  .header .nav .nav-dropdown.open .nav-arrow{
+    transform:none!important;
+  }
+}
+
+
+/* ===== FINAL NAV SPACING + MOBILE MEDIA ALIGNMENT ===== */
+/* Desktop: slightly more compact overall navigation while keeping Media Solutions + arrow together. */
+@media (min-width:761px){
+  .header .nav{gap:22px!important;}
+  .header .nav .nav-dropdown{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:2px!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    position:relative!important;
+  }
+  .header .nav .nav-dropdown>a{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    width:auto!important;
+    min-width:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    margin:0!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    position:static!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:0!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    font-size:9px!important;
+    transform:none!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown.open>.nav-arrow{transform:none!important;}
+}
+
+/* Mobile: Media Solutions must align exactly like the other menu rows; arrow sits immediately after the text. */
+@media (max-width:760px){
+  .header .nav .nav-dropdown{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    width:100%!important;
+    min-height:44px!important;
+    height:auto!important;
+    gap:2px!important;
+    margin:0!important;
+    padding:0!important;
+    box-sizing:border-box!important;
+  }
+  .header .nav .nav-dropdown>a{
+    display:flex!important;
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    min-height:44px!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+    padding:10px 0 10px 12px!important;
+    margin:0!important;
+    border-bottom:1px solid #f0f0f0!important;
+    box-sizing:border-box!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow{
+    position:static!important;
+    flex:0 0 auto!important;
+    display:inline-flex!important;
+    width:auto!important;
+    min-width:0!important;
+    height:44px!important;
+    min-height:44px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    line-height:1!important;
+    font-size:9px!important;
+    color:#444!important;
+    transform:none!important;
+    box-sizing:border-box!important;
+  }
+  .header .nav .nav-dropdown>.nav-arrow:hover,
+  .header .nav .nav-dropdown.open>.nav-arrow{transform:none!important;}
+  .header .nav .nav-dropdown>.nav-menu{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    top:44px!important;
+    width:100%!important;
+  }
+}

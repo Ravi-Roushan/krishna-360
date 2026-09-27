@@ -819,3 +819,44 @@
   .home-page .hero-inner h1 br{display:none!important}
   .home-page .hero-inner h1 em{display:inline!important}
 }
+
+/* USER FINAL FIX 2026-09-27: keep Media Solutions arrow locked close to its label
+   and preserve a visible space between the mobile Home hero headline words. */
+@media (min-width:761px){
+  .header .nav .nav-dropdown{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:3px!important;
+    position:relative!important;
+  }
+  .header .nav .nav-dropdown > a{
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow{
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:8px!important;
+    height:auto!important;
+    margin:0 0 1px 0!important;
+    padding:3px 0 2px!important;
+    transform:none!important;
+    line-height:1!important;
+  }
+  .header .nav .nav-dropdown .nav-arrow:hover,
+  .header .nav .nav-dropdown.open .nav-arrow{
+    transform:none!important;
+  }
+}
+@media (max-width:760px){
+  .home-page .hero .hero-inner h1{
+    word-spacing:1px!important;
+    letter-spacing:0!important;
+  }
+}

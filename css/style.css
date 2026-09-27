@@ -11862,3 +11862,19 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
     width:100%!important;
   }
 }
+
+
+/* USER FINAL FIX: mobile Media Solutions arrow right aligned only */
+@media (max-width:760px){
+  .header .nav .nav-dropdown{
+    grid-template-columns:minmax(0,1fr) 24px!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow,
+  .header .nav .nav-dropdown > .nav-arrow:hover,
+  .header .nav .nav-dropdown > .nav-arrow:focus,
+  .header .nav .nav-dropdown > .nav-arrow:active{
+    justify-self:end!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}

@@ -439,13 +439,14 @@ workLightboxClose?.addEventListener('click',closeWorkLightbox);
 workLightbox?.addEventListener('click',e=>{if(e.target===workLightbox) closeWorkLightbox()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()});
 
-// Keep the Media Solutions control as one simple downward arrow.
+// Keep Media Solutions as ONE real downward-arrow control.
+// The arrow is text, not a pseudo-element, so mobile cannot render a duplicate arrow.
 $$('.nav-dropdown .nav-arrow').forEach(btn=>{
   btn.textContent='';
-  btn.addEventListener('mouseenter',()=>{btn.textContent=''; btn.style.transform='none';});
-  btn.addEventListener('mouseleave',()=>{btn.textContent=''; btn.style.transform='none';});
-  btn.addEventListener('focus',()=>{btn.textContent=''; btn.style.transform='none';});
-  btn.addEventListener('blur',()=>{btn.textContent=''; btn.style.transform='none';});
+  btn.addEventListener('mouseenter',()=>{btn.style.transform='none';});
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='none';});
+  btn.addEventListener('focus',()=>{btn.style.transform='none';});
+  btn.addEventListener('blur',()=>{btn.style.transform='none';});
 });
 
 // Cursor

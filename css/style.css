@@ -12012,3 +12012,85 @@ body.kr-image-lightbox-open{overflow:hidden!important;}
     content:none!important;
   }
 }
+\n\n/* FINAL MOBILE MEDIA ARROW — single arrow only.\n   Remove every pseudo-arrow from the control and use its single real text glyph. */\n@media (max-width:760px){\n  .header .nav .nav-dropdown > .nav-arrow,\n  .header .nav .nav-dropdown > .nav-arrow:hover,\n  .header .nav .nav-dropdown > .nav-arrow:focus,\n  .header .nav .nav-dropdown > .nav-arrow:focus-visible,\n  .header .nav .nav-dropdown.open > .nav-arrow{\n    display:flex!important;\n    align-items:center!important;\n    justify-content:flex-end!important;\n    justify-self:end!important;\n    width:28px!important;\n    min-width:28px!important;\n    max-width:28px!important;\n    height:44px!important;\n    min-height:44px!important;\n    padding:0 4px 0 0!important;\n    margin:0!important;\n    border:0!important;\n    background:transparent!important;\n    box-shadow:none!important;\n    color:#444!important;\n    font-size:9px!important;\n    font-family:Arial,sans-serif!important;\n    line-height:1!important;\n    transform:none!important;\n    overflow:visible!important;\n  }\n  .header .nav .nav-dropdown > .nav-arrow::before,\n  .header .nav .nav-dropdown > .nav-arrow::after{\n    content:none!important;\n    display:none!important;\n  }\n}\n
+/* FINAL — ONE Media Solutions arrow only (desktop + mobile).
+   The real button stays the only control; remove its text glyph and draw one CSS triangle. */
+.header .nav .nav-dropdown > .nav-arrow{
+  font-size:0!important;
+  text-indent:-9999px!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+.header .nav .nav-dropdown > .nav-arrow::before{
+  content:""!important;
+  display:block!important;
+  width:0!important;
+  height:0!important;
+  border-left:4px solid transparent!important;
+  border-right:4px solid transparent!important;
+  border-top:5px solid currentColor!important;
+  position:static!important;
+  transform:none!important;
+  text-indent:0!important;
+}
+.header .nav .nav-dropdown > .nav-arrow::after{
+  content:none!important;
+  display:none!important;
+}
+@media (min-width:761px){
+  .header .nav .nav-dropdown{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:3px!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    position:static!important;
+    display:inline-flex!important;
+    width:8px!important;
+    min-width:8px!important;
+    max-width:8px!important;
+    height:14px!important;
+    min-height:14px!important;
+    margin:0!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:center!important;
+    transform:none!important;
+    background:transparent!important;
+    border:0!important;
+    color:#444!important;
+  }
+}
+@media (max-width:760px){
+  .header .nav .nav-dropdown{
+    width:100%!important;
+    min-width:0!important;
+    display:grid!important;
+    grid-template-columns:1fr 28px!important;
+    align-items:center!important;
+    gap:0!important;
+  }
+  .header .nav .nav-dropdown > a{
+    width:100%!important;
+    padding-right:0!important;
+  }
+  .header .nav .nav-dropdown > .nav-arrow{
+    position:static!important;
+    display:flex!important;
+    width:28px!important;
+    min-width:28px!important;
+    max-width:28px!important;
+    height:44px!important;
+    min-height:44px!important;
+    margin:0!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:center!important;
+    justify-self:end!important;
+    transform:none!important;
+    background:transparent!important;
+    border:0!important;
+    color:#444!important;
+  }
+}

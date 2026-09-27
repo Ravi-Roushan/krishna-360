@@ -11239,3 +11239,184 @@ body.inner-page .stats-strip + .cta{
     max-height:30px!important;
   }
 }
+
+
+/* FINAL USER FIX 14 — Media Solutions keeps one centered downward arrow only. */
+.header .nav .nav-dropdown{
+  display:inline-flex!important;
+  align-items:center!important;
+  position:relative!important;
+}
+.header .nav .nav-dropdown>.nav-arrow{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  align-self:center!important;
+  width:18px!important;
+  height:24px!important;
+  padding:0!important;
+  margin:0 0 0 3px!important;
+  transform:none!important;
+  color:#30343a!important;
+  font-size:13px!important;
+  line-height:1!important;
+}
+.header .nav .nav-dropdown>.nav-arrow:hover,
+.header .nav .nav-dropdown.open>.nav-arrow{
+  transform:none!important;
+  color:#30343a!important;
+}
+
+/* 2) Network card imagery: keep the Frooti bus sharp, centered and evenly fitted. */
+.network-card-media{
+  position:relative!important;
+  overflow:hidden!important;
+}
+.network-card-media img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  display:block!important;
+}
+@media(min-width:901px){
+  .network-card-rich .network-card-media{height:290px!important;}
+}
+
+/* 3) Mobile chatbot must stay above every section and inside the viewport. */
+.chatbot{
+  position:fixed!important;
+  right:max(12px,env(safe-area-inset-right))!important;
+  bottom:max(12px,env(safe-area-inset-bottom))!important;
+  z-index:10000!important;
+}
+.chat-panel{
+  position:fixed!important;
+  right:max(9px,env(safe-area-inset-right))!important;
+  bottom:calc(max(70px,env(safe-area-inset-bottom) + 62px))!important;
+  z-index:9999!important;
+  max-height:calc(100dvh - 86px)!important;
+}
+@media(max-width:760px){
+  .chatbot{right:max(10px,env(safe-area-inset-right))!important;bottom:max(10px,env(safe-area-inset-bottom))!important;}
+  .chat-panel{
+    right:max(9px,env(safe-area-inset-right))!important;
+    bottom:calc(max(68px,env(safe-area-inset-bottom) + 60px))!important;
+    width:min(360px,calc(100vw - 18px))!important;
+    max-width:calc(100vw - 18px)!important;
+    height:min(440px,calc(100dvh - 82px))!important;
+    max-height:calc(100dvh - 82px)!important;
+  }
+}
+
+/* 4) Keep image sections/cards balanced vertically. */
+.network-card-body{min-height:0!important;}
+.network-card-media + .network-card-body{margin-top:0!important;}
+
+/* 5) Lightbox cursor for every zoomable content image. */
+body.kr-image-lightbox-open{overflow:hidden!important;}
+.kr-zoomable-image{cursor:zoom-in!important;}
+.kr-image-lightbox{
+  position:fixed!important;
+  inset:0!important;
+  z-index:20000!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:clamp(16px,4vw,48px)!important;
+  background:rgba(5,7,9,.88)!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity .22s ease,visibility .22s ease!important;
+}
+.kr-image-lightbox.open{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+.kr-image-lightbox img{
+  display:block!important;
+  max-width:min(94vw,1600px)!important;
+  max-height:90vh!important;
+  width:auto!important;
+  height:auto!important;
+  object-fit:contain!important;
+  border-radius:4px!important;
+  box-shadow:0 25px 80px rgba(0,0,0,.45)!important;
+  cursor:zoom-out!important;
+}
+.kr-image-lightbox-close{
+  position:absolute!important;
+  top:18px!important;
+  right:22px!important;
+  width:42px!important;
+  height:42px!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  border-radius:50%!important;
+  background:rgba(0,0,0,.42)!important;
+  color:#fff!important;
+  font-size:27px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+}
+@media(max-width:760px){
+  .kr-image-lightbox{padding:12px!important;}
+  .kr-image-lightbox img{max-width:96vw!important;max-height:84vh!important;}
+  .kr-image-lightbox-close{top:10px!important;right:10px!important;width:38px!important;height:38px!important;font-size:24px!important;}
+}
+
+/* FINAL IMAGE / NAV / CHAT FIXES */
+.zoomable-image{cursor:zoom-in!important}
+.zoomable-image:hover{filter:brightness(1.02)}
+
+/* Media Solutions: one centered downward arrow only */
+.header .nav .nav-dropdown{position:relative!important}
+.header .nav .nav-dropdown>.nav-arrow,
+.header .nav .nav-dropdown>.nav-arrow:hover,
+.header .nav .nav-dropdown.open>.nav-arrow,
+.header .nav .nav-dropdown>.nav-arrow:focus-visible{
+  position:static!important;
+  transform:none!important;
+  display:inline-flex!important;
+  width:auto!important;
+  min-width:14px!important;
+  height:auto!important;
+  padding:2px 0 2px 3px!important;
+  margin:0!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:inherit!important;
+  font-size:10px!important;
+  line-height:1!important;
+}
+.header .nav .nav-dropdown>a{padding-right:3px!important}
+.header .nav .nav-dropdown>.nav-arrow::before{content:none!important}
+
+/* Equal image framing on network cards; no artificial top/bottom gap. */
+.network-card-rich .network-card-media{height:290px!important;display:block!important;overflow:hidden!important}
+.network-card-rich .network-card-media img{width:100%!important;height:100%!important;display:block!important;object-fit:cover!important;object-position:center center!important;margin:0!important}
+
+/* Mobile chatbot must stay fully inside the viewport and above every section. */
+@media(max-width:760px){
+  .chatbot{position:fixed!important;right:12px!important;bottom:max(12px,env(safe-area-inset-bottom))!important;left:auto!important;z-index:2147483000!important;width:50px!important;height:50px!important;transform:none!important}
+  .chatbot-orb{width:48px!important;height:48px!important}
+  .chat-panel{position:fixed!important;right:12px!important;left:12px!important;bottom:74px!important;width:auto!important;max-width:none!important;max-height:calc(100dvh - 90px)!important;z-index:2147482999!important;overflow:auto!important}
+}
+@media(max-width:380px){
+  .chatbot{right:9px!important;bottom:max(9px,env(safe-area-inset-bottom))!important}
+  .chat-panel{right:9px!important;left:9px!important;bottom:68px!important}
+}
+
+/* Final Media Solutions arrow: always show a single downward arrow. */
+.header .nav .nav-dropdown > .nav-arrow,
+.header .nav .nav-dropdown > .nav-arrow:hover,
+.header .nav .nav-dropdown > .nav-arrow:focus,
+.header .nav .nav-dropdown > .nav-arrow:focus-visible,
+.header .nav .nav-dropdown > .nav-arrow:active,
+.header .nav .nav-dropdown.open > .nav-arrow,
+.header .nav .nav-dropdown:hover > .nav-arrow,
+.header .nav .nav-dropdown:focus-within > .nav-arrow,
+.header .nav .nav-dropdown > .nav-arrow[aria-expanded="true"]{
+  transform:none!important;
+}

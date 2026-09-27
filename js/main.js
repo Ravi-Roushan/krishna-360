@@ -416,20 +416,37 @@ if(chatbot && chatPanel){
  if(chatMessages && !chatMessages.querySelector('.chat-day')){const day=document.createElement('div');day.className='chat-day';day.textContent=`Today • ${timeNow()}`;chatMessages.prepend(day);$$('.msg-row.bot',chatMessages).forEach(row=>{if(!row.querySelector('.msg-avatar')) row.insertAdjacentHTML('afterbegin',avatar());let stack=row.querySelector('.msg-stack');if(!stack){const bubble=row.querySelector('.msg-bubble');stack=document.createElement('div');stack.className='msg-stack';if(bubble){bubble.parentNode.removeChild(bubble);stack.appendChild(bubble)}row.appendChild(stack)}})}
 }
 
-// Work image lightbox — click any campaign card to view it larger
+// Universal image lightbox — all meaningful content images open large on click.
 const workLightbox=$('#workLightbox'), workLightboxImage=$('#workLightboxImage'), workLightboxCaption=$('#workLightboxCaption'), workLightboxClose=$('#workLightboxClose');
-$$('.work-card img').forEach(img=>img.addEventListener('click',e=>{
- e.stopPropagation();
- if(!workLightbox) return;
- workLightboxImage.src=img.currentSrc||img.src;
- workLightboxImage.alt=img.alt||'Krishna Outdoor campaign';
- workLightboxCaption.textContent=img.alt||'Krishna Outdoor campaign';
- workLightbox.classList.add('open'); workLightbox.setAttribute('aria-hidden','false');
-}));
+const zoomableImages=[...document.querySelectorAll('img')].filter(img=>{
+  if(img.closest('header,footer,#chatbot,#chatPanel,.work-lightbox,.site-logo,.legacy')) return false;
+  if(img.closest('[aria-hidden="true"]')) return false;
+  return !!(img.currentSrc||img.src);
+});
+zoomableImages.forEach(img=>{
+  img.classList.add('zoomable-image');
+  img.addEventListener('click',e=>{
+    e.preventDefault(); e.stopPropagation();
+    if(!workLightbox) return;
+    workLightboxImage.src=img.currentSrc||img.src;
+    workLightboxImage.alt=img.alt||'Krishna Outdoor image';
+    workLightboxCaption.textContent=img.alt||'Krishna Outdoor image';
+    workLightbox.classList.add('open'); workLightbox.setAttribute('aria-hidden','false');
+  });
+});
 function closeWorkLightbox(){workLightbox?.classList.remove('open');workLightbox?.setAttribute('aria-hidden','true');if(workLightboxImage) workLightboxImage.src=''}
 workLightboxClose?.addEventListener('click',closeWorkLightbox);
 workLightbox?.addEventListener('click',e=>{if(e.target===workLightbox) closeWorkLightbox()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeWorkLightbox()});
+
+// Keep the Media Solutions control as one simple downward arrow.
+$$('.nav-dropdown .nav-arrow').forEach(btn=>{
+  btn.textContent='⌄';
+  btn.addEventListener('mouseenter',()=>{btn.textContent='⌄'; btn.style.transform='none';});
+  btn.addEventListener('mouseleave',()=>{btn.textContent='⌄'; btn.style.transform='none';});
+  btn.addEventListener('focus',()=>{btn.textContent='⌄'; btn.style.transform='none';});
+  btn.addEventListener('blur',()=>{btn.textContent='⌄'; btn.style.transform='none';});
+});
 
 // Cursor
 const cursor=$('#cursor'), ring=$('#cursorRing');
@@ -615,4 +632,56 @@ if(window.matchMedia('(pointer:fine)').matches){window.addEventListener('mousemo
   }
   setup();
   mobileMQ.addEventListener?.('change',()=>{ if(mobileMQ.matches) setup(); });
+})();
+
+
+
+/* FINAL USER FIX 14 — click any content image to zoom */
+(()=>{
+  const excluded = (img)=>{
+    if(!img || !img.src) return true;
+    return !!img.closest(
+      '.site-logo,.footer .site-logo,#chatbot,#chatPanel,.chat-panel,.chatbot,'+
+      '.cursor,.cursor-ring,.kr-image-lightbox,button,a.nav-cta,.nav-toggle'
+    );
+  };
+
+  let box=document.querySelector('.kr-image-lightbox');
+  if(!box){
+    box=document.createElement('div');
+    box.className='kr-image-lightbox';
+    box.setAttribute('aria-hidden','true');
+    box.innerHTML='<button type="button" class="kr-image-lightbox-close" aria-label="Close image">×</button><img alt="">';
+    document.body.appendChild(box);
+  }
+  const preview=box.querySelector('img');
+  const closeBtn=box.querySelector('.kr-image-lightbox-close');
+
+  const close=()=>{
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden','true');
+    document.body.classList.remove('kr-image-lightbox-open');
+    preview.removeAttribute('src');
+  };
+  const open=(img)=>{
+    preview.src=img.currentSrc||img.src;
+    preview.alt=img.alt||'Krishna Outdoor image';
+    box.classList.add('open');
+    box.setAttribute('aria-hidden','false');
+    document.body.classList.add('kr-image-lightbox-open');
+  };
+
+  document.querySelectorAll('main img').forEach(img=>{
+    if(excluded(img)) return;
+    img.classList.add('kr-zoomable-image');
+    img.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      open(img);
+    });
+  });
+  closeBtn.addEventListener('click',close);
+  box.addEventListener('click',e=>{if(e.target===box) close();});
+  preview.addEventListener('click',close);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') close();});
 })();
